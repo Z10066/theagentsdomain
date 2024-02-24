@@ -1,3 +1,5 @@
+The Agents' Domain
+
 # website
 http://theagentsdomain.site/
 
@@ -6,7 +8,11 @@ http://theagentsdomain.site/
 - <a href="developmentguid/日本語.md">日本語開発ガイド</a>
 - <a href="developmentguid/中文.md">中文开发指南</a>
 
-# video
+# story && video
+## English
+- [Binge-Watching Season 6 of 'The Agents's Domain': 'The Mystery of Codes'](https://youtu.be/FGH0XjJl_Yw)
+
+## 中文
 - [Binge-Watching Season 1 of 'The Agents's Domain'](https://youtu.be/gOUp1BVz8bI)
 - [Binge-Watching Season 2 of 'The Agents's Domain': 'The Challenges of Smart Healthcare'](https://youtu.be/kDz6fw6xyoA)
 - [Binge-Watching Season 3 of 'The Agents's Domain': 'Global Marketing of Smart Healthcare'](https://youtu.be/PlsqntiMoeY)

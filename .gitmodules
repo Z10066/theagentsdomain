@@ -1,0 +1,36 @@
+[submodule "daveshap/OpenAI_Agent_Swarm"]
+	path = 01.AgentCorePlatform/OpenAI_Agent_Swarm
+	url = https://github.com/daveshap/OpenAI_Agent_Swarm.git
+[submodule "microsoft/autogen"]
+	path = 01.AgentCorePlatform/autogen
+	url = https://github.com/microsoft/autogen.git
+[submodule "geekan/MetaGPT"]
+	path = 01.AgentCorePlatform/MetaGPT
+	url = https://github.com/geekan/MetaGPT.git
+[submodule "daveshap/ACE_Framework"]
+	path = 01.AgentCorePlatform/ACE_Framework
+	url = https://github.com/daveshap/ACE_Framework.git
+[submodule "jhipster/generator-jhipster"]
+	path = 02.SoftwareGenerator/generator-jhipster
+	url = https://github.com/jhipster/generator-jhipster.git
+[submodule "pyhipster/generator-pyhipster"]
+	path = 02.SoftwareGenerator/generator-pyhipster
+	url = https://github.com/pyhipster/generator-pyhipster.git
+[submodule "keycloak/keycloak"]
+	path = 04.UserPlatform/keycloak
+	url = https://github.com/keycloak/keycloak.git
+[submodule "activepieces/activepieces"]
+	path = 05.WorkflowPlatform/activepieces
+	url = https://github.com/activepieces/activepieces.git
+[submodule "stripe-samples/accept-a-payment"]
+	path = 06.PaymentPlatform/accept-a-payment
+	url = https://github.com/stripe-samples/accept-a-payment.git
+[submodule "stripe-samples/checkout-one-time-payments"]
+	path = 06.PaymentPlatform/checkout-one-time-payments
+	url = https://github.com/stripe-samples/checkout-one-time-payments.git
+[submodule "stripe-samples/checkout-single-subscription"]
+	path = 06.PaymentPlatform/checkout-single-subscription
+	url = https://github.com/stripe-samples/checkout-single-subscription.git
+[submodule "stripe-samples/subscription-use-cases"]
+	path = 06.PaymentPlatform/subscription-use-cases
+	url = https://github.com/stripe-samples/subscription-use-cases.git
