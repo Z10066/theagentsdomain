@@ -19,6 +19,15 @@
 [submodule "keycloak/keycloak"]
 	path = 04.UserPlatform/keycloak
 	url = https://github.com/keycloak/keycloak.git
+[submodule "quarkusio/quarkus"]
+	path = 04.UserPlatform/quarkus
+	url = https://github.com/quarkusio/quarkus.git
+[submodule "keycloak/keycloak-nodejs-connect"]
+	path = 04.UserPlatform/keycloak-nodejs-connect
+	url = https://github.com/keycloak/keycloak-nodejs-connect.git
+[submodule "keycloak/keycloak-quickstarts"]
+	path = 04.UserPlatform/keycloak-quickstarts
+	url = https://github.com/keycloak/keycloak-quickstarts.git
 [submodule "activepieces/activepieces"]
 	path = 05.WorkflowPlatform/activepieces
 	url = https://github.com/activepieces/activepieces.git
