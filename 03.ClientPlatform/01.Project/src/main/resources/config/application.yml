@@ -141,11 +141,11 @@ spring:
       client:
         provider:
           oidc:
-            issuer-uri: http://localhost:9080/realms/jhipster
+            issuer-uri: http://localhost:8180/realms/jhipster
         registration:
           oidc:
-            client-id: internal
-            client-secret: internal
+            client-id: highwaypj
+            client-secret: Q0HzQwJk04Yx9xVHmzSDiWHrrxwVwBVX
             scope: openid, profile, email, offline_access # last one for refresh tokens
 
 server:

@@ -47,7 +47,7 @@ spring:
   r2dbc:
     url: r2dbc:postgresql://localhost:5432/highwaypj
     username: highwaypj
-    password:
+    password: highwaypj
   thymeleaf:
     cache: false
 

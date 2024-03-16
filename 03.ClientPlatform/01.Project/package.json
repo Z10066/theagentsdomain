@@ -85,11 +85,12 @@
     "webapp:test": "npm run test --"
   },
   "config": {
-    "backend_port": 8080,
+    "backend_port": 8081,
     "default_environment": "prod",
     "packaging": "jar"
   },
   "dependencies": {
+    "@angular-architects/module-federation": "^17.0.8",
     "@angular/common": "17.0.6",
     "@angular/compiler": "17.0.6",
     "@angular/core": "17.0.6",
