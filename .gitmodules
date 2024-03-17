@@ -17,7 +17,7 @@
 	path = 02.SoftwareGenerator/generator-pyhipster
 	url = https://github.com/pyhipster/generator-pyhipster.git
 [submodule "Sxela/WarpFusion"]
-	path = 02.SoftwareGenerator/generator-pyhipster
+	path = 02.SoftwareGenerator/WarpFusion
 	url = https://github.com/Sxela/WarpFusion.git
 [submodule "keycloak/keycloak"]
 	path = 04.UserPlatform/keycloak
