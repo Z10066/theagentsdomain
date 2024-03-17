@@ -1,7 +1,12 @@
 The Agents' Domain
 
 # website
-http://theagentsdomain.site/
+- [The Agents's Domain](http://theagentsdomain.site/)
+- [Education ParK](https://edu.ujhb.org/)
+- [Intelligence ParK](https://park.highwayns.com/)
+
+# AWESOME
+https://github.com/highwayns/awesome#highwayns
 
 # development guid book
 - <a href="developmentguid/English.md">English Development Guid</a>
