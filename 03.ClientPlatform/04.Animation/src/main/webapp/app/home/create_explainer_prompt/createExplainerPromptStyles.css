@@ -1,0 +1,53 @@
+
+body, html {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-color: #222;
+    color: #fff;
+}
+
+.explainer-prompt-container {
+    width: 100%;
+    max-width: 600px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: #333;
+    border-radius: 8px;
+}
+
+.explainer-prompt-form {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group, .settings, .dropdowns {
+    margin-bottom: 15px;
+}
+
+.explainer-prompt-form label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.explainer-prompt-form input, .explainer-prompt-form select, .explainer-prompt-form textarea, .explainer-prompt-form button {
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 4px;
+    border: none;
+}
+
+.explainer-prompt-form button {
+    background-color: #4a76a8;
+    color: white;
+    cursor: pointer;
+}
+
+.dropdowns {
+    display: flex;
+    gap: 10px;
+}
+
+.dropdowns select {
+    flex: 1;
+}

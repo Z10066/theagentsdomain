@@ -1,0 +1,36 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HighwayVC - Create Video</title>
+    <link rel="stylesheet" href="createVideoStyles.css">
+</head>
+<body>
+    <div class="sidebar">
+        <img src="highwayvc-logo.png" alt="HighwayVC Logo" class="logo">
+        <nav class="navigation">
+            <a href="#" class="nav-link active">Home</a>
+            <a href="#" class="nav-link">Media Library</a>
+            <div class="nav-section">Plugins</div>
+            <a href="#" class="nav-link">Voices</a>
+            <div class="nav-section">History</div>
+            <!-- Add additional history links here -->
+            <a href="#" class="nav-link">Show more</a>
+        </nav>
+    </div>
+    <div class="main-content">
+        <div class="video-form">
+            <label for="model-select">Model:</label>
+            <select id="model-select" name="model">
+                <option value="premium-ai">Premium AI</option>
+                <!-- Additional model options here -->
+            </select>
+            <textarea id="video-instructions" placeholder="Give me a topic, and detailed instructions" rows="4"></textarea>
+            <button id="generate-video">Generate a video</button>
+        </div>
+    </div>
+    <script src="createVideoScripts.js"></script>
+</body>
+</html>

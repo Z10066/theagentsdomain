@@ -1,0 +1,65 @@
+
+/* Sidebar layout and styling */
+.sidebar {
+    width: 250px;
+    background-color: #333;
+    height: 100vh;
+    padding: 20px;
+}
+
+.logo {
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.navigation {
+    font-family: Arial, sans-serif;
+    color: #fff;
+}
+
+.nav-link {
+    color: #aaa;
+    text-decoration: none;
+    display: block;
+    margin-bottom: 5px;
+}
+
+.nav-link.active {
+    color: #fff;
+}
+
+.nav-section {
+    margin-top: 20px;
+    font-weight: bold;
+    color: #888;
+}
+
+/* Main content layout and styling */
+.main-content {
+    padding: 20px;
+    background-color: #222;
+    color: #fff;
+    width: calc(100% - 250px);
+    height: 100vh;
+    float: right;
+}
+
+.video-form {
+    max-width: 600px;
+    margin: auto;
+}
+
+#model-select,
+#video-instructions,
+#generate-video {
+    width: 100%;
+    padding: 10px;
+    margin-top: 10px;
+}
+
+#generate-video {
+    background-color: #555;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+}

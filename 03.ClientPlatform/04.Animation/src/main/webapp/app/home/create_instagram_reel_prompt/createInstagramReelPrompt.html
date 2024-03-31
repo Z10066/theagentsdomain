@@ -1,0 +1,44 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HighwayVC - Instagram Reel Prompt</title>
+    <link rel="stylesheet" href="createInstagramReelPromptStyles.css">
+</head>
+<body>
+    <div class="instagram-reel-prompt-container">
+        <header>
+            <h1>Instagram Reel - create a prompt</h1>
+        </header>
+        <form class="instagram-reel-prompt-form">
+            <label for="instagram-reel-topic">Create an Instagram reel about</label>
+            <input type="text" id="instagram-reel-topic" placeholder="Give me details of what should the reel be about - pick something interesting">
+
+            <div class="settings">
+                <label>Settings:</label>
+                <select id="voice-selection">
+                    <option value="any">Use any</option>
+                    <!-- Additional voice options -->
+                </select>
+                <select id="voice-type">
+                    <option value="any-voice">any voice</option>
+                    <!-- Additional voice types -->
+                </select>
+                <select id="subtitles">
+                    <option value="add-subtitles">Add subtitles</option>
+                    <!-- Additional subtitle options -->
+                </select>
+                <select id="istock-usage">
+                    <option value="normal">Use iStock normally</option>
+                    <!-- Additional iStock usage options -->
+                </select>
+            </div>
+            
+            <button type="submit" class="continue-btn">Continue</button>
+        </form>
+    </div>
+    <script src="createInstagramReelPromptScripts.js"></script>
+</body>
+</html>

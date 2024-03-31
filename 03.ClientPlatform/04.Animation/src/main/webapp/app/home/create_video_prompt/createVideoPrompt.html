@@ -1,0 +1,45 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HighwayVC - Script to Video Prompt</title>
+    <link rel="stylesheet" href="createVideoPromptStyles.css">
+</head>
+<body>
+    <div class="video-prompt-container">
+        <header>
+            <h1>Script to Video - create a prompt</h1>
+        </header>
+        <form class="video-prompt-form">
+            <div class="form-group">
+                <label for="video-type">Create a</label>
+                <select id="video-type">
+                    <option value="video">video</option>
+                    <!-- Additional video types here -->
+                </select>
+                <label for="script">using exactly this script</label>
+                <textarea id="script" placeholder="Your script here..." maxlength="3000"></textarea>
+            </div>
+            
+            <input type="text" id="background-music" placeholder="Make background music dark and haunting, upbeat and happy, etc...">
+
+            <div class="settings">
+                <label>Settings:</label>
+                <select id="voice-selection">
+                    <option value="any">Use any</option>
+                    <!-- Additional voice options here -->
+                </select>
+                <select id="voice-type">
+                    <option value="any-voice">any voice</option>
+                    <!-- Additional voice types here -->
+                </select>
+            </div>
+            
+            <button type="submit" class="continue-btn">Continue</button>
+        </form>
+    </div>
+    <script src="createVideoPromptScripts.js"></script>
+</body>
+</html>

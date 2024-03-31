@@ -1,0 +1,53 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HighwayVC - Publish Video</title>
+    <link rel="stylesheet" href="publishVideoStyles.css">
+</head>
+<body>
+    <div id="publishModal" class="modal">
+        <div class="modal-content">
+            <h2>Publish Video</h2>
+            <label for="exportYoutube">Export for YouTube</label>
+            <p>Optimised for high quality YouTube publishing</p>
+            
+            <div class="form-group">
+                <label>Select type of watermarks</label>
+                <select id="watermarks">
+                    <option value="stock">Stock watermarks</option>
+                    <option value="none" selected>No watermarks</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>Select HighwayVC AI branding</label>
+                <select id="branding">
+                    <option value="normal">Normal</option>
+                    <option value="subtle">Subtle</option>
+                    <option value="none" selected>None</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>Select export resolution</label>
+                <div class="radio-group">
+                    <input type="radio" id="resolution480p" name="resolution" value="480p">
+                    <label for="resolution480p">480p</label>
+                    <input type="radio" id="resolution720p" name="resolution" value="720p">
+                    <label for="resolution720p">720p</label>
+                    <input type="radio" id="resolution1080p" name="resolution" value="1080p" checked>
+                    <label for="resolution1080p">1080p</label>
+                    <input type="radio" id="resolution4k" name="resolution" value="4k">
+                    <label for="resolution4k">4K</label>
+                </div>
+            </div>
+            <div class="actions">
+                <button class="button" id="closeModal">Close</button>
+                <button class="button primary" id="saveChanges">Save changes</button>
+            </div>
+        </div>
+    </div>
+    <script src="publishVideoScripts.js"></script>
+</body>
+</html>

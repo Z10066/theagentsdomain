@@ -1,0 +1,101 @@
+
+/* styles.css */
+body, html {
+    height: 100%;
+    margin: 0;
+    font-family: 'Arial', sans-serif;
+    background-color: #111;
+    color: white;
+}
+.container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 50px;
+    height: 100%;
+}
+header .logo {
+    max-width: 100px;
+}
+.main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: calc(100% - 100px);
+}
+.welcome, .promotion {
+    flex-basis: 50%;
+}
+.welcome h1 {
+    font-size: 2.5em;
+}
+.highlight {
+    color: #4af;
+}
+.social-button {
+    display: block;
+    width: 80%;
+    margin: 10px 0;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1em;
+    color: white;
+    cursor: pointer;
+}
+.google {
+    background-color: #dd4b39;
+}
+.apple {
+    background-color: #000;
+}
+.or-separator {
+    text-align: center;
+    margin: 20px 0;
+}
+.email-input {
+    width: 80%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: none;
+    border-radius: 5px;
+}
+.continue-button {
+    width: 85%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #4af;
+    color: white;
+    cursor: pointer;
+}
+.sign-up {
+    text-align: center;
+}
+.sign-up a {
+    color: #4af;
+    text-decoration: none;
+}
+footer {
+    font-size: 0.8em;
+    text-align: center;
+    padding-top: 20px;
+}
+footer a {
+    color: #4af;
+    text-decoration: none;
+}
+.promotion h2 {
+    font-size: 2em;
+    color: #4af;
+}
+.promotion p {
+    font-size: 1em;
+}
+.video-placeholder {
+    background-color: #333;
+    width: 90%;
+    height: 200px;
+    margin-top: 20px;
+}

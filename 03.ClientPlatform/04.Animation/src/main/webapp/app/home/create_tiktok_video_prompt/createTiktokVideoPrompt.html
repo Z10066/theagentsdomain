@@ -1,0 +1,44 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HighwayVC - TikTok Video Prompt</title>
+    <link rel="stylesheet" href="createTiktokVideoPromptStyles.css">
+</head>
+<body>
+    <div class="tiktok-video-prompt-container">
+        <header>
+            <h1>TikTok Video - create a prompt</h1>
+        </header>
+        <form class="tiktok-video-prompt-form">
+            <label for="tiktok-video-topic">Create a TikTok video about</label>
+            <input type="text" id="tiktok-video-topic" placeholder="Give me details of what should the video be about - pick something interesting">
+
+            <div class="settings">
+                <label>Settings:</label>
+                <select id="voice-selection">
+                    <option value="any">Use any</option>
+                    <!-- Additional voice options -->
+                </select>
+                <select id="voice-type">
+                    <option value="any-voice">any voice</option>
+                    <!-- Additional voice types -->
+                </select>
+                <select id="subtitles">
+                    <option value="add-subtitles">Add subtitles</option>
+                    <!-- Additional subtitle options -->
+                </select>
+                <select id="stock-usage">
+                    <option value="normal">Use iStock normally</option>
+                    <!-- Additional stock usage options -->
+                </select>
+            </div>
+            
+            <button type="submit" class="continue-btn">Continue</button>
+        </form>
+    </div>
+    <script src="createTiktokVideoPromptScripts.js"></script>
+</body>
+</html>

@@ -1,0 +1,69 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HighwayVC - Create Explainer Prompt</title>
+    <link rel="stylesheet" href="createExplainerPromptStyles.css">
+</head>
+<body>
+    <div class="explainer-prompt-container">
+        <header>
+            <h1>YouTube Explainer - create a prompt</h1>
+        </header>
+        <form class="explainer-prompt-form">
+            <div class="form-group">
+                <label for="video-type">Create a</label>
+                <select id="video-type">
+                    <option value="youtube-video">youtube video</option>
+                    <!-- Additional video types here -->
+                </select>
+                <label for="video-about">about</label>
+                <input type="text" id="video-about" placeholder="Give me an engaging topic and things we should talk about and not talk about">
+            </div>
+            
+            <textarea id="creative-directions" placeholder="Optional creative directions - make this video your own by adding detailed creative thoughts and ideas like tone, humor, etc..."></textarea>
+            <input type="text" id="background-music" placeholder="Make background music dark and haunting, upbeat and happy, etc...">
+
+            <div class="settings">
+                <label>Settings:</label>
+                <div class="dropdowns">
+                    <select id="voice-selection">
+                        <option value="any">Use any</option>
+                        <!-- Additional options -->
+                    </select>
+                    <select id="voice-type">
+                        <option value="any-voice">any voice</option>
+                        <!-- Additional options -->
+                    </select>
+                </div>
+
+                <div class="dropdowns">
+                    <select id="subtitles">
+                        <option value="add-subtitles">Add subtitles</option>
+                        <!-- Additional options -->
+                    </select>
+                </div>
+                
+                <div class="dropdowns">
+                    <select id="watermark-text">
+                        <option value="gun-125">Use watermark text gun-125</option>
+                        <!-- Additional options -->
+                    </select>
+                </div>
+
+                <div class="dropdowns">
+                    <select id="stock-usage">
+                        <option value="normal">Use iStock normally</option>
+                        <!-- Additional options -->
+                    </select>
+                </div>
+            </div>
+            
+            <button type="submit" class="continue-btn">Continue</button>
+        </form>
+    </div>
+    <script src="createExplainerPromptScripts.js"></script>
+</body>
+</html>

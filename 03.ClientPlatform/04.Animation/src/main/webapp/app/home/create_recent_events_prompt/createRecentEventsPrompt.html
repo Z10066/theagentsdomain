@@ -1,0 +1,47 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HighwayVC - Create Recent Events Prompt</title>
+    <link rel="stylesheet" href="createRecentEventsPromptStyles.css">
+</head>
+<body>
+    <div class="recent-events-prompt-container">
+        <header>
+            <h1>Recent Events Video - create a prompt</h1>
+        </header>
+        <form class="recent-events-prompt-form">
+            <label for="recent-event-topic">Create a recent event video about</label>
+            <input type="text" id="recent-event-topic" placeholder="Give me an engaging topic about something that happened recently">
+
+            <label for="news-source">Search the news and also check</label>
+            <input type="text" id="news-source" placeholder="Optional Wikipedia link or something like that">
+
+            <div class="settings">
+                <label>Settings:</label>
+                <select id="voice-selection">
+                    <option value="any">Use any</option>
+                    <!-- Additional voice options here -->
+                </select>
+                <select id="voice-type">
+                    <option value="any-voice">any voice</option>
+                    <!-- Additional voice types here -->
+                </select>
+                <select id="subtitles">
+                    <option value="add-subtitles">Add subtitles</option>
+                    <!-- Additional subtitle options here -->
+                </select>
+                <select id="stock-usage">
+                    <option value="normal">Use iStock normally</option>
+                    <!-- Additional iStock usage options here -->
+                </select>
+            </div>
+            
+            <button type="submit" class="continue-btn">Continue</button>
+        </form>
+    </div>
+    <script src="createRecentEventsPromptScripts.js"></script>
+</body>
+</html>

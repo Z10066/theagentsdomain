@@ -1,0 +1,50 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HighwayVC - Create Prompt</title>
+    <link rel="stylesheet" href="createPromptStyles.css">
+</head>
+<body>
+    <div class="prompt-container">
+        <header>
+            <h1>YouTube Shorts - create a prompt</h1>
+        </header>
+        <form class="prompt-form">
+            <label for="shorts-detail">Create a youtube shorts about</label>
+            <input type="text" id="shorts-detail" placeholder="Give me details of what the shorts be about - pick something interesting">
+            
+            <label for="voice-selection">Settings:</label>
+            <div class="settings">
+                <select id="voice-selection">
+                    <option value="any">Use any</option>
+                    <!-- Additional options -->
+                </select>
+                <select id="voice-type">
+                    <option value="any">any voice</option>
+                    <!-- Additional options -->
+                </select>
+            </div>
+            
+            <div class="settings">
+                <select id="subtitles">
+                    <option value="add">Add subtitles</option>
+                    <!-- Additional options -->
+                </select>
+            </div>
+            
+            <div class="settings">
+                <select id="stock-usage">
+                    <option value="normal">Use iStock normally</option>
+                    <!-- Additional options -->
+                </select>
+            </div>
+            
+            <button type="submit" class="continue-btn">Continue</button>
+        </form>
+    </div>
+    <script src="createPromptScripts.js"></script>
+</body>
+</html>

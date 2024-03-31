@@ -1,0 +1,56 @@
+
+body, html {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-color: #121212;
+    color: #fff;
+}
+
+.prompt-container {
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
+    text-align: center;
+    padding: 20px;
+}
+
+.option-section {
+    margin: 20px 0;
+}
+
+.options {
+    display: inline-flex;
+    gap: 10px;
+}
+
+.option-button {
+    background-color: #333;
+    border: none;
+    padding: 10px 20px;
+    color: white;
+    border-radius: 20px;
+    cursor: pointer;
+    outline: none;
+}
+
+.option-button.selected {
+    background-color: #4a76a8;
+}
+
+.action-buttons {
+    margin-top: 20px;
+}
+
+.edit-button, .continue-button {
+    padding: 10px 20px;
+    border: none;
+    color: white;
+    background-color: #4a76a8;
+    margin-right: 10px;
+    cursor: pointer;
+}
+
+.edit-button {
+    background-color: #f0ad4e;
+}
