@@ -1,0 +1,25 @@
+{
+  "highwayacApp": {
+    "creator": {
+      "home": {
+        "title": "Creators",
+        "refreshListLabel": "リストの更新",
+        "createLabel": "Creator の作成",
+        "createOrEditLabel": "Creatorの作成または編集",
+        "notFound": "Creators が見つかりません。"
+      },
+      "created": "新しい Creator がID {{ param }} で作成されました。",
+      "updated": "ID {{ param }} の Creator が更新されました。",
+      "deleted": "ID {{ param }} の Creator が削除されました。",
+      "delete": {
+        "question": "Creator {{ id }}を削除してもよろしいですか？"
+      },
+      "detail": {
+        "title": "Creator"
+      },
+      "id": "ID",
+      "name": "Name",
+      "video": "Video"
+    }
+  }
+}

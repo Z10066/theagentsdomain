@@ -19,6 +19,12 @@
 [submodule "Sxela/WarpFusion"]
 	path = 02.SoftwareGenerator/WarpFusion
 	url = https://github.com/Sxela/WarpFusion.git
+[submodule "swagger-api/swagger-codegen"]
+	path = 02.SoftwareGenerator/swagger-codegen
+	url = https://github.com/swagger-api/swagger-codegen.git
+[submodule "Rapter1990/SpringBootMicroservices"]
+	path = 03.ClientPlatform/SpringBootMicroservices
+	url = https://github.com/Rapter1990/SpringBootMicroservices.git
 [submodule "keycloak/keycloak"]
 	path = 04.UserPlatform/keycloak
 	url = https://github.com/keycloak/keycloak.git
@@ -46,3 +52,4 @@
 [submodule "stripe-samples/subscription-use-cases"]
 	path = 06.PaymentPlatform/subscription-use-cases
 	url = https://github.com/stripe-samples/subscription-use-cases.git
+

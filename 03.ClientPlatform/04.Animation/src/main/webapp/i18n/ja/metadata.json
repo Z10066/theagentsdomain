@@ -1,0 +1,26 @@
+{
+  "highwayacApp": {
+    "metadata": {
+      "home": {
+        "title": "Metadata",
+        "refreshListLabel": "リストの更新",
+        "createLabel": "Metadata の作成",
+        "createOrEditLabel": "Metadataの作成または編集",
+        "notFound": "Metadata が見つかりません。"
+      },
+      "created": "新しい Metadata がID {{ param }} で作成されました。",
+      "updated": "ID {{ param }} の Metadata が更新されました。",
+      "deleted": "ID {{ param }} の Metadata が削除されました。",
+      "delete": {
+        "question": "Metadata {{ id }}を削除してもよろしいですか？"
+      },
+      "detail": {
+        "title": "Metadata"
+      },
+      "id": "ID",
+      "audienceFeedback": "Audience Feedback",
+      "relatedVideos": "Related Videos",
+      "video": "Video"
+    }
+  }
+}

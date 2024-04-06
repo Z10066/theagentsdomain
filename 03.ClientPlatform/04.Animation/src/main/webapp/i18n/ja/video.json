@@ -1,0 +1,35 @@
+{
+  "highwayacApp": {
+    "video": {
+      "home": {
+        "title": "Videos",
+        "refreshListLabel": "リストの更新",
+        "createLabel": "Video の作成",
+        "createOrEditLabel": "Videoの作成または編集",
+        "notFound": "Videos が見つかりません。"
+      },
+      "created": "新しい Video がID {{ param }} で作成されました。",
+      "updated": "ID {{ param }} の Video が更新されました。",
+      "deleted": "ID {{ param }} の Video が削除されました。",
+      "delete": {
+        "question": "Video {{ id }}を削除してもよろしいですか？"
+      },
+      "detail": {
+        "title": "Video"
+      },
+      "id": "ID",
+      "title": "Title",
+      "duration": "Duration",
+      "format": "Format",
+      "resolution": "Resolution",
+      "publishedDate": "Published Date",
+      "description": "Description",
+      "viewingLink": "Viewing Link",
+      "creator": "Creator",
+      "category": "Category",
+      "copyright": "Copyright",
+      "extraInfo": "Extra Info",
+      "keyword": "Keyword"
+    }
+  }
+}

@@ -1,0 +1,99 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    @if (video) {
+      <div>
+        <h2 data-cy="videoDetailsHeading"><span jhiTranslate="highwayacApp.video.detail.title">Video</span></h2>
+
+        <hr />
+
+        <jhi-alert-error></jhi-alert-error>
+
+        <jhi-alert></jhi-alert>
+
+        <dl class="row-md jh-entity-details">
+          <dt><span jhiTranslate="global.field.id">ID</span></dt>
+          <dd>
+            <span>{{ video.id }}</span>
+          </dd>
+          <dt><span jhiTranslate="highwayacApp.video.title">Title</span></dt>
+          <dd>
+            <span>{{ video.title }}</span>
+          </dd>
+          <dt><span jhiTranslate="highwayacApp.video.duration">Duration</span></dt>
+          <dd>
+            <span>{{ video.duration }}</span>
+          </dd>
+          <dt><span jhiTranslate="highwayacApp.video.format">Format</span></dt>
+          <dd>
+            <span>{{ video.format }}</span>
+          </dd>
+          <dt><span jhiTranslate="highwayacApp.video.resolution">Resolution</span></dt>
+          <dd>
+            <span>{{ video.resolution }}</span>
+          </dd>
+          <dt><span jhiTranslate="highwayacApp.video.publishedDate">Published Date</span></dt>
+          <dd>
+            <span>{{ video.publishedDate | formatMediumDate }}</span>
+          </dd>
+          <dt><span jhiTranslate="highwayacApp.video.description">Description</span></dt>
+          <dd>
+            <span>{{ video.description }}</span>
+          </dd>
+          <dt><span jhiTranslate="highwayacApp.video.viewingLink">Viewing Link</span></dt>
+          <dd>
+            <span>{{ video.viewingLink }}</span>
+          </dd>
+          <dt><span jhiTranslate="highwayacApp.video.creator">Creator</span></dt>
+          <dd>
+            @if (video.creator) {
+              <div>
+                <a [routerLink]="['/creator', video.creator.id, 'view']">{{ video.creator.id }}</a>
+              </div>
+            }
+          </dd>
+          <dt><span jhiTranslate="highwayacApp.video.category">Category</span></dt>
+          <dd>
+            @if (video.category) {
+              <div>
+                <a [routerLink]="['/category', video.category.id, 'view']">{{ video.category.id }}</a>
+              </div>
+            }
+          </dd>
+          <dt><span jhiTranslate="highwayacApp.video.copyright">Copyright</span></dt>
+          <dd>
+            @if (video.copyright) {
+              <div>
+                <a [routerLink]="['/copyright', video.copyright.id, 'view']">{{ video.copyright.id }}</a>
+              </div>
+            }
+          </dd>
+          <dt><span jhiTranslate="highwayacApp.video.extraInfo">Extra Info</span></dt>
+          <dd>
+            @if (video.extraInfo) {
+              <div>
+                <a [routerLink]="['/metadata', video.extraInfo.id, 'view']">{{ video.extraInfo.id }}</a>
+              </div>
+            }
+          </dd>
+          <dt><span jhiTranslate="highwayacApp.video.keyword">Keyword</span></dt>
+          <dd>
+            @for (keyword of video.keywords; track $index; let last = $last) {
+              <span>
+                <a [routerLink]="['/keyword', keyword.id, 'view']">{{ keyword.id }}</a
+                >{{ last ? '' : ', ' }}
+              </span>
+            }
+          </dd>
+        </dl>
+
+        <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+          <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+        </button>
+
+        <button type="button" [routerLink]="['/video', video.id, 'edit']" class="btn btn-primary">
+          <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+        </button>
+      </div>
+    }
+  </div>
+</div>

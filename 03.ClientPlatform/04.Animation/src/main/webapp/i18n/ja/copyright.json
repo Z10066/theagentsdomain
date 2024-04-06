@@ -1,0 +1,25 @@
+{
+  "highwayacApp": {
+    "copyright": {
+      "home": {
+        "title": "Copyrights",
+        "refreshListLabel": "リストの更新",
+        "createLabel": "Copyright の作成",
+        "createOrEditLabel": "Copyrightの作成または編集",
+        "notFound": "Copyrights が見つかりません。"
+      },
+      "created": "新しい Copyright がID {{ param }} で作成されました。",
+      "updated": "ID {{ param }} の Copyright が更新されました。",
+      "deleted": "ID {{ param }} の Copyright が削除されました。",
+      "delete": {
+        "question": "Copyright {{ id }}を削除してもよろしいですか？"
+      },
+      "detail": {
+        "title": "Copyright"
+      },
+      "id": "ID",
+      "details": "Details",
+      "video": "Video"
+    }
+  }
+}

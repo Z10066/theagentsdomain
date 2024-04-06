@@ -1,0 +1,25 @@
+{
+  "highwayacApp": {
+    "copyright": {
+      "home": {
+        "title": "Copyrights",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Copyright",
+        "createOrEditLabel": "Create or edit a Copyright",
+        "notFound": "No Copyrights found"
+      },
+      "created": "A new Copyright is created with identifier {{ param }}",
+      "updated": "A Copyright is updated with identifier {{ param }}",
+      "deleted": "A Copyright is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Copyright {{ id }}?"
+      },
+      "detail": {
+        "title": "Copyright"
+      },
+      "id": "ID",
+      "details": "Details",
+      "video": "Video"
+    }
+  }
+}

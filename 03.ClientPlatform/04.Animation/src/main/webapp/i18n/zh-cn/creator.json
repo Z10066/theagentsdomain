@@ -1,0 +1,25 @@
+{
+  "highwayacApp": {
+    "creator": {
+      "home": {
+        "title": "Creators",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "创建新 Creator",
+        "createOrEditLabel": "创建或编辑 Creator",
+        "notFound": "No Creators found"
+      },
+      "created": "Creator {{ param }} 创建成功",
+      "updated": "Creator {{ param }} 更新成功",
+      "deleted": "Creator {{ param }} 删除成功",
+      "delete": {
+        "question": "你确定要删除 Creator {{ id }} 吗？"
+      },
+      "detail": {
+        "title": "Creator"
+      },
+      "id": "ID",
+      "name": "Name",
+      "video": "Video"
+    }
+  }
+}

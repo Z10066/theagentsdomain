@@ -1,0 +1,81 @@
+{
+  "annotations": {
+    "changelogDate": "20240316112707"
+  },
+  "applications": "*",
+  "databaseType": "sql",
+  "dto": "mapstruct",
+  "entityTableName": "video",
+  "fields": [
+    {
+      "fieldName": "title",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "duration",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "format",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "resolution",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "publishedDate",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "description",
+      "fieldType": "byte[]",
+      "fieldTypeBlobContent": "text"
+    },
+    {
+      "fieldName": "viewingLink",
+      "fieldType": "String"
+    }
+  ],
+  "name": "Video",
+  "pagination": "pagination",
+  "relationships": [
+    {
+      "otherEntityName": "creator",
+      "relationshipName": "creator",
+      "relationshipSide": "left",
+      "relationshipType": "one-to-one",
+      "relationshipValidateRules": "required"
+    },
+    {
+      "otherEntityName": "category",
+      "relationshipName": "category",
+      "relationshipSide": "left",
+      "relationshipType": "one-to-one",
+      "relationshipValidateRules": "required"
+    },
+    {
+      "otherEntityName": "copyright",
+      "relationshipName": "copyright",
+      "relationshipSide": "left",
+      "relationshipType": "one-to-one",
+      "relationshipValidateRules": "required"
+    },
+    {
+      "otherEntityName": "metadata",
+      "relationshipName": "extraInfo",
+      "relationshipSide": "left",
+      "relationshipType": "one-to-one"
+    },
+    {
+      "otherEntityName": "keyword",
+      "otherEntityRelationshipName": "video",
+      "relationshipName": "keyword",
+      "relationshipSide": "left",
+      "relationshipType": "many-to-many"
+    }
+  ],
+  "searchEngine": "no",
+  "service": "serviceClass"
+}

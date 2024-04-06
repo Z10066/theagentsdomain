@@ -1,0 +1,48 @@
+entity Video {
+  title String required,
+  duration String,
+  format String,
+  resolution String,
+  publishedDate LocalDate,
+  description TextBlob,
+  viewingLink String
+}
+
+entity Creator {
+  name String required
+}
+
+entity Category {
+  name String required
+}
+
+entity Copyright {
+  details TextBlob required
+}
+
+entity Metadata {
+  audienceFeedback TextBlob,
+  relatedVideos String
+}
+
+entity Keyword {
+  word String required
+}
+
+relationship OneToOne {
+  Video{creator required} to Creator,
+  Video{category required} to Category,
+  Video{copyright required} to Copyright,
+  Video{extraInfo} to Metadata
+}
+
+relationship ManyToMany {
+  Video{keyword} to Keyword{video}
+}
+
+dto Video, Creator, Category, Copyright, Metadata, Keyword with mapstruct
+
+paginate Video, Creator, Category, Metadata with pagination
+paginate Keyword with infinite-scroll
+
+service Video, Creator, Category, Copyright, Metadata, Keyword with serviceClass

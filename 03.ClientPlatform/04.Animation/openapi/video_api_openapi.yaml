@@ -1,0 +1,111 @@
+
+openapi: 3.1.0
+info:
+  title: Video Generation System API
+  version: 1.0.0
+  description: API for creating and managing video information
+servers:
+  - url: http://api.example.com/v1
+    description: Main production server
+paths:
+  /video:
+    post:
+      summary: Create a new video information record
+      description: This endpint is for creating a new video information record.
+      operationId: createVideo
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/VideoInfo'
+      responses:
+        '201':
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VideoInfo'
+        '400':
+          description: Bad Request
+        '500':
+          description: Internal Server Error
+    get:
+      summary: Retrieve all video information
+      description: This endpint retrieves all video information records.
+      operationId: getAllVideos
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/VideoInfo'
+        '500':
+          description: Internal Server Error
+components:
+  schemas:
+    VideoInfo:
+      type: object
+      required:
+        - title
+        - creator
+        - duration
+        - format
+        - resolution
+        - releaseDate
+        - category
+        - description
+        - keywords
+        - copyright
+        - watchUrl
+      properties:
+        title:
+          type: string
+          example: "How to Learn Python"
+        creator:
+          type: string
+          example: "Zhang San"
+        duration:
+          type: string
+          example: "15 minutes"
+        format:
+          type: string
+          example: "MP4"
+        resolution:
+          type: string
+          example: "1920x1080"
+        releaseDate:
+          type: string
+          format: date
+          example: "2024-01-15"
+        category:
+          type: string
+          example: "Education"
+        description:
+          type: string
+          example: "This video provides basic knowledge of the Python programming language for beginners."
+        keywords:
+          type: array
+          items:
+            type: string
+          example: ["programming", "Python", "teaching"]
+        copyright:
+          type: string
+          example: "Zhang San all rights reserved."
+        watchUrl:
+          type: string
+          example: "www.example.com/videos/learn-python"
+        additionalInfo:
+          type: object
+          properties:
+            audienceFeedback:
+              type: string
+              example: "Very useful beginner resource."
+            relatedVideos:
+              type: array
+              items:
+                type: string
+              example: ["Python Advanced Tutorial", "Python Project Practices"]
