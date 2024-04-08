@@ -1,0 +1,205 @@
+<div>
+  <h2 id="page-heading" data-cy="VideoHeading">
+    <span jhiTranslate="highwayacApp.video.home.title">Videos</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info me-2" (click)="load()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span jhiTranslate="highwayacApp.video.home.refreshListLabel">Refresh list</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-video"
+        [routerLink]="['/video/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span jhiTranslate="highwayacApp.video.home.createLabel">Create a new Video</span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  @if (videos?.length === 0) {
+    <div class="alert alert-warning" id="no-result">
+      <span jhiTranslate="highwayacApp.video.home.notFound">No Videos found</span>
+    </div>
+  }
+
+  @if (videos && videos.length > 0) {
+    <div class="table-responsive table-entities" id="entities">
+      <table class="table table-striped" aria-describedby="page-heading">
+        <thead>
+          <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" (sortChange)="navigateToWithComponentValues()">
+            <th scope="col" jhiSortBy="id">
+              <div class="d-flex">
+                <span jhiTranslate="global.field.id">ID</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="title">
+              <div class="d-flex">
+                <span jhiTranslate="highwayacApp.video.title">Title</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="duration">
+              <div class="d-flex">
+                <span jhiTranslate="highwayacApp.video.duration">Duration</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="format">
+              <div class="d-flex">
+                <span jhiTranslate="highwayacApp.video.format">Format</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="resolution">
+              <div class="d-flex">
+                <span jhiTranslate="highwayacApp.video.resolution">Resolution</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="publishedDate">
+              <div class="d-flex">
+                <span jhiTranslate="highwayacApp.video.publishedDate">Published Date</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="description">
+              <div class="d-flex">
+                <span jhiTranslate="highwayacApp.video.description">Description</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="viewingLink">
+              <div class="d-flex">
+                <span jhiTranslate="highwayacApp.video.viewingLink">Viewing Link</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="creator.id">
+              <div class="d-flex">
+                <span jhiTranslate="highwayacApp.video.creator">Creator</span>
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="category.id">
+              <div class="d-flex">
+                <span jhiTranslate="highwayacApp.video.category">Category</span>
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="copyright.id">
+              <div class="d-flex">
+                <span jhiTranslate="highwayacApp.video.copyright">Copyright</span>
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="extraInfo.id">
+              <div class="d-flex">
+                <span jhiTranslate="highwayacApp.video.extraInfo">Extra Info</span>
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col"></th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (video of videos; track trackId) {
+            <tr data-cy="entityTable">
+              <td>
+                <a [routerLink]="['/video', video.id, 'view']">{{ video.id }}</a>
+              </td>
+              <td>{{ video.title }}</td>
+              <td>{{ video.duration }}</td>
+              <td>{{ video.format }}</td>
+              <td>{{ video.resolution }}</td>
+              <td>{{ video.publishedDate | formatMediumDate }}</td>
+              <td>{{ video.description }}</td>
+              <td>{{ video.viewingLink }}</td>
+              <td>
+                @if (video.creator) {
+                  <div>
+                    <a [routerLink]="['/creator', video.creator.id, 'view']">{{ video.creator.id }}</a>
+                  </div>
+                }
+              </td>
+              <td>
+                @if (video.category) {
+                  <div>
+                    <a [routerLink]="['/category', video.category.id, 'view']">{{ video.category.id }}</a>
+                  </div>
+                }
+              </td>
+              <td>
+                @if (video.copyright) {
+                  <div>
+                    <a [routerLink]="['/copyright', video.copyright.id, 'view']">{{ video.copyright.id }}</a>
+                  </div>
+                }
+              </td>
+              <td>
+                @if (video.extraInfo) {
+                  <div>
+                    <a [routerLink]="['/metadata', video.extraInfo.id, 'view']">{{ video.extraInfo.id }}</a>
+                  </div>
+                }
+              </td>
+              <td class="text-end">
+                <div class="btn-group">
+                  <a [routerLink]="['/video', video.id, 'view']" class="btn btn-info btn-sm" data-cy="entityDetailsButton">
+                    <fa-icon icon="eye"></fa-icon>
+                    <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                  </a>
+
+                  <a [routerLink]="['/video', video.id, 'edit']" class="btn btn-primary btn-sm" data-cy="entityEditButton">
+                    <fa-icon icon="pencil-alt"></fa-icon>
+                    <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                  </a>
+
+                  <button type="submit" (click)="delete(video)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                    <fa-icon icon="times"></fa-icon>
+                    <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                  </button>
+                </div>
+              </td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+  }
+  @if (videos && videos.length > 0) {
+    <div>
+      <div class="d-flex justify-content-center">
+        <jhi-item-count [params]="{ page: page, totalItems: totalItems, itemsPerPage: itemsPerPage }"></jhi-item-count>
+      </div>
+
+      <div class="d-flex justify-content-center">
+        <ngb-pagination
+          [collectionSize]="totalItems"
+          [page]="page"
+          [pageSize]="itemsPerPage"
+          [maxSize]="5"
+          [rotate]="true"
+          [boundaryLinks]="true"
+          (pageChange)="navigateToPage($event)"
+        ></ngb-pagination>
+      </div>
+    </div>
+  }
+</div>

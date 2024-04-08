@@ -1,0 +1,25 @@
+{
+  "highwayacApp": {
+    "creator": {
+      "home": {
+        "title": "Creators",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Creator",
+        "createOrEditLabel": "Create or edit a Creator",
+        "notFound": "No Creators found"
+      },
+      "created": "A new Creator is created with identifier {{ param }}",
+      "updated": "A Creator is updated with identifier {{ param }}",
+      "deleted": "A Creator is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Creator {{ id }}?"
+      },
+      "detail": {
+        "title": "Creator"
+      },
+      "id": "ID",
+      "name": "Name",
+      "video": "Video"
+    }
+  }
+}

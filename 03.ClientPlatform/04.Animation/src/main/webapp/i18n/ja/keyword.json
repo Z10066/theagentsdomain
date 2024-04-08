@@ -1,0 +1,25 @@
+{
+  "highwayacApp": {
+    "keyword": {
+      "home": {
+        "title": "Keywords",
+        "refreshListLabel": "リストの更新",
+        "createLabel": "Keyword の作成",
+        "createOrEditLabel": "Keywordの作成または編集",
+        "notFound": "Keywords が見つかりません。"
+      },
+      "created": "新しい Keyword がID {{ param }} で作成されました。",
+      "updated": "ID {{ param }} の Keyword が更新されました。",
+      "deleted": "ID {{ param }} の Keyword が削除されました。",
+      "delete": {
+        "question": "Keyword {{ id }}を削除してもよろしいですか？"
+      },
+      "detail": {
+        "title": "Keyword"
+      },
+      "id": "ID",
+      "word": "Word",
+      "video": "Video"
+    }
+  }
+}

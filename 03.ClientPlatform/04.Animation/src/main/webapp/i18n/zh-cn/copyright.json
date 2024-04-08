@@ -1,0 +1,25 @@
+{
+  "highwayacApp": {
+    "copyright": {
+      "home": {
+        "title": "Copyrights",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "创建新 Copyright",
+        "createOrEditLabel": "创建或编辑 Copyright",
+        "notFound": "No Copyrights found"
+      },
+      "created": "Copyright {{ param }} 创建成功",
+      "updated": "Copyright {{ param }} 更新成功",
+      "deleted": "Copyright {{ param }} 删除成功",
+      "delete": {
+        "question": "你确定要删除 Copyright {{ id }} 吗？"
+      },
+      "detail": {
+        "title": "Copyright"
+      },
+      "id": "ID",
+      "details": "Details",
+      "video": "Video"
+    }
+  }
+}

@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+    <!--
+        Added the constraints for entity Video.
+    -->
+    <changeSet id="20240316112707-2" author="jhipster">
+
+        <addForeignKeyConstraint baseColumnNames="creator_id"
+                                 baseTableName="video"
+                                 constraintName="fk_video__creator_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="creator"
+                                 />
+
+        <addForeignKeyConstraint baseColumnNames="category_id"
+                                 baseTableName="video"
+                                 constraintName="fk_video__category_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="category"
+                                 />
+
+        <addForeignKeyConstraint baseColumnNames="copyright_id"
+                                 baseTableName="video"
+                                 constraintName="fk_video__copyright_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="copyright"
+                                 />
+
+        <addForeignKeyConstraint baseColumnNames="extra_info_id"
+                                 baseTableName="video"
+                                 constraintName="fk_video__extra_info_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="metadata"
+                                 />
+
+        <addForeignKeyConstraint baseColumnNames="video_id"
+                                 baseTableName="rel_video__keyword"
+                                 constraintName="fk_rel_video__keyword__video_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="video"
+                                 />
+
+        <addForeignKeyConstraint baseColumnNames="keyword_id"
+                                 baseTableName="rel_video__keyword"
+                                 constraintName="fk_rel_video__keyword__keyword_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="keyword"
+                                 />
+    </changeSet>
+</databaseChangeLog>

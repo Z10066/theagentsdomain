@@ -1,0 +1,29 @@
+{
+  "annotations": {
+    "changelogDate": "20240316113207"
+  },
+  "applications": "*",
+  "databaseType": "sql",
+  "dto": "mapstruct",
+  "entityTableName": "keyword",
+  "fields": [
+    {
+      "fieldName": "word",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    }
+  ],
+  "name": "Keyword",
+  "pagination": "infinite-scroll",
+  "relationships": [
+    {
+      "otherEntityName": "video",
+      "otherEntityRelationshipName": "keyword",
+      "relationshipName": "video",
+      "relationshipSide": "right",
+      "relationshipType": "many-to-many"
+    }
+  ],
+  "searchEngine": "no",
+  "service": "serviceClass"
+}

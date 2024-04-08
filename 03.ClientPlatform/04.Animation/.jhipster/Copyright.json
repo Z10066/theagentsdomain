@@ -1,0 +1,21 @@
+{
+  "annotations": {
+    "changelogDate": "20240316113007"
+  },
+  "applications": "*",
+  "databaseType": "sql",
+  "dto": "mapstruct",
+  "entityTableName": "copyright",
+  "fields": [
+    {
+      "fieldName": "details",
+      "fieldType": "byte[]",
+      "fieldTypeBlobContent": "text",
+      "fieldValidateRules": ["required"]
+    }
+  ],
+  "name": "Copyright",
+  "relationships": [],
+  "searchEngine": "no",
+  "service": "serviceClass"
+}

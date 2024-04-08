@@ -1,0 +1,224 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2 id="jhi-video-heading" data-cy="VideoCreateUpdateHeading" jhiTranslate="highwayacApp.video.home.createOrEditLabel">
+        Create or edit a Video
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        @if (editForm.controls.id.value !== null) {
+          <div class="mb-3">
+            <label class="form-label" jhiTranslate="global.field.id" for="field_id">ID</label>
+            <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+          </div>
+        }
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="highwayacApp.video.title" for="field_title">Title</label>
+          <input type="text" class="form-control" name="title" id="field_title" data-cy="title" formControlName="title" />
+          @if (editForm.get('title')!.invalid && (editForm.get('title')!.dirty || editForm.get('title')!.touched)) {
+            <div>
+              @if (editForm.get('title')?.errors?.required) {
+                <small class="form-text text-danger" jhiTranslate="entity.validation.required">This field is required.</small>
+              }
+            </div>
+          }
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="highwayacApp.video.duration" for="field_duration">Duration</label>
+          <input type="text" class="form-control" name="duration" id="field_duration" data-cy="duration" formControlName="duration" />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="highwayacApp.video.format" for="field_format">Format</label>
+          <input type="text" class="form-control" name="format" id="field_format" data-cy="format" formControlName="format" />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="highwayacApp.video.resolution" for="field_resolution">Resolution</label>
+          <input
+            type="text"
+            class="form-control"
+            name="resolution"
+            id="field_resolution"
+            data-cy="resolution"
+            formControlName="resolution"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="highwayacApp.video.publishedDate" for="field_publishedDate">Published Date</label>
+          <div class="input-group">
+            <input
+              id="field_publishedDate"
+              data-cy="publishedDate"
+              type="text"
+              class="form-control"
+              name="publishedDate"
+              ngbDatepicker
+              #publishedDateDp="ngbDatepicker"
+              formControlName="publishedDate"
+            />
+            <button type="button" class="btn btn-secondary" (click)="publishedDateDp.toggle()">
+              <fa-icon icon="calendar-alt"></fa-icon>
+            </button>
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="highwayacApp.video.description" for="field_description">Description</label>
+          <textarea
+            class="form-control"
+            name="description"
+            id="field_description"
+            data-cy="description"
+            formControlName="description"
+          ></textarea>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="highwayacApp.video.viewingLink" for="field_viewingLink">Viewing Link</label>
+          <input
+            type="text"
+            class="form-control"
+            name="viewingLink"
+            id="field_viewingLink"
+            data-cy="viewingLink"
+            formControlName="viewingLink"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="highwayacApp.video.creator" for="field_creator">Creator</label>
+          <select
+            class="form-control"
+            id="field_creator"
+            data-cy="creator"
+            name="creator"
+            formControlName="creator"
+            [compareWith]="compareCreator"
+          >
+            @if (editForm.get(['creator'])!.value == null) {
+              <option [ngValue]="null" selected></option>
+            }
+            @for (creatorOption of creatorsCollection; track $index) {
+              <option [ngValue]="creatorOption">{{ creatorOption.id }}</option>
+            }
+          </select>
+        </div>
+        @if (editForm.get(['creator'])!.invalid && (editForm.get(['creator'])!.dirty || editForm.get(['creator'])!.touched)) {
+          <div>
+            @if (editForm.get(['creator'])?.errors?.required) {
+              <small class="form-text text-danger" jhiTranslate="entity.validation.required">This field is required.</small>
+            }
+          </div>
+        }
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="highwayacApp.video.category" for="field_category">Category</label>
+          <select
+            class="form-control"
+            id="field_category"
+            data-cy="category"
+            name="category"
+            formControlName="category"
+            [compareWith]="compareCategory"
+          >
+            @if (editForm.get(['category'])!.value == null) {
+              <option [ngValue]="null" selected></option>
+            }
+            @for (categoryOption of categoriesCollection; track $index) {
+              <option [ngValue]="categoryOption">{{ categoryOption.id }}</option>
+            }
+          </select>
+        </div>
+        @if (editForm.get(['category'])!.invalid && (editForm.get(['category'])!.dirty || editForm.get(['category'])!.touched)) {
+          <div>
+            @if (editForm.get(['category'])?.errors?.required) {
+              <small class="form-text text-danger" jhiTranslate="entity.validation.required">This field is required.</small>
+            }
+          </div>
+        }
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="highwayacApp.video.copyright" for="field_copyright">Copyright</label>
+          <select
+            class="form-control"
+            id="field_copyright"
+            data-cy="copyright"
+            name="copyright"
+            formControlName="copyright"
+            [compareWith]="compareCopyright"
+          >
+            @if (editForm.get(['copyright'])!.value == null) {
+              <option [ngValue]="null" selected></option>
+            }
+            @for (copyrightOption of copyrightsCollection; track $index) {
+              <option [ngValue]="copyrightOption">{{ copyrightOption.id }}</option>
+            }
+          </select>
+        </div>
+        @if (editForm.get(['copyright'])!.invalid && (editForm.get(['copyright'])!.dirty || editForm.get(['copyright'])!.touched)) {
+          <div>
+            @if (editForm.get(['copyright'])?.errors?.required) {
+              <small class="form-text text-danger" jhiTranslate="entity.validation.required">This field is required.</small>
+            }
+          </div>
+        }
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="highwayacApp.video.extraInfo" for="field_extraInfo">Extra Info</label>
+          <select
+            class="form-control"
+            id="field_extraInfo"
+            data-cy="extraInfo"
+            name="extraInfo"
+            formControlName="extraInfo"
+            [compareWith]="compareMetadata"
+          >
+            <option [ngValue]="null"></option>
+            @for (metadataOption of extraInfosCollection; track $index) {
+              <option [ngValue]="metadataOption">{{ metadataOption.id }}</option>
+            }
+          </select>
+        </div>
+
+        <div class="mb-3">
+          <label jhiTranslate="highwayacApp.video.keyword" for="field_keywords">Keyword</label>
+          <select
+            class="form-control"
+            id="field_keywords"
+            data-cy="keyword"
+            multiple
+            name="keywords"
+            formControlName="keywords"
+            [compareWith]="compareKeyword"
+          >
+            @for (keywordOption of keywordsSharedCollection; track $index) {
+              <option [ngValue]="keywordOption">{{ keywordOption.id }}</option>
+            }
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
