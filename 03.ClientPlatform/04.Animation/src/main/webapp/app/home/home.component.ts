@@ -28,4 +28,26 @@ export default class HomeComponent implements OnInit {
   login(): void {
     this.loginService.login();
   }
+
+  navItems = [
+    { label: 'Workspaces', link: '/workspaces', target: '_self' },
+    { label: 'Welcome', link: '/welcome', target: '_blank' },
+    { label: 'WaitingScreen', link: '/waitingScreen', target: '_blank' },
+    { label: 'Usage', link: '/Usage', target: '_self' },
+    { label: 'ThinkingScreen', link: '/ThinkingScreen', target: '_self' },
+    { label: 'RenderingVideo', link: '/RenderingVideo', target: '_self' },
+    { label: 'PublishVideo', link: '/PublishVideo', target: '_self' },
+    { label: 'Profile', link: '/Profile', target: '_self' },
+    { label: 'Plan', link: '/Plan', target: '_self' },
+    { label: 'Members', link: '/Members', target: '_self' },
+    { label: 'History', link: '/History', target: '_self' },
+    { label: 'Download', link: '/Download', target: '_self' },
+  ];
+
+  getNavItemWidth(): string {
+    return `calc(100% / ${this.navItems.length})`; // 动态计算每个项目的宽度
+  }
 }
+
+
+

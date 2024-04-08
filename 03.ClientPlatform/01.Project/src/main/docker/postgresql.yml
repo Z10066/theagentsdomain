@@ -7,7 +7,7 @@ services:
     #   - ~/volumes/jhipster/highwaypj/postgresql/:/var/lib/postgresql/data/
     environment:
       - POSTGRES_USER=highwaypj
-      - POSTGRES_PASSWORD=
+      - POSTGRES_PASSWORD=highwaypj
       - POSTGRES_HOST_AUTH_METHOD=trust
     healthcheck:
       test: ['CMD-SHELL', 'pg_isready -U $${POSTGRES_USER}']

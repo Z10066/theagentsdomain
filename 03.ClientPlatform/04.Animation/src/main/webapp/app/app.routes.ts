@@ -7,12 +7,72 @@ import { errorRoute } from './layouts/error/error.route';
 import HomeComponent from './home/home.component';
 import NavbarComponent from './layouts/navbar/navbar.component';
 import { loadEntityRoutes } from './core/microfrontend';
+import { WelcomeComponent } from './home/welcome/welcome.component';
+import { WaitingScreenComponent } from './home/waiting_screen_page/waiting-screen.component';
+import { UsageComponent } from './home/usage_page/usage.component';
+import { ThinkingScreenComponent } from './home/thinking_screen_page/thinking_screen.component';
+import { RenderingVideoComponent } from './home/rendering_video_page/rendering_video.component';
+import { PublishVideoComponent } from './home/publish_video_page/publish_video.component';
+import { ProfileComponent } from './home/profile_page/profile.component';
+import { PlanComponent } from './home/plan_page/plan.component';
+import { MembersComponent } from './home/members_page/members.component';
+import { HistoryComponent } from './home/history_log/history.component';
+import { DownloadComponent } from './home/download_page/download.component';
+import { WprkspacesComponent } from './home/workspaces_page/workspaces.component';
 
 const routes: Routes = [
   {
     path: '',
     component: HomeComponent,
     title: 'home.title',
+  },
+  {
+    path: 'Workspaces',
+    component: WprkspacesComponent,
+  },
+  {
+    path: 'Welcome',
+    component: WelcomeComponent,
+  },
+  {
+    path: 'WaitingScreen',
+    component: WaitingScreenComponent,
+  },
+  {
+    path: 'Usage',
+    component: UsageComponent,
+  },
+  {
+    path: 'ThinkingScreen',
+    component: ThinkingScreenComponent,
+  },
+  {
+    path: 'RenderingVideo',
+    component: RenderingVideoComponent,
+  },
+  {
+    path: 'PublishVideo',
+    component: PublishVideoComponent,
+  },
+  {
+    path: 'Profile',
+    component: ProfileComponent,
+  },
+  {
+    path: 'Plan',
+    component: PlanComponent,
+  },
+  {
+    path: 'Members',
+    component: MembersComponent,
+  },
+  {
+    path: 'History',
+    component: HistoryComponent,
+  },
+  {
+    path: 'Download',
+    component: DownloadComponent,
   },
   {
     path: '',
