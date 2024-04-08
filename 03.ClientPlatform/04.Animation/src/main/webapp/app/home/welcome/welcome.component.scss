@@ -99,3 +99,11 @@ footer a {
     height: 200px;
     margin-top: 20px;
 }
+.background-image {
+    background-image: url('../../../content/images/highwayVC/background-image.webp');
+    /* 设置背景图像的其他样式，比如背景大小、位置等 */
+    background-size: cover; /* 或者使用 contain */
+  }
+  .logo{
+    logo:url('../../../content/images/highwayVC/logo.webp');
+  }
