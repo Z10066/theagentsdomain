@@ -32,6 +32,10 @@ Main page styles
   max-width: 1200px;
   margin: 0 auto;
 }
+.grid-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* 两列等宽 */
+}
 
 .navbar {
   padding: 10px 0;
