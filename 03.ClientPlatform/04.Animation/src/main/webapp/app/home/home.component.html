@@ -99,7 +99,7 @@
               </li>
               <li class="nav-item">
                 <a href="/PublishVideo">PublishVideo</a>
-              </li>
+              </li>cd 
               <li class="nav-item">
                 <a href="/Profile">Profile</a>
               </li>
@@ -120,17 +120,28 @@
         </nav>
       </body> -->
 
-
       <div class="container">
-        <nav class="navbar">
-          <ul class="navbar-nav">
-            <li *ngFor="let item of navItems" class="nav-item">
-              <a [href]="item.link" [target]="item.target" jhiTranslate="home.translate.{{ item.label }}">{{ item.label }}</a>
-            </li>
-          </ul>
-        </nav>
-      </div>
-
+        <div class="grid-container">
+          <div>
+            <nav class="navbar">
+              <ul class="navbar-nav">
+                <li *ngFor="let item of navItems" class="nav-item">
+                  <a [href]="item.link" [target]="item.target" jhiTranslate="home.translate.{{ item.label }}">{{ item.label }}</a>
+                </li>
+              </ul>
+            </nav>
+          </div>
+          <div>
+            <nav class="navbar">
+              <ul class="navbar-nav">
+                <li *ngFor="let item of navItems2" class="nav-item">
+                  <a [href]="item.link" [target]="item.target" jhiTranslate="home.translate.{{ item.label }}">{{ item.label }}</a>
+                </li>
+              </ul>
+            </nav>
+          </div>
+        </div>
+        </div>
 
     </div>
   </div>

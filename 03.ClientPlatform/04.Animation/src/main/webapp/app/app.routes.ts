@@ -19,6 +19,8 @@ import { MembersComponent } from './home/members_page/members.component';
 import { HistoryComponent } from './home/history_log/history.component';
 import { DownloadComponent } from './home/download_page/download.component';
 import { WprkspacesComponent } from './home/workspaces_page/workspaces.component';
+import { CreatVideoComponent } from './home/createVideo/creat-video.component';
+import { ContinueComponent } from './home/continue_page/continue.component';
 
 const routes: Routes = [
   {
@@ -73,6 +75,14 @@ const routes: Routes = [
   {
     path: 'Download',
     component: DownloadComponent,
+  },
+  {
+    path: 'CreatVideo',
+    component: CreatVideoComponent,
+  },
+  {
+    path: 'Continue',
+    component: ContinueComponent,
   },
   {
     path: '',

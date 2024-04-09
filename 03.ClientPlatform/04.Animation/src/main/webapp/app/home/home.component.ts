@@ -30,9 +30,9 @@ export default class HomeComponent implements OnInit {
   }
 
   navItems = [
-    { label: 'Workspaces', link: '/workspaces', target: '_self' },
-    { label: 'Welcome', link: '/welcome', target: '_blank' },
-    { label: 'WaitingScreen', link: '/waitingScreen', target: '_blank' },
+    { label: 'Workspaces', link: '/Workspaces', target: '_self' },
+    { label: 'Welcome', link: '/Welcome', target: '_blank' },
+    { label: 'WaitingScreen', link: '/WaitingScreen', target: '_blank' },
     { label: 'Usage', link: '/Usage', target: '_self' },
     { label: 'ThinkingScreen', link: '/ThinkingScreen', target: '_self' },
     { label: 'RenderingVideo', link: '/RenderingVideo', target: '_self' },
@@ -44,6 +44,10 @@ export default class HomeComponent implements OnInit {
     { label: 'Download', link: '/Download', target: '_self' },
   ];
 
+  navItems2 = [
+    { label: 'CreatVideo', link: '/CreatVideo', target: '_self' },
+    { label: 'Continue', link: '/Continue', target: '_blank' },
+  ];
   getNavItemWidth(): string {
     return `calc(100% / ${this.navItems.length})`; // 动态计算每个项目的宽度
   }

@@ -21,6 +21,8 @@ import { MembersComponent } from './home/members_page/members.component';
 import { HistoryComponent } from './home/history_log/history.component';
 import { DownloadComponent } from './home/download_page/download.component';
 import { WprkspacesComponent } from './home/workspaces_page/workspaces.component';
+import { CreatVideoComponent } from './home/createVideo/creat-video.component';
+import { ContinueComponent } from './home/continue_page/continue.component';
 
 
 @Component({
@@ -29,7 +31,7 @@ import { WprkspacesComponent } from './home/workspaces_page/workspaces.component
   template: '<jhi-main></jhi-main>',
   imports: [
     MainComponent,WelcomeComponent,WaitingScreenComponent,UsageComponent,ThinkingScreenComponent,RenderingVideoComponent,PublishVideoComponent,
-    ProfileComponent,PlanComponent,MembersComponent,HistoryComponent,DownloadComponent,WprkspacesComponent
+    ProfileComponent,PlanComponent,MembersComponent,HistoryComponent,DownloadComponent,WprkspacesComponent,CreatVideoComponent,ContinueComponent
     // jhipster-needle-angular-add-module JHipster will add new module here
   ],
 })
