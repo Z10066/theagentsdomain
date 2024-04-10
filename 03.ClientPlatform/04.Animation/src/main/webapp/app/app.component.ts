@@ -25,6 +25,7 @@ import { CreatVideoComponent } from './home/createVideo/creat-video.component';
 import { ContinueComponent } from './home/continue_page/continue.component';
 
 
+
 @Component({
   selector: 'jhi-app',
   standalone: true,

@@ -21,6 +21,8 @@ import { DownloadComponent } from './home/download_page/download.component';
 import { WprkspacesComponent } from './home/workspaces_page/workspaces.component';
 import { CreatVideoComponent } from './home/createVideo/creat-video.component';
 import { ContinueComponent } from './home/continue_page/continue.component';
+import EntityComponent from './entities/entity.component';
+import { VideoComponent } from './entities/video/list/video.component';
 
 const routes: Routes = [
   {
@@ -100,6 +102,18 @@ const routes: Routes = [
   {
     path: '',
     loadChildren: () => import(`./entities/entity.routes`),
+  },
+  {
+    path: '',
+    loadChildren: () => import(`./entities/video/video.routes`),
+  },
+  {
+    path: 'Entity',
+    component: EntityComponent,
+  },
+  {
+    path: 'Video',
+    component: VideoComponent,
   },
   {
     path: 'user',
