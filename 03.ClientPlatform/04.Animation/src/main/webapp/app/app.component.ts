@@ -27,6 +27,7 @@ import { CreatevideopromptComponent } from './home/create_video_prompt/createvid
 import { VideoCircleComponent } from './home/video-circle/video-circle.component';
 
 
+
 @Component({
   selector: 'jhi-app',
   standalone: true,

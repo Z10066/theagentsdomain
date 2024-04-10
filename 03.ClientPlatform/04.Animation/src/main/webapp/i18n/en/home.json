@@ -31,7 +31,9 @@
       "Createvideoprompt": "Create a prompt",
       "VideoCircle": "Video Circle",
       "CreatVideo": "CreatVideo",
-      "Continue": "Continue"
+      "Continue": "Continue",
+      "Entity": "Entity"
+
     }
   }
 }

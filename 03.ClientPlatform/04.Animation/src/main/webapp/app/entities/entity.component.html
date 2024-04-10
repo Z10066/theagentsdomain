@@ -1,0 +1,18 @@
+<div class="row">
+  <div class="background-image">
+  
+      <div class="container">
+        <div>
+          <nav class="navbar">
+            <ul class="navbar-nav">
+              <li *ngFor="let item of navItems2" class="nav-item">
+                <a [href]="item.link" [target]="item.target" jhiTranslate="translate.{{ item.label }}">{{ item.label }}</a>
+              </li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+
+
+  </div>
+</div>
