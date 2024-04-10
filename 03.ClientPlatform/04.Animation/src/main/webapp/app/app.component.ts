@@ -23,6 +23,8 @@ import { DownloadComponent } from './home/download_page/download.component';
 import { WprkspacesComponent } from './home/workspaces_page/workspaces.component';
 import { CreatVideoComponent } from './home/createVideo/creat-video.component';
 import { ContinueComponent } from './home/continue_page/continue.component';
+import { CreatevideopromptComponent } from './home/create_video_prompt/createvideoprompt.component';
+import { VideoCircleComponent } from './home/video-circle/video-circle.component';
 
 
 
@@ -32,7 +34,8 @@ import { ContinueComponent } from './home/continue_page/continue.component';
   template: '<jhi-main></jhi-main>',
   imports: [
     MainComponent,WelcomeComponent,WaitingScreenComponent,UsageComponent,ThinkingScreenComponent,RenderingVideoComponent,PublishVideoComponent,
-    ProfileComponent,PlanComponent,MembersComponent,HistoryComponent,DownloadComponent,WprkspacesComponent,CreatVideoComponent,ContinueComponent
+    ProfileComponent,PlanComponent,MembersComponent,HistoryComponent,DownloadComponent,WprkspacesComponent,CreatVideoComponent,ContinueComponent,
+    CreatevideopromptComponent,VideoCircleComponent
     // jhipster-needle-angular-add-module JHipster will add new module here
   ],
 })

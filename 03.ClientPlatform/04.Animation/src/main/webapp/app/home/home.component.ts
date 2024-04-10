@@ -42,6 +42,8 @@ export default class HomeComponent implements OnInit {
     { label: 'Members', link: '/Members', target: '_self' },
     { label: 'History', link: '/History', target: '_self' },
     { label: 'Download', link: '/Download', target: '_self' },
+    { label: 'Createvideoprompt', link: '/Createvideoprompt', target: '_self' },
+    { label: 'VideoCircle', link: '/VideoCircle', target: '_self' },
   ];
 
   navItems2 = [
