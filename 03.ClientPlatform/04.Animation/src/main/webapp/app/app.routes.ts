@@ -21,6 +21,8 @@ import { DownloadComponent } from './home/download_page/download.component';
 import { WprkspacesComponent } from './home/workspaces_page/workspaces.component';
 import { CreatVideoComponent } from './home/createVideo/creat-video.component';
 import { ContinueComponent } from './home/continue_page/continue.component';
+import { CreatevideopromptComponent } from './home/create_video_prompt/createvideoprompt.component';
+import { VideoCircleComponent } from './home/video-circle/video-circle.component';
 
 const routes: Routes = [
   {
@@ -77,8 +79,17 @@ const routes: Routes = [
     component: DownloadComponent,
   },
   {
+    path: 'VideoCircle',
+    component: VideoCircleComponent,
+  },
+  {
     path: 'CreatVideo',
     component: CreatVideoComponent,
+  },
+  
+  {
+    path: 'Createvideoprompt',
+    component: CreatevideopromptComponent,
   },
   {
     path: 'Continue',
