@@ -1,0 +1,46 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    @if (linkedAccount) {
+      <div>
+        <h2 data-cy="linkedAccountDetailsHeading"><span jhiTranslate="highwayacApp.linkedAccount.detail.title">Linked Account</span></h2>
+
+        <hr />
+
+        <jhi-alert-error></jhi-alert-error>
+
+        <jhi-alert></jhi-alert>
+
+        <dl class="row-md jh-entity-details">
+          <dt><span jhiTranslate="global.field.id">ID</span></dt>
+          <dd>
+            <span>{{ linkedAccount.id }}</span>
+          </dd>
+          <dt><span jhiTranslate="highwayacApp.linkedAccount.accountType">Account Type</span></dt>
+          <dd>
+            <span jhiTranslate="{{ 'highwayacApp.AccountType.' + linkedAccount.accountType }}">{{ linkedAccount.accountType }}</span>
+          </dd>
+          <dt><span jhiTranslate="highwayacApp.linkedAccount.accountIdentifier">Account Identifier</span></dt>
+          <dd>
+            <span>{{ linkedAccount.accountIdentifier }}</span>
+          </dd>
+          <dt><span jhiTranslate="highwayacApp.linkedAccount.member">Member</span></dt>
+          <dd>
+            @if (linkedAccount.member) {
+              <div>
+                <a [routerLink]="['/member', linkedAccount.member.id, 'view']">{{ linkedAccount.member.id }}</a>
+              </div>
+            }
+          </dd>
+        </dl>
+
+        <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+          <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+        </button>
+
+        <button type="button" [routerLink]="['/linked-account', linkedAccount.id, 'edit']" class="btn btn-primary">
+          <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+        </button>
+      </div>
+    }
+  </div>
+</div>

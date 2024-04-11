@@ -1,0 +1,105 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2
+        id="jhi-subscription-service-heading"
+        data-cy="SubscriptionServiceCreateUpdateHeading"
+        jhiTranslate="highwayacApp.subscriptionService.home.createOrEditLabel"
+      >
+        Create or edit a Subscription Service
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        @if (editForm.controls.id.value !== null) {
+          <div class="mb-3">
+            <label class="form-label" jhiTranslate="global.field.id" for="field_id">ID</label>
+            <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+          </div>
+        }
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="highwayacApp.subscriptionService.serviceLevel" for="field_serviceLevel"
+            >Service Level</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="serviceLevel"
+            id="field_serviceLevel"
+            data-cy="serviceLevel"
+            formControlName="serviceLevel"
+          />
+          @if (editForm.get('serviceLevel')!.invalid && (editForm.get('serviceLevel')!.dirty || editForm.get('serviceLevel')!.touched)) {
+            <div>
+              @if (editForm.get('serviceLevel')?.errors?.required) {
+                <small class="form-text text-danger" jhiTranslate="entity.validation.required">This field is required.</small>
+              }
+            </div>
+          }
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="highwayacApp.subscriptionService.totalUsageTime" for="field_totalUsageTime"
+            >Total Usage Time</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            name="totalUsageTime"
+            id="field_totalUsageTime"
+            data-cy="totalUsageTime"
+            formControlName="totalUsageTime"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="highwayacApp.subscriptionService.startTime" for="field_startTime">Start Time</label>
+          <div class="d-flex">
+            <input
+              id="field_startTime"
+              data-cy="startTime"
+              type="datetime-local"
+              class="form-control"
+              name="startTime"
+              formControlName="startTime"
+              placeholder="YYYY-MM-DD HH:mm"
+            />
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="highwayacApp.subscriptionService.endTime" for="field_endTime">End Time</label>
+          <div class="d-flex">
+            <input
+              id="field_endTime"
+              data-cy="endTime"
+              type="datetime-local"
+              class="form-control"
+              name="endTime"
+              formControlName="endTime"
+              placeholder="YYYY-MM-DD HH:mm"
+            />
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

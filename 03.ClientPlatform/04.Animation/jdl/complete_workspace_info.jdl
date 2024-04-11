@@ -1,0 +1,111 @@
+
+entity Workspace {
+    name String required,
+    identifier String required,
+    betaFeatures Boolean,
+    collaborationCursor Boolean,
+    defaultExportVisibility Boolean,
+    publicAccess Boolean
+}
+
+entity Member {
+    username String required,
+    fullName String required,
+    role String,
+    activeStatus Boolean
+}
+
+entity LinkedAccount {
+    accountType AccountType required,
+    accountIdentifier String required
+}
+
+entity SubscriptionService {
+    serviceLevel String required,
+    totalUsageTime Integer,
+    startTime Instant,
+    endTime Instant
+}
+
+entity Usage {
+    usageType String required,
+    usageTime Integer,
+    startTime Instant,
+    endTime Instant
+}
+
+entity VideoProduction {
+    title String required,
+    creator String required,
+    description String,
+    copyright String,
+    watchLink String
+}
+
+entity ExtraInfo {
+    audienceFeedback String,
+    relatedVideos String
+}
+
+entity Material {
+    title String required,
+    creator String required,
+    description String,
+    copyright String,
+    watchLink String
+}
+
+entity History {
+    title String required,
+    creator String required,
+    description String,
+    copyright String,
+    watchLink String
+}
+
+// Enumeration for predefined data
+enum AccountType {
+    YOUTUBE, GOOGLE, TWITTER, FACEBOOK, OTHER
+}
+
+// Setting accountType field in LinkedAccount as enum type
+// enum AccountType {
+//    accountType AccountType required
+// }
+
+// Relationships
+relationship OneToMany {
+    Workspace{member} to Member{workspace}
+}
+
+relationship OneToMany {
+    Member{linkedAccount} to LinkedAccount{member}
+}
+
+relationship OneToMany {
+    SubscriptionService{usage} to Usage{subscriptionService}
+}
+
+relationship OneToMany {
+    Workspace{videoProduction} to VideoProduction{workspace}
+}
+
+//relationship ManyToMany {
+//    VideoProduction{category} to Category{videoProduction},
+//    Member{audience} to Audience{member},
+//    VideoProduction{feeling} to Feeling{videoProduction},
+//    VideoProduction{keyword} to Keyword{videoProduction},
+//    Material{keyword} to Keyword{material},
+//    History{keyword} to Keyword{history}
+//}
+
+relationship OneToOne {
+    VideoProduction{extraInfo} to ExtraInfo{videoProduction},
+    Material{extraInfo} to ExtraInfo{material},
+    History{extraInfo} to ExtraInfo{history}
+}
+
+relationship OneToMany {
+    Workspace{material} to Material{workspace},
+    Workspace{history} to History{workspace}
+}

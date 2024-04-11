@@ -1,0 +1,32 @@
+{
+  "annotations": {
+    "changelogDate": "20240316112907"
+  },
+  "applications": "*",
+  "databaseType": "sql",
+  "entityTableName": "linked_account",
+  "fields": [
+    {
+      "fieldName": "accountType",
+      "fieldType": "AccountType",
+      "fieldValidateRules": ["required"],
+      "fieldValues": "YOUTUBE,GOOGLE,TWITTER,FACEBOOK,OTHER"
+    },
+    {
+      "fieldName": "accountIdentifier",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    }
+  ],
+  "name": "LinkedAccount",
+  "relationships": [
+    {
+      "otherEntityName": "member",
+      "otherEntityRelationshipName": "linkedAccount",
+      "relationshipName": "member",
+      "relationshipSide": "right",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "searchEngine": "no"
+}

@@ -1,0 +1,26 @@
+{
+  "highwayacApp": {
+    "linkedAccount": {
+      "home": {
+        "title": "Linked Accounts",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Linked Account",
+        "createOrEditLabel": "Create or edit a Linked Account",
+        "notFound": "No Linked Accounts found"
+      },
+      "created": "A new Linked Account is created with identifier {{ param }}",
+      "updated": "A Linked Account is updated with identifier {{ param }}",
+      "deleted": "A Linked Account is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Linked Account {{ id }}?"
+      },
+      "detail": {
+        "title": "Linked Account"
+      },
+      "id": "ID",
+      "accountType": "Account Type",
+      "accountIdentifier": "Account Identifier",
+      "member": "Member"
+    }
+  }
+}

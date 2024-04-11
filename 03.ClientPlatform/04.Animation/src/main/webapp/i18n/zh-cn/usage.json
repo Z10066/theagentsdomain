@@ -1,0 +1,28 @@
+{
+  "highwayacApp": {
+    "usage": {
+      "home": {
+        "title": "Usages",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "创建新 Usage",
+        "createOrEditLabel": "创建或编辑 Usage",
+        "notFound": "No Usages found"
+      },
+      "created": "Usage {{ param }} 创建成功",
+      "updated": "Usage {{ param }} 更新成功",
+      "deleted": "Usage {{ param }} 删除成功",
+      "delete": {
+        "question": "你确定要删除 Usage {{ id }} 吗？"
+      },
+      "detail": {
+        "title": "Usage"
+      },
+      "id": "ID",
+      "usageType": "Usage Type",
+      "usageTime": "Usage Time",
+      "startTime": "Start Time",
+      "endTime": "End Time",
+      "subscriptionService": "Subscription Service"
+    }
+  }
+}

@@ -1,0 +1,66 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    @if (history) {
+      <div>
+        <h2 data-cy="historyDetailsHeading"><span jhiTranslate="highwayacApp.history.detail.title">History</span></h2>
+
+        <hr />
+
+        <jhi-alert-error></jhi-alert-error>
+
+        <jhi-alert></jhi-alert>
+
+        <dl class="row-md jh-entity-details">
+          <dt><span jhiTranslate="global.field.id">ID</span></dt>
+          <dd>
+            <span>{{ history.id }}</span>
+          </dd>
+          <dt><span jhiTranslate="highwayacApp.history.title">Title</span></dt>
+          <dd>
+            <span>{{ history.title }}</span>
+          </dd>
+          <dt><span jhiTranslate="highwayacApp.history.creator">Creator</span></dt>
+          <dd>
+            <span>{{ history.creator }}</span>
+          </dd>
+          <dt><span jhiTranslate="highwayacApp.history.description">Description</span></dt>
+          <dd>
+            <span>{{ history.description }}</span>
+          </dd>
+          <dt><span jhiTranslate="highwayacApp.history.copyright">Copyright</span></dt>
+          <dd>
+            <span>{{ history.copyright }}</span>
+          </dd>
+          <dt><span jhiTranslate="highwayacApp.history.watchLink">Watch Link</span></dt>
+          <dd>
+            <span>{{ history.watchLink }}</span>
+          </dd>
+          <dt><span jhiTranslate="highwayacApp.history.extraInfo">Extra Info</span></dt>
+          <dd>
+            @if (history.extraInfo) {
+              <div>
+                <a [routerLink]="['/extra-info', history.extraInfo.id, 'view']">{{ history.extraInfo.id }}</a>
+              </div>
+            }
+          </dd>
+          <dt><span jhiTranslate="highwayacApp.history.workspace">Workspace</span></dt>
+          <dd>
+            @if (history.workspace) {
+              <div>
+                <a [routerLink]="['/workspace', history.workspace.id, 'view']">{{ history.workspace.id }}</a>
+              </div>
+            }
+          </dd>
+        </dl>
+
+        <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+          <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+        </button>
+
+        <button type="button" [routerLink]="['/history', history.id, 'edit']" class="btn btn-primary">
+          <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+        </button>
+      </div>
+    }
+  </div>
+</div>

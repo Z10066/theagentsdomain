@@ -114,26 +114,6 @@ const routes: Routes = [
     path: '',
     loadChildren: () => import(`./entities/entity.routes`),
   },
-  {
-    path: '',
-    loadChildren: () => import(`./entities/video/video.routes`),
-  },
-  {
-    path: 'Entity',
-    component: EntityComponent,
-  },
-  {
-    path: 'Video',
-    component: VideoComponent,
-  },
-  {
-    path: 'user',
-    loadChildren: () => loadEntityRoutes('user'),
-  },
-  {
-    path: 'admin',
-    loadChildren: () => loadEntityRoutes('admin'),
-  },
   ...errorRoute,
 ];
 

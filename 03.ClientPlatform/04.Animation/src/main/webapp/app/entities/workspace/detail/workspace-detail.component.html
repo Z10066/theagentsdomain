@@ -1,0 +1,54 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    @if (workspace) {
+      <div>
+        <h2 data-cy="workspaceDetailsHeading"><span jhiTranslate="highwayacApp.workspace.detail.title">Workspace</span></h2>
+
+        <hr />
+
+        <jhi-alert-error></jhi-alert-error>
+
+        <jhi-alert></jhi-alert>
+
+        <dl class="row-md jh-entity-details">
+          <dt><span jhiTranslate="global.field.id">ID</span></dt>
+          <dd>
+            <span>{{ workspace.id }}</span>
+          </dd>
+          <dt><span jhiTranslate="highwayacApp.workspace.name">Name</span></dt>
+          <dd>
+            <span>{{ workspace.name }}</span>
+          </dd>
+          <dt><span jhiTranslate="highwayacApp.workspace.identifier">Identifier</span></dt>
+          <dd>
+            <span>{{ workspace.identifier }}</span>
+          </dd>
+          <dt><span jhiTranslate="highwayacApp.workspace.betaFeatures">Beta Features</span></dt>
+          <dd>
+            <span>{{ workspace.betaFeatures }}</span>
+          </dd>
+          <dt><span jhiTranslate="highwayacApp.workspace.collaborationCursor">Collaboration Cursor</span></dt>
+          <dd>
+            <span>{{ workspace.collaborationCursor }}</span>
+          </dd>
+          <dt><span jhiTranslate="highwayacApp.workspace.defaultExportVisibility">Default Export Visibility</span></dt>
+          <dd>
+            <span>{{ workspace.defaultExportVisibility }}</span>
+          </dd>
+          <dt><span jhiTranslate="highwayacApp.workspace.publicAccess">Public Access</span></dt>
+          <dd>
+            <span>{{ workspace.publicAccess }}</span>
+          </dd>
+        </dl>
+
+        <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+          <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+        </button>
+
+        <button type="button" [routerLink]="['/workspace', workspace.id, 'edit']" class="btn btn-primary">
+          <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+        </button>
+      </div>
+    }
+  </div>
+</div>

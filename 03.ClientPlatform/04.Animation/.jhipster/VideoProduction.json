@@ -1,0 +1,50 @@
+{
+  "annotations": {
+    "changelogDate": "20240316113207"
+  },
+  "applications": "*",
+  "databaseType": "sql",
+  "entityTableName": "video_production",
+  "fields": [
+    {
+      "fieldName": "title",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "creator",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "description",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "copyright",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "watchLink",
+      "fieldType": "String"
+    }
+  ],
+  "name": "VideoProduction",
+  "relationships": [
+    {
+      "otherEntityName": "extraInfo",
+      "otherEntityRelationshipName": "videoProduction",
+      "relationshipName": "extraInfo",
+      "relationshipSide": "left",
+      "relationshipType": "one-to-one"
+    },
+    {
+      "otherEntityName": "workspace",
+      "otherEntityRelationshipName": "videoProduction",
+      "relationshipName": "workspace",
+      "relationshipSide": "right",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "searchEngine": "no"
+}

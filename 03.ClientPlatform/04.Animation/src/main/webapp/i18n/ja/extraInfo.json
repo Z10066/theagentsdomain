@@ -1,0 +1,28 @@
+{
+  "highwayacApp": {
+    "extraInfo": {
+      "home": {
+        "title": "ExtraInfos",
+        "refreshListLabel": "リストの更新",
+        "createLabel": "Extra Info の作成",
+        "createOrEditLabel": "Extra Infoの作成または編集",
+        "notFound": "Extra Infos が見つかりません。"
+      },
+      "created": "新しい Extra Info がID {{ param }} で作成されました。",
+      "updated": "ID {{ param }} の Extra Info が更新されました。",
+      "deleted": "ID {{ param }} の Extra Info が削除されました。",
+      "delete": {
+        "question": "Extra Info {{ id }}を削除してもよろしいですか？"
+      },
+      "detail": {
+        "title": "Extra Info"
+      },
+      "id": "ID",
+      "audienceFeedback": "Audience Feedback",
+      "relatedVideos": "Related Videos",
+      "videoProduction": "Video Production",
+      "material": "Material",
+      "history": "History"
+    }
+  }
+}

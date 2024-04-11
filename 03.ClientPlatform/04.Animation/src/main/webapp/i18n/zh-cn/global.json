@@ -8,12 +8,15 @@
       "entities": {
         "main": "数据",
         "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)",
-        "video": "Video",
-        "creator": "Creator",
-        "category": "Category",
-        "copyright": "Copyright",
-        "metadata": "Metadata",
-        "keyword": "Keyword"
+        "workspace": "Workspace",
+        "member": "Member",
+        "linkedAccount": "Linked Account",
+        "subscriptionService": "Subscription Service",
+        "usage": "Usage",
+        "videoProduction": "Video Production",
+        "extraInfo": "Extra Info",
+        "material": "Material",
+        "history": "History"
       },
       "account": {
         "main": "账号",

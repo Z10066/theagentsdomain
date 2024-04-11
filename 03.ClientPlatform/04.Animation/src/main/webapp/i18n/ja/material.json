@@ -1,0 +1,30 @@
+{
+  "highwayacApp": {
+    "material": {
+      "home": {
+        "title": "Materials",
+        "refreshListLabel": "リストの更新",
+        "createLabel": "Material の作成",
+        "createOrEditLabel": "Materialの作成または編集",
+        "notFound": "Materials が見つかりません。"
+      },
+      "created": "新しい Material がID {{ param }} で作成されました。",
+      "updated": "ID {{ param }} の Material が更新されました。",
+      "deleted": "ID {{ param }} の Material が削除されました。",
+      "delete": {
+        "question": "Material {{ id }}を削除してもよろしいですか？"
+      },
+      "detail": {
+        "title": "Material"
+      },
+      "id": "ID",
+      "title": "Title",
+      "creator": "Creator",
+      "description": "Description",
+      "copyright": "Copyright",
+      "watchLink": "Watch Link",
+      "extraInfo": "Extra Info",
+      "workspace": "Workspace"
+    }
+  }
+}

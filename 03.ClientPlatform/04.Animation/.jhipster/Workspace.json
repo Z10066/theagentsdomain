@@ -1,0 +1,68 @@
+{
+  "annotations": {
+    "changelogDate": "20240316112707"
+  },
+  "applications": "*",
+  "databaseType": "sql",
+  "entityTableName": "workspace",
+  "fields": [
+    {
+      "fieldName": "name",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "identifier",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "betaFeatures",
+      "fieldType": "Boolean"
+    },
+    {
+      "fieldName": "collaborationCursor",
+      "fieldType": "Boolean"
+    },
+    {
+      "fieldName": "defaultExportVisibility",
+      "fieldType": "Boolean"
+    },
+    {
+      "fieldName": "publicAccess",
+      "fieldType": "Boolean"
+    }
+  ],
+  "name": "Workspace",
+  "relationships": [
+    {
+      "otherEntityName": "member",
+      "otherEntityRelationshipName": "workspace",
+      "relationshipName": "member",
+      "relationshipSide": "left",
+      "relationshipType": "one-to-many"
+    },
+    {
+      "otherEntityName": "videoProduction",
+      "otherEntityRelationshipName": "workspace",
+      "relationshipName": "videoProduction",
+      "relationshipSide": "left",
+      "relationshipType": "one-to-many"
+    },
+    {
+      "otherEntityName": "material",
+      "otherEntityRelationshipName": "workspace",
+      "relationshipName": "material",
+      "relationshipSide": "left",
+      "relationshipType": "one-to-many"
+    },
+    {
+      "otherEntityName": "history",
+      "otherEntityRelationshipName": "workspace",
+      "relationshipName": "history",
+      "relationshipSide": "left",
+      "relationshipType": "one-to-many"
+    }
+  ],
+  "searchEngine": "no"
+}

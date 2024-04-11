@@ -1,0 +1,28 @@
+{
+  "highwayacApp": {
+    "subscriptionService": {
+      "home": {
+        "title": "Subscription Services",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "创建新 Subscription Service",
+        "createOrEditLabel": "创建或编辑 Subscription Service",
+        "notFound": "No Subscription Services found"
+      },
+      "created": "Subscription Service {{ param }} 创建成功",
+      "updated": "Subscription Service {{ param }} 更新成功",
+      "deleted": "Subscription Service {{ param }} 删除成功",
+      "delete": {
+        "question": "你确定要删除 Subscription Service {{ id }} 吗？"
+      },
+      "detail": {
+        "title": "Subscription Service"
+      },
+      "id": "ID",
+      "serviceLevel": "Service Level",
+      "totalUsageTime": "Total Usage Time",
+      "startTime": "Start Time",
+      "endTime": "End Time",
+      "usage": "Usage"
+    }
+  }
+}

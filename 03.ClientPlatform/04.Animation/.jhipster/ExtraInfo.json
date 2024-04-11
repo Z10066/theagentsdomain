@@ -1,0 +1,43 @@
+{
+  "annotations": {
+    "changelogDate": "20240316113307"
+  },
+  "applications": "*",
+  "databaseType": "sql",
+  "entityTableName": "extra_info",
+  "fields": [
+    {
+      "fieldName": "audienceFeedback",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "relatedVideos",
+      "fieldType": "String"
+    }
+  ],
+  "name": "ExtraInfo",
+  "relationships": [
+    {
+      "otherEntityName": "videoProduction",
+      "otherEntityRelationshipName": "extraInfo",
+      "relationshipName": "videoProduction",
+      "relationshipSide": "right",
+      "relationshipType": "one-to-one"
+    },
+    {
+      "otherEntityName": "material",
+      "otherEntityRelationshipName": "extraInfo",
+      "relationshipName": "material",
+      "relationshipSide": "right",
+      "relationshipType": "one-to-one"
+    },
+    {
+      "otherEntityName": "history",
+      "otherEntityRelationshipName": "extraInfo",
+      "relationshipName": "history",
+      "relationshipSide": "right",
+      "relationshipType": "one-to-one"
+    }
+  ],
+  "searchEngine": "no"
+}

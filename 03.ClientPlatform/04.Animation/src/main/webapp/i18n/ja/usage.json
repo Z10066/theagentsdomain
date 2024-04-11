@@ -1,0 +1,28 @@
+{
+  "highwayacApp": {
+    "usage": {
+      "home": {
+        "title": "Usages",
+        "refreshListLabel": "リストの更新",
+        "createLabel": "Usage の作成",
+        "createOrEditLabel": "Usageの作成または編集",
+        "notFound": "Usages が見つかりません。"
+      },
+      "created": "新しい Usage がID {{ param }} で作成されました。",
+      "updated": "ID {{ param }} の Usage が更新されました。",
+      "deleted": "ID {{ param }} の Usage が削除されました。",
+      "delete": {
+        "question": "Usage {{ id }}を削除してもよろしいですか？"
+      },
+      "detail": {
+        "title": "Usage"
+      },
+      "id": "ID",
+      "usageType": "Usage Type",
+      "usageTime": "Usage Time",
+      "startTime": "Start Time",
+      "endTime": "End Time",
+      "subscriptionService": "Subscription Service"
+    }
+  }
+}

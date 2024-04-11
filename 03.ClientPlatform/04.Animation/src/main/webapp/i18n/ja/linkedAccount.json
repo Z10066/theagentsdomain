@@ -1,0 +1,26 @@
+{
+  "highwayacApp": {
+    "linkedAccount": {
+      "home": {
+        "title": "LinkedAccounts",
+        "refreshListLabel": "リストの更新",
+        "createLabel": "Linked Account の作成",
+        "createOrEditLabel": "Linked Accountの作成または編集",
+        "notFound": "Linked Accounts が見つかりません。"
+      },
+      "created": "新しい Linked Account がID {{ param }} で作成されました。",
+      "updated": "ID {{ param }} の Linked Account が更新されました。",
+      "deleted": "ID {{ param }} の Linked Account が削除されました。",
+      "delete": {
+        "question": "Linked Account {{ id }}を削除してもよろしいですか？"
+      },
+      "detail": {
+        "title": "Linked Account"
+      },
+      "id": "ID",
+      "accountType": "Account Type",
+      "accountIdentifier": "Account Identifier",
+      "member": "Member"
+    }
+  }
+}
