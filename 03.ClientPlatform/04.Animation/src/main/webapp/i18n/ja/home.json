@@ -31,6 +31,12 @@
       "Createvideoprompt": "プロンプトを作成する",
       "VideoCircle": "ビデオサークル",
       "CreatVideo": "ビデオを作成する",
+      "CreatexplainerPrompt": "解説プロンプト",
+      "CreateinstagramReelPrompt": "Instagramのプロンプトを作成する",
+      "Entity": "Entity",
+      "Createprompt": "プロンプトを作成",
+      "CreaterecentEventsPrompt": "最近のイベントプロンプトを作成する",
+      "CreatetiktokVideoPrompt": "TikTokビデオプロンプトコンポーネントを作成する",
       "Continue": "続ける"
     }
   }

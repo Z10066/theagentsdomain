@@ -146,13 +146,13 @@ export class VideoUpdateComponent implements OnInit {
 
   protected loadRelationshipsOptions(): void {
     this.creatorService
-      .query({ filter: 'video-is-null' })
+      .query({ filter: 'name' })
       .pipe(map((res: HttpResponse<ICreator[]>) => res.body ?? []))
       .pipe(map((creators: ICreator[]) => this.creatorService.addCreatorToCollectionIfMissing<ICreator>(creators, this.video?.creator)))
       .subscribe((creators: ICreator[]) => (this.creatorsCollection = creators));
 
     this.categoryService
-      .query({ filter: 'video-is-null' })
+      .query({ filter: 'name' })
       .pipe(map((res: HttpResponse<ICategory[]>) => res.body ?? []))
       .pipe(
         map((categories: ICategory[]) =>
@@ -162,7 +162,7 @@ export class VideoUpdateComponent implements OnInit {
       .subscribe((categories: ICategory[]) => (this.categoriesCollection = categories));
 
     this.copyrightService
-      .query({ filter: 'video-is-null' })
+      .query({ filter: 'details' })
       .pipe(map((res: HttpResponse<ICopyright[]>) => res.body ?? []))
       .pipe(
         map((copyrights: ICopyright[]) =>
@@ -172,7 +172,7 @@ export class VideoUpdateComponent implements OnInit {
       .subscribe((copyrights: ICopyright[]) => (this.copyrightsCollection = copyrights));
 
     this.metadataService
-      .query({ filter: 'video-is-null' })
+      .query({ filter: 'related_videos' })
       .pipe(map((res: HttpResponse<IMetadata[]>) => res.body ?? []))
       .pipe(
         map((metadata: IMetadata[]) => this.metadataService.addMetadataToCollectionIfMissing<IMetadata>(metadata, this.video?.extraInfo)),

@@ -32,8 +32,12 @@
       "VideoCircle": "Video Circle",
       "CreatVideo": "CreatVideo",
       "Continue": "Continue",
-      "Entity": "Entity"
-
+      "CreateinstagramReelPrompt": "Create instagramReel Prompt",
+      "Entity": "Entity",
+      "Createprompt": "Createprompt",
+      "CreaterecentEventsPrompt": "Create recent Events Prompt",
+      "CreatetiktokVideoPrompt": "Create tiktok Video Prompt",
+      "CreatexplainerPrompt": "CreatexplainerPrompt"
     }
   }
 }
