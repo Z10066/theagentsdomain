@@ -25,6 +25,11 @@ import { CreatVideoComponent } from './home/createVideo/creat-video.component';
 import { ContinueComponent } from './home/continue_page/continue.component';
 import { CreatevideopromptComponent } from './home/create_video_prompt/createvideoprompt.component';
 import { VideoCircleComponent } from './home/video-circle/video-circle.component';
+import { CreatexplainerPromptComponent } from './home/create_explainer_prompt/createxplainer-prompt.component';
+import { CreateinstagramReelPromptComponent } from './home/create_instagram_reel_prompt/createinstagram-reel-prompt.component';
+import { CreatepromptComponent } from './home/create_prompt/createprompt.component';
+import { CreaterecentEventsPromptComponent } from './home/create_recent_events_prompt/createrecent-events-prompt.component';
+import { CreatetiktokVideoPromptComponent } from './home/create_tiktok_video_prompt/createtiktok-video-prompt.component';
 
 
 
@@ -35,7 +40,8 @@ import { VideoCircleComponent } from './home/video-circle/video-circle.component
   imports: [
     MainComponent,WelcomeComponent,WaitingScreenComponent,UsageComponent,ThinkingScreenComponent,RenderingVideoComponent,PublishVideoComponent,
     ProfileComponent,PlanComponent,MembersComponent,HistoryComponent,DownloadComponent,WprkspacesComponent,CreatVideoComponent,ContinueComponent,
-    CreatevideopromptComponent,VideoCircleComponent
+    CreatevideopromptComponent,VideoCircleComponent,CreatexplainerPromptComponent,CreateinstagramReelPromptComponent,CreatepromptComponent,
+    CreaterecentEventsPromptComponent,CreatetiktokVideoPromptComponent
     // jhipster-needle-angular-add-module JHipster will add new module here
   ],
 })

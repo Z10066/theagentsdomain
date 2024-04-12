@@ -25,6 +25,11 @@ import EntityComponent from './entities/entity.component';
 import { VideoComponent } from './entities/video/list/video.component';
 import { CreatevideopromptComponent } from './home/create_video_prompt/createvideoprompt.component';
 import { VideoCircleComponent } from './home/video-circle/video-circle.component';
+import { CreatexplainerPromptComponent } from './home/create_explainer_prompt/createxplainer-prompt.component';
+import { CreateinstagramReelPromptComponent } from './home/create_instagram_reel_prompt/createinstagram-reel-prompt.component';
+import { CreatepromptComponent } from './home/create_prompt/createprompt.component';
+import { CreaterecentEventsPromptComponent } from './home/create_recent_events_prompt/createrecent-events-prompt.component';
+import { CreatetiktokVideoPromptComponent } from './home/create_tiktok_video_prompt/createtiktok-video-prompt.component';
 
 const routes: Routes = [
   {
@@ -92,6 +97,26 @@ const routes: Routes = [
   {
     path: 'Createvideoprompt',
     component: CreatevideopromptComponent,
+  },
+  {
+    path: 'CreateinstagramReelPrompt',
+    component: CreateinstagramReelPromptComponent,
+  },
+  {
+    path: 'Createprompt',
+    component: CreatepromptComponent,
+  },
+  {
+    path: 'CreaterecentEventsPrompt',
+    component: CreaterecentEventsPromptComponent,
+  },
+  {
+    path: 'CreatetiktokVideoPrompt',
+    component: CreatetiktokVideoPromptComponent,
+  },
+  {
+    path: 'CreatexplainerPrompt',
+    component: CreatexplainerPromptComponent,
   },
   {
     path: 'Continue',

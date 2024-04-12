@@ -47,9 +47,14 @@ export default class HomeComponent implements OnInit {
   ];
 
   navItems2 = [
+    { label: 'CreatexplainerPrompt', link: '/CreatexplainerPrompt', target: '_self' },
+    { label: 'Createprompt', link: '/Createprompt', target: '_self' },
+    { label: 'CreaterecentEventsPrompt', link: '/CreaterecentEventsPrompt', target: '_self' },
+    { label: 'CreatetiktokVideoPrompt', link: '/CreatetiktokVideoPrompt', target: '_self' },
+    { label: 'CreateinstagramReelPrompt', link: '/CreateinstagramReelPrompt', target: '_self' },
     { label: 'CreatVideo', link: '/CreatVideo', target: '_self' },
     { label: 'Continue', link: '/Continue', target: '_blank' },
-    { label: 'Entity', link: '/Entity', target: '_blank' },
+   // { label: 'Entity', link: '/Entity', target: '_blank' },
   ];
   getNavItemWidth(): string {
     return `calc(100% / ${this.navItems.length})`; // 动态计算每个项目的宽度
