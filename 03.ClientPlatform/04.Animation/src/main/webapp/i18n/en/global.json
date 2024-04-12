@@ -16,7 +16,13 @@
         "videoProduction": "Video Production",
         "extraInfo": "Extra Info",
         "material": "Material",
-        "history": "History"
+        "history": "History",
+        "video": "Video",
+        "creator": "Creator",
+        "category": "Category",
+        "copyright": "Copyright",
+        "metadata": "Metadata",
+        "keyword": "Keyword"
       },
       "account": {
         "main": "Account",
