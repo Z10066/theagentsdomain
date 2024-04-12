@@ -1,0 +1,30 @@
+{
+  "highwayacApp": {
+    "history": {
+      "home": {
+        "title": "Histories",
+        "refreshListLabel": "リストの更新",
+        "createLabel": "History の作成",
+        "createOrEditLabel": "Historyの作成または編集",
+        "notFound": "Histories が見つかりません。"
+      },
+      "created": "新しい History がID {{ param }} で作成されました。",
+      "updated": "ID {{ param }} の History が更新されました。",
+      "deleted": "ID {{ param }} の History が削除されました。",
+      "delete": {
+        "question": "History {{ id }}を削除してもよろしいですか？"
+      },
+      "detail": {
+        "title": "History"
+      },
+      "id": "ID",
+      "title": "Title",
+      "creator": "Creator",
+      "description": "Description",
+      "copyright": "Copyright",
+      "watchLink": "Watch Link",
+      "extraInfo": "Extra Info",
+      "workspace": "Workspace"
+    }
+  }
+}

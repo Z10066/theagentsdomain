@@ -1,0 +1,28 @@
+{
+  "highwayacApp": {
+    "usage": {
+      "home": {
+        "title": "Usages",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Usage",
+        "createOrEditLabel": "Create or edit a Usage",
+        "notFound": "No Usages found"
+      },
+      "created": "A new Usage is created with identifier {{ param }}",
+      "updated": "A Usage is updated with identifier {{ param }}",
+      "deleted": "A Usage is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Usage {{ id }}?"
+      },
+      "detail": {
+        "title": "Usage"
+      },
+      "id": "ID",
+      "usageType": "Usage Type",
+      "usageTime": "Usage Time",
+      "startTime": "Start Time",
+      "endTime": "End Time",
+      "subscriptionService": "Subscription Service"
+    }
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "highwayacApp": {
+    "videoProduction": {
+      "home": {
+        "title": "VideoProductions",
+        "refreshListLabel": "リストの更新",
+        "createLabel": "Video Production の作成",
+        "createOrEditLabel": "Video Productionの作成または編集",
+        "notFound": "Video Productions が見つかりません。"
+      },
+      "created": "新しい Video Production がID {{ param }} で作成されました。",
+      "updated": "ID {{ param }} の Video Production が更新されました。",
+      "deleted": "ID {{ param }} の Video Production が削除されました。",
+      "delete": {
+        "question": "Video Production {{ id }}を削除してもよろしいですか？"
+      },
+      "detail": {
+        "title": "Video Production"
+      },
+      "id": "ID",
+      "title": "Title",
+      "creator": "Creator",
+      "description": "Description",
+      "copyright": "Copyright",
+      "watchLink": "Watch Link",
+      "extraInfo": "Extra Info",
+      "workspace": "Workspace"
+    }
+  }
+}

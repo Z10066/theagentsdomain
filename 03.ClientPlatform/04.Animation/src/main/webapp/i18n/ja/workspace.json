@@ -1,0 +1,33 @@
+{
+  "highwayacApp": {
+    "workspace": {
+      "home": {
+        "title": "Workspaces",
+        "refreshListLabel": "リストの更新",
+        "createLabel": "Workspace の作成",
+        "createOrEditLabel": "Workspaceの作成または編集",
+        "notFound": "Workspaces が見つかりません。"
+      },
+      "created": "新しい Workspace がID {{ param }} で作成されました。",
+      "updated": "ID {{ param }} の Workspace が更新されました。",
+      "deleted": "ID {{ param }} の Workspace が削除されました。",
+      "delete": {
+        "question": "Workspace {{ id }}を削除してもよろしいですか？"
+      },
+      "detail": {
+        "title": "Workspace"
+      },
+      "id": "ID",
+      "name": "Name",
+      "identifier": "Identifier",
+      "betaFeatures": "Beta Features",
+      "collaborationCursor": "Collaboration Cursor",
+      "defaultExportVisibility": "Default Export Visibility",
+      "publicAccess": "Public Access",
+      "member": "Member",
+      "videoProduction": "Video Production",
+      "material": "Material",
+      "history": "History"
+    }
+  }
+}

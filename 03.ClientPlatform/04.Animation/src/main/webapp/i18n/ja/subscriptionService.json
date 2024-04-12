@@ -1,0 +1,28 @@
+{
+  "highwayacApp": {
+    "subscriptionService": {
+      "home": {
+        "title": "SubscriptionServices",
+        "refreshListLabel": "リストの更新",
+        "createLabel": "Subscription Service の作成",
+        "createOrEditLabel": "Subscription Serviceの作成または編集",
+        "notFound": "Subscription Services が見つかりません。"
+      },
+      "created": "新しい Subscription Service がID {{ param }} で作成されました。",
+      "updated": "ID {{ param }} の Subscription Service が更新されました。",
+      "deleted": "ID {{ param }} の Subscription Service が削除されました。",
+      "delete": {
+        "question": "Subscription Service {{ id }}を削除してもよろしいですか？"
+      },
+      "detail": {
+        "title": "Subscription Service"
+      },
+      "id": "ID",
+      "serviceLevel": "Service Level",
+      "totalUsageTime": "Total Usage Time",
+      "startTime": "Start Time",
+      "endTime": "End Time",
+      "usage": "Usage"
+    }
+  }
+}

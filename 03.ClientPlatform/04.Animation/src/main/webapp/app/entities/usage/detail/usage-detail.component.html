@@ -1,0 +1,54 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    @if (usage) {
+      <div>
+        <h2 data-cy="usageDetailsHeading"><span jhiTranslate="highwayacApp.usage.detail.title">Usage</span></h2>
+
+        <hr />
+
+        <jhi-alert-error></jhi-alert-error>
+
+        <jhi-alert></jhi-alert>
+
+        <dl class="row-md jh-entity-details">
+          <dt><span jhiTranslate="global.field.id">ID</span></dt>
+          <dd>
+            <span>{{ usage.id }}</span>
+          </dd>
+          <dt><span jhiTranslate="highwayacApp.usage.usageType">Usage Type</span></dt>
+          <dd>
+            <span>{{ usage.usageType }}</span>
+          </dd>
+          <dt><span jhiTranslate="highwayacApp.usage.usageTime">Usage Time</span></dt>
+          <dd>
+            <span>{{ usage.usageTime }}</span>
+          </dd>
+          <dt><span jhiTranslate="highwayacApp.usage.startTime">Start Time</span></dt>
+          <dd>
+            <span>{{ usage.startTime | formatMediumDatetime }}</span>
+          </dd>
+          <dt><span jhiTranslate="highwayacApp.usage.endTime">End Time</span></dt>
+          <dd>
+            <span>{{ usage.endTime | formatMediumDatetime }}</span>
+          </dd>
+          <dt><span jhiTranslate="highwayacApp.usage.subscriptionService">Subscription Service</span></dt>
+          <dd>
+            @if (usage.subscriptionService) {
+              <div>
+                <a [routerLink]="['/subscription-service', usage.subscriptionService.id, 'view']">{{ usage.subscriptionService.id }}</a>
+              </div>
+            }
+          </dd>
+        </dl>
+
+        <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+          <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+        </button>
+
+        <button type="button" [routerLink]="['/usage', usage.id, 'edit']" class="btn btn-primary">
+          <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+        </button>
+      </div>
+    }
+  </div>
+</div>

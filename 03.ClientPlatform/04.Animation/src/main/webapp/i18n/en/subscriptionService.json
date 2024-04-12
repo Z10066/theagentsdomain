@@ -1,0 +1,28 @@
+{
+  "highwayacApp": {
+    "subscriptionService": {
+      "home": {
+        "title": "Subscription Services",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Subscription Service",
+        "createOrEditLabel": "Create or edit a Subscription Service",
+        "notFound": "No Subscription Services found"
+      },
+      "created": "A new Subscription Service is created with identifier {{ param }}",
+      "updated": "A Subscription Service is updated with identifier {{ param }}",
+      "deleted": "A Subscription Service is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Subscription Service {{ id }}?"
+      },
+      "detail": {
+        "title": "Subscription Service"
+      },
+      "id": "ID",
+      "serviceLevel": "Service Level",
+      "totalUsageTime": "Total Usage Time",
+      "startTime": "Start Time",
+      "endTime": "End Time",
+      "usage": "Usage"
+    }
+  }
+}

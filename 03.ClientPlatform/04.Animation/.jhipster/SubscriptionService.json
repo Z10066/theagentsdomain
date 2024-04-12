@@ -1,0 +1,38 @@
+{
+  "annotations": {
+    "changelogDate": "20240316113007"
+  },
+  "applications": "*",
+  "databaseType": "sql",
+  "entityTableName": "subscription_service",
+  "fields": [
+    {
+      "fieldName": "serviceLevel",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "totalUsageTime",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "startTime",
+      "fieldType": "Instant"
+    },
+    {
+      "fieldName": "endTime",
+      "fieldType": "Instant"
+    }
+  ],
+  "name": "SubscriptionService",
+  "relationships": [
+    {
+      "otherEntityName": "usage",
+      "otherEntityRelationshipName": "subscriptionService",
+      "relationshipName": "usage",
+      "relationshipSide": "left",
+      "relationshipType": "one-to-many"
+    }
+  ],
+  "searchEngine": "no"
+}

@@ -1,0 +1,29 @@
+{
+  "highwayacApp": {
+    "member": {
+      "home": {
+        "title": "Members",
+        "refreshListLabel": "リストの更新",
+        "createLabel": "Member の作成",
+        "createOrEditLabel": "Memberの作成または編集",
+        "notFound": "Members が見つかりません。"
+      },
+      "created": "新しい Member がID {{ param }} で作成されました。",
+      "updated": "ID {{ param }} の Member が更新されました。",
+      "deleted": "ID {{ param }} の Member が削除されました。",
+      "delete": {
+        "question": "Member {{ id }}を削除してもよろしいですか？"
+      },
+      "detail": {
+        "title": "Member"
+      },
+      "id": "ID",
+      "username": "Username",
+      "fullName": "Full Name",
+      "role": "Role",
+      "activeStatus": "Active Status",
+      "linkedAccount": "Linked Account",
+      "workspace": "Workspace"
+    }
+  }
+}

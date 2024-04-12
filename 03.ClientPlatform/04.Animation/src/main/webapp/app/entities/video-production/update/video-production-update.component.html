@@ -1,0 +1,120 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2
+        id="jhi-video-production-heading"
+        data-cy="VideoProductionCreateUpdateHeading"
+        jhiTranslate="highwayacApp.videoProduction.home.createOrEditLabel"
+      >
+        Create or edit a Video Production
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        @if (editForm.controls.id.value !== null) {
+          <div class="mb-3">
+            <label class="form-label" jhiTranslate="global.field.id" for="field_id">ID</label>
+            <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+          </div>
+        }
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="highwayacApp.videoProduction.title" for="field_title">Title</label>
+          <input type="text" class="form-control" name="title" id="field_title" data-cy="title" formControlName="title" />
+          @if (editForm.get('title')!.invalid && (editForm.get('title')!.dirty || editForm.get('title')!.touched)) {
+            <div>
+              @if (editForm.get('title')?.errors?.required) {
+                <small class="form-text text-danger" jhiTranslate="entity.validation.required">This field is required.</small>
+              }
+            </div>
+          }
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="highwayacApp.videoProduction.creator" for="field_creator">Creator</label>
+          <input type="text" class="form-control" name="creator" id="field_creator" data-cy="creator" formControlName="creator" />
+          @if (editForm.get('creator')!.invalid && (editForm.get('creator')!.dirty || editForm.get('creator')!.touched)) {
+            <div>
+              @if (editForm.get('creator')?.errors?.required) {
+                <small class="form-text text-danger" jhiTranslate="entity.validation.required">This field is required.</small>
+              }
+            </div>
+          }
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="highwayacApp.videoProduction.description" for="field_description">Description</label>
+          <input
+            type="text"
+            class="form-control"
+            name="description"
+            id="field_description"
+            data-cy="description"
+            formControlName="description"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="highwayacApp.videoProduction.copyright" for="field_copyright">Copyright</label>
+          <input type="text" class="form-control" name="copyright" id="field_copyright" data-cy="copyright" formControlName="copyright" />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="highwayacApp.videoProduction.watchLink" for="field_watchLink">Watch Link</label>
+          <input type="text" class="form-control" name="watchLink" id="field_watchLink" data-cy="watchLink" formControlName="watchLink" />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="highwayacApp.videoProduction.extraInfo" for="field_extraInfo">Extra Info</label>
+          <select
+            class="form-control"
+            id="field_extraInfo"
+            data-cy="extraInfo"
+            name="extraInfo"
+            formControlName="extraInfo"
+            [compareWith]="compareExtraInfo"
+          >
+            <option [ngValue]="null"></option>
+            @for (extraInfoOption of extraInfosCollection; track $index) {
+              <option [ngValue]="extraInfoOption">{{ extraInfoOption.id }}</option>
+            }
+          </select>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="highwayacApp.videoProduction.workspace" for="field_workspace">Workspace</label>
+          <select
+            class="form-control"
+            id="field_workspace"
+            data-cy="workspace"
+            name="workspace"
+            formControlName="workspace"
+            [compareWith]="compareWorkspace"
+          >
+            <option [ngValue]="null"></option>
+            @for (workspaceOption of workspacesSharedCollection; track $index) {
+              <option [ngValue]="workspaceOption">{{ workspaceOption.id }}</option>
+            }
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

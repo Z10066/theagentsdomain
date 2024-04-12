@@ -1,0 +1,144 @@
+<div>
+  <h2 id="page-heading" data-cy="HistoryHeading">
+    <span jhiTranslate="highwayacApp.history.home.title">Histories</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info me-2" (click)="load()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span jhiTranslate="highwayacApp.history.home.refreshListLabel">Refresh list</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-history"
+        [routerLink]="['/history/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span jhiTranslate="highwayacApp.history.home.createLabel">Create a new History</span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  @if (histories?.length === 0) {
+    <div class="alert alert-warning" id="no-result">
+      <span jhiTranslate="highwayacApp.history.home.notFound">No Histories found</span>
+    </div>
+  }
+
+  @if (histories && histories.length > 0) {
+    <div class="table-responsive table-entities" id="entities">
+      <table class="table table-striped" aria-describedby="page-heading">
+        <thead>
+          <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" (sortChange)="navigateToWithComponentValues()">
+            <th scope="col" jhiSortBy="id">
+              <div class="d-flex">
+                <span jhiTranslate="global.field.id">ID</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="title">
+              <div class="d-flex">
+                <span jhiTranslate="highwayacApp.history.title">Title</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="creator">
+              <div class="d-flex">
+                <span jhiTranslate="highwayacApp.history.creator">Creator</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="description">
+              <div class="d-flex">
+                <span jhiTranslate="highwayacApp.history.description">Description</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="copyright">
+              <div class="d-flex">
+                <span jhiTranslate="highwayacApp.history.copyright">Copyright</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="watchLink">
+              <div class="d-flex">
+                <span jhiTranslate="highwayacApp.history.watchLink">Watch Link</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="extraInfo.id">
+              <div class="d-flex">
+                <span jhiTranslate="highwayacApp.history.extraInfo">Extra Info</span>
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="workspace.id">
+              <div class="d-flex">
+                <span jhiTranslate="highwayacApp.history.workspace">Workspace</span>
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col"></th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (history of histories; track trackId) {
+            <tr data-cy="entityTable">
+              <td>
+                <a [routerLink]="['/history', history.id, 'view']">{{ history.id }}</a>
+              </td>
+              <td>{{ history.title }}</td>
+              <td>{{ history.creator }}</td>
+              <td>{{ history.description }}</td>
+              <td>{{ history.copyright }}</td>
+              <td>{{ history.watchLink }}</td>
+              <td>
+                @if (history.extraInfo) {
+                  <div>
+                    <a [routerLink]="['/extra-info', history.extraInfo.id, 'view']">{{ history.extraInfo.id }}</a>
+                  </div>
+                }
+              </td>
+              <td>
+                @if (history.workspace) {
+                  <div>
+                    <a [routerLink]="['/workspace', history.workspace.id, 'view']">{{ history.workspace.id }}</a>
+                  </div>
+                }
+              </td>
+              <td class="text-end">
+                <div class="btn-group">
+                  <a [routerLink]="['/history', history.id, 'view']" class="btn btn-info btn-sm" data-cy="entityDetailsButton">
+                    <fa-icon icon="eye"></fa-icon>
+                    <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                  </a>
+
+                  <a [routerLink]="['/history', history.id, 'edit']" class="btn btn-primary btn-sm" data-cy="entityEditButton">
+                    <fa-icon icon="pencil-alt"></fa-icon>
+                    <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                  </a>
+
+                  <button type="submit" (click)="delete(history)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                    <fa-icon icon="times"></fa-icon>
+                    <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                  </button>
+                </div>
+              </td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+  }
+</div>

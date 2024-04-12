@@ -1,0 +1,98 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2
+        id="jhi-linked-account-heading"
+        data-cy="LinkedAccountCreateUpdateHeading"
+        jhiTranslate="highwayacApp.linkedAccount.home.createOrEditLabel"
+      >
+        Create or edit a Linked Account
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        @if (editForm.controls.id.value !== null) {
+          <div class="mb-3">
+            <label class="form-label" jhiTranslate="global.field.id" for="field_id">ID</label>
+            <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+          </div>
+        }
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="highwayacApp.linkedAccount.accountType" for="field_accountType">Account Type</label>
+          <select class="form-control" name="accountType" formControlName="accountType" id="field_accountType" data-cy="accountType">
+            <option [ngValue]="null">{{ 'highwayacApp.AccountType.null' | translate }}</option>
+            @for (accountType of accountTypeValues; track $index) {
+              <option [value]="accountType">{{ 'highwayacApp.AccountType.' + accountType | translate }}</option>
+            }
+          </select>
+          @if (editForm.get('accountType')!.invalid && (editForm.get('accountType')!.dirty || editForm.get('accountType')!.touched)) {
+            <div>
+              @if (editForm.get('accountType')?.errors?.required) {
+                <small class="form-text text-danger" jhiTranslate="entity.validation.required">This field is required.</small>
+              }
+            </div>
+          }
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="highwayacApp.linkedAccount.accountIdentifier" for="field_accountIdentifier"
+            >Account Identifier</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="accountIdentifier"
+            id="field_accountIdentifier"
+            data-cy="accountIdentifier"
+            formControlName="accountIdentifier"
+          />
+          @if (
+            editForm.get('accountIdentifier')!.invalid &&
+            (editForm.get('accountIdentifier')!.dirty || editForm.get('accountIdentifier')!.touched)
+          ) {
+            <div>
+              @if (editForm.get('accountIdentifier')?.errors?.required) {
+                <small class="form-text text-danger" jhiTranslate="entity.validation.required">This field is required.</small>
+              }
+            </div>
+          }
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="highwayacApp.linkedAccount.member" for="field_member">Member</label>
+          <select
+            class="form-control"
+            id="field_member"
+            data-cy="member"
+            name="member"
+            formControlName="member"
+            [compareWith]="compareMember"
+          >
+            <option [ngValue]="null"></option>
+            @for (memberOption of membersSharedCollection; track $index) {
+              <option [ngValue]="memberOption">{{ memberOption.id }}</option>
+            }
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

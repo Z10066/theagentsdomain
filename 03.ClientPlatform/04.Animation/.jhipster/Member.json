@@ -1,0 +1,46 @@
+{
+  "annotations": {
+    "changelogDate": "20240316112807"
+  },
+  "applications": "*",
+  "databaseType": "sql",
+  "entityTableName": "member",
+  "fields": [
+    {
+      "fieldName": "username",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "fullName",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "role",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "activeStatus",
+      "fieldType": "Boolean"
+    }
+  ],
+  "name": "Member",
+  "relationships": [
+    {
+      "otherEntityName": "linkedAccount",
+      "otherEntityRelationshipName": "member",
+      "relationshipName": "linkedAccount",
+      "relationshipSide": "left",
+      "relationshipType": "one-to-many"
+    },
+    {
+      "otherEntityName": "workspace",
+      "otherEntityRelationshipName": "member",
+      "relationshipName": "workspace",
+      "relationshipSide": "right",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "searchEngine": "no"
+}

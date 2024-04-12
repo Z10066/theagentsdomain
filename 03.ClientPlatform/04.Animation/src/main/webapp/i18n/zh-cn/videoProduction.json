@@ -1,0 +1,30 @@
+{
+  "highwayacApp": {
+    "videoProduction": {
+      "home": {
+        "title": "Video Productions",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "创建新 Video Production",
+        "createOrEditLabel": "创建或编辑 Video Production",
+        "notFound": "No Video Productions found"
+      },
+      "created": "Video Production {{ param }} 创建成功",
+      "updated": "Video Production {{ param }} 更新成功",
+      "deleted": "Video Production {{ param }} 删除成功",
+      "delete": {
+        "question": "你确定要删除 Video Production {{ id }} 吗？"
+      },
+      "detail": {
+        "title": "Video Production"
+      },
+      "id": "ID",
+      "title": "Title",
+      "creator": "Creator",
+      "description": "Description",
+      "copyright": "Copyright",
+      "watchLink": "Watch Link",
+      "extraInfo": "Extra Info",
+      "workspace": "Workspace"
+    }
+  }
+}

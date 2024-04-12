@@ -1,0 +1,50 @@
+{
+  "annotations": {
+    "changelogDate": "20240316113507"
+  },
+  "applications": "*",
+  "databaseType": "sql",
+  "entityTableName": "history",
+  "fields": [
+    {
+      "fieldName": "title",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "creator",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "description",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "copyright",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "watchLink",
+      "fieldType": "String"
+    }
+  ],
+  "name": "History",
+  "relationships": [
+    {
+      "otherEntityName": "extraInfo",
+      "otherEntityRelationshipName": "history",
+      "relationshipName": "extraInfo",
+      "relationshipSide": "left",
+      "relationshipType": "one-to-one"
+    },
+    {
+      "otherEntityName": "workspace",
+      "otherEntityRelationshipName": "history",
+      "relationshipName": "workspace",
+      "relationshipSide": "right",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "searchEngine": "no"
+}

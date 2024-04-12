@@ -1,0 +1,33 @@
+{
+  "highwayacApp": {
+    "workspace": {
+      "home": {
+        "title": "Workspaces",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Workspace",
+        "createOrEditLabel": "Create or edit a Workspace",
+        "notFound": "No Workspaces found"
+      },
+      "created": "A new Workspace is created with identifier {{ param }}",
+      "updated": "A Workspace is updated with identifier {{ param }}",
+      "deleted": "A Workspace is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Workspace {{ id }}?"
+      },
+      "detail": {
+        "title": "Workspace"
+      },
+      "id": "ID",
+      "name": "Name",
+      "identifier": "Identifier",
+      "betaFeatures": "Beta Features",
+      "collaborationCursor": "Collaboration Cursor",
+      "defaultExportVisibility": "Default Export Visibility",
+      "publicAccess": "Public Access",
+      "member": "Member",
+      "videoProduction": "Video Production",
+      "material": "Material",
+      "history": "History"
+    }
+  }
+}
