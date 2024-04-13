@@ -30,6 +30,7 @@ import { CreateinstagramReelPromptComponent } from './home/create_instagram_reel
 import { CreatepromptComponent } from './home/create_prompt/createprompt.component';
 import { CreaterecentEventsPromptComponent } from './home/create_recent_events_prompt/createrecent-events-prompt.component';
 import { CreatetiktokVideoPromptComponent } from './home/create_tiktok_video_prompt/createtiktok-video-prompt.component';
+import { ASC } from './config/navigation.constants';
 
 const routes: Routes = [
   {
@@ -44,6 +45,9 @@ const routes: Routes = [
   {
     path: 'Welcome',
     component: WelcomeComponent,
+    data: {
+      defaultSort: 'id,' + ASC,
+    },
   },
   {
     path: 'WaitingScreen',
