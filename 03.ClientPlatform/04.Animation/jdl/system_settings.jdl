@@ -1,0 +1,4 @@
+entity SystemSetting {
+  name String required,
+  value String required
+}

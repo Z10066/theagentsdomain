@@ -8,15 +8,16 @@
       "entities": {
         "main": "数据",
         "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)",
-        "workspace": "Workspace",
-        "member": "Member",
-        "linkedAccount": "Linked Account",
-        "subscriptionService": "Subscription Service",
-        "usage": "Usage",
-        "videoProduction": "Video Production",
-        "extraInfo": "Extra Info",
-        "material": "Material",
-        "history": "History"
+        "systemSetting": "系统设定",
+        "workspace": "工作区",
+        "member": "成员",
+        "linkedAccount": "链接账号",
+        "subscriptionService": "服务订阅",
+        "usage": "服务使用",
+        "videoProduction": "视频生成",
+        "extraInfo": "额外信息",
+        "material": "视频素材",
+        "history": "视频历史"      
       },
       "account": {
         "main": "账号",

@@ -9,16 +9,14 @@ import { DurationPipe, FormatMediumDatetimePipe, FormatMediumDatePipe } from 'ap
 import { FormsModule } from '@angular/forms';
 import { ASC, DESC, SORT, ITEM_DELETED_EVENT, DEFAULT_SORT_DATA } from 'app/config/navigation.constants';
 import { SortService } from 'app/shared/sort/sort.service';
-import { LoginService } from 'app/login/login.service';
-import { EntityArrayResponseType, SystemSettingService } from 'app/entities/system-setting/service/system-setting.service';
-import { ISystemSetting } from 'app/entities/system-setting/system-setting.model';
-import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
+import { ISystemSetting } from '../system-setting.model';
+import { EntityArrayResponseType, SystemSettingService } from '../service/system-setting.service';
+import { SystemSettingDeleteDialogComponent } from '../delete/system-setting-delete-dialog.component';
 
 @Component({
-  selector: 'jhi-welcome',
   standalone: true,
-  templateUrl: './welcome.component.html',
-  styleUrl: './welcome.component.scss',
+  selector: 'jhi-system-setting',
+  templateUrl: './system-setting.component.html',
   imports: [
     RouterModule,
     FormsModule,
@@ -28,29 +26,43 @@ import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
     DurationPipe,
     FormatMediumDatetimePipe,
     FormatMediumDatePipe,
-  ]
-
+  ],
 })
-export class WelcomeComponent implements OnInit {
-  welcomeMessage: string="";  
-  videoUrl: SafeResourceUrl={};
+export class SystemSettingComponent implements OnInit {
   systemSettings?: ISystemSetting[];
   isLoading = false;
+
   predicate = 'id';
   ascending = true;
 
   constructor(
-    private loginService: LoginService,
-    private systemSettingService:SystemSettingService,
+    protected systemSettingService: SystemSettingService,
     protected activatedRoute: ActivatedRoute,
     public router: Router,
     protected sortService: SortService,
     protected modalService: NgbModal,
-    private sanitizer: DomSanitizer
   ) {}
 
-  ngOnInit() {
-    this.load()
+  trackId = (_index: number, item: ISystemSetting): number => this.systemSettingService.getSystemSettingIdentifier(item);
+
+  ngOnInit(): void {
+    this.load();
+  }
+
+  delete(systemSetting: ISystemSetting): void {
+    const modalRef = this.modalService.open(SystemSettingDeleteDialogComponent, { size: 'lg', backdrop: 'static' });
+    modalRef.componentInstance.systemSetting = systemSetting;
+    // unsubscribe not needed because closed completes on modal close
+    modalRef.closed
+      .pipe(
+        filter(reason => reason === ITEM_DELETED_EVENT),
+        switchMap(() => this.loadFromBackendWithRouteInformations()),
+      )
+      .subscribe({
+        next: (res: EntityArrayResponseType) => {
+          this.onResponseSuccess(res);
+        },
+      });
   }
 
   load(): void {
@@ -60,37 +72,35 @@ export class WelcomeComponent implements OnInit {
       },
     });
   }
+
+  navigateToWithComponentValues(): void {
+    this.handleNavigation(this.predicate, this.ascending);
+  }
+
   protected loadFromBackendWithRouteInformations(): Observable<EntityArrayResponseType> {
     return combineLatest([this.activatedRoute.queryParamMap, this.activatedRoute.data]).pipe(
       tap(([params, data]) => this.fillComponentAttributeFromRoute(params, data)),
       switchMap(() => this.queryBackend(this.predicate, this.ascending)),
     );
   }
+
   protected fillComponentAttributeFromRoute(params: ParamMap, data: Data): void {
-    //const sort = (params.get(SORT) ?? data[DEFAULT_SORT_DATA]).split(',');
-    //this.predicate = sort[0];
-    //this.ascending = sort[1] === ASC;
+    const sort = (params.get(SORT) ?? data[DEFAULT_SORT_DATA]).split(',');
+    this.predicate = sort[0];
+    this.ascending = sort[1] === ASC;
   }
 
   protected onResponseSuccess(response: EntityArrayResponseType): void {
     const dataFromBody = this.fillComponentAttributesFromResponseBody(response.body);
     this.systemSettings = this.refineData(dataFromBody);
-    const welcomeMessages = this.systemSettings.filter(setting=>setting.name=="welcomeMessage");
-    if(welcomeMessages.length>0)
-      this.welcomeMessage = welcomeMessages[0].value??"";
-    const youtubeUrls = this.systemSettings.filter(setting=>setting.name=="youtubeUrl");
-    if(youtubeUrls.length>0){
-      const youtubeUrl = youtubeUrls[0].value??"";
-      this.videoUrl = this.sanitizer.bypassSecurityTrustResourceUrl(youtubeUrl);
-    }
-    console.log(this.welcomeMessage)
-    console.log(this.videoUrl)
   }
-  protected fillComponentAttributesFromResponseBody(data: ISystemSetting[] | null): ISystemSetting[] {
-    return data ?? [];
-  }
+
   protected refineData(data: ISystemSetting[]): ISystemSetting[] {
     return data.sort(this.sortService.startSort(this.predicate, this.ascending ? 1 : -1));
+  }
+
+  protected fillComponentAttributesFromResponseBody(data: ISystemSetting[] | null): ISystemSetting[] {
+    return data ?? [];
   }
 
   protected queryBackend(predicate?: string, ascending?: boolean): Observable<EntityArrayResponseType> {
@@ -100,6 +110,18 @@ export class WelcomeComponent implements OnInit {
     };
     return this.systemSettingService.query(queryObject).pipe(tap(() => (this.isLoading = false)));
   }
+
+  protected handleNavigation(predicate?: string, ascending?: boolean): void {
+    const queryParamsObj = {
+      sort: this.getSortQueryParam(predicate, ascending),
+    };
+
+    this.router.navigate(['./'], {
+      relativeTo: this.activatedRoute,
+      queryParams: queryParamsObj,
+    });
+  }
+
   protected getSortQueryParam(predicate = this.predicate, ascending = this.ascending): string[] {
     const ascendingQueryParam = ascending ? ASC : DESC;
     if (predicate === '') {
@@ -108,9 +130,4 @@ export class WelcomeComponent implements OnInit {
       return [predicate + ',' + ascendingQueryParam];
     }
   }
-
-  login() {
-    this.loginService.login();
-  }
-
 }

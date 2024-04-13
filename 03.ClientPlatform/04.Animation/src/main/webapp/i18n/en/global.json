@@ -8,6 +8,7 @@
       "entities": {
         "main": "Entities",
         "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)",
+        "systemSetting": "System Setting",
         "workspace": "Workspace",
         "member": "Member",
         "linkedAccount": "Linked Account",

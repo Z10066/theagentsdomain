@@ -1,0 +1,25 @@
+{
+  "highwayacApp": {
+    "systemSetting": {
+      "home": {
+        "title": "SystemSettings",
+        "refreshListLabel": "リストの更新",
+        "createLabel": "System Setting の作成",
+        "createOrEditLabel": "System Settingの作成または編集",
+        "notFound": "System Settings が見つかりません。"
+      },
+      "created": "新しい System Setting がID {{ param }} で作成されました。",
+      "updated": "ID {{ param }} の System Setting が更新されました。",
+      "deleted": "ID {{ param }} の System Setting が削除されました。",
+      "delete": {
+        "question": "System Setting {{ id }}を削除してもよろしいですか？"
+      },
+      "detail": {
+        "title": "System Setting"
+      },
+      "id": "ID",
+      "name": "Name",
+      "value": "Value"
+    }
+  }
+}

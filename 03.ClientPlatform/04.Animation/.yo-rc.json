@@ -17,6 +17,7 @@
     "enableSwaggerCodegen": true,
     "enableTranslation": true,
     "entities": [
+      "SystemSetting",
       "Workspace",
       "Video",
       "Member",

@@ -1,0 +1,23 @@
+{
+  "annotations": {
+    "changelogDate": "20240316112707"
+  },
+  "applications": "*",
+  "databaseType": "sql",
+  "entityTableName": "system_setting",
+  "fields": [
+    {
+      "fieldName": "name",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "value",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    }
+  ],
+  "name": "SystemSetting",
+  "relationships": [],
+  "searchEngine": "no"
+}

@@ -1,0 +1,25 @@
+{
+  "highwayacApp": {
+    "systemSetting": {
+      "home": {
+        "title": "System Settings",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "创建新 System Setting",
+        "createOrEditLabel": "创建或编辑 System Setting",
+        "notFound": "No System Settings found"
+      },
+      "created": "System Setting {{ param }} 创建成功",
+      "updated": "System Setting {{ param }} 更新成功",
+      "deleted": "System Setting {{ param }} 删除成功",
+      "delete": {
+        "question": "你确定要删除 System Setting {{ id }} 吗？"
+      },
+      "detail": {
+        "title": "System Setting"
+      },
+      "id": "ID",
+      "name": "Name",
+      "value": "Value"
+    }
+  }
+}
