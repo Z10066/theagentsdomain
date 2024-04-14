@@ -18,6 +18,8 @@
     "translate": {
       "Workspaces": "工作间",
       "Welcome": "欢迎",
+      "VideoProduct": "生成视频",
+      "Material": "视频素材",
       "WaitingScreen": "等待屏幕",
       "Usage": "使用情况",
       "ThinkingScreen": "思考屏幕",

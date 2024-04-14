@@ -8,40 +8,136 @@
 </head>
 <body>
     <div class="workspaces-container">
-        <aside class="sidebar">
-            <!-- Sidebar content -->
-            <nav>
-                <!-- Sidebar links -->
-                <a href="#">Workspace settings</a>
-                <!-- Other sidebar items -->
-            </nav>
-        </aside>
+        <jhi-left-menu></jhi-left-menu>
         <main class="workspaces-content">
-            <header>
-                <h1>Workspaces</h1>
-                <button class="delete-account-button">Delete Account</button>
-            </header>
-            <table class="workspaces-table">
-                <thead>
-                    <tr>
-                        <th>Name</th>
-                        <th>Owner</th>
-                        <th>Status</th>
-                        <th>Delete</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>gun's Workspace</td>
-                        <td>You</td>
-                        <td>Active</td>
-                        <td><button class="delete-workspace-button">Delete</button></td>
-                    </tr>
-                    <!-- Additional workspace rows -->
-                </tbody>
-            </table>
+            <div>
+                <h2 id="page-heading" data-cy="WorkspaceHeading">
+                  <span jhiTranslate="highwayacApp.workspace.home.title">Workspaces</span>
+              
+                  <div class="d-flex justify-content-end">
+                    <button class="btn btn-info me-2" (click)="load()" [disabled]="isLoading">
+                      <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+                      <span jhiTranslate="highwayacApp.workspace.home.refreshListLabel">Refresh list</span>
+                    </button>
+              
+                    <button
+                      id="jh-create-entity"
+                      data-cy="entityCreateButton"
+                      class="btn btn-primary jh-create-entity create-workspace"
+                      [routerLink]="['/workspace/new']"
+                    >
+                      <fa-icon icon="plus"></fa-icon>
+                      <span jhiTranslate="highwayacApp.workspace.home.createLabel">Create a new Workspace</span>
+                    </button>
+                  </div>
+                </h2>
+              
+                <jhi-alert-error></jhi-alert-error>
+              
+                <jhi-alert></jhi-alert>
+              
+                @if (workspaces?.length === 0) {
+                  <div class="alert alert-warning" id="no-result">
+                    <span jhiTranslate="highwayacApp.workspace.home.notFound">No Workspaces found</span>
+                  </div>
+                }
+              
+                @if (workspaces && workspaces.length > 0) {
+                  <div class="table-responsive table-entities" id="entities">
+                    <table class="table table-striped" aria-describedby="page-heading">
+                      <thead>
+                        <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" (sortChange)="navigateToWithComponentValues()">
+                          <th scope="col" jhiSortBy="id">
+                            <div class="d-flex">
+                              <span jhiTranslate="global.field.id">ID</span>
+              
+                              <fa-icon class="p-1" icon="sort"></fa-icon>
+                            </div>
+                          </th>
+                          <th scope="col" jhiSortBy="name">
+                            <div class="d-flex">
+                              <span jhiTranslate="highwayacApp.workspace.name">Name</span>
+              
+                              <fa-icon class="p-1" icon="sort"></fa-icon>
+                            </div>
+                          </th>
+                          <th scope="col" jhiSortBy="identifier">
+                            <div class="d-flex">
+                              <span jhiTranslate="highwayacApp.workspace.identifier">Identifier</span>
+              
+                              <fa-icon class="p-1" icon="sort"></fa-icon>
+                            </div>
+                          </th>
+                          <th scope="col" jhiSortBy="betaFeatures">
+                            <div class="d-flex">
+                              <span jhiTranslate="highwayacApp.workspace.betaFeatures">Beta Features</span>
+              
+                              <fa-icon class="p-1" icon="sort"></fa-icon>
+                            </div>
+                          </th>
+                          <th scope="col" jhiSortBy="collaborationCursor">
+                            <div class="d-flex">
+                              <span jhiTranslate="highwayacApp.workspace.collaborationCursor">Collaboration Cursor</span>
+              
+                              <fa-icon class="p-1" icon="sort"></fa-icon>
+                            </div>
+                          </th>
+                          <th scope="col" jhiSortBy="defaultExportVisibility">
+                            <div class="d-flex">
+                              <span jhiTranslate="highwayacApp.workspace.defaultExportVisibility">Default Export Visibility</span>
+              
+                              <fa-icon class="p-1" icon="sort"></fa-icon>
+                            </div>
+                          </th>
+                          <th scope="col" jhiSortBy="publicAccess">
+                            <div class="d-flex">
+                              <span jhiTranslate="highwayacApp.workspace.publicAccess">Public Access</span>
+              
+                              <fa-icon class="p-1" icon="sort"></fa-icon>
+                            </div>
+                          </th>
+                          <th scope="col"></th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        @for (workspace of workspaces; track trackId) {
+                          <tr data-cy="entityTable">
+                            <td>
+                              <a [routerLink]="['/workspace', workspace.id, 'view']">{{ workspace.id }}</a>
+                            </td>
+                            <td>{{ workspace.name }}</td>
+                            <td>{{ workspace.identifier }}</td>
+                            <td>{{ workspace.betaFeatures }}</td>
+                            <td>{{ workspace.collaborationCursor }}</td>
+                            <td>{{ workspace.defaultExportVisibility }}</td>
+                            <td>{{ workspace.publicAccess }}</td>
+                            <td class="text-end">
+                              <div class="btn-group">
+                                <a [routerLink]="['/workspace', workspace.id, 'view']" class="btn btn-info btn-sm" data-cy="entityDetailsButton">
+                                  <fa-icon icon="eye"></fa-icon>
+                                  <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                                </a>
+              
+                                <a [routerLink]="['/workspace', workspace.id, 'edit']" class="btn btn-primary btn-sm" data-cy="entityEditButton">
+                                  <fa-icon icon="pencil-alt"></fa-icon>
+                                  <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                                </a>
+              
+                                <button type="submit" (click)="delete(workspace)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                                  <fa-icon icon="times"></fa-icon>
+                                  <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                                </button>
+                              </div>
+                            </td>
+                          </tr>
+                        }
+                      </tbody>
+                    </table>
+                  </div>
+                }
+              </div>
+              
         </main>
     </div>
-    <script src="workspacesScripts.js"></script>
 </body>
 </html>

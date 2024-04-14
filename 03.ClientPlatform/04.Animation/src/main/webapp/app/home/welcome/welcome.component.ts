@@ -50,6 +50,8 @@ export class WelcomeComponent implements OnInit {
   ) {}
 
   ngOnInit() {
+    const defaultUrl="https://www.youtube.com/embed/7ZzLL3mK-rc";
+    this.videoUrl = this.sanitizer.bypassSecurityTrustResourceUrl(defaultUrl);
     this.load()
   }
 

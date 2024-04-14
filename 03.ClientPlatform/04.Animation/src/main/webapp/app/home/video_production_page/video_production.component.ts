@@ -10,47 +10,64 @@ import { FormsModule } from '@angular/forms';
 import { ASC, DESC, SORT, ITEM_DELETED_EVENT, DEFAULT_SORT_DATA } from 'app/config/navigation.constants';
 import { SortService } from 'app/shared/sort/sort.service';
 import { LeftMenuComponent } from 'app/layouts/left-menu/left-menu.component';
-import { IUsage } from 'app/entities/usage/usage.model';
 import { EntityArrayResponseType } from 'app/entities/system-setting/service/system-setting.service';
-import { UsageService } from 'app/entities/usage/service/usage.service';
-import { UsageDeleteDialogComponent } from 'app/entities/usage/delete/usage-delete-dialog.component';
+import { IVideo } from 'app/entities/video/video.model';
+import { ITEMS_PER_PAGE, PAGE_HEADER, TOTAL_COUNT_RESPONSE_HEADER } from 'app/config/pagination.constants';
+import { VideoService } from 'app/entities/video/service/video.service';
+import { DataUtils } from 'app/core/util/data-util.service';
+import { VideoDeleteDialogComponent } from 'app/entities/video/delete/video-delete-dialog.component';
+import { HttpHeaders } from '@angular/common/http';
+import { ItemCountComponent } from 'app/shared/pagination';
 
 @Component({
-  selector: 'jhi-usages',
+  selector: 'jhi-videoproductions',
   standalone: true,
   imports: [RouterModule,SharedModule,LeftMenuComponent,FormsModule,
     SortDirective,
     SortByDirective,
     DurationPipe,
     FormatMediumDatetimePipe,
-    FormatMediumDatePipe,],
-  templateUrl: './usage.component.html',
-  styleUrl: './usageStyles.component.scss'
+    FormatMediumDatePipe,
+    ItemCountComponent],
+  templateUrl: './video_production.component.html',
+  styleUrl: './video_production.component.scss'
 })
-export class UsageComponent {
-  usages?: IUsage[];
+export class VideoProductionsComponent {
+  videos?: IVideo[];
   isLoading = false;
 
   predicate = 'id';
   ascending = true;
 
+  itemsPerPage = ITEMS_PER_PAGE;
+  totalItems = 0;
+  page = 1;
+
   constructor(
-    protected usageService: UsageService,
+    protected videoService: VideoService,
     protected activatedRoute: ActivatedRoute,
     public router: Router,
-    protected sortService: SortService,
+    protected dataUtils: DataUtils,
     protected modalService: NgbModal,
   ) {}
 
-  trackId = (_index: number, item: IUsage): number => this.usageService.getUsageIdentifier(item);
+  trackId = (_index: number, item: IVideo): number => this.videoService.getVideoIdentifier(item);
 
   ngOnInit(): void {
     this.load();
   }
 
-  delete(usage: IUsage): void {
-    const modalRef = this.modalService.open(UsageDeleteDialogComponent, { size: 'lg', backdrop: 'static' });
-    modalRef.componentInstance.usage = usage;
+  byteSize(base64String: string): string {
+    return this.dataUtils.byteSize(base64String);
+  }
+
+  openFile(base64String: string, contentType: string | null | undefined): void {
+    return this.dataUtils.openFile(base64String, contentType);
+  }
+
+  delete(video: IVideo): void {
+    const modalRef = this.modalService.open(VideoDeleteDialogComponent, { size: 'lg', backdrop: 'static' });
+    modalRef.componentInstance.video = video;
     // unsubscribe not needed because closed completes on modal close
     modalRef.closed
       .pipe(
@@ -73,45 +90,58 @@ export class UsageComponent {
   }
 
   navigateToWithComponentValues(): void {
-    this.handleNavigation(this.predicate, this.ascending);
+    this.handleNavigation(this.page, this.predicate, this.ascending);
+  }
+
+  navigateToPage(page = this.page): void {
+    this.handleNavigation(page, this.predicate, this.ascending);
   }
 
   protected loadFromBackendWithRouteInformations(): Observable<EntityArrayResponseType> {
     return combineLatest([this.activatedRoute.queryParamMap, this.activatedRoute.data]).pipe(
       tap(([params, data]) => this.fillComponentAttributeFromRoute(params, data)),
-      switchMap(() => this.queryBackend(this.predicate, this.ascending)),
+      switchMap(() => this.queryBackend(this.page, this.predicate, this.ascending)),
     );
   }
 
   protected fillComponentAttributeFromRoute(params: ParamMap, data: Data): void {
+    const page = params.get(PAGE_HEADER);
+    this.page = +(page ?? 1);
     const sort = (params.get(SORT) ?? data[DEFAULT_SORT_DATA]).split(',');
     this.predicate = sort[0];
     this.ascending = sort[1] === ASC;
   }
 
   protected onResponseSuccess(response: EntityArrayResponseType): void {
+    this.fillComponentAttributesFromResponseHeader(response.headers);
     const dataFromBody = this.fillComponentAttributesFromResponseBody(response.body);
-    this.usages = this.refineData(dataFromBody);
+    this.videos = dataFromBody;
   }
 
-  protected refineData(data: IUsage[]): IUsage[] {
-    return data.sort(this.sortService.startSort(this.predicate, this.ascending ? 1 : -1));
-  }
-
-  protected fillComponentAttributesFromResponseBody(data: IUsage[] | null): IUsage[] {
+  protected fillComponentAttributesFromResponseBody(data: IVideo[] | null): IVideo[] {
     return data ?? [];
   }
 
-  protected queryBackend(predicate?: string, ascending?: boolean): Observable<EntityArrayResponseType> {
-    this.isLoading = true;
-    const queryObject: any = {
-      sort: this.getSortQueryParam(predicate, ascending),
-    };
-    return this.usageService.query(queryObject).pipe(tap(() => (this.isLoading = false)));
+  protected fillComponentAttributesFromResponseHeader(headers: HttpHeaders): void {
+    this.totalItems = Number(headers.get(TOTAL_COUNT_RESPONSE_HEADER));
   }
 
-  protected handleNavigation(predicate?: string, ascending?: boolean): void {
+  protected queryBackend(page?: number, predicate?: string, ascending?: boolean): Observable<EntityArrayResponseType> {
+    this.isLoading = true;
+    const pageToLoad: number = page ?? 1;
+    const queryObject: any = {
+      page: pageToLoad - 1,
+      size: this.itemsPerPage,
+      eagerload: true,
+      sort: this.getSortQueryParam(predicate, ascending),
+    };
+    return this.videoService.query(queryObject).pipe(tap(() => (this.isLoading = false)));
+  }
+
+  protected handleNavigation(page = this.page, predicate?: string, ascending?: boolean): void {
     const queryParamsObj = {
+      page,
+      size: this.itemsPerPage,
       sort: this.getSortQueryParam(predicate, ascending),
     };
 

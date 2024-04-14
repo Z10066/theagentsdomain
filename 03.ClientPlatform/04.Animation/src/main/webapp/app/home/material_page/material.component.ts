@@ -1,58 +1,58 @@
-import { Component } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Data, ParamMap, Router, RouterModule } from '@angular/router';
+import { combineLatest, filter, Observable, switchMap, tap } from 'rxjs';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { ASC, DEFAULT_SORT_DATA, DESC, ITEM_DELETED_EVENT, SORT } from 'app/config/navigation.constants';
-import { EntityArrayResponseType } from 'app/entities/system-setting/service/system-setting.service';
-import { WorkspaceDeleteDialogComponent } from 'app/entities/workspace/delete/workspace-delete-dialog.component';
-import { WorkspaceService } from 'app/entities/workspace/service/workspace.service';
-import { IWorkspace } from 'app/entities/workspace/workspace.model';
-import { LeftMenuComponent } from 'app/layouts/left-menu/left-menu.component';
-import { DurationPipe, FormatMediumDatePipe, FormatMediumDatetimePipe } from 'app/shared/date';
-import SharedModule from 'app/shared/shared.module';
-import { SortByDirective, SortDirective } from 'app/shared/sort';
-import { SortService } from 'app/shared/sort/sort.service';
-import { Observable, combineLatest, filter, switchMap, tap } from 'rxjs';
 
+import SharedModule from 'app/shared/shared.module';
+import { SortDirective, SortByDirective } from 'app/shared/sort';
+import { DurationPipe, FormatMediumDatetimePipe, FormatMediumDatePipe } from 'app/shared/date';
+import { FormsModule } from '@angular/forms';
+import { ASC, DESC, SORT, ITEM_DELETED_EVENT, DEFAULT_SORT_DATA } from 'app/config/navigation.constants';
+import { SortService } from 'app/shared/sort/sort.service';
+import { LeftMenuComponent } from 'app/layouts/left-menu/left-menu.component';
+import { EntityArrayResponseType } from 'app/entities/system-setting/service/system-setting.service';
+import { ItemCountComponent } from 'app/shared/pagination';
+import { IMaterial } from 'app/entities/material/material.model';
+import { MaterialService } from 'app/entities/material/service/material.service';
+import { MaterialDeleteDialogComponent } from 'app/entities/material/delete/material-delete-dialog.component';
 
 @Component({
-  selector: 'jhi-workspaces',
+  selector: 'jhi-materials',
   standalone: true,
-  imports: [SharedModule, RouterModule,LeftMenuComponent,
-    FormsModule,
+  imports: [RouterModule,SharedModule,LeftMenuComponent,FormsModule,
     SortDirective,
     SortByDirective,
     DurationPipe,
     FormatMediumDatetimePipe,
     FormatMediumDatePipe,
-],
-  templateUrl: './workspaces.html',
-  styleUrl: './workspacesStyles.scss'
+    ItemCountComponent],
+  templateUrl: './material.component.html',
+  styleUrl: './material.component.scss'
 })
-export class WprkspacesComponent {
-  workspaces?: IWorkspace[];
+export class MaterialsComponent {
+  materials?: IMaterial[];
   isLoading = false;
 
   predicate = 'id';
   ascending = true;
 
   constructor(
-    protected workspaceService: WorkspaceService,
+    protected materialService: MaterialService,
     protected activatedRoute: ActivatedRoute,
     public router: Router,
     protected sortService: SortService,
     protected modalService: NgbModal,
   ) {}
 
-  trackId = (_index: number, item: IWorkspace): number => this.workspaceService.getWorkspaceIdentifier(item);
+  trackId = (_index: number, item: IMaterial): number => this.materialService.getMaterialIdentifier(item);
 
   ngOnInit(): void {
     this.load();
   }
 
-  delete(workspace: IWorkspace): void {
-    const modalRef = this.modalService.open(WorkspaceDeleteDialogComponent, { size: 'lg', backdrop: 'static' });
-    modalRef.componentInstance.workspace = workspace;
+  delete(material: IMaterial): void {
+    const modalRef = this.modalService.open(MaterialDeleteDialogComponent, { size: 'lg', backdrop: 'static' });
+    modalRef.componentInstance.material = material;
     // unsubscribe not needed because closed completes on modal close
     modalRef.closed
       .pipe(
@@ -93,14 +93,14 @@ export class WprkspacesComponent {
 
   protected onResponseSuccess(response: EntityArrayResponseType): void {
     const dataFromBody = this.fillComponentAttributesFromResponseBody(response.body);
-    this.workspaces = this.refineData(dataFromBody);
+    this.materials = this.refineData(dataFromBody);
   }
 
-  protected refineData(data: IWorkspace[]): IWorkspace[] {
+  protected refineData(data: IMaterial[]): IMaterial[] {
     return data.sort(this.sortService.startSort(this.predicate, this.ascending ? 1 : -1));
   }
 
-  protected fillComponentAttributesFromResponseBody(data: IWorkspace[] | null): IWorkspace[] {
+  protected fillComponentAttributesFromResponseBody(data: IMaterial[] | null): IMaterial[] {
     return data ?? [];
   }
 
@@ -109,7 +109,7 @@ export class WprkspacesComponent {
     const queryObject: any = {
       sort: this.getSortQueryParam(predicate, ascending),
     };
-    return this.workspaceService.query(queryObject).pipe(tap(() => (this.isLoading = false)));
+    return this.materialService.query(queryObject).pipe(tap(() => (this.isLoading = false)));
   }
 
   protected handleNavigation(predicate?: string, ascending?: boolean): void {

@@ -32,6 +32,9 @@ import { CreaterecentEventsPromptComponent } from './home/create_recent_events_p
 import { CreatetiktokVideoPromptComponent } from './home/create_tiktok_video_prompt/createtiktok-video-prompt.component';
 import { SignupComponent } from './home/signup/signup.component';
 import { LoginComponent } from './home/login/login.component';
+import { LeftMenuComponent } from './layouts/left-menu/left-menu.component';
+import { VideoProductionsComponent } from './home/video_production_page/video_production.component';
+import { MaterialsComponent } from './home/material_page/material.component';
 
 
 
@@ -43,7 +46,8 @@ import { LoginComponent } from './home/login/login.component';
     MainComponent,WelcomeComponent,WaitingScreenComponent,UsageComponent,ThinkingScreenComponent,RenderingVideoComponent,PublishVideoComponent,
     ProfileComponent,PlanComponent,MembersComponent,HistoryComponent,DownloadComponent,WprkspacesComponent,CreatVideoComponent,ContinueComponent,
     CreatevideopromptComponent,VideoCircleComponent,CreatexplainerPromptComponent,CreateinstagramReelPromptComponent,CreatepromptComponent,
-    CreaterecentEventsPromptComponent,CreatetiktokVideoPromptComponent,SignupComponent,LoginComponent
+    CreaterecentEventsPromptComponent,CreatetiktokVideoPromptComponent,SignupComponent,LoginComponent,LeftMenuComponent,VideoProductionsComponent,
+    MaterialsComponent
     // jhipster-needle-angular-add-module JHipster will add new module here
   ],
 })

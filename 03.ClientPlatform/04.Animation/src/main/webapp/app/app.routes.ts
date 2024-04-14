@@ -21,8 +21,6 @@ import { DownloadComponent } from './home/download_page/download.component';
 import { WprkspacesComponent } from './home/workspaces_page/workspaces.component';
 import { CreatVideoComponent } from './home/createVideo/creat-video.component';
 import { ContinueComponent } from './home/continue_page/continue.component';
-import EntityComponent from './entities/entity.component';
-import { VideoComponent } from './entities/video/list/video.component';
 import { CreatevideopromptComponent } from './home/create_video_prompt/createvideoprompt.component';
 import { VideoCircleComponent } from './home/video-circle/video-circle.component';
 import { CreatexplainerPromptComponent } from './home/create_explainer_prompt/createxplainer-prompt.component';
@@ -33,6 +31,8 @@ import { CreatetiktokVideoPromptComponent } from './home/create_tiktok_video_pro
 import { ASC } from './config/navigation.constants';
 import { SignupComponent } from './home/signup/signup.component';
 import { LoginComponent } from './home/login/login.component';
+import { VideoProductionsComponent } from './home/video_production_page/video_production.component';
+import { MaterialsComponent } from './home/material_page/material.component';
 
 const routes: Routes = [
   {
@@ -43,6 +43,10 @@ const routes: Routes = [
   {
     path: 'Workspaces',
     component: WprkspacesComponent,
+    data: {
+      defaultSort: 'id,' + ASC,
+    },
+    canActivate: [UserRouteAccessService],
   },
   {
     path: 'Welcome',
@@ -66,6 +70,10 @@ const routes: Routes = [
   {
     path: 'Usage',
     component: UsageComponent,
+    data: {
+      defaultSort: 'id,' + ASC,
+    },
+    canActivate: [UserRouteAccessService],
   },
   {
     path: 'ThinkingScreen',
@@ -82,19 +90,52 @@ const routes: Routes = [
   {
     path: 'Profile',
     component: ProfileComponent,
+    data: {
+      defaultSort: 'id,' + ASC,
+    },
+    canActivate: [UserRouteAccessService],
   },
   {
     path: 'Plan',
     component: PlanComponent,
+    data: {
+      defaultSort: 'id,' + ASC,
+    },
+    canActivate: [UserRouteAccessService],
   },
   {
     path: 'Members',
     component: MembersComponent,
+    data: {
+      defaultSort: 'id,' + ASC,
+    },
+    canActivate: [UserRouteAccessService],
   },
   {
     path: 'History',
     component: HistoryComponent,
+    data: {
+      defaultSort: 'id,' + ASC,
+    },
+    canActivate: [UserRouteAccessService],
   },
+  {
+    path: 'VideoProduct',
+    component: VideoProductionsComponent,
+    data: {
+      defaultSort: 'id,' + ASC,
+    },
+    canActivate: [UserRouteAccessService],
+  },
+  {
+    path: 'Material',
+    component: MaterialsComponent,
+    data: {
+      defaultSort: 'id,' + ASC,
+    },
+    canActivate: [UserRouteAccessService],
+  },
+  
   {
     path: 'Download',
     component: DownloadComponent,
