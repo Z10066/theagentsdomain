@@ -35,10 +35,18 @@ import { VideoProductionsComponent } from './home/video_production_page/video_pr
 import { MaterialsComponent } from './home/material_page/material.component';
 
 const routes: Routes = [
-  {
+  /*{
     path: '',
     component: HomeComponent,
     title: 'home.title',
+  },*/
+  {
+    path: '',
+    component: WelcomeComponent,
+    data: {
+      defaultSort: 'id,' + ASC,
+    },
+    canActivate: [UserRouteAccessService],
   },
   {
     path: 'Workspaces',
