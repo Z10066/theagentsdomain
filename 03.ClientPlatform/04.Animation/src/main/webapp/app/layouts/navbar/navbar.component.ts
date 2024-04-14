@@ -87,7 +87,7 @@ export default class NavbarComponent implements OnInit {
 
   loadMicrofrontendsEntities(): void {
     // Lazy load microfrontend entities.
-    loadNavbarItems('user').then(
+    /*loadNavbarItems('user').then(
       async items => {
         this.userEntityNavbarItems = items;
         try {
@@ -118,6 +118,6 @@ export default class NavbarComponent implements OnInit {
         // eslint-disable-next-line no-console
         console.log('Error loading admin entities', error);
       },
-    );
+    );*/
   }
 }
