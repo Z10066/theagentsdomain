@@ -83,8 +83,6 @@ export class WelcomeComponent implements OnInit {
       const youtubeUrl = youtubeUrls[0].value??"";
       this.videoUrl = this.sanitizer.bypassSecurityTrustResourceUrl(youtubeUrl);
     }
-    console.log(this.welcomeMessage)
-    console.log(this.videoUrl)
   }
   protected fillComponentAttributesFromResponseBody(data: ISystemSetting[] | null): ISystemSetting[] {
     return data ?? [];
@@ -109,8 +107,24 @@ export class WelcomeComponent implements OnInit {
     }
   }
 
+  signup() {
+    this.router.navigate(['/signup']);
+  }
+  
   login() {
-    this.loginService.login();
+    this.router.navigate(['/login']);
+  }
+
+  loginWithGoogle(): void {
+    this.loginService.loginWithGoogle();
+  }
+
+  loginWithApple(): void {
+    this.loginService.loginWithApple();
+  }
+
+  loginWithGPTPlus(): void {
+    this.loginService.loginWithOpenaiPlus();
   }
 
 }

@@ -17,17 +17,17 @@
         <main>
             <section class="welcome">
                 <h1><span class="highlight">{{welcomeMessage}}</span></h1>
-                <button class="social-button google">Join with Google</button>
-                <button class="social-button apple">Join with Apple</button>
+                <button class="social-button google" (click)="loginWithGoogle()">Join with Google</button>
+                <button class="social-button apple" (click)="loginWithApple()">Join with Apple</button>
                 <div class="or-separator">or</div>
                 <input type="email" placeholder="Email" class="email-input">
-                <button class="continue-button">Continue with email</button>
+                <button class="continue-button" (click)="login()">Continue with email</button>
                 <div class="sign-up">
-                    Don't have an account? <a href="javascript:void(0);" (click)="login()">Sign up</a>
+                    Don't have an account? <a href="javascript:void(0);" (click)="signup()">Sign up</a>
                 </div>
                 <footer>
                     HighwayVC and HighwayAI have separate accounts.
-                    <div>ChatGPT Plus user? Try our new <a href="#">Custom GPT</a></div>
+                    <div>ChatGPT Plus user? Try our new <a href="javascript:void(0);" (click)="loginWithGPTPlus()">Custom GPT</a></div>
                 </footer>
             </section>
             <section class="promotion">
@@ -39,6 +39,5 @@
         </main>
     </div>
 </div>
-<script src="scripts.js"></script>
 </body>
 </html>

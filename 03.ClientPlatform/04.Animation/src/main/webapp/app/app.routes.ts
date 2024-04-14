@@ -31,6 +31,8 @@ import { CreatepromptComponent } from './home/create_prompt/createprompt.compone
 import { CreaterecentEventsPromptComponent } from './home/create_recent_events_prompt/createrecent-events-prompt.component';
 import { CreatetiktokVideoPromptComponent } from './home/create_tiktok_video_prompt/createtiktok-video-prompt.component';
 import { ASC } from './config/navigation.constants';
+import { SignupComponent } from './home/signup/signup.component';
+import { LoginComponent } from './home/login/login.component';
 
 const routes: Routes = [
   {
@@ -48,6 +50,14 @@ const routes: Routes = [
     data: {
       defaultSort: 'id,' + ASC,
     },
+  },
+  {
+    path: 'login',
+    component: LoginComponent,
+  },
+  {
+    path: 'signup',
+    component: SignupComponent,
   },
   {
     path: 'WaitingScreen',
