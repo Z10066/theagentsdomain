@@ -35,6 +35,7 @@ import { LoginComponent } from './home/login/login.component';
 import { LeftMenuComponent } from './layouts/left-menu/left-menu.component';
 import { VideoProductionsComponent } from './home/video_production_page/video_production.component';
 import { MaterialsComponent } from './home/material_page/material.component';
+import { FootMenuComponent } from './layouts/foot-menu/foot-menu.component';
 
 
 
@@ -47,7 +48,7 @@ import { MaterialsComponent } from './home/material_page/material.component';
     ProfileComponent,PlanComponent,MembersComponent,HistoryComponent,DownloadComponent,WprkspacesComponent,CreatVideoComponent,ContinueComponent,
     CreatevideopromptComponent,VideoCircleComponent,CreatexplainerPromptComponent,CreateinstagramReelPromptComponent,CreatepromptComponent,
     CreaterecentEventsPromptComponent,CreatetiktokVideoPromptComponent,SignupComponent,LoginComponent,LeftMenuComponent,VideoProductionsComponent,
-    MaterialsComponent
+    MaterialsComponent,FootMenuComponent
     // jhipster-needle-angular-add-module JHipster will add new module here
   ],
 })

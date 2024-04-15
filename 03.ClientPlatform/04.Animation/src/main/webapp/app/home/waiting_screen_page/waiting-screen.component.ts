@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { RouterModule } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 import SharedModule from 'app/shared/shared.module';
 
 @Component({
@@ -10,5 +10,13 @@ import SharedModule from 'app/shared/shared.module';
   styleUrl: './waiting-screen.component.scss'
 })
 export class WaitingScreenComponent {
+  constructor(
+    public router: Router
+    ){
+      
+    }
+  continue() {
+    this.router.navigate(['/RenderingVideo']);
+  }
 
 }

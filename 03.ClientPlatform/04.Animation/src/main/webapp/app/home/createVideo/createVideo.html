@@ -7,18 +7,6 @@
     <title>HighwayVC - Create Video</title>
 </head>
 <body>
-    <div class="sidebar">
-        <img src="highwayvc-logo.png" alt="HighwayVC Logo" class="logo">
-        <nav class="navigation">
-            <a href="#" class="nav-link active">Home</a>
-            <a href="#" class="nav-link">Media Library</a>
-            <div class="nav-section">Plugins</div>
-            <a href="#" class="nav-link">Voices</a>
-            <div class="nav-section">History</div>
-            <!-- Add additional history links here -->
-            <a href="#" class="nav-link">Show more</a>
-        </nav>
-    </div>
     <div class="main-content">
         <div class="video-form">
             <label for="model-select">Model:</label>
@@ -27,9 +15,9 @@
                 <!-- Additional model options here -->
             </select>
             <textarea id="video-instructions" placeholder="Give me a topic, and detailed instructions" rows="4"></textarea>
-            <button id="generate-video">Generate a video</button>
+            <button id="generate-video" (click)="continue()">Generate a video</button>
         </div>
     </div>
-    <script src="createVideoScripts.js"></script>
+    <jhi-foot-menu></jhi-foot-menu>
 </body>
 </html>
