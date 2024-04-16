@@ -8,7 +8,7 @@
 .nav-item {
     display: flex;
     align-items: center; /* 垂直居中 */
-    transition: transform 0.2s ease; /* 添加过渡效果 */
+    transition: transform 0.2s ease, color 0.2s ease;  /* 添加过渡效果 */
 }
 
 .nav-item a {
@@ -16,11 +16,13 @@
     color: #f1ecec;
     padding: 10px;
     border: 1px solid transparent; /* 初始时边框透明 */
+    transition: font-size 0.2s ease; /* 字体大小过渡效果 */
 }
 
 .nav-item a:hover {
-    border-color: #fff; /* 鼠标指向时边框变为白色 */
+    border-color: #0a95f2; /* 鼠标指向时边框变为白色 */
     transform: translateY(5px); /* 整体按钮向下移动5px */
+    color: #00bfff; /* 鼠标指向时颜色变为浅蓝色 */
 }
 
 .nav-item:hover {
