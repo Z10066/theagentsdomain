@@ -23,7 +23,7 @@
 	path = 02.SoftwareGenerator/swagger-codegen
 	url = https://github.com/swagger-api/swagger-codegen.git
 [submodule "Rapter1990/SpringBootMicroservices"]
-	path = 03.ClientPlatform/SpringBootMicroservices
+	path = 08.ApplicationManagement/SpringBootMicroservices
 	url = https://github.com/Rapter1990/SpringBootMicroservices.git
 [submodule "keycloak/keycloak"]
 	path = 04.UserPlatform/keycloak
