@@ -22,5 +22,4 @@ export class LeftMenuComponent {
     { label: 'History', link: '/History', target: '_self' },
     { label: 'Profile', link: '/Profile', target: '_self' },
   ];
-
 }

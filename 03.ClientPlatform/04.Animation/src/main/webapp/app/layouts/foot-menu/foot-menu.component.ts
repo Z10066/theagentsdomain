@@ -21,5 +21,5 @@ export class FootMenuComponent {
     { label: 'Createprompt', link: '/Createprompt', target: '_self' },
     
   ];
-
+  
 }
