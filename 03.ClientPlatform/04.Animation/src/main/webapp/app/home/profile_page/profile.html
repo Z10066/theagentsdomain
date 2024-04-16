@@ -8,35 +8,117 @@
 </head>
 <body>
     <div class="profile-container">
-        <aside class="sidebar">
-            <!-- Sidebar content here -->
-            <nav>
-                <a href="#">Workspace settings</a>
-                <a href="#">Members</a>
-                <!-- Other links -->
-            </nav>
-        </aside>
+        <jhi-left-menu></jhi-left-menu>
         <main class="profile-content">
-            <header>
-                <h1>Profile</h1>
-            </header>
-            <section class="form-section">
-                <label for="username">Username</label>
-                <input type="text" id="username" value="gunt">
-                <button>Save</button>
-
-                <label for="fullname">Full name</label>
-                <input type="text" id="fullname" value="gun tei">
-                <button>Save</button>
-            </section>
-            <section class="connect-section">
-                <button class="connect-discord">Connect Discord</button>
-            </section>
-            <section class="influencer-section">
-                <button>Become an influencer</button>
-            </section>
+            <div>
+                <h2 id="page-heading" data-cy="LinkedAccountHeading">
+                  <span jhiTranslate="highwayacApp.linkedAccount.home.title">Linked Accounts</span>
+              
+                  <div class="d-flex justify-content-end">
+                    <button class="btn btn-info me-2" (click)="load()" [disabled]="isLoading">
+                      <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+                      <span jhiTranslate="highwayacApp.linkedAccount.home.refreshListLabel">Refresh list</span>
+                    </button>
+              
+                    <button
+                      id="jh-create-entity"
+                      data-cy="entityCreateButton"
+                      class="btn btn-primary jh-create-entity create-linked-account"
+                      [routerLink]="['/linked-account/new']"
+                    >
+                      <fa-icon icon="plus"></fa-icon>
+                      <span jhiTranslate="highwayacApp.linkedAccount.home.createLabel">Create a new Linked Account</span>
+                    </button>
+                  </div>
+                </h2>
+              
+                <jhi-alert-error></jhi-alert-error>
+              
+                <jhi-alert></jhi-alert>
+              
+                @if (linkedAccounts?.length === 0) {
+                  <div class="alert alert-warning" id="no-result">
+                    <span jhiTranslate="highwayacApp.linkedAccount.home.notFound">No Linked Accounts found</span>
+                  </div>
+                }
+              
+                @if (linkedAccounts && linkedAccounts.length > 0) {
+                  <div class="table-responsive table-entities" id="entities">
+                    <table class="table table-striped" aria-describedby="page-heading">
+                      <thead>
+                        <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" (sortChange)="navigateToWithComponentValues()">
+                          <th scope="col" jhiSortBy="id">
+                            <div class="d-flex">
+                              <span jhiTranslate="global.field.id">ID</span>
+              
+                              <fa-icon class="p-1" icon="sort"></fa-icon>
+                            </div>
+                          </th>
+                          <th scope="col" jhiSortBy="accountType">
+                            <div class="d-flex">
+                              <span jhiTranslate="highwayacApp.linkedAccount.accountType">Account Type</span>
+              
+                              <fa-icon class="p-1" icon="sort"></fa-icon>
+                            </div>
+                          </th>
+                          <th scope="col" jhiSortBy="accountIdentifier">
+                            <div class="d-flex">
+                              <span jhiTranslate="highwayacApp.linkedAccount.accountIdentifier">Account Identifier</span>
+              
+                              <fa-icon class="p-1" icon="sort"></fa-icon>
+                            </div>
+                          </th>
+                          <th scope="col" jhiSortBy="member.id">
+                            <div class="d-flex">
+                              <span jhiTranslate="highwayacApp.linkedAccount.member">Member</span>
+                              <fa-icon class="p-1" icon="sort"></fa-icon>
+                            </div>
+                          </th>
+                          <th scope="col"></th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        @for (linkedAccount of linkedAccounts; track trackId) {
+                          <tr data-cy="entityTable">
+                            <td>
+                              <a [routerLink]="['/linked-account', linkedAccount.id, 'view']">{{ linkedAccount.id }}</a>
+                            </td>
+                            <td jhiTranslate="{{ 'highwayacApp.AccountType.' + linkedAccount.accountType }}">{{ linkedAccount.accountType }}</td>
+                            <td>{{ linkedAccount.accountIdentifier }}</td>
+                            <td>
+                              @if (linkedAccount.member) {
+                                <div>
+                                  <a [routerLink]="['/member', linkedAccount.member.id, 'view']">{{ linkedAccount.member.id }}</a>
+                                </div>
+                              }
+                            </td>
+                            <td class="text-end">
+                              <div class="btn-group">
+                                <a [routerLink]="['/linked-account', linkedAccount.id, 'view']" class="btn btn-info btn-sm" data-cy="entityDetailsButton">
+                                  <fa-icon icon="eye"></fa-icon>
+                                  <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                                </a>
+              
+                                <a [routerLink]="['/linked-account', linkedAccount.id, 'edit']" class="btn btn-primary btn-sm" data-cy="entityEditButton">
+                                  <fa-icon icon="pencil-alt"></fa-icon>
+                                  <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                                </a>
+              
+                                <button type="submit" (click)="delete(linkedAccount)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                                  <fa-icon icon="times"></fa-icon>
+                                  <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                                </button>
+                              </div>
+                            </td>
+                          </tr>
+                        }
+                      </tbody>
+                    </table>
+                  </div>
+                }
+              </div>
+              
         </main>
     </div>
-    <script src="profileScripts.js"></script>
 </body>
 </html>

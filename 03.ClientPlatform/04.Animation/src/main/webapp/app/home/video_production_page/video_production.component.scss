@@ -1,0 +1,64 @@
+
+body, html {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-color: #121212;
+    color: #fff;
+}
+
+.usage-container {
+    display: flex;
+}
+
+.sidebar {
+    width: 250px; /* Adjust as needed */
+    background-color: #333;
+    padding: 10px;
+}
+
+.sidebar a {
+    color: #fff;
+    text-decoration: none;
+    display: block;
+    padding: 5px;
+}
+
+.sidebar a.active {
+    background-color: #555;
+}
+
+.usage-content {
+    flex-grow: 1;
+    padding: 20px;
+}
+
+.usage-section {
+    display: flex;
+    flex-direction: column;
+}
+
+.usage-card {
+    background-color: #222;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+.usage-meter {
+    position: relative;
+    height: 20px;
+    background-color: #333;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.meter {
+    height: 100%;
+}
+
+.meter-used {
+    display: block;
+    height: 100%;
+    background-color: #4a76a8;
+    width: 0%; /* Adjust based on usage */
+}

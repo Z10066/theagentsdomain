@@ -25,6 +25,17 @@ import { CreatVideoComponent } from './home/createVideo/creat-video.component';
 import { ContinueComponent } from './home/continue_page/continue.component';
 import { CreatevideopromptComponent } from './home/create_video_prompt/createvideoprompt.component';
 import { VideoCircleComponent } from './home/video-circle/video-circle.component';
+import { CreatexplainerPromptComponent } from './home/create_explainer_prompt/createxplainer-prompt.component';
+import { CreateinstagramReelPromptComponent } from './home/create_instagram_reel_prompt/createinstagram-reel-prompt.component';
+import { CreatepromptComponent } from './home/create_prompt/createprompt.component';
+import { CreaterecentEventsPromptComponent } from './home/create_recent_events_prompt/createrecent-events-prompt.component';
+import { CreatetiktokVideoPromptComponent } from './home/create_tiktok_video_prompt/createtiktok-video-prompt.component';
+import { SignupComponent } from './home/signup/signup.component';
+import { LoginComponent } from './home/login/login.component';
+import { LeftMenuComponent } from './layouts/left-menu/left-menu.component';
+import { VideoProductionsComponent } from './home/video_production_page/video_production.component';
+import { MaterialsComponent } from './home/material_page/material.component';
+import { FootMenuComponent } from './layouts/foot-menu/foot-menu.component';
 
 
 
@@ -35,7 +46,9 @@ import { VideoCircleComponent } from './home/video-circle/video-circle.component
   imports: [
     MainComponent,WelcomeComponent,WaitingScreenComponent,UsageComponent,ThinkingScreenComponent,RenderingVideoComponent,PublishVideoComponent,
     ProfileComponent,PlanComponent,MembersComponent,HistoryComponent,DownloadComponent,WprkspacesComponent,CreatVideoComponent,ContinueComponent,
-    CreatevideopromptComponent,VideoCircleComponent
+    CreatevideopromptComponent,VideoCircleComponent,CreatexplainerPromptComponent,CreateinstagramReelPromptComponent,CreatepromptComponent,
+    CreaterecentEventsPromptComponent,CreatetiktokVideoPromptComponent,SignupComponent,LoginComponent,LeftMenuComponent,VideoProductionsComponent,
+    MaterialsComponent,FootMenuComponent
     // jhipster-needle-angular-add-module JHipster will add new module here
   ],
 })

@@ -3,11 +3,13 @@
     "title": "Highwayac",
     "browsehappy": "You are using an <strong>outdated</strong> browser. Please <a href=\"http://browsehappy.com/?locale=en\">upgrade your browser</a> to improve your experience.",
     "menu": {
-      "home": "Home",
+      "home": "Workspace",
       "jhipster-needle-menu-add-element": "JHipster will add additional menu entries here (do not translate!)",
       "entities": {
         "main": "Entities",
         "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)",
+        "systemSetting": "System Setting",
+        "video": "Video",
         "workspace": "Workspace",
         "member": "Member",
         "linkedAccount": "Linked Account",
@@ -17,7 +19,6 @@
         "extraInfo": "Extra Info",
         "material": "Material",
         "history": "History",
-        "video": "Video",
         "creator": "Creator",
         "category": "Category",
         "copyright": "Copyright",

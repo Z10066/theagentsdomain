@@ -1,0 +1,7 @@
+<!-- login.component.html -->
+<form (ngSubmit)="login()" #loginForm="ngForm">
+    <input type="email" [(ngModel)]="email" name="email" required>
+    <input type="password" [(ngModel)]="password" name="password" required>
+    <button type="submit">Login</button>
+  </form>
+  

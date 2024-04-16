@@ -21,24 +21,55 @@ import { DownloadComponent } from './home/download_page/download.component';
 import { WprkspacesComponent } from './home/workspaces_page/workspaces.component';
 import { CreatVideoComponent } from './home/createVideo/creat-video.component';
 import { ContinueComponent } from './home/continue_page/continue.component';
-import EntityComponent from './entities/entity.component';
-import { VideoComponent } from './entities/video/list/video.component';
 import { CreatevideopromptComponent } from './home/create_video_prompt/createvideoprompt.component';
 import { VideoCircleComponent } from './home/video-circle/video-circle.component';
+import { CreatexplainerPromptComponent } from './home/create_explainer_prompt/createxplainer-prompt.component';
+import { CreateinstagramReelPromptComponent } from './home/create_instagram_reel_prompt/createinstagram-reel-prompt.component';
+import { CreatepromptComponent } from './home/create_prompt/createprompt.component';
+import { CreaterecentEventsPromptComponent } from './home/create_recent_events_prompt/createrecent-events-prompt.component';
+import { CreatetiktokVideoPromptComponent } from './home/create_tiktok_video_prompt/createtiktok-video-prompt.component';
+import { ASC } from './config/navigation.constants';
+import { SignupComponent } from './home/signup/signup.component';
+import { LoginComponent } from './home/login/login.component';
+import { VideoProductionsComponent } from './home/video_production_page/video_production.component';
+import { MaterialsComponent } from './home/material_page/material.component';
 
 const routes: Routes = [
-  {
+  /*{
     path: '',
     component: HomeComponent,
     title: 'home.title',
+  },*/
+  {
+    path: '',
+    component: WelcomeComponent,
+    data: {
+      defaultSort: 'id,' + ASC,
+    },
+    canActivate: [UserRouteAccessService],
   },
   {
     path: 'Workspaces',
     component: WprkspacesComponent,
+    data: {
+      defaultSort: 'id,' + ASC,
+    },
+    canActivate: [UserRouteAccessService],
   },
   {
     path: 'Welcome',
     component: WelcomeComponent,
+    data: {
+      defaultSort: 'id,' + ASC,
+    },
+  },
+  {
+    path: 'login',
+    component: LoginComponent,
+  },
+  {
+    path: 'signup',
+    component: SignupComponent,
   },
   {
     path: 'WaitingScreen',
@@ -47,6 +78,10 @@ const routes: Routes = [
   {
     path: 'Usage',
     component: UsageComponent,
+    data: {
+      defaultSort: 'id,' + ASC,
+    },
+    canActivate: [UserRouteAccessService],
   },
   {
     path: 'ThinkingScreen',
@@ -63,19 +98,52 @@ const routes: Routes = [
   {
     path: 'Profile',
     component: ProfileComponent,
+    data: {
+      defaultSort: 'id,' + ASC,
+    },
+    canActivate: [UserRouteAccessService],
   },
   {
     path: 'Plan',
     component: PlanComponent,
+    data: {
+      defaultSort: 'id,' + ASC,
+    },
+    canActivate: [UserRouteAccessService],
   },
   {
     path: 'Members',
     component: MembersComponent,
+    data: {
+      defaultSort: 'id,' + ASC,
+    },
+    canActivate: [UserRouteAccessService],
   },
   {
     path: 'History',
     component: HistoryComponent,
+    data: {
+      defaultSort: 'id,' + ASC,
+    },
+    canActivate: [UserRouteAccessService],
   },
+  {
+    path: 'VideoProduct',
+    component: VideoProductionsComponent,
+    data: {
+      defaultSort: 'id,' + ASC,
+    },
+    canActivate: [UserRouteAccessService],
+  },
+  {
+    path: 'Material',
+    component: MaterialsComponent,
+    data: {
+      defaultSort: 'id,' + ASC,
+    },
+    canActivate: [UserRouteAccessService],
+  },
+  
   {
     path: 'Download',
     component: DownloadComponent,
@@ -92,6 +160,26 @@ const routes: Routes = [
   {
     path: 'Createvideoprompt',
     component: CreatevideopromptComponent,
+  },
+  {
+    path: 'CreateinstagramReelPrompt',
+    component: CreateinstagramReelPromptComponent,
+  },
+  {
+    path: 'Createprompt',
+    component: CreatepromptComponent,
+  },
+  {
+    path: 'CreaterecentEventsPrompt',
+    component: CreaterecentEventsPromptComponent,
+  },
+  {
+    path: 'CreatetiktokVideoPrompt',
+    component: CreatetiktokVideoPromptComponent,
+  },
+  {
+    path: 'CreatexplainerPrompt',
+    component: CreatexplainerPromptComponent,
   },
   {
     path: 'Continue',

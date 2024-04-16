@@ -8,52 +8,133 @@
 </head>
 <body>
     <div class="usage-container">
-        <aside class="sidebar">
-            <!-- Sidebar content -->
-            <nav>
-                <a href="#">Workspace settings</a>
-                <a href="#">Subscription</a>
-                <a href="#" class="active">Usage</a>
-                <!-- Other links -->
-            </nav>
-        </aside>
+        <jhi-left-menu></jhi-left-menu>
         <main class="usage-content">
-            <header>
-                <h1>Usage</h1>
-            </header>
-            <section class="usage-section">
-                <div class="usage-card">
-                    <h2>Premium Generation</h2>
-                    <p>All edits are free till 31st March 2024</p>
-                    <div class="usage-meter">
-                        <span>0:00 / 10min</span>
-                        <div class="meter">
-                            <span class="meter-used" style="width: 0%;"></span>
-                        </div>
-                    </div>
-                </div>
-                <div class="usage-card">
-                    <h2>iStock</h2>
-                    <p>Stock footage are licensed only when you export videos</p>
-                    <div class="usage-meter">
-                        <span>0 / 0</span>
-                        <div class="meter">
-                            <span class="meter-used" style="width: 0%;"></span>
-                        </div>
-                    </div>
-                </div>
-                <div class="usage-card">
-                    <h2>Export</h2>
-                    <div class="usage-meter">
-                        <span>0 / 4</span>
-                        <div class="meter">
-                            <span class="meter-used" style="width: 0%;"></span>
-                        </div>
-                    </div>
-                </div>
-            </section>
+            <div>
+                <h2 id="page-heading" data-cy="UsageHeading">
+                  <span jhiTranslate="highwayacApp.usage.home.title">Usages</span>
+              
+                  <div class="d-flex justify-content-end">
+                    <button class="btn btn-info me-2" (click)="load()" [disabled]="isLoading">
+                      <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+                      <span jhiTranslate="highwayacApp.usage.home.refreshListLabel">Refresh list</span>
+                    </button>
+              
+                    <button
+                      id="jh-create-entity"
+                      data-cy="entityCreateButton"
+                      class="btn btn-primary jh-create-entity create-usage"
+                      [routerLink]="['/usage/new']"
+                    >
+                      <fa-icon icon="plus"></fa-icon>
+                      <span jhiTranslate="highwayacApp.usage.home.createLabel">Create a new Usage</span>
+                    </button>
+                  </div>
+                </h2>
+              
+                <jhi-alert-error></jhi-alert-error>
+              
+                <jhi-alert></jhi-alert>
+              
+                @if (usages?.length === 0) {
+                  <div class="alert alert-warning" id="no-result">
+                    <span jhiTranslate="highwayacApp.usage.home.notFound">No Usages found</span>
+                  </div>
+                }
+              
+                @if (usages && usages.length > 0) {
+                  <div class="table-responsive table-entities" id="entities">
+                    <table class="table table-striped" aria-describedby="page-heading">
+                      <thead>
+                        <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" (sortChange)="navigateToWithComponentValues()">
+                          <th scope="col" jhiSortBy="id">
+                            <div class="d-flex">
+                              <span jhiTranslate="global.field.id">ID</span>
+              
+                              <fa-icon class="p-1" icon="sort"></fa-icon>
+                            </div>
+                          </th>
+                          <th scope="col" jhiSortBy="usageType">
+                            <div class="d-flex">
+                              <span jhiTranslate="highwayacApp.usage.usageType">Usage Type</span>
+              
+                              <fa-icon class="p-1" icon="sort"></fa-icon>
+                            </div>
+                          </th>
+                          <th scope="col" jhiSortBy="usageTime">
+                            <div class="d-flex">
+                              <span jhiTranslate="highwayacApp.usage.usageTime">Usage Time</span>
+              
+                              <fa-icon class="p-1" icon="sort"></fa-icon>
+                            </div>
+                          </th>
+                          <th scope="col" jhiSortBy="startTime">
+                            <div class="d-flex">
+                              <span jhiTranslate="highwayacApp.usage.startTime">Start Time</span>
+              
+                              <fa-icon class="p-1" icon="sort"></fa-icon>
+                            </div>
+                          </th>
+                          <th scope="col" jhiSortBy="endTime">
+                            <div class="d-flex">
+                              <span jhiTranslate="highwayacApp.usage.endTime">End Time</span>
+              
+                              <fa-icon class="p-1" icon="sort"></fa-icon>
+                            </div>
+                          </th>
+                          <th scope="col" jhiSortBy="subscriptionService.id">
+                            <div class="d-flex">
+                              <span jhiTranslate="highwayacApp.usage.subscriptionService">Subscription Service</span>
+                              <fa-icon class="p-1" icon="sort"></fa-icon>
+                            </div>
+                          </th>
+                          <th scope="col"></th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        @for (usage of usages; track trackId) {
+                          <tr data-cy="entityTable">
+                            <td>
+                              <a [routerLink]="['/usage', usage.id, 'view']">{{ usage.id }}</a>
+                            </td>
+                            <td>{{ usage.usageType }}</td>
+                            <td>{{ usage.usageTime }}</td>
+                            <td>{{ usage.startTime | formatMediumDatetime }}</td>
+                            <td>{{ usage.endTime | formatMediumDatetime }}</td>
+                            <td>
+                              @if (usage.subscriptionService) {
+                                <div>
+                                  <a [routerLink]="['/subscription-service', usage.subscriptionService.id, 'view']">{{ usage.subscriptionService.id }}</a>
+                                </div>
+                              }
+                            </td>
+                            <td class="text-end">
+                              <div class="btn-group">
+                                <a [routerLink]="['/usage', usage.id, 'view']" class="btn btn-info btn-sm" data-cy="entityDetailsButton">
+                                  <fa-icon icon="eye"></fa-icon>
+                                  <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                                </a>
+              
+                                <a [routerLink]="['/usage', usage.id, 'edit']" class="btn btn-primary btn-sm" data-cy="entityEditButton">
+                                  <fa-icon icon="pencil-alt"></fa-icon>
+                                  <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                                </a>
+              
+                                <button type="submit" (click)="delete(usage)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                                  <fa-icon icon="times"></fa-icon>
+                                  <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                                </button>
+                              </div>
+                            </td>
+                          </tr>
+                        }
+                      </tbody>
+                    </table>
+                  </div>
+                }
+              </div>
+              
         </main>
     </div>
-    <script src="usageScripts.js"></script>
 </body>
 </html>

@@ -76,6 +76,11 @@ const routes: Routes = [
     data: { pageTitle: 'highwayacApp.history.home.title' },
     loadChildren: () => import('./history/history.routes'),
   },
+  {
+    path: 'system-setting',
+    data: { pageTitle: 'highwayacApp.systemSetting.home.title' },
+    loadChildren: () => import('./system-setting/system-setting.routes'),
+  },
   /* jhipster-needle-add-entity-route - JHipster will add entity modules routes here */
 ];
 

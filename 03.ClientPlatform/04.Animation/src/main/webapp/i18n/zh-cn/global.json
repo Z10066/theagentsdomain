@@ -3,20 +3,22 @@
     "title": "Highwayac",
     "browsehappy": "您目前使用<strong>过于老旧</strong>的浏览器, 建议您<a href=\"http://browsehappy.com/?locale=en\">升级浏览器</a>让您有更佳的上网体验.",
     "menu": {
-      "home": "首页",
+      "home": "工作区",
       "jhipster-needle-menu-add-element": "JHipster will add additional menu entries here (do not translate!)",
       "entities": {
         "main": "数据",
         "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)",
-        "workspace": "Workspace",
-        "member": "Member",
-        "linkedAccount": "Linked Account",
-        "subscriptionService": "Subscription Service",
-        "usage": "Usage",
-        "videoProduction": "Video Production",
-        "extraInfo": "Extra Info",
-        "material": "Material",
-        "history": "History"
+        "systemSetting": "系统设定",
+        "video": "视频",
+        "workspace": "工作区",
+        "member": "成员",
+        "linkedAccount": "链接账号",
+        "subscriptionService": "服务订阅",
+        "usage": "服务使用",
+        "videoProduction": "视频生成",
+        "extraInfo": "额外信息",
+        "material": "视频素材",
+        "history": "视频历史"      
       },
       "account": {
         "main": "账号",
