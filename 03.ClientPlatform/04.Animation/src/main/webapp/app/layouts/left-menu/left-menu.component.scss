@@ -1,0 +1,33 @@
+.sidebar {
+    width: 155px; /* 侧边栏宽度 */
+    //background-color: #f0f0f0;
+    display: flex;
+    flex-direction: column; /* 垂直方向布局 */
+}
+
+.nav-item {
+    display: flex;
+    align-items: center; /* 垂直居中 */
+    transition: transform 0.2s ease; /* 添加过渡效果 */
+}
+
+.nav-item a {
+    text-decoration: none;
+    color: #f1ecec;
+    padding: 10px;
+    border: 1px solid transparent; /* 初始时边框透明 */
+}
+
+.nav-item a:hover {
+    border-color: #fff; /* 鼠标指向时边框变为白色 */
+    transform: translateY(5px); /* 整体按钮向下移动5px */
+}
+
+.nav-item:hover {
+    transform: scale(1.1); /* 鼠标指向时按钮放大 */
+}
+
+/* 避免按钮放大时产生的布局变动 */
+.sidebar nav {
+    overflow: hidden;
+}
