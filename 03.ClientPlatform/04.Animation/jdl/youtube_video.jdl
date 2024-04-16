@@ -1,0 +1,38 @@
+entity YouTubeVideo {
+    workspace String required
+    creator String required
+    theme String required
+    content TextBlob required
+    backgroundMusic String required
+}
+enum CreationType {
+    THEME
+    CONTENT
+    BACKGROUNDMUSIC
+}
+enum Setting {
+    REQUIREMENT
+    LANGUAGE
+    ADDSUBTITLE
+    USEWATERMARK
+    CANUSEMATERIALLIBRARY
+}
+enum Requirement {
+    ANY
+    MALE
+    FEMALE
+}
+enum Language {
+    ENGLISH
+    CHINESE
+    JAPANESE
+}
+enum AddSubtitle {
+    ORDINARY
+    COOLLETTERS
+}
+enum CanUseMaterialLibrary {
+    DONTUSEMATERIALLIBRARY
+    ONLYUSEISTOCKMATERIALLIBRARY
+    USEMATERIALLIBRARYITSELF
+}

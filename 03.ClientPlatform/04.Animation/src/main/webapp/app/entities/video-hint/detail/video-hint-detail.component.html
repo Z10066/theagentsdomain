@@ -1,0 +1,46 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    @if (videoHint) {
+      <div>
+        <h2 data-cy="videoHintDetailsHeading"><span jhiTranslate="highwayacApp.videoHint.detail.title">Video Hint</span></h2>
+
+        <hr />
+
+        <jhi-alert-error></jhi-alert-error>
+
+        <jhi-alert></jhi-alert>
+
+        <dl class="row-md jh-entity-details">
+          <dt><span jhiTranslate="global.field.id">ID</span></dt>
+          <dd>
+            <span>{{ videoHint.id }}</span>
+          </dd>
+          <dt><span jhiTranslate="highwayacApp.videoHint.workspace">Workspace</span></dt>
+          <dd>
+            <span>{{ videoHint.workspace }}</span>
+          </dd>
+          <dt><span jhiTranslate="highwayacApp.videoHint.creator">Creator</span></dt>
+          <dd>
+            <span>{{ videoHint.creator }}</span>
+          </dd>
+          <dt><span jhiTranslate="highwayacApp.videoHint.creationContent">Creation Content</span></dt>
+          <dd>
+            <span>{{ videoHint.creationContent }}</span>
+          </dd>
+          <dt><span jhiTranslate="highwayacApp.videoHint.backgroundMusic">Background Music</span></dt>
+          <dd>
+            <span>{{ videoHint.backgroundMusic }}</span>
+          </dd>
+        </dl>
+
+        <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+          <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+        </button>
+
+        <button type="button" [routerLink]="['/video-hint', videoHint.id, 'edit']" class="btn btn-primary">
+          <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+        </button>
+      </div>
+    }
+  </div>
+</div>

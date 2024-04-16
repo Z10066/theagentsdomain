@@ -1,0 +1,27 @@
+{
+  "highwayacApp": {
+    "videoHint": {
+      "home": {
+        "title": "Video Hints",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "创建新 Video Hint",
+        "createOrEditLabel": "创建或编辑 Video Hint",
+        "notFound": "No Video Hints found"
+      },
+      "created": "Video Hint {{ param }} 创建成功",
+      "updated": "Video Hint {{ param }} 更新成功",
+      "deleted": "Video Hint {{ param }} 删除成功",
+      "delete": {
+        "question": "你确定要删除 Video Hint {{ id }} 吗？"
+      },
+      "detail": {
+        "title": "Video Hint"
+      },
+      "id": "ID",
+      "workspace": "Workspace",
+      "creator": "Creator",
+      "creationContent": "Creation Content",
+      "backgroundMusic": "Background Music"
+    }
+  }
+}

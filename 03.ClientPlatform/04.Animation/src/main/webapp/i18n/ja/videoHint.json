@@ -1,0 +1,27 @@
+{
+  "highwayacApp": {
+    "videoHint": {
+      "home": {
+        "title": "VideoHints",
+        "refreshListLabel": "リストの更新",
+        "createLabel": "Video Hint の作成",
+        "createOrEditLabel": "Video Hintの作成または編集",
+        "notFound": "Video Hints が見つかりません。"
+      },
+      "created": "新しい Video Hint がID {{ param }} で作成されました。",
+      "updated": "ID {{ param }} の Video Hint が更新されました。",
+      "deleted": "ID {{ param }} の Video Hint が削除されました。",
+      "delete": {
+        "question": "Video Hint {{ id }}を削除してもよろしいですか？"
+      },
+      "detail": {
+        "title": "Video Hint"
+      },
+      "id": "ID",
+      "workspace": "Workspace",
+      "creator": "Creator",
+      "creationContent": "Creation Content",
+      "backgroundMusic": "Background Music"
+    }
+  }
+}

@@ -1,0 +1,111 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2
+        id="jhi-you-tube-video-heading"
+        data-cy="YouTubeVideoCreateUpdateHeading"
+        jhiTranslate="highwayacApp.youTubeVideo.home.createOrEditLabel"
+      >
+        Create or edit a You Tube Video
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        @if (editForm.controls.id.value !== null) {
+          <div class="mb-3">
+            <label class="form-label" jhiTranslate="global.field.id" for="field_id">ID</label>
+            <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+          </div>
+        }
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="highwayacApp.youTubeVideo.workspace" for="field_workspace">Workspace</label>
+          <input type="text" class="form-control" name="workspace" id="field_workspace" data-cy="workspace" formControlName="workspace" />
+          @if (editForm.get('workspace')!.invalid && (editForm.get('workspace')!.dirty || editForm.get('workspace')!.touched)) {
+            <div>
+              @if (editForm.get('workspace')?.errors?.required) {
+                <small class="form-text text-danger" jhiTranslate="entity.validation.required">This field is required.</small>
+              }
+            </div>
+          }
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="highwayacApp.youTubeVideo.creator" for="field_creator">Creator</label>
+          <input type="text" class="form-control" name="creator" id="field_creator" data-cy="creator" formControlName="creator" />
+          @if (editForm.get('creator')!.invalid && (editForm.get('creator')!.dirty || editForm.get('creator')!.touched)) {
+            <div>
+              @if (editForm.get('creator')?.errors?.required) {
+                <small class="form-text text-danger" jhiTranslate="entity.validation.required">This field is required.</small>
+              }
+            </div>
+          }
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="highwayacApp.youTubeVideo.theme" for="field_theme">Theme</label>
+          <input type="text" class="form-control" name="theme" id="field_theme" data-cy="theme" formControlName="theme" />
+          @if (editForm.get('theme')!.invalid && (editForm.get('theme')!.dirty || editForm.get('theme')!.touched)) {
+            <div>
+              @if (editForm.get('theme')?.errors?.required) {
+                <small class="form-text text-danger" jhiTranslate="entity.validation.required">This field is required.</small>
+              }
+            </div>
+          }
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="highwayacApp.youTubeVideo.content" for="field_content">Content</label>
+          <textarea class="form-control" name="content" id="field_content" data-cy="content" formControlName="content"></textarea>
+          @if (editForm.get('content')!.invalid && (editForm.get('content')!.dirty || editForm.get('content')!.touched)) {
+            <div>
+              @if (editForm.get('content')?.errors?.required) {
+                <small class="form-text text-danger" jhiTranslate="entity.validation.required">This field is required.</small>
+              }
+            </div>
+          }
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="highwayacApp.youTubeVideo.backgroundMusic" for="field_backgroundMusic"
+            >Background Music</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="backgroundMusic"
+            id="field_backgroundMusic"
+            data-cy="backgroundMusic"
+            formControlName="backgroundMusic"
+          />
+          @if (
+            editForm.get('backgroundMusic')!.invalid && (editForm.get('backgroundMusic')!.dirty || editForm.get('backgroundMusic')!.touched)
+          ) {
+            <div>
+              @if (editForm.get('backgroundMusic')?.errors?.required) {
+                <small class="form-text text-danger" jhiTranslate="entity.validation.required">This field is required.</small>
+              }
+            </div>
+          }
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

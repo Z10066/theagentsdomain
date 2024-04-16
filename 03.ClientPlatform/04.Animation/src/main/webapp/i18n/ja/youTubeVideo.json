@@ -1,0 +1,28 @@
+{
+  "highwayacApp": {
+    "youTubeVideo": {
+      "home": {
+        "title": "YouTubeVideos",
+        "refreshListLabel": "リストの更新",
+        "createLabel": "You Tube Video の作成",
+        "createOrEditLabel": "You Tube Videoの作成または編集",
+        "notFound": "You Tube Videos が見つかりません。"
+      },
+      "created": "新しい You Tube Video がID {{ param }} で作成されました。",
+      "updated": "ID {{ param }} の You Tube Video が更新されました。",
+      "deleted": "ID {{ param }} の You Tube Video が削除されました。",
+      "delete": {
+        "question": "You Tube Video {{ id }}を削除してもよろしいですか？"
+      },
+      "detail": {
+        "title": "You Tube Video"
+      },
+      "id": "ID",
+      "workspace": "Workspace",
+      "creator": "Creator",
+      "theme": "Theme",
+      "content": "Content",
+      "backgroundMusic": "Background Music"
+    }
+  }
+}

@@ -8,6 +8,8 @@
       "entities": {
         "main": "エンティティ",
         "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)",
+        "youTubeVideo": "Youtubeビデオ",
+        "videoHint": "ビデオヒント",
         "systemSetting": "システム設定",
         "video": "ビデオ",
         "workspace": "ワークスペース",

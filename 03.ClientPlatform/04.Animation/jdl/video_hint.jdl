@@ -1,0 +1,21 @@
+entity VideoHint {
+    workspace String required
+    creator String required
+    creationContent TextBlob required
+    backgroundMusic String required
+}
+enum VideoType {
+    YOUTUBE
+    TIKTOK
+    INSTAGRAM
+}
+enum Requirement {
+    ANY
+    MALE
+    FEMALE
+}
+enum Language {
+    ENGLISH
+    CHINESE
+    JAPANESE
+}

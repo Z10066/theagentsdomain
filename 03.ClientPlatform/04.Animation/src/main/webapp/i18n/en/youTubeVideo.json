@@ -1,0 +1,28 @@
+{
+  "highwayacApp": {
+    "youTubeVideo": {
+      "home": {
+        "title": "You Tube Videos",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new You Tube Video",
+        "createOrEditLabel": "Create or edit a You Tube Video",
+        "notFound": "No You Tube Videos found"
+      },
+      "created": "A new You Tube Video is created with identifier {{ param }}",
+      "updated": "A You Tube Video is updated with identifier {{ param }}",
+      "deleted": "A You Tube Video is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete You Tube Video {{ id }}?"
+      },
+      "detail": {
+        "title": "You Tube Video"
+      },
+      "id": "ID",
+      "workspace": "Workspace",
+      "creator": "Creator",
+      "theme": "Theme",
+      "content": "Content",
+      "backgroundMusic": "Background Music"
+    }
+  }
+}

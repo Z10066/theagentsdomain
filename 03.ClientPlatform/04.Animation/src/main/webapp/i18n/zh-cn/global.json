@@ -8,6 +8,8 @@
       "entities": {
         "main": "数据",
         "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)",
+        "youTubeVideo": "YouTube视频",
+        "videoHint": "视频提示",
         "systemSetting": "系统设定",
         "video": "视频",
         "workspace": "工作区",

@@ -17,6 +17,8 @@
     "enableSwaggerCodegen": true,
     "enableTranslation": true,
     "entities": [
+      "YouTubeVideo",
+      "VideoHint",
       "SystemSetting",
       "Workspace",
       "Video",

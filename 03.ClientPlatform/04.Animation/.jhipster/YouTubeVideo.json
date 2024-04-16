@@ -1,0 +1,39 @@
+{
+  "annotations": {
+    "changelogDate": "20240316112707"
+  },
+  "applications": "*",
+  "databaseType": "sql",
+  "entityTableName": "you_tube_video",
+  "fields": [
+    {
+      "fieldName": "workspace",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "creator",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "theme",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "content",
+      "fieldType": "byte[]",
+      "fieldTypeBlobContent": "text",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "backgroundMusic",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    }
+  ],
+  "name": "YouTubeVideo",
+  "relationships": [],
+  "searchEngine": "no"
+}

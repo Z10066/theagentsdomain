@@ -1,0 +1,28 @@
+{
+  "highwayacApp": {
+    "youTubeVideo": {
+      "home": {
+        "title": "You Tube Videos",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "创建新 You Tube Video",
+        "createOrEditLabel": "创建或编辑 You Tube Video",
+        "notFound": "No You Tube Videos found"
+      },
+      "created": "You Tube Video {{ param }} 创建成功",
+      "updated": "You Tube Video {{ param }} 更新成功",
+      "deleted": "You Tube Video {{ param }} 删除成功",
+      "delete": {
+        "question": "你确定要删除 You Tube Video {{ id }} 吗？"
+      },
+      "detail": {
+        "title": "You Tube Video"
+      },
+      "id": "ID",
+      "workspace": "Workspace",
+      "creator": "Creator",
+      "theme": "Theme",
+      "content": "Content",
+      "backgroundMusic": "Background Music"
+    }
+  }
+}

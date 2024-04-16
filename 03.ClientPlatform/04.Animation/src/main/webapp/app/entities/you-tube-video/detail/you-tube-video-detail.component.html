@@ -1,0 +1,50 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    @if (youTubeVideo) {
+      <div>
+        <h2 data-cy="youTubeVideoDetailsHeading"><span jhiTranslate="highwayacApp.youTubeVideo.detail.title">You Tube Video</span></h2>
+
+        <hr />
+
+        <jhi-alert-error></jhi-alert-error>
+
+        <jhi-alert></jhi-alert>
+
+        <dl class="row-md jh-entity-details">
+          <dt><span jhiTranslate="global.field.id">ID</span></dt>
+          <dd>
+            <span>{{ youTubeVideo.id }}</span>
+          </dd>
+          <dt><span jhiTranslate="highwayacApp.youTubeVideo.workspace">Workspace</span></dt>
+          <dd>
+            <span>{{ youTubeVideo.workspace }}</span>
+          </dd>
+          <dt><span jhiTranslate="highwayacApp.youTubeVideo.creator">Creator</span></dt>
+          <dd>
+            <span>{{ youTubeVideo.creator }}</span>
+          </dd>
+          <dt><span jhiTranslate="highwayacApp.youTubeVideo.theme">Theme</span></dt>
+          <dd>
+            <span>{{ youTubeVideo.theme }}</span>
+          </dd>
+          <dt><span jhiTranslate="highwayacApp.youTubeVideo.content">Content</span></dt>
+          <dd>
+            <span>{{ youTubeVideo.content }}</span>
+          </dd>
+          <dt><span jhiTranslate="highwayacApp.youTubeVideo.backgroundMusic">Background Music</span></dt>
+          <dd>
+            <span>{{ youTubeVideo.backgroundMusic }}</span>
+          </dd>
+        </dl>
+
+        <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+          <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+        </button>
+
+        <button type="button" [routerLink]="['/you-tube-video', youTubeVideo.id, 'edit']" class="btn btn-primary">
+          <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+        </button>
+      </div>
+    }
+  </div>
+</div>

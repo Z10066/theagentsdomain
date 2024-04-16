@@ -1,0 +1,118 @@
+<div>
+  <h2 id="page-heading" data-cy="YouTubeVideoHeading">
+    <span jhiTranslate="highwayacApp.youTubeVideo.home.title">You Tube Videos</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info me-2" (click)="load()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span jhiTranslate="highwayacApp.youTubeVideo.home.refreshListLabel">Refresh list</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-you-tube-video"
+        [routerLink]="['/you-tube-video/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span jhiTranslate="highwayacApp.youTubeVideo.home.createLabel">Create a new You Tube Video</span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  @if (youTubeVideos?.length === 0) {
+    <div class="alert alert-warning" id="no-result">
+      <span jhiTranslate="highwayacApp.youTubeVideo.home.notFound">No You Tube Videos found</span>
+    </div>
+  }
+
+  @if (youTubeVideos && youTubeVideos.length > 0) {
+    <div class="table-responsive table-entities" id="entities">
+      <table class="table table-striped" aria-describedby="page-heading">
+        <thead>
+          <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" (sortChange)="navigateToWithComponentValues()">
+            <th scope="col" jhiSortBy="id">
+              <div class="d-flex">
+                <span jhiTranslate="global.field.id">ID</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="workspace">
+              <div class="d-flex">
+                <span jhiTranslate="highwayacApp.youTubeVideo.workspace">Workspace</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="creator">
+              <div class="d-flex">
+                <span jhiTranslate="highwayacApp.youTubeVideo.creator">Creator</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="theme">
+              <div class="d-flex">
+                <span jhiTranslate="highwayacApp.youTubeVideo.theme">Theme</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="content">
+              <div class="d-flex">
+                <span jhiTranslate="highwayacApp.youTubeVideo.content">Content</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="backgroundMusic">
+              <div class="d-flex">
+                <span jhiTranslate="highwayacApp.youTubeVideo.backgroundMusic">Background Music</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col"></th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (youTubeVideo of youTubeVideos; track trackId) {
+            <tr data-cy="entityTable">
+              <td>
+                <a [routerLink]="['/you-tube-video', youTubeVideo.id, 'view']">{{ youTubeVideo.id }}</a>
+              </td>
+              <td>{{ youTubeVideo.workspace }}</td>
+              <td>{{ youTubeVideo.creator }}</td>
+              <td>{{ youTubeVideo.theme }}</td>
+              <td>{{ youTubeVideo.content }}</td>
+              <td>{{ youTubeVideo.backgroundMusic }}</td>
+              <td class="text-end">
+                <div class="btn-group">
+                  <a [routerLink]="['/you-tube-video', youTubeVideo.id, 'view']" class="btn btn-info btn-sm" data-cy="entityDetailsButton">
+                    <fa-icon icon="eye"></fa-icon>
+                    <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                  </a>
+
+                  <a [routerLink]="['/you-tube-video', youTubeVideo.id, 'edit']" class="btn btn-primary btn-sm" data-cy="entityEditButton">
+                    <fa-icon icon="pencil-alt"></fa-icon>
+                    <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                  </a>
+
+                  <button type="submit" (click)="delete(youTubeVideo)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                    <fa-icon icon="times"></fa-icon>
+                    <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                  </button>
+                </div>
+              </td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+  }
+</div>
