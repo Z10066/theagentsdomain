@@ -22,7 +22,6 @@ export class LeftMenuComponent implements OnInit {
     { label: 'History', link: '/History', target: '_self', active: false },
     { label: 'Profile', link: '/Profile', target: '_self', active: false },
   ];
-
   ngOnInit() {
     this.init();
   }
@@ -34,5 +33,4 @@ export class LeftMenuComponent implements OnInit {
       else navItem.active = false;
     });
   }
-
 }

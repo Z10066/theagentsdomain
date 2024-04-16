@@ -1,9 +1,15 @@
 .sidebar {
+    width:auto;
     margin: 0 auto;
     color: rgb(255, 255, 255) !important;
+    min-width: 200px; /* 设置最小宽度 */
+    box-sizing: border-box; /* 边框和填充不会增加元素的宽度 */
+    text-align: center; /* 容器内容居中对齐 */
 }
 .nav-item {
     margin-bottom: 10px; 
+    display: inline-block;
+    text-align: left; /* 文本左对齐 */
 }
 
 .nav-item a {
@@ -13,6 +19,34 @@
     margin-right: 5px; 
     text-decoration: none;
     color: rgb(255, 255, 255) !important; 
+    white-space: nowrap; /* 阻止文本换行 */
 }
+.nav-item a:hover,
+.nav-item a:active, /* 当用户点击链接时触发 */
+.nav-item a.active { /* 当链接获得焦点时触发（例如通过键盘导航到链接） */
+    color: rgb(255, 183, 0)!important; /* 修改链接文字颜色为红色 */
+}
+
+.nav-item2 {
+    margin-bottom: 10px; 
+    display: inline-block;
+    text-align: left; /* 文本左对齐 */
+}
+
+.nav-item2 a {
+    display: inline-block; 
+    border: 1px solid rgb(255, 183, 0); 
+    padding: 5px; 
+    margin-right: 5px; 
+    text-decoration: none;
+    color: rgb(255, 183, 0) !important; 
+    white-space: nowrap; /* 阻止文本换行 */
+}
+.nav-item2 a:hover,
+.nav-item2 a:active, /* 当用户点击链接时触发 */
+.nav-item2 a.active { /* 当链接获得焦点时触发（例如通过键盘导航到链接） */
+    color: rgb(255, 183, 0)!important; /* 修改链接文字颜色为红色 */
+}
+
 
 
