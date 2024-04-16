@@ -2,8 +2,9 @@
     <!-- Sidebar content -->
     <nav>
         <!-- Sidebar links -->
-        <div *ngFor="let item of navItems" class="nav-item">
-            <a [href]="item.link" [target]="item.target" jhiTranslate="home.translate.{{ item.label }}">{{ item.label }}</a>
+        <div *ngFor="let item of navItems" [class]="item.active?'nav-item2':'nav-item'">
+            <a [href]="item.link" [target]="item.target" jhiTranslate="home.translate.{{ item.label }}"
+            >{{ item.label }}</a>
         </div>
     </nav>
 </aside>

@@ -1,35 +1,65 @@
+
+// 定义变量
+$sidebar-width: 155px;
+$sidebar-bg-color: #f0f0f0;
+$nav-item-padding: 10px;
+
+// 样式
 .sidebar {
-    width: 155px; /* 侧边栏宽度 */
-    //background-color: #f0f0f0;
+    width: $sidebar-width;
+    //background-color: $sidebar-bg-color;
     display: flex;
-    flex-direction: column; /* 垂直方向布局 */
-}
+    flex-direction: column; // 垂直方向布局
 
-.nav-item {
-    display: flex;
-    align-items: center; /* 垂直居中 */
-    transition: transform 0.2s ease, color 0.2s ease;  /* 添加过渡效果 */
-}
+    nav {
+        padding: $nav-item-padding;
+    }
 
-.nav-item a {
-    text-decoration: none;
-    color: #f1ecec;
-    padding: 10px;
-    border: 1px solid transparent; /* 初始时边框透明 */
-    transition: font-size 0.2s ease; /* 字体大小过渡效果 */
-}
+    .nav-item {
+        display: flex;
+        align-items: center; // 垂直居中
 
-.nav-item a:hover {
-    border-color: #0a95f2; /* 鼠标指向时边框变为白色 */
-    transform: translateY(5px); /* 整体按钮向下移动5px */
-    color: #00bfff; /* 鼠标指向时颜色变为浅蓝色 */
-}
+        a {
+            text-decoration: none;
+            color: #f8f5f5;
+            padding: $nav-item-padding;
+            border: 1px solid transparent; // 初始时边框透明
+            transition: transform 0.2s ease, color 0.2s ease; // 添加过渡效果
 
-.nav-item:hover {
-    transform: scale(1.1); /* 鼠标指向时按钮放大 */
-}
+            &:hover {
+                color: #00bfff; // 鼠标指向时颜色变为浅蓝色
+                transform: translateY(5px); // 整体按钮向下移动5px
+                border-color: #0a95f2; /* 鼠标指向时边框变为白色 */
+                transform: scale(1.1); /* 鼠标指向时按钮放大 */
+            }
 
-/* 避免按钮放大时产生的布局变动 */
-.sidebar nav {
-    overflow: hidden;
+            &.active {
+                color: #00bfff; // 活动状态颜色为浅蓝色
+            }
+        }
+    }
+
+    .nav-item2 {
+        display: flex;
+        align-items: center; // 垂直居中
+
+        a {
+            text-decoration: none;
+            color:#00bfff;
+            padding: $nav-item-padding;
+            border: 1px solid transparent; // 初始时边框透明
+            transition: transform 0.2s ease, color 0.2s ease; // 添加过渡效果
+
+            &:hover {
+                color: #00bfff; // 鼠标指向时颜色变为浅蓝色
+                transform: translateY(5px); // 整体按钮向下移动5px
+                border-color: #0a95f2; /* 鼠标指向时边框变为白色 */
+                transform: scale(1.1); /* 鼠标指向时按钮放大 */
+            }
+
+            &.active {
+                color: #00bfff; // 活动状态颜色为浅蓝色
+            }
+        }
+    }
 }
