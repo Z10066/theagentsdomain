@@ -19,12 +19,11 @@
         "extraInfo": "Extra Info",
         "material": "Material",
         "history": "History",
-        "Video": "Video",
         "creator": "Creator",
         "category": "Category",
         "copyright": "Copyright",
         "metadata": "Metadata",
-        "keyword": "keyword"
+        "keyword": "Keyword"
       },
       "account": {
         "main": "Account",
