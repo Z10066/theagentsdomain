@@ -24,7 +24,29 @@
 .nav-item a:hover,
 .nav-item a:active, /* 当用户点击链接时触发 */
 .nav-item a.active { /* 当链接获得焦点时触发（例如通过键盘导航到链接） */
-    color: red!important; /* 修改链接文字颜色为红色 */
+    color: rgb(255, 183, 0)!important; /* 修改链接文字颜色为红色 */
 }
+
+.nav-item2 {
+    margin-bottom: 10px; 
+    display: inline-block;
+    text-align: left; /* 文本左对齐 */
+}
+
+.nav-item2 a {
+    display: inline-block; 
+    border: 1px solid rgb(255, 183, 0); 
+    padding: 5px; 
+    margin-right: 5px; 
+    text-decoration: none;
+    color: rgb(255, 183, 0) !important; 
+    white-space: nowrap; /* 阻止文本换行 */
+}
+.nav-item2 a:hover,
+.nav-item2 a:active, /* 当用户点击链接时触发 */
+.nav-item2 a.active { /* 当链接获得焦点时触发（例如通过键盘导航到链接） */
+    color: rgb(255, 183, 0)!important; /* 修改链接文字颜色为红色 */
+}
+
 
 
