@@ -12,13 +12,13 @@ import SharedModule from 'app/shared/shared.module';
 export class FootMenuComponent implements OnInit {
 @Input()  currentpage:string = ""
   navItems = [
-    { label: 'CreatexplainerPrompt', link: '/CreatexplainerPrompt', target: '_self', active: false },
-    { label: 'Createvideoprompt', link: '/Createvideoprompt', target: '_self', active: false},
     { label: 'CreaterecentEventsPrompt', link: '/CreaterecentEventsPrompt', target: '_self', active: false },
+    { label: 'Createvideoprompt', link: '/Createvideoprompt', target: '_self', active: false},
+    { label: 'Createprompt', link: '/Createprompt', target: '_self', active: false },
+    { label: 'CreatexplainerPrompt', link: '/CreatexplainerPrompt', target: '_self', active: false },
     { label: 'CreatetiktokVideoPrompt', link: '/CreatetiktokVideoPrompt', target: '_self', active: false },
     { label: 'CreateinstagramReelPrompt', link: '/CreateinstagramReelPrompt', target: '_self' , active: false},
-    { label: 'CreatVideo', link: '/CreatVideo', target: '_self', active: false },
-    { label: 'Createprompt', link: '/Createprompt', target: '_self', active: false },    
+    { label: 'CreatVideo', link: '/CreatVideo', target: '_self', active: false },    
   ];
 
   ngOnInit() {
