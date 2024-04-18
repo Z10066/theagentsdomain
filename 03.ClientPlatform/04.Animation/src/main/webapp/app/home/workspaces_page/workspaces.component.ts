@@ -10,9 +10,10 @@ import { FormsModule } from '@angular/forms';
 import { ASC, DESC, SORT, ITEM_DELETED_EVENT, DEFAULT_SORT_DATA } from 'app/config/navigation.constants';
 import { SortService } from 'app/shared/sort/sort.service';
 import { LeftMenuComponent } from 'app/layouts/left-menu/left-menu.component';
-import { IWorkspace } from 'app/entities/workspace/workspace.model';
+import { IWorkspace, NewWorkspace } from 'app/entities/workspace/workspace.model';
 import { EntityArrayResponseType, WorkspaceService } from 'app/entities/workspace/service/workspace.service';
 import { WorkspaceDeleteDialogComponent } from 'app/entities/workspace/delete/workspace-delete-dialog.component';
+import { AccountService } from 'app/core/auth/account.service';
 
 
 @Component({
@@ -42,12 +43,21 @@ export class WprkspacesComponent {
     public router: Router,
     protected sortService: SortService,
     protected modalService: NgbModal,
+    private accountService: AccountService
   ) {}
 
   trackId = (_index: number, item: IWorkspace): number => this.workspaceService.getWorkspaceIdentifier(item);
 
+  useid:string = "";
+
   ngOnInit(): void {
-    this.load();
+
+    this.accountService.getAuthenticationState().subscribe((item)=>{
+      this.useid = item?.login??""
+      this.load();
+      // console.log(item?.login);
+    });
+
   }
 
   delete(workspace: IWorkspace): void {
@@ -69,7 +79,42 @@ export class WprkspacesComponent {
   load(): void {
     this.loadFromBackendWithRouteInformations().subscribe({
       next: (res: EntityArrayResponseType) => {
-        this.onResponseSuccess(res);
+        if( res.body && res.body?.length > 0){
+          this.onResponseSuccess(res);
+          res.body[0].id;
+          res.body.forEach(
+            (item) => {
+              if(item.betaFeatures){
+                
+              }
+            }
+          );
+        }
+        else{
+          const workspace : NewWorkspace = {
+            id: null,
+            name: this.useid + "workspaces",
+            identifier: this.useid,
+            betaFeatures: true,
+            collaborationCursor: false,
+            defaultExportVisibility: false,
+            publicAccess: false,
+            members: [],
+            videoProductions: [],
+            materials: [],
+            histories: [],
+          };
+          this.workspaceService.create(workspace).subscribe(
+            ()=>{
+              this.loadFromBackendWithRouteInformations().subscribe({
+                next: (res: EntityArrayResponseType) => {
+                    if( res.body && res.body?.length > 0){
+                      this.onResponseSuccess(res);
+                    }
+                  }
+                })
+              });
+        }
       },
     });
   }
@@ -112,7 +157,7 @@ export class WprkspacesComponent {
       sort: this.getSortQueryParam(predicate, ascending),
     };
     // return this.workspaceService.query(queryObject).pipe(tap(() => (this.isLoading = false)));
-    return this.workspaceService.findByIdentifier(queryObject, "phew").pipe(tap(() => (this.isLoading = false)));
+    return this.workspaceService.findByIdentifier(queryObject, this.useid).pipe(tap(() => (this.isLoading = false)));
   }
 
   protected handleNavigation(predicate?: string, ascending?: boolean): void {
