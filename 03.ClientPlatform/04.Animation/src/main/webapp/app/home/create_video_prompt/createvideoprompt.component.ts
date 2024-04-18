@@ -21,6 +21,7 @@ import { IVideoHint } from 'app/entities/video-hint/video-hint.model';
 import { VideoService } from 'app/entities/video/service/video.service';
 import { VideoFormGroup, VideoFormService } from 'app/entities/video/update/video-form.service';
 import { IVideo } from 'app/entities/video/video.model';
+import { WorkspaceComponent } from 'app/entities/workspace/list/workspace.component';
 import { FootMenuComponent } from 'app/layouts/foot-menu/foot-menu.component';
 import { AlertError } from 'app/shared/alert/alert-error.model';
 import SharedModule from 'app/shared/shared.module';
@@ -57,6 +58,8 @@ export class CreatevideopromptComponent implements OnInit {
   //editForm: VideoFormGroup = this.videoFormService.createVideoFormGroup();
   editForm: VideoHintFormGroup = this.videoHintFormService.createVideoHintFormGroup();
 
+  addValue = "wang"
+
   constructor(
     protected dataUtils: DataUtils,
     protected eventManager: EventManager,
@@ -92,6 +95,9 @@ export class CreatevideopromptComponent implements OnInit {
 
       this.loadRelationshipsOptions();
     });
+
+    //workspace设定值
+    this.editForm.get('workspace')?.setValue(this.addValue)
   }
 
   byteSize(base64String: string): string {
