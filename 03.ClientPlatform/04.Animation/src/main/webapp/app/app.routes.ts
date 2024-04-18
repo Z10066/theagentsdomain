@@ -34,6 +34,8 @@ import { LoginComponent } from './home/login/login.component';
 import { VideoProductionsComponent } from './home/video_production_page/video_production.component';
 import { MaterialsComponent } from './home/material_page/material.component';
 
+import VideoHintResolve from './entities/video-hint/route/video-hint-routing-resolve.service';
+
 const routes: Routes = [
   /*{
     path: '',
@@ -160,6 +162,10 @@ const routes: Routes = [
   {
     path: 'Createvideoprompt',
     component: CreatevideopromptComponent,
+    resolve: {
+      videoHint: VideoHintResolve,
+    },
+    canActivate: [UserRouteAccessService],
   },
   {
     path: 'CreateinstagramReelPrompt',
