@@ -79,6 +79,13 @@ class WorkspaceRepositoryInternalImpl extends SimpleR2dbcRepository<Workspace, L
         return createQuery(null, whereClause).one();
     }
 
+    @Override
+    public Flux<Workspace> findByIdentifier(String identifier) {
+        Comparison whereClause = Conditions.isEqual(entityTable.column("identifier"), Conditions.just(identifier.toString()));
+        return createQuery(null, whereClause).all();
+    }
+
+
     private Workspace process(Row row, RowMetadata metadata) {
         Workspace entity = workspaceMapper.apply(row, "e");
         return entity;

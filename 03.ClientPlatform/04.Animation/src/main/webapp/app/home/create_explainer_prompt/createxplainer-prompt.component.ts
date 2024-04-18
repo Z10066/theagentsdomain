@@ -1,5 +1,5 @@
 import { HttpResponse } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { EventManager } from 'app/core/util/event-manager.service';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
@@ -12,6 +12,7 @@ import { FootMenuComponent } from 'app/layouts/foot-menu/foot-menu.component';
 import { AlertError } from 'app/shared/alert/alert-error.model';
 import SharedModule from 'app/shared/shared.module';
 import { Observable, finalize } from 'rxjs';
+import { IWorkspace } from 'app/entities/workspace/workspace.model';
 
 @Component({
   selector: 'jhi-createxplainer-prompt',
@@ -24,7 +25,10 @@ export class CreatexplainerPromptComponent implements OnInit {
   isSaving = false;
   youTubeVideo: IYouTubeVideo | null = null;
 
+
   editForm: YouTubeVideoFormGroup = this.youTubeVideoFormService.createYouTubeVideoFormGroup();
+  workspaceService: any;
+  workspaces: IWorkspace[] = [];
 
   constructor(
     public router: Router,
@@ -44,6 +48,15 @@ export class CreatexplainerPromptComponent implements OnInit {
       if (youTubeVideo) {
         this.updateForm(youTubeVideo);
       }
+    });
+
+    this.loadWorkspaces();
+  }
+  loadWorkspaces(): void {
+    this.workspaceService.query().subscribe((response: { body: never[]; }) => {
+      this.workspaces = response.body ?? [];
+      this.editForm.get('workspace')?.setValue(this.workspaces[0].id.toString())
+      // 在这里处理工作区数据
     });
   }
 

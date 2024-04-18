@@ -24,6 +24,9 @@ public interface WorkspaceRepository extends ReactiveCrudRepository<Workspace, L
 
     @Override
     Mono<Void> deleteById(Long id);
+
+    @Override
+    Flux<Workspace> findByIdentifier(String identifier);
 }
 
 interface WorkspaceRepositoryInternal {
@@ -34,6 +37,8 @@ interface WorkspaceRepositoryInternal {
     Flux<Workspace> findAll();
 
     Mono<Workspace> findById(Long id);
+
+    Flux<Workspace> findByIdentifier(String identifier);
     // this is not supported at the moment because of https://github.com/jhipster/generator-jhipster/issues/18269
     // Flux<Workspace> findAllBy(Pageable pageable, Criteria criteria);
 }

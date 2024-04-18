@@ -13,6 +13,8 @@ import { LoginService } from 'app/login/login.service';
 import { EntityArrayResponseType, SystemSettingService } from 'app/entities/system-setting/service/system-setting.service';
 import { ISystemSetting } from 'app/entities/system-setting/system-setting.model';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
+import { IWorkspace } from 'app/entities/workspace/workspace.model';
+import { WorkspaceService } from 'app/entities/workspace/service/workspace.service';
 
 @Component({
   selector: 'jhi-welcome',
@@ -38,6 +40,7 @@ export class WelcomeComponent implements OnInit {
   isLoading = false;
   predicate = 'id';
   ascending = true;
+  workspaces: IWorkspace[] = [];
 
   constructor(
     private loginService: LoginService,
@@ -46,13 +49,22 @@ export class WelcomeComponent implements OnInit {
     public router: Router,
     protected sortService: SortService,
     protected modalService: NgbModal,
-    private sanitizer: DomSanitizer
+    private sanitizer: DomSanitizer,
+    private workspaceService: WorkspaceService
   ) {}
 
   ngOnInit() {
     const defaultUrl="https://www.youtube.com/embed/7ZzLL3mK-rc";
     this.videoUrl = this.sanitizer.bypassSecurityTrustResourceUrl(defaultUrl);
     this.load()
+    this.loadWorkspaces();
+  }
+
+  loadWorkspaces(): void {
+    this.workspaceService.query().subscribe((response) => {
+      this.workspaces = response.body ?? [];
+      // 在这里处理工作区数据
+    });
   }
 
   load(): void {
