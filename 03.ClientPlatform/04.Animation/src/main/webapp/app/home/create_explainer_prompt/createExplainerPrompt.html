@@ -13,22 +13,20 @@
             <h1>YouTube Explainer - create a prompt</h1>
         </header>
         <!-- <form class="explainer-prompt-form"> -->
-
-
             @if (editForm.controls.id.value !== null) {
-                <div class="mb-3" style="display: none;">
-                    <label class="form-label" jhiTranslate="global.field.id" for="field_id" style="display: none;">ID</label>
+                <div class="mb-3">
+                    <label class="form-label" jhiTranslate="global.field.id" for="field_id">ID</label>
                     <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
                 </div>
             }
-            
-            <div class="mb-3" style="display: none;">
-                <label class="form-label" jhiTranslate="highwayacApp.youTubeVideo.workspace" for="field_workspace" style="display: none;">Workspace</label>
-                <input type="hidden" class="form-control" name="workspace" id="field_workspace" data-cy="workspace" formControlName="workspace" />
+
+            <div class="mb-3">
+                <label class="form-label" jhiTranslate="highwayacApp.youTubeVideo.workspace" for="field_workspace">Workspace</label>
+                <input type="text" class="form-control" name="workspace" id="field_workspace" data-cy="workspace" formControlName="workspace" />
                 @if (editForm.get('workspace')!.invalid && (editForm.get('workspace')!.dirty || editForm.get('workspace')!.touched)) {
                     <div>
                         @if (editForm.get('workspace')?.errors?.required) {
-                            <small class="form-text text-danger" jhiTranslate="entity.validation.required" style="display: none;">This field is required.</small>
+                            <small class="form-text text-danger" jhiTranslate="entity.validation.required">This field is required.</small>
                         }
                     </div>
                 }
@@ -144,6 +142,7 @@
             </div>
             
             <!-- <button type="submit" class="continue-btn" (click)="continue()">Continue</button> -->
+        <div>
             <button
                 type="submit"
                 id="save-entity"
@@ -153,6 +152,7 @@
                 >
                 <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
             </button>
+        </div>
         </form>
     </div>
     <jhi-foot-menu [currentpage]="'CreatexplainerPrompt'"></jhi-foot-menu>
