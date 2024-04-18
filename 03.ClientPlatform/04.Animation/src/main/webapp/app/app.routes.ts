@@ -33,6 +33,8 @@ import { SignupComponent } from './home/signup/signup.component';
 import { LoginComponent } from './home/login/login.component';
 import { VideoProductionsComponent } from './home/video_production_page/video_production.component';
 import { MaterialsComponent } from './home/material_page/material.component';
+import YouTubeVideoResolve from './entities/you-tube-video/route/you-tube-video-routing-resolve.service';
+
 
 const routes: Routes = [
   /*{
@@ -180,6 +182,11 @@ const routes: Routes = [
   {
     path: 'CreatexplainerPrompt',
     component: CreatexplainerPromptComponent,
+
+    resolve: {
+      youTubeVideo: YouTubeVideoResolve,
+    },
+    canActivate: [UserRouteAccessService],
   },
   {
     path: 'Continue',
