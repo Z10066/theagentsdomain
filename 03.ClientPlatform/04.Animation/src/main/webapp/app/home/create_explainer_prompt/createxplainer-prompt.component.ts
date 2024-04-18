@@ -12,6 +12,9 @@ import { FootMenuComponent } from 'app/layouts/foot-menu/foot-menu.component';
 import SharedModule from 'app/shared/shared.module';
 import { Observable, finalize } from 'rxjs';
 import { IWorkspace } from 'app/entities/workspace/workspace.model';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { SortService } from 'app/shared/sort/sort.service';
+import { AlertError } from 'app/shared/alert/alert-error.model';
 
 @Component({
   selector: 'jhi-createxplainer-prompt',
@@ -29,7 +32,15 @@ export class CreatexplainerPromptComponent implements OnInit {
   workspaceService: any;
   workspaces: IWorkspace[] = [];
   constructor(
-    public router: Router
+    public router: Router,
+    protected youTubeVideoService: YouTubeVideoService,
+    protected activatedRoute: ActivatedRoute,
+    protected sortService: SortService,
+    protected dataUtils: DataUtils,
+    protected modalService: NgbModal,
+    protected eventManager: EventManager,
+    protected youTubeVideoFormService: YouTubeVideoFormService,
+
     ){
       
     }

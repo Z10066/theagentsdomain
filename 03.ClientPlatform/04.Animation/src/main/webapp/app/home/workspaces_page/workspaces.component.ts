@@ -1,18 +1,18 @@
-import { Component } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Data, ParamMap, Router, RouterModule } from '@angular/router';
+import { combineLatest, filter, Observable, switchMap, tap } from 'rxjs';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { ASC, DEFAULT_SORT_DATA, DESC, ITEM_DELETED_EVENT, SORT } from 'app/config/navigation.constants';
-import { EntityArrayResponseType } from 'app/entities/system-setting/service/system-setting.service';
-import { WorkspaceDeleteDialogComponent } from 'app/entities/workspace/delete/workspace-delete-dialog.component';
-import { WorkspaceService } from 'app/entities/workspace/service/workspace.service';
-import { IWorkspace } from 'app/entities/workspace/workspace.model';
-import { LeftMenuComponent } from 'app/layouts/left-menu/left-menu.component';
-import { DurationPipe, FormatMediumDatePipe, FormatMediumDatetimePipe } from 'app/shared/date';
+
 import SharedModule from 'app/shared/shared.module';
-import { SortByDirective, SortDirective } from 'app/shared/sort';
+import { SortDirective, SortByDirective } from 'app/shared/sort';
+import { DurationPipe, FormatMediumDatetimePipe, FormatMediumDatePipe } from 'app/shared/date';
+import { FormsModule } from '@angular/forms';
+import { ASC, DESC, SORT, ITEM_DELETED_EVENT, DEFAULT_SORT_DATA } from 'app/config/navigation.constants';
 import { SortService } from 'app/shared/sort/sort.service';
-import { Observable, combineLatest, filter, switchMap, tap } from 'rxjs';
+import { LeftMenuComponent } from 'app/layouts/left-menu/left-menu.component';
+import { IWorkspace } from 'app/entities/workspace/workspace.model';
+import { EntityArrayResponseType, WorkspaceService } from 'app/entities/workspace/service/workspace.service';
+import { WorkspaceDeleteDialogComponent } from 'app/entities/workspace/delete/workspace-delete-dialog.component';
 
 
 @Component({
@@ -97,6 +97,8 @@ export class WprkspacesComponent {
   }
 
   protected refineData(data: IWorkspace[]): IWorkspace[] {
+    console.log(data);
+    //return data.sort(this.sortService.startSort(this.predicate, this.ascending ? 1 : -1));
     return data.sort(this.sortService.startSort(this.predicate, this.ascending ? 1 : -1));
   }
 
@@ -110,7 +112,7 @@ export class WprkspacesComponent {
       sort: this.getSortQueryParam(predicate, ascending),
     };
     // return this.workspaceService.query(queryObject).pipe(tap(() => (this.isLoading = false)));
-    return this.workspaceService.findByIdentifier("phew").pipe(tap(() => (this.isLoading = false)));
+    return this.workspaceService.findByIdentifier(queryObject, "phew").pipe(tap(() => (this.isLoading = false)));
   }
 
   protected handleNavigation(predicate?: string, ascending?: boolean): void {

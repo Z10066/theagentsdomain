@@ -14,6 +14,7 @@ import org.springframework.data.relational.core.sql.Comparison;
 import org.springframework.data.relational.core.sql.Condition;
 import org.springframework.data.relational.core.sql.Conditions;
 import org.springframework.data.relational.core.sql.Expression;
+import org.springframework.data.relational.core.sql.SQL;
 import org.springframework.data.relational.core.sql.Select;
 import org.springframework.data.relational.core.sql.SelectBuilder.SelectFromAndJoin;
 import org.springframework.data.relational.core.sql.Table;
@@ -22,6 +23,8 @@ import org.springframework.r2dbc.core.DatabaseClient;
 import org.springframework.r2dbc.core.RowsFetchSpec;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * Spring Data R2DBC custom repository implementation for the Workspace entity.
@@ -29,6 +32,7 @@ import reactor.core.publisher.Mono;
 @SuppressWarnings("unused")
 class WorkspaceRepositoryInternalImpl extends SimpleR2dbcRepository<Workspace, Long> implements WorkspaceRepositoryInternal {
 
+    private final Logger log = LoggerFactory.getLogger(WorkspaceRepositoryInternalImpl.class);
     private final DatabaseClient db;
     private final R2dbcEntityTemplate r2dbcEntityTemplate;
     private final EntityManager entityManager;
@@ -65,6 +69,7 @@ class WorkspaceRepositoryInternalImpl extends SimpleR2dbcRepository<Workspace, L
         SelectFromAndJoin selectFrom = Select.builder().select(columns).from(entityTable);
         // we do not support Criteria here for now as of https://github.com/jhipster/generator-jhipster/issues/18269
         String select = entityManager.createSelect(selectFrom, Workspace.class, pageable, whereClause);
+        log.debug("REST request to get Workspace by select: {}", select.toString());
         return db.sql(select).map(this::process);
     }
 
@@ -81,7 +86,9 @@ class WorkspaceRepositoryInternalImpl extends SimpleR2dbcRepository<Workspace, L
 
     @Override
     public Flux<Workspace> findByIdentifier(String identifier) {
-        Comparison whereClause = Conditions.isEqual(entityTable.column("identifier"), Conditions.just(identifier.toString()));
+        log.debug("REST request to get Workspace by identifier: {}", identifier);
+        Comparison whereClause = Conditions.isEqual(entityTable.column("identifier"), SQL.literalOf(identifier.toString()));
+        log.debug("REST request to get Workspace by whereClause: {}", whereClause.toString());
         return createQuery(null, whereClause).all();
     }
 

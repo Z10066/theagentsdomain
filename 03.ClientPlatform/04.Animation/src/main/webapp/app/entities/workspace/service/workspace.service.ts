@@ -37,8 +37,9 @@ export class WorkspaceService {
     return this.http.get<IWorkspace>(`${this.resourceUrl}/${id}`, { observe: 'response' });
   }
 
-  findByIdentifier(identifier: string): Observable<EntityArrayResponseType> {
-    return this.http.get<IWorkspace[]>(`${this.resourceUrl}/identifier/${identifier}`, { observe: 'response' });
+  findByIdentifier(req:any, identifier: string): Observable<EntityArrayResponseType> {
+    const options = createRequestOption(req);
+    return this.http.get<IWorkspace[]>(`${this.resourceUrl}/identifier/${identifier}`, { params: options, observe: 'response' });
   }
 
   query(req?: any): Observable<EntityArrayResponseType> {

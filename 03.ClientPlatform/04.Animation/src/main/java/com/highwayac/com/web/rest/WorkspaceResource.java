@@ -221,10 +221,12 @@ public class WorkspaceResource {
      * @param identifier the id of the workspace to retrieve.
      * @return the {@link ResponseEntity} with status {@code 200 (OK)} and with body the workspace, or with status {@code 404 (Not Found)}.
      */
-    @GetMapping("/identifier/{identifier}")
+    @GetMapping(value = "/identifier/{identifier}", produces = MediaType.APPLICATION_JSON_VALUE)
     public Mono<List<Workspace>> getWorkspace(@PathVariable("identifier") String identifier) {
         log.debug("REST request to get Workspace by identifier: {}", identifier);
-        return workspaceRepository.findByIdentifier(identifier).collectList();
+        Flux<Workspace> workspaces = workspaceRepository.findByIdentifier(identifier);
+        log.debug(workspaces.collectList().toString());
+        return workspaces.collectList();
     }
 
     /**
