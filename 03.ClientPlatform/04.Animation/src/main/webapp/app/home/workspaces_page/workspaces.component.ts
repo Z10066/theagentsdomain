@@ -109,7 +109,8 @@ export class WprkspacesComponent {
     const queryObject: any = {
       sort: this.getSortQueryParam(predicate, ascending),
     };
-    return this.workspaceService.query(queryObject).pipe(tap(() => (this.isLoading = false)));
+    // return this.workspaceService.query(queryObject).pipe(tap(() => (this.isLoading = false)));
+    return this.workspaceService.findByIdentifier("phew").pipe(tap(() => (this.isLoading = false)));
   }
 
   protected handleNavigation(predicate?: string, ascending?: boolean): void {

@@ -216,6 +216,18 @@ public class WorkspaceResource {
     }
 
     /**
+     * {@code GET  /workspaces/:identifier} : get the "identifier" workspace.
+     *
+     * @param identifier the id of the workspace to retrieve.
+     * @return the {@link ResponseEntity} with status {@code 200 (OK)} and with body the workspace, or with status {@code 404 (Not Found)}.
+     */
+    @GetMapping("/identifier/{identifier}")
+    public Mono<List<Workspace>> getWorkspace(@PathVariable("identifier") String identifier) {
+        log.debug("REST request to get Workspace by identifier: {}", identifier);
+        return workspaceRepository.findByIdentifier(identifier).collectList();
+    }
+
+    /**
      * {@code DELETE  /workspaces/:id} : delete the "id" workspace.
      *
      * @param id the id of the workspace to delete.
