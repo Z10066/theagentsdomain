@@ -3,6 +3,7 @@ import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angula
 import { ReactiveFormsModule } from '@angular/forms';
 
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
+import { AccountService } from 'app/core/auth/account.service';
 import { DataUtils, FileLoadError } from 'app/core/util/data-util.service';
 import { EventManager, EventWithContent } from 'app/core/util/event-manager.service';
 import { ICategory } from 'app/entities/category/category.model';
@@ -73,6 +74,7 @@ export class CreatevideopromptComponent implements OnInit {
     protected activatedRoute: ActivatedRoute,
     protected videoHintService: VideoHintService,
     protected videoHintFormService: VideoHintFormService,
+    private accountService: AccountService,
 
   ) {}
 
@@ -94,6 +96,10 @@ export class CreatevideopromptComponent implements OnInit {
       }
 
       this.loadRelationshipsOptions();
+
+      this.accountService.getAuthenticationState().subscribe((item)=>{
+        console.log(item?.login);
+      });
     });
 
     //workspace设定值

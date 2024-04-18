@@ -15,6 +15,7 @@ import { ISystemSetting } from 'app/entities/system-setting/system-setting.model
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { IWorkspace } from 'app/entities/workspace/workspace.model';
 import { WorkspaceService } from 'app/entities/workspace/service/workspace.service';
+import { AccountService } from 'app/core/auth/account.service';
 
 @Component({
   selector: 'jhi-welcome',
@@ -30,6 +31,7 @@ import { WorkspaceService } from 'app/entities/workspace/service/workspace.servi
     DurationPipe,
     FormatMediumDatetimePipe,
     FormatMediumDatePipe,
+    
   ]
 
 })
@@ -50,7 +52,8 @@ export class WelcomeComponent implements OnInit {
     protected sortService: SortService,
     protected modalService: NgbModal,
     private sanitizer: DomSanitizer,
-    private workspaceService: WorkspaceService
+    private workspaceService: WorkspaceService,
+    private accountService: AccountService
   ) {}
 
   ngOnInit() {
@@ -58,6 +61,9 @@ export class WelcomeComponent implements OnInit {
     this.videoUrl = this.sanitizer.bypassSecurityTrustResourceUrl(defaultUrl);
     this.load()
     this.loadWorkspaces();
+    this.accountService.getAuthenticationState().subscribe((item)=>{
+      console.log(item);
+    });
   }
 
   loadWorkspaces(): void {
