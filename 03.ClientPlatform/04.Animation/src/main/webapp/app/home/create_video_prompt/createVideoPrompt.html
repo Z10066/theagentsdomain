@@ -11,32 +11,144 @@
         <header>
             <h1>Script to Video - create a prompt</h1>
         </header>
-        <form class="video-prompt-form">
+        <form class="video-prompt-form" name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
             <div class="form-group">
-                <label for="video-type">Create a</label>
+
+
+                <div class="mb-3" *ngif="!addValue">
+                    <label class="form-label" for="field_workspace">Workspace</label>
+                    <input type="text" class="form-control" name="workspace" id="field_workspace" data-cy="workspace" formControlName="workspace"/>
+                    @if (editForm.get('workspace')!.invalid && (editForm.get('workspace')!.dirty || editForm.get('workspace')!.touched)) {
+                      <div>
+                        @if (editForm.get('workspace')?.errors?.required) {
+                          <small class="form-text text-danger">This field is required.</small>
+                        }
+                      </div>
+                    }
+                </div>
+
+                <!-- <label for="video-type">Create a</label>
                 <select id="video-type">
                     <option value="video">video</option>
-                    <!-- Additional video types here -->
-                </select>
-                <label for="script">using exactly this script</label>
-                <textarea id="script" placeholder="Your script here..." maxlength="3000"></textarea>
+                     Additional video types here 
+                </select> -->
+                <!-- <div class="mb-3 d-flex align-items-center">
+                    <label for="field_creator" class="me-3">Create a</label>
+                    <select
+                    id="field_creator"
+                    data-cy="creator"
+                    name="creator"
+                    formControlName="creator"
+                    [compareWith]="compareCreator"
+                    class="me-3"
+                    >
+                    @if (editForm.get(['creator'])!.value == null) {
+                        <option [ngValue]="null" selected></option>
+                    }
+                    @for (creatorOption of creatorsCollection; track $index) {
+                        <option [ngValue]="creatorOption">{{ creatorOption.id }}</option>
+                    }
+                    </select>
+                        @if (editForm.get(['creator'])!.invalid && (editForm.get(['creator'])!.dirty || editForm.get(['creator'])!.touched)) {
+                    <div>
+                        @if (editForm.get(['creator'])?.errors?.required) {
+                            <small class="form-text text-danger" >This field is required.</small>
+                        }
+                    </div>
+                    }
+                    <label for="script">using exactly this script</label>
+                </div> -->
+
+                <div class="mb-3 d-flex align-items-center">
+                    <label class="form-label" for="field_creator">Create a</label>
+                    <input type="text" class="form-control2" name="creator" id="field_creator" data-cy="creator" formControlName="creator" />
+                    @if (editForm.get('creator')!.invalid && (editForm.get('creator')!.dirty || editForm.get('creator')!.touched)) {
+                      <div>
+                        @if (editForm.get('creator')?.errors?.required) {
+                          <small class="form-text text-danger" >This field is required.</small>
+                        }
+                      </div>
+                    }
+                    <label for="script">using exactly this script</label>
+                </div>
+
+
+                <div class="mb-3">
+                    <textarea
+                      class="form-control"
+                      name="creationContent"
+                      id="field_creationContent"
+                      data-cy="creationContent"
+                      formControlName="creationContent"
+                      placeholder="Your script here..." 
+                      maxlength="3000"
+                      (input)="updateCharCount($event)"
+                    ></textarea>
+                    <div class="text-end mt-2">
+                        <span id="charCount">0</span> / 3000
+                    </div>
+                    @if (
+                      editForm.get('creationContent')!.invalid && (editForm.get('creationContent')!.dirty || editForm.get('creationContent')!.touched)
+                    ) {
+                      <div>
+                        @if (editForm.get('creationContent')?.errors?.required) {
+                          <small class="form-text text-danger" jhiTranslate="entity.validation.required">This field is required.</small>
+                        }
+                      </div>
+                    }
+                </div>
+
             </div>
             
-            <input type="text" id="background-music" placeholder="Make background music dark and haunting, upbeat and happy, etc...">
+            <!-- <input type="text" id="background-music" placeholder="Make background music dark and haunting, upbeat and happy, etc..."> -->
+            <div class="mb-3">
+                <label class="form-label" for="field_backgroundMusic"
+                    >Background Music</label
+                >
+                <input
+                    type="text"
+                    class="form-control"
+                    name="backgroundMusic"
+                    id="field_backgroundMusic"
+                    data-cy="backgroundMusic"
+                    formControlName="backgroundMusic"
+                />
+                @if (
+                    editForm.get('backgroundMusic')!.invalid && (editForm.get('backgroundMusic')!.dirty || editForm.get('backgroundMusic')!.touched)
+                    ) {
+                    <div>
+                        @if (editForm.get('backgroundMusic')?.errors?.required) {
+                        <small class="form-text text-danger" jhiTranslate="entity.validation.required">This field is required.</small>
+                        }
+                    </div>
+                    }
+            </div>
+
 
             <div class="settings">
                 <label>Settings:</label>
-                <select id="voice-selection">
-                    <option value="any">Use any</option>
-                    <!-- Additional voice options here -->
-                </select>
-                <select id="voice-type">
-                    <option value="any-voice">any voice</option>
-                    <!-- Additional voice types here -->
-                </select>
+                <div class="select-row">
+                    <select id="voice-selection">
+                        <option value="any">Use any</option>
+                        <!-- Additional voice options here -->
+                    </select>
+                    <select id="voice-type">
+                        <option value="any-voice">any voice</option>
+                        <!-- Additional voice types here -->
+                    </select>
+                </div>
             </div>
-            
-            <button type="submit" class="continue-btn" (click)="continue()">Continue</button>
+            <!-- <button type="submit" class="continue-btn" (click)="continue()">Continue</button> -->
+            <button
+                type="submit"
+                id="save-entity"
+                data-cy="entityCreateSaveButton"
+                [disabled]="editForm.invalid || isSaving"
+                class="continue-btn"
+            >
+            <fa-icon icon="save"></fa-icon>&nbsp;<span>Continue</span>
+            </button>
+
         </form>
     </div>
     <jhi-foot-menu [currentpage]="'Createvideoprompt'"></jhi-foot-menu>

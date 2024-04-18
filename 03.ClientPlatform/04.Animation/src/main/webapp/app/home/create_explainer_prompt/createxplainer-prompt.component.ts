@@ -9,7 +9,6 @@ import { YouTubeVideoService } from 'app/entities/you-tube-video/service/you-tub
 import { YouTubeVideoFormGroup, YouTubeVideoFormService } from 'app/entities/you-tube-video/update/you-tube-video-form.service';
 import { IYouTubeVideo } from 'app/entities/you-tube-video/you-tube-video.model';
 import { FootMenuComponent } from 'app/layouts/foot-menu/foot-menu.component';
-import { AlertError } from 'app/shared/alert/alert-error.model';
 import SharedModule from 'app/shared/shared.module';
 import { Observable, finalize } from 'rxjs';
 import { IWorkspace } from 'app/entities/workspace/workspace.model';
@@ -17,7 +16,7 @@ import { IWorkspace } from 'app/entities/workspace/workspace.model';
 @Component({
   selector: 'jhi-createxplainer-prompt',
   standalone: true,
-  imports: [SharedModule, RouterModule,FootMenuComponent, FormsModule, ReactiveFormsModule],
+  imports: [SharedModule, RouterModule,FootMenuComponent],
   templateUrl: './createExplainerPrompt.html',
   styleUrl: './createExplainerPromptStyles.scss'
 })
@@ -29,19 +28,14 @@ export class CreatexplainerPromptComponent implements OnInit {
   editForm: YouTubeVideoFormGroup = this.youTubeVideoFormService.createYouTubeVideoFormGroup();
   workspaceService: any;
   workspaces: IWorkspace[] = [];
-
   constructor(
-    public router: Router,
-    protected dataUtils: DataUtils,
-    protected eventManager: EventManager,
-    protected youTubeVideoService: YouTubeVideoService,
-    protected youTubeVideoFormService: YouTubeVideoFormService,
-    protected activatedRoute: ActivatedRoute,
-  ) {}
+    public router: Router
+    ){
+      
+    }
   continue() {
     this.router.navigate(['/ThinkingScreen']);
   }
-
   ngOnInit(): void {
     this.activatedRoute.data.subscribe(({ youTubeVideo }) => {
       this.youTubeVideo = youTubeVideo;
