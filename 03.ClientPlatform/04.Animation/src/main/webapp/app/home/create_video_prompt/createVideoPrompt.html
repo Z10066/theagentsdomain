@@ -15,7 +15,7 @@
             <div class="form-group">
 
 
-                <div class="mb-3">
+                <div class="mb-3" style="display: none;">
                     <label class="form-label" for="field_workspace">Workspace</label>
                     <input type="text" class="form-control" name="workspace" id="field_workspace" data-cy="workspace" formControlName="workspace"/>
                     @if (editForm.get('workspace')!.invalid && (editForm.get('workspace')!.dirty || editForm.get('workspace')!.touched)) {
@@ -58,20 +58,31 @@
                     }
                     <label for="script">using exactly this script</label>
                 </div> -->
+                <div class="mb-3" style="display: none;">
+                    <label class="form-label" jhiTranslate="highwayacApp.videoHint.creator" for="field_creator">Creator</label>
+                    <input type="text" class="form-control" name="creator" id="field_creator" data-cy="creator" formControlName="creator" />
+                        @if (editForm.get('creator')!.invalid && (editForm.get('creator')!.dirty || editForm.get('creator')!.touched)) {
+                        <div>
+                            @if (editForm.get('creator')?.errors?.required) {
+                            <small class="form-text text-danger" jhiTranslate="entity.validation.required">This field is required.</small>
+                            }
+                        </div>
+                        }
+                </div>
 
                 <div class="mb-3 d-flex align-items-center">
                     <label class="form-label" for="field_creator">Create a</label>
-                    <input type="text" class="form-control2" name="creator" id="field_creator" data-cy="creator" formControlName="creator" />
-                    @if (editForm.get('creator')!.invalid && (editForm.get('creator')!.dirty || editForm.get('creator')!.touched)) {
-                      <div>
-                        @if (editForm.get('creator')?.errors?.required) {
-                          <small class="form-text text-danger" >This field is required.</small>
-                        }
-                      </div>
-                    }
+                    <select class="form-control2" name="creator" id="field_creator" data-cy="creator" formControlName="creator">
+                        <option *ngFor="let name of namesList" [value]="name">{{ name }}</option>
+                    </select>
+                    <!-- err -->
+                    <div *ngIf="editForm.get('creator')!.invalid && (editForm.get('creator')!.dirty || editForm.get('creator')!.touched)">
+                        <div *ngIf="editForm.get('creator')?.errors?.required">
+                            <small class="form-text text-danger">This field is required.</small>
+                        </div>
+                    </div>
                     <label for="script">using exactly this script</label>
                 </div>
-
 
                 <div class="mb-3">
                     <textarea

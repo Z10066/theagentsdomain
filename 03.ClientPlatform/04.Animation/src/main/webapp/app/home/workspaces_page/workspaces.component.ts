@@ -82,10 +82,11 @@ export class WprkspacesComponent {
         if( res.body && res.body?.length > 0){
           this.onResponseSuccess(res);
           res.body[0].id;
+          console.log(res.body[0])
           res.body.forEach(
             (item) => {
               if(item.betaFeatures){
-                
+                console.log("name: " + item.name)
               }
             }
           );
