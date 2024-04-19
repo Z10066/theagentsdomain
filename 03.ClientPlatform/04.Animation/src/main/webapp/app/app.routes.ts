@@ -151,14 +151,26 @@ const routes: Routes = [
   {
     path: 'Download',
     component: DownloadComponent,
+    data: {
+      defaultSort: 'id,' + ASC,
+    },
+    canActivate: [UserRouteAccessService],
   },
   {
     path: 'VideoCircle',
     component: VideoCircleComponent,
+    data: {
+      defaultSort: 'id,' + ASC,
+    },
+    canActivate: [UserRouteAccessService],
   },
   {
     path: 'CreatVideo',
     component: CreatVideoComponent,
+    data: {
+      defaultSort: 'id,' + ASC,
+    },
+    canActivate: [UserRouteAccessService],
   },
   
   {
@@ -168,22 +180,42 @@ const routes: Routes = [
       videoHint: VideoHintResolve,
     },
     canActivate: [UserRouteAccessService],
+    data: {
+      defaultSort: 'id,' + ASC,
+    },
+
   },
   {
     path: 'CreateinstagramReelPrompt',
     component: CreateinstagramReelPromptComponent,
+    data: {
+      defaultSort: 'id,' + ASC,
+    },
+    canActivate: [UserRouteAccessService],
   },
   {
     path: 'Createprompt',
     component: CreatepromptComponent,
+    data: {
+      defaultSort: 'id,' + ASC,
+    },
+    canActivate: [UserRouteAccessService],
   },
   {
     path: 'CreaterecentEventsPrompt',
     component: CreaterecentEventsPromptComponent,
+    data: {
+      defaultSort: 'id,' + ASC,
+    },
+    canActivate: [UserRouteAccessService],
   },
   {
     path: 'CreatetiktokVideoPrompt',
     component: CreatetiktokVideoPromptComponent,
+    data: {
+      defaultSort: 'id,' + ASC,
+    },
+    canActivate: [UserRouteAccessService],
   },
   {
     path: 'CreatexplainerPrompt',
@@ -199,6 +231,10 @@ const routes: Routes = [
   {
     path: 'Continue',
     component: ContinueComponent,
+    data: {
+      defaultSort: 'id,' + ASC,
+    },
+    canActivate: [UserRouteAccessService],
   },
   {
     path: '',

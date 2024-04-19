@@ -84,7 +84,7 @@ export class WprkspacesComponent {
           res.body.forEach(
             (item) => {
               if(item.betaFeatures){
-                
+                console.log("name: " + item.name)
               }
             }
           );
