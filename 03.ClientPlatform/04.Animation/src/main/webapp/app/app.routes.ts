@@ -188,7 +188,9 @@ const routes: Routes = [
   {
     path: 'CreatexplainerPrompt',
     component: CreatexplainerPromptComponent,
-
+    data: {
+      defaultSort: 'id,' + ASC,
+    },
     resolve: {
       youTubeVideo: YouTubeVideoResolve,
     },

@@ -8,10 +8,10 @@
 </head>
 <body>
     <div class="explainer-prompt-container">
+        <form class="explainer-prompt-form" name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
         <header>
             <h1>YouTube Explainer - create a prompt</h1>
         </header>
-        <form name="editForm" role="form" novalidate (ngSubmit)="save()">
             @if (editForm.controls.id.value !== null) {
                 <div class="mb-3">
                     <label class="form-label" jhiTranslate="global.field.id" for="field_id">ID</label>
@@ -19,9 +19,9 @@
                 </div>
             }
 
-            <div class="mb-3">
+            <div class="mb-3" style="display: none;">
                 <label class="form-label" jhiTranslate="highwayacApp.youTubeVideo.workspace" for="field_workspace">Workspace</label>
-                <input type="text" class="form-control" name="workspace" id="field_workspace" data-cy="workspace" formControlName="workspace" />
+                <input type="text" class="form-control" name="workspace" id="field_workspace" data-cy="workspace" formControlName="workspace"/>
                 @if (editForm.get('workspace')!.invalid && (editForm.get('workspace')!.dirty || editForm.get('workspace')!.touched)) {
                     <div>
                         @if (editForm.get('workspace')?.errors?.required) {
@@ -32,7 +32,7 @@
             </div>
             
 
-            <div class="mb-3">
+            <div class="mb-3" style="display: none;">
                 <label class="form-label" jhiTranslate="highwayacApp.youTubeVideo.creator" for="field_creator">Creator</label>
                 <input type="text" class="form-control" name="creator" id="field_creator" data-cy="creator" formControlName="creator" />
                 @if (editForm.get('creator')!.invalid && (editForm.get('creator')!.dirty || editForm.get('creator')!.touched)) {
@@ -51,12 +51,56 @@
                     <!-- Additional video types here -->
                 </select>
                 <label for="video-about">about</label>
-                <input type="text" id="video-about" placeholder="Give me an engaging topic and things we should talk about and not talk about">
             </div>
             
-            <textarea id="creative-directions" placeholder="Optional creative directions - make this video your own by adding detailed creative thoughts and ideas like tone, humor, etc..."></textarea>
-            <input type="text" id="background-music" placeholder="Make background music dark and haunting, upbeat and happy, etc...">
+            <div class="mb-3">
+                <label class="form-label" jhiTranslate="highwayacApp.youTubeVideo.theme" for="field_theme">Theme</label>
+                <input type="text" class="form-control" name="theme" id="field_theme" data-cy="theme" formControlName="theme" />
+                @if (editForm.get('theme')!.invalid && (editForm.get('theme')!.dirty || editForm.get('theme')!.touched)) {
+                  <div>
+                    @if (editForm.get('theme')?.errors?.required) {
+                      <small class="form-text text-danger" jhiTranslate="entity.validation.required">This field is required.</small>
+                    }
+                  </div>
+                }
+            </div>
 
+            <div class="mb-3">
+                <label class="form-label" jhiTranslate="highwayacApp.youTubeVideo.content" for="field_content">Content</label>
+                <textarea class="form-control" name="content" id="field_content" data-cy="content" formControlName="content"></textarea>
+                @if (editForm.get('content')!.invalid && (editForm.get('content')!.dirty || editForm.get('content')!.touched)) {
+                  <div>
+                    @if (editForm.get('content')?.errors?.required) {
+                      <small class="form-text text-danger" jhiTranslate="entity.validation.required">This field is required.</small>
+                    }
+                  </div>
+                }
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label" jhiTranslate="highwayacApp.youTubeVideo.backgroundMusic" for="field_backgroundMusic"
+                  >Background Music</label
+                >
+                <input
+                  type="text"
+                  class="form-control"
+                  name="backgroundMusic"
+                  id="field_backgroundMusic"
+                  data-cy="backgroundMusic"
+                  formControlName="backgroundMusic"
+                />
+                @if (
+                  editForm.get('backgroundMusic')!.invalid && (editForm.get('backgroundMusic')!.dirty || editForm.get('backgroundMusic')!.touched)
+                ) {
+                  <div>
+                    @if (editForm.get('backgroundMusic')?.errors?.required) {
+                      <small class="form-text text-danger" jhiTranslate="entity.validation.required">This field is required.</small>
+                    }
+                  </div>
+                }
+            </div>
+
+            
             <div class="settings">
                 <label>Settings:</label>
                 <div class="dropdowns">

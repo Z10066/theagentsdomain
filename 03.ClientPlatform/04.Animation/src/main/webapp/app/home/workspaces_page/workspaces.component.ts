@@ -81,7 +81,6 @@ export class WprkspacesComponent {
       next: (res: EntityArrayResponseType) => {
         if( res.body && res.body?.length > 0){
           this.onResponseSuccess(res);
-          res.body[0].id;
           res.body.forEach(
             (item) => {
               if(item.betaFeatures){
