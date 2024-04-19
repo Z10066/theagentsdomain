@@ -2,7 +2,8 @@ import { HttpResponse } from '@angular/common/http';
 import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 
-import { ActivatedRoute, Router, RouterModule } from '@angular/router';
+import { ActivatedRoute, Data, ParamMap, Router, RouterModule } from '@angular/router';
+import { ASC, DEFAULT_SORT_DATA, DESC, SORT } from 'app/config/navigation.constants';
 import { AccountService } from 'app/core/auth/account.service';
 import { DataUtils, FileLoadError } from 'app/core/util/data-util.service';
 import { EventManager, EventWithContent } from 'app/core/util/event-manager.service';
@@ -23,9 +24,13 @@ import { VideoService } from 'app/entities/video/service/video.service';
 import { VideoFormGroup, VideoFormService } from 'app/entities/video/update/video-form.service';
 import { IVideo } from 'app/entities/video/video.model';
 import { WorkspaceComponent } from 'app/entities/workspace/list/workspace.component';
+import { EntityArrayResponseType, WorkspaceService } from 'app/entities/workspace/service/workspace.service';
+import { IWorkspace, NewWorkspace } from 'app/entities/workspace/workspace.model';
 import { FootMenuComponent } from 'app/layouts/foot-menu/foot-menu.component';
 import { AlertError } from 'app/shared/alert/alert-error.model';
 import SharedModule from 'app/shared/shared.module';
+import { SortService } from 'app/shared/sort/sort.service';
+import { combineLatest, switchMap, tap } from 'rxjs';
 import { Observable } from 'rxjs/internal/Observable';
 import { finalize } from 'rxjs/internal/operators/finalize';
 import { map } from 'rxjs/internal/operators/map';
@@ -59,8 +64,13 @@ export class CreatevideopromptComponent implements OnInit {
   //editForm: VideoFormGroup = this.videoFormService.createVideoFormGroup();
   editForm: VideoHintFormGroup = this.videoHintFormService.createVideoHintFormGroup();
 
-  addValue = "wang"
-
+  namesList: string[] = ['YouTube video', 'TikTok video', 'Instagram video'];
+  workspaces?: IWorkspace[];
+  predicate = 'id';
+  ascending = true;
+  isLoading = false;
+  useid:string = "";
+  
   constructor(
     protected dataUtils: DataUtils,
     protected eventManager: EventManager,
@@ -75,6 +85,10 @@ export class CreatevideopromptComponent implements OnInit {
     protected videoHintService: VideoHintService,
     protected videoHintFormService: VideoHintFormService,
     private accountService: AccountService,
+
+    protected sortService: SortService,
+    protected workspaceService: WorkspaceService,
+    public router: Router,
 
   ) {}
 
@@ -99,11 +113,41 @@ export class CreatevideopromptComponent implements OnInit {
 
       this.accountService.getAuthenticationState().subscribe((item)=>{
         console.log(item?.login);
+        if(item){
+          this.useid = item.login
+          this.load();
+        }
       });
+      
     });
+    //Create a video设定值
+    this.fetchNamesList();
+  }
 
-    //workspace设定值
-    this.editForm.get('workspace')?.setValue(this.addValue)
+  load(): void {
+    this.loadFromBackendWithRouteInformations().subscribe({
+      next: (res: EntityArrayResponseType) => {
+        if( res.body && res.body?.length > 0){
+          //this.onResponseSuccess(res);
+          res.body.forEach(
+            (item) => {
+              if(item.betaFeatures){
+                //workspace,creator设定值
+                this.editForm.get('workspace')?.setValue(item.id.toString())
+                this.editForm.get('creator')?.setValue(this.useid)
+              }
+            }
+          );
+        }
+        else{
+          this.router.navigate(['/Workspaces']);
+        }
+      },
+    });
+  }
+
+  fetchNamesList() {
+    this.namesList;
   }
 
   byteSize(base64String: string): string {
@@ -136,8 +180,50 @@ export class CreatevideopromptComponent implements OnInit {
   }
 
 
+  // protected onResponseSuccess(response: EntityArrayResponseType): void {
+  //   const dataFromBody = this.fillComponentAttributesFromResponseBody(response.body);
+  //   this.workspaces = this.refineData(dataFromBody);
+  // }
 
+  // protected fillComponentAttributesFromResponseBody(data: IWorkspace[] | null): IWorkspace[] {
+  //   return data ?? [];
+  // }
+  protected refineData(data: IWorkspace[]): IWorkspace[] {
+    console.log(data);
+    //return data.sort(this.sortService.startSort(this.predicate, this.ascending ? 1 : -1));
+    return data.sort(this.sortService.startSort(this.predicate, this.ascending ? 1 : -1));
+  }
 
+  protected loadFromBackendWithRouteInformations(): Observable<EntityArrayResponseType> {
+    return combineLatest([this.activatedRoute.queryParamMap, this.activatedRoute.data]).pipe(
+      tap(([params, data]) => this.fillComponentAttributeFromRoute(params, data)),
+      switchMap(() => this.queryBackend(this.predicate, this.ascending)),
+    );
+  }
+
+  protected fillComponentAttributeFromRoute(params: ParamMap, data: Data): void {
+    const sort = (params.get(SORT) ?? data[DEFAULT_SORT_DATA]).split(',');
+    this.predicate = sort[0];
+    this.ascending = sort[1] === ASC;
+  }
+  
+  protected queryBackend(predicate?: string, ascending?: boolean): Observable<EntityArrayResponseType> {
+    this.isLoading = true;
+    const queryObject: any = {
+      sort: this.getSortQueryParam(predicate, ascending),
+    };
+    // return this.workspaceService.query(queryObject).pipe(tap(() => (this.isLoading = false)));
+    return this.workspaceService.findByIdentifier(queryObject, this.useid).pipe(tap(() => (this.isLoading = false)));
+  }
+
+  protected getSortQueryParam(predicate = this.predicate, ascending = this.ascending): string[] {
+    const ascendingQueryParam = ascending ? ASC : DESC;
+    if (predicate === '') {
+      return [];
+    } else {
+      return [predicate + ',' + ascendingQueryParam];
+    }
+  }
 
   protected subscribeToSaveResponse(result: Observable<HttpResponse<IVideoHint>>): void {
     result.pipe(finalize(() => this.onSaveFinalize())).subscribe({
