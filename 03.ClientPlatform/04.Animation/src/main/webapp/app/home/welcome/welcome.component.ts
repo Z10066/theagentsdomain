@@ -16,6 +16,8 @@ import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { IWorkspace } from 'app/entities/workspace/workspace.model';
 import { WorkspaceService } from 'app/entities/workspace/service/workspace.service';
 import { AccountService } from 'app/core/auth/account.service';
+import { toJSDate } from '@ng-bootstrap/ng-bootstrap/datepicker/ngb-calendar';
+import { Authority } from 'app/config/authority.constants';
 
 @Component({
   selector: 'jhi-welcome',
@@ -63,6 +65,12 @@ export class WelcomeComponent implements OnInit {
     this.loadWorkspaces();
     this.accountService.getAuthenticationState().subscribe((item)=>{
       console.log(item);
+      if(this.accountService.hasAnyAuthority(Authority.ADMIN)){
+        console.log("user is Admin");
+      }
+      if(this.accountService.hasAnyAuthority(Authority.USER)){
+        console.log("user is common user");
+      }
     });
   }
 

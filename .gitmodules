@@ -53,3 +53,20 @@
 	path = 06.PaymentPlatform/subscription-use-cases
 	url = https://github.com/stripe-samples/subscription-use-cases.git
 
+[submodule "kanboard/kanboard"]
+	path = 09.StandardPlatform/01.Project/kanboard
+	url = https://github.com/kanboard/kanboard.git
+[submodule "frappe/erpnext"]
+	path = 09.StandardPlatform/erpnext
+	url = https://github.com/frappe/erpnext.git
+[submodule "prolinkinfo/RealEstateCRM"]
+	path = 09.StandardPlatform/RealEstateCRM
+	url = https://github.com/prolinkinfo/RealEstateCRM.git
+[submodule "revive-adserver/revive-adserver"]
+	path = 09.StandardPlatform/revive-adserver
+	url = https://github.com/revive-adserver/revive-adserver.git
+[submodule "frappe/erpnext"]
+	path = 09.StandardPlatform/erpnext
+	url = https://github.com/frappe/erpnext.git
+
+ 
