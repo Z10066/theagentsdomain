@@ -12,6 +12,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import java.time.LocalDateTime;
 
@@ -23,6 +24,7 @@ public class UserServiceImpl implements UserService {
     private final Logger LOGGER = LoggerFactory.getLogger(getClass());
 
     private final UserRepository userRepository;
+    @Autowired
     private final KeycloakService keycloakService;
  
     @Override

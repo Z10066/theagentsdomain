@@ -17,6 +17,7 @@
 		<java.version>17</java.version>
 		<spring-cloud.version>2023.0.1</spring-cloud.version>
         <jhipster-dependencies.version>8.1.0</jhipster-dependencies.version>
+		<spring-boot.version>3.2.0</spring-boot.version>
 	</properties>
 	<dependencies>
 		<dependency>
@@ -58,6 +59,10 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-oauth2-resource-server</artifactId>
+        </dependency>
+		<dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter</artifactId>
         </dependency>
         <dependency>
             <groupId>org.springframework.cloud</groupId>
@@ -143,12 +148,23 @@
 	</dependencyManagement>
 
 	<build>
-		<plugins>
-			<plugin>
+  		<plugins>
+    		<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
-			</plugin>
-		</plugins>
+				<version>${spring-boot.version}</version>
+				<executions>
+        		<execution>
+          	<goals>
+            	<goal>repackage</goal>
+          	</goals>
+        		</execution>
+      			</executions>
+     	 	<configuration>
+        	<mainClass>${start-class}</mainClass>
+      		</configuration>
+    		</plugin>
+  		</plugins>
 	</build>
 
 </project>
