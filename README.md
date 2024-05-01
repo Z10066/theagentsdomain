@@ -16,7 +16,7 @@ https://github.com/highwayns/awesome#highwayns
 # story && video
 ## English
 - [Binge-Watching Season 6 of 'The Agents's Domain': 'The Mystery of Codes'](https://youtu.be/FGH0XjJl_Yw)
-- [Binge-Watching Season 7 of 'The Agents's Domain': 'Mercury Base1-50'](https://youtu.be/B12i7jrZf0U)
+- [Binge-Watching Season 7 of 'The Agents's Domain': 'Mercury Base'](https://youtu.be/B12i7jrZf0U)
 
 ## 中文
 - [Binge-Watching Season 1 of 'The Agents's Domain'](https://youtu.be/gOUp1BVz8bI)
@@ -27,3 +27,4 @@ https://github.com/highwayns/awesome#highwayns
 - [Binge-Watching Season 6 of 'The Agents's Domain': 'The Mystery of Codes'](https://youtu.be/tNJ6mH-q7Uc)
 - [Binge-Watching Season 7 of 'The Agents's Domain': 'Mercury Base'](https://youtu.be/0hKlx0JmJ1Y)
 - [Binge-Watching Season 8 of 'The Agents's Domain': 'The Super Fleet'](https://youtu.be/9259M0oaL78)
+- [Binge-Watching Season 9 of 'The Agents's Domain': 'The Battle to Protect Earth'](https://youtu.be/gPSSeS9Vpp0)
