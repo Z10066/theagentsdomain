@@ -10,6 +10,9 @@
 [submodule "daveshap/ACE_Framework"]
 	path = 01.AgentCorePlatform/ACE_Framework
 	url = https://github.com/daveshap/ACE_Framework.git
+[submodule "OpenDevin/OpenDevin"]
+	path = 01.AgentCorePlatform/OpenDevin
+	url = https://github.com/OpenDevin/OpenDevin.git
 [submodule "jhipster/generator-jhipster"]
 	path = 02.SoftwareGenerator/generator-jhipster
 	url = https://github.com/jhipster/generator-jhipster.git
