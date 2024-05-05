@@ -74,5 +74,9 @@
 [submodule "frappe/erpnext"]
 	path = 09.StandardPlatform/erpnext
 	url = https://github.com/frappe/erpnext.git
+[submodule "highwayns/Medical_Intake"]
+	path = 10.AnalysisAndAlgorithm/Medical_Intake
+	url = https://github.com/highwayns/Medical_Intake.git
+
 
  
