@@ -22,6 +22,9 @@
 [submodule "Sxela/WarpFusion"]
 	path = 02.SoftwareGenerator/WarpFusion
 	url = https://github.com/Sxela/WarpFusion.git
+[submodule "highwayns/BookWriter"]
+	path = 02.SoftwareGenerator/BookWriter
+	url = https://github.com/highwayns/BookWriter.git
 [submodule "swagger-api/swagger-codegen"]
 	path = 02.SoftwareGenerator/swagger-codegen
 	url = https://github.com/swagger-api/swagger-codegen.git

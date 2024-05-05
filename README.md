@@ -28,3 +28,4 @@ https://github.com/highwayns/awesome#highwayns
 - [Binge-Watching Season 7 of 'The Agents's Domain': 'Mercury Base'](https://youtu.be/0hKlx0JmJ1Y)
 - [Binge-Watching Season 8 of 'The Agents's Domain': 'The Super Fleet'](https://youtu.be/9259M0oaL78)
 - [Binge-Watching Season 9 of 'The Agents's Domain': 'The Battle to Protect Earth'](https://youtu.be/gPSSeS9Vpp0)
+- [Binge-Watching Season 9 of 'The Agents's Domain': 'Machine Warriors'](https://youtu.be/fHczEc9-AHc)
