@@ -38,7 +38,7 @@
     ],
     "feignClient": false,
     "gradleEnterpriseHost": null,
-    "jhipsterVersion": "8.1.0",
+    "jhipsterVersion": "8.4.0",
     "jwtSecretKey": "Mzg4OTE3MTZmMTBmMjVhOGZlZjIyMWJlNTBkMDU5MzIzNDBhMWE0ZTQzZjJkYmFmODBmNjYzY2MzMzg5NzA0YjhlZTkzMTk0MzZlZjM2NTczMjA4MDk2M2VkZGM4ZTMxMDhiMTcxYmMzMDFiNGY3ZjA2ZTM2NzA2MDJlZWRhM2Q=",
     "languages": ["en", "zh-cn", "ja"],
     "lastLiquibaseTimestamp": 1710588907000,
@@ -63,6 +63,7 @@
     "serviceDiscoveryType": "eureka",
     "skipCommitHook": true,
     "skipUserManagement": true,
+    "syncUserWithIdp": true,
     "testFrameworks": [],
     "websocket": false,
     "withAdminUi": true

@@ -5,6 +5,7 @@ export interface IYouTubeVideo {
   theme?: string | null;
   content?: string | null;
   backgroundMusic?: string | null;
+  videoTime?: string | null;
 }
 
 export type NewYouTubeVideo = Omit<IYouTubeVideo, 'id'> & { id: null };

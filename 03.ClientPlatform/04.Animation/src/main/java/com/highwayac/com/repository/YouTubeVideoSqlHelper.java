@@ -16,6 +16,7 @@ public class YouTubeVideoSqlHelper {
         columns.add(Column.aliased("theme", table, columnPrefix + "_theme"));
         columns.add(Column.aliased("content", table, columnPrefix + "_content"));
         columns.add(Column.aliased("background_music", table, columnPrefix + "_background_music"));
+        columns.add(Column.aliased("video_time", table, columnPrefix + "_video_time"));
 
         return columns;
     }

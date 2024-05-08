@@ -1,38 +1,42 @@
 import { IYouTubeVideo, NewYouTubeVideo } from './you-tube-video.model';
 
 export const sampleWithRequiredData: IYouTubeVideo = {
-  id: 13130,
-  workspace: 'gadzooks verbally beside',
-  creator: 'the splinter',
-  theme: 'aw format',
+  id: 32642,
+  workspace: 'elegantly antique duh',
+  creator: 'quarter',
+  theme: 'swimming notwithstanding disconcert',
   content: '../fake-data/blob/hipster.txt',
-  backgroundMusic: 'qualified',
+  backgroundMusic: 'puzzled',
+  videoTime: 'velvety',
 };
 
 export const sampleWithPartialData: IYouTubeVideo = {
-  id: 11272,
-  workspace: 'sympathetically daily',
-  creator: 'commonly intersperse',
-  theme: 'on',
+  id: 22060,
+  workspace: 'phew per',
+  creator: 'incidentally pish wonderfully',
+  theme: 'wretched ensconce than',
   content: '../fake-data/blob/hipster.txt',
-  backgroundMusic: 'if locker',
+  backgroundMusic: 'tremor',
+  videoTime: 'finally reshuffle',
 };
 
 export const sampleWithFullData: IYouTubeVideo = {
-  id: 2573,
-  workspace: 'oof trooper',
-  creator: 'aside',
-  theme: 'whoever regular wonderfully',
+  id: 26061,
+  workspace: 'amusing merrily sharply',
+  creator: 'and format liner',
+  theme: 'extroverted TV likely',
   content: '../fake-data/blob/hipster.txt',
-  backgroundMusic: 'cautiously skid',
+  backgroundMusic: 'that intensely because',
+  videoTime: 'around fear for',
 };
 
 export const sampleWithNewData: NewYouTubeVideo = {
-  workspace: 'dice electric',
-  creator: 'inasmuch',
-  theme: 'father-in-law tabletop',
+  workspace: 'mismatch instantly furthermore',
+  creator: 'within eventually kite',
+  theme: 'lashes',
   content: '../fake-data/blob/hipster.txt',
-  backgroundMusic: 'magnificent phew',
+  backgroundMusic: 'ultimately who',
+  videoTime: 'plus vice since',
   id: null,
 };
 
