@@ -107,8 +107,8 @@ public class YouTubeVideoResource {
                     .map(result ->
                         ResponseEntity
                             .ok()
-                            .headers(HeaderUtil.createEntityUpdateAlert(applicationName, true, ENTITY_NAME, result.getId().toString()))
-                            .body(result)
+                                .headers(HeaderUtil.createEntityUpdateAlert(applicationName, true, ENTITY_NAME, result.getId().toString()))
+                                .body(result)
                     );
             });
     }
@@ -162,6 +162,9 @@ public class YouTubeVideoResource {
                         if (youTubeVideo.getBackgroundMusic() != null) {
                             existingYouTubeVideo.setBackgroundMusic(youTubeVideo.getBackgroundMusic());
                         }
+                        if (youTubeVideo.getVideoTime() != null) {
+                            existingYouTubeVideo.setVideoTime(youTubeVideo.getVideoTime());
+                        }
 
                         return existingYouTubeVideo;
                     })
@@ -172,8 +175,8 @@ public class YouTubeVideoResource {
                     .map(res ->
                         ResponseEntity
                             .ok()
-                            .headers(HeaderUtil.createEntityUpdateAlert(applicationName, true, ENTITY_NAME, res.getId().toString()))
-                            .body(res)
+                                .headers(HeaderUtil.createEntityUpdateAlert(applicationName, true, ENTITY_NAME, res.getId().toString()))
+                                .body(res)
                     );
             });
     }

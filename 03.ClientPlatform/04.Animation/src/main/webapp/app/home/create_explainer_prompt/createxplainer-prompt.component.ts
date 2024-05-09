@@ -39,6 +39,7 @@ export class CreatexplainerPromptComponent implements OnInit {
   ascending = true;
   isLoading = false;
   useid:string = "";
+  namesList: string[] = ['15 seconds', '30 seconds', '1 minute','2 minutes','3 minutes'];
 
 
   constructor(

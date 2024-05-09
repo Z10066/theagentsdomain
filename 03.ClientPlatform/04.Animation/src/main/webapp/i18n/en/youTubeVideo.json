@@ -22,7 +22,9 @@
       "creator": "Creator",
       "theme": "Theme",
       "content": "Content",
-      "backgroundMusic": "Background Music"
+      "backgroundMusic": "Background Music",
+      "videoTime": "Create a",
+      "video_Time": "YouTube video about"
     }
   }
 }

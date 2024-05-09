@@ -89,6 +89,18 @@
             </div>
           }
         </div>
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="highwayacApp.youTubeVideo.videoTime" for="field_videoTime" >Video Time</label>
+          <textarea class="form-control" name="videoTime" id="field_videoTime" data-cy="videoTime" formControlName="videoTime"></textarea>
+          @if (editForm.get('videoTime')!.invalid && (editForm.get('videoTime')!.dirty || editForm.get('videoTime')!.touched)) {
+            <div>
+              @if (editForm.get('videoTime')?.errors?.required) {
+                <small class="form-text text-danger" jhiTranslate="entity.validation.required">This field is required.</small>
+              }
+            </div>
+          }
+        </div>
       </div>
 
       <div>
