@@ -54,6 +54,9 @@ class YouTubeVideoResourceIT {
     private static final String DEFAULT_VIDEOLANGUAGE = "AAAAAAAAAA";
     private static final String UPDATED_VIDEOLANGUAGE = "BBBBBBBBBB";
 
+    private static final String DEFAULT_SUBTITLES = "AAAAAAAAAA";
+    private static final String UPDATED_SUBTITLES = "BBBBBBBBBB";
+
     private static final String ENTITY_API_URL = "/api/you-tube-videos";
     private static final String ENTITY_API_URL_ID = ENTITY_API_URL + "/{id}";
 
@@ -86,7 +89,8 @@ class YouTubeVideoResourceIT {
             .backgroundMusic(DEFAULT_BACKGROUND_MUSIC)
             .videoTime(DEFAULT_VIDEO_TIME)
             .gender(DEFAULT_GENDER)
-            .videolanguage(DEFAULT_VIDEOLANGUAGE);
+            .videolanguage(DEFAULT_VIDEOLANGUAGE)
+            .subtitles(DEFAULT_SUBTITLES);
         return youTubeVideo;
     }
 
@@ -105,7 +109,8 @@ class YouTubeVideoResourceIT {
             .backgroundMusic(UPDATED_BACKGROUND_MUSIC)
             .videoTime(UPDATED_VIDEO_TIME)
             .gender(UPDATED_GENDER)
-            .videolanguage(UPDATED_VIDEOLANGUAGE);
+            .videolanguage(UPDATED_VIDEOLANGUAGE)
+            .subtitles(UPDATED_SUBTITLES);
         return youTubeVideo;
     }
 
@@ -326,7 +331,9 @@ class YouTubeVideoResourceIT {
             .jsonPath("$.[*].gender")
             .value(hasItem(DEFAULT_GENDER))
             .jsonPath("$.[*].videolanguage")
-            .value(hasItem(DEFAULT_VIDEOLANGUAGE));
+            .value(hasItem(DEFAULT_VIDEOLANGUAGE))
+            .jsonPath("$.[*].subtitles")
+            .value(hasItem(DEFAULT_SUBTITLES));
     }
 
     @Test
@@ -362,7 +369,9 @@ class YouTubeVideoResourceIT {
             .jsonPath("$.gender")
             .value(is(DEFAULT_GENDER))
             .jsonPath("$.videolanguage")
-            .value(is(DEFAULT_VIDEOLANGUAGE));
+            .value(is(DEFAULT_VIDEOLANGUAGE))
+            .jsonPath("$.subtitles")
+            .value(is(DEFAULT_SUBTITLES));
     }
 
     @Test
@@ -394,7 +403,8 @@ class YouTubeVideoResourceIT {
             .backgroundMusic(UPDATED_BACKGROUND_MUSIC)
             .videoTime(UPDATED_VIDEO_TIME)
             .gender(UPDATED_GENDER)
-            .videolanguage(UPDATED_VIDEOLANGUAGE);
+            .videolanguage(UPDATED_VIDEOLANGUAGE)
+            .subtitles(UPDATED_SUBTITLES);
 
         webTestClient
             .put()
@@ -528,7 +538,8 @@ class YouTubeVideoResourceIT {
             .backgroundMusic(UPDATED_BACKGROUND_MUSIC)
             .videoTime(UPDATED_VIDEO_TIME)
             .gender(UPDATED_GENDER)
-            .videolanguage(UPDATED_VIDEOLANGUAGE);
+            .videolanguage(UPDATED_VIDEOLANGUAGE)
+            .subtitles(UPDATED_SUBTITLES);
 
         webTestClient
             .patch()

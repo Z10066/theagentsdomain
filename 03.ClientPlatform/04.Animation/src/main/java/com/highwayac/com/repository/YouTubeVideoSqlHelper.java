@@ -19,6 +19,7 @@ public class YouTubeVideoSqlHelper {
         columns.add(Column.aliased("video_time", table, columnPrefix + "_video_time"));
         columns.add(Column.aliased("gender", table, columnPrefix + "_gender"));
         columns.add(Column.aliased("videolanguage", table, columnPrefix + "_videolanguage"));
+        columns.add(Column.aliased("subtitles", table, columnPrefix + "_subtitles"));
 
         return columns;
     }

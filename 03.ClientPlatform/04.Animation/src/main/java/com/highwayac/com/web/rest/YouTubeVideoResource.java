@@ -171,6 +171,9 @@ public class YouTubeVideoResource {
                         if (youTubeVideo.getVideolanguage() != null) {
                             existingYouTubeVideo.setVideolanguage(youTubeVideo.getVideolanguage());
                         }
+                        if (youTubeVideo.getSubtitles() != null) {
+                            existingYouTubeVideo.setSubtitles(youTubeVideo.getSubtitles());
+                        }
 
                         return existingYouTubeVideo;
                     })

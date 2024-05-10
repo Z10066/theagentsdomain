@@ -41,9 +41,11 @@ export class CreatexplainerPromptComponent implements OnInit {
   useid:string = "";
   namesList: string[] = ['15 seconds', '30 seconds', '1 minute','2 minutes','3 minutes'];
   gendername: string[] = ['Use any', 'a male', 'a female'];
+  videoname: string[] = ['Chinese', 'English', 'Japanese'];
+  subtitlesname : string[] = ['Chinese', 'English', 'Japanese'];
   
 
-
+  
   constructor(
     public router: Router,
     protected youTubeVideoService: YouTubeVideoService,

@@ -28,6 +28,7 @@ describe('YouTubeVideo Form Service', () => {
             videoTime: expect.any(Object),
             gender: expect.any(Object),
             videolanguage: expect.any(Object),
+            subtitles: expect.any(Object),
           }),
         );
       });
@@ -46,6 +47,7 @@ describe('YouTubeVideo Form Service', () => {
             videoTime: expect.any(Object),
             gender: expect.any(Object),
             videolanguage: expect.any(Object),
+            subtitles: expect.any(Object),
           }),
         );
       });

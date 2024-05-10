@@ -132,6 +132,18 @@
             </div>
           }
         </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_subtitles" jhiTranslate="highwayacApp.youTubeVideo.subtitles">Subtitles</label>
+          <input type="text" class="form-control" name="subtitles" id="field_subtitles" data-cy="subtitles" formControlName="subtitles" />
+          @if (editForm.get('subtitles')!.invalid && (editForm.get('subtitles')!.dirty || editForm.get('subtitles')!.touched)) {
+            <div>
+              @if (editForm.get('subtitles')?.errors?.required) {
+                <small class="form-text text-danger" jhiTranslate="entity.validation.required">This field is required.</small>
+              }
+            </div>
+          }
+        </div>
       </div>
 
       <div>

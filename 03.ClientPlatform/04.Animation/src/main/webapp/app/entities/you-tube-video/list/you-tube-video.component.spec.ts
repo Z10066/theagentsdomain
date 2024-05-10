@@ -16,11 +16,7 @@ describe('YouTubeVideo Management Component', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [
-        RouterTestingModule.withRoutes([{ path: 'you-tube-video', component: YouTubeVideoComponent }]),
-        HttpClientTestingModule,
-        YouTubeVideoComponent,
-      ],
+      imports: [HttpClientTestingModule, YouTubeVideoComponent],
       providers: [
         {
           provide: ActivatedRoute,

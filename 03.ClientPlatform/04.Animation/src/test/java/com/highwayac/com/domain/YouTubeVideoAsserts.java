@@ -54,7 +54,8 @@ public class YouTubeVideoAsserts {
             .satisfies(e -> assertThat(e.getBackgroundMusic()).as("check backgroundMusic").isEqualTo(actual.getBackgroundMusic()))
             .satisfies(e -> assertThat(e.getVideoTime()).as("check videoTime").isEqualTo(actual.getVideoTime()))
             .satisfies(e -> assertThat(e.getGender()).as("check gender").isEqualTo(actual.getGender()))
-            .satisfies(e -> assertThat(e.getVideolanguage()).as("check videolanguage").isEqualTo(actual.getVideolanguage()));
+            .satisfies(e -> assertThat(e.getVideolanguage()).as("check videolanguage").isEqualTo(actual.getVideolanguage()))
+            .satisfies(e -> assertThat(e.getSubtitles()).as("check subtitles").isEqualTo(actual.getSubtitles()));
     }
 
     /**

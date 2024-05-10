@@ -121,11 +121,20 @@
                     </div>
                   }
                 </div>
-                <div class="dropdowns">
-                    <select id="voice-type">
-                        <option value="any-voice">any voice</option>
-                        <!-- Additional options -->
-                    </select>
+                <div class="mb-3">
+                  <select name="videolanguage" id="field_videolanguage" data-cy="videolanguage" formControlName="videolanguage">
+                    <option *ngFor="let name of videoname" [value]="name">{{ name }}</option>
+                  </select>
+                  @if (editForm.get('videolanguage')!.invalid && (editForm.get('videolanguage')!.dirty || editForm.get('videolanguage')!.touched)) {
+                    <div>
+                      @if (editForm.get('videolanguage')?.errors?.required) {
+                        <small class="form-text text-danger" jhiTranslate="entity.validation.required">This field is required.</small>
+                      }
+                    </div>
+                  }
+
+
+                  
                 </div>
 
                 <div class="dropdowns">

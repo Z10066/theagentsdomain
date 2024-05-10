@@ -18,7 +18,8 @@ public class YouTubeVideoTestSamples {
             .backgroundMusic("backgroundMusic1")
             .videoTime("videoTime1")
             .gender("gender1")
-            .videolanguage("videolanguage1");
+            .videolanguage("videolanguage1")
+            .subtitles("subtitles1");
     }
 
     public static YouTubeVideo getYouTubeVideoSample2() {
@@ -30,7 +31,8 @@ public class YouTubeVideoTestSamples {
             .backgroundMusic("backgroundMusic2")
             .videoTime("videoTime2")
             .gender("gender2")
-            .videolanguage("videolanguage2");
+            .videolanguage("videolanguage2")
+            .subtitles("subtitles2");
     }
 
     public static YouTubeVideo getYouTubeVideoRandomSampleGenerator() {
@@ -42,6 +44,7 @@ public class YouTubeVideoTestSamples {
             .backgroundMusic(UUID.randomUUID().toString())
             .videoTime(UUID.randomUUID().toString())
             .gender(UUID.randomUUID().toString())
-            .videolanguage(UUID.randomUUID().toString());
+            .videolanguage(UUID.randomUUID().toString())
+            .subtitles(UUID.randomUUID().toString());
     }
 }

@@ -25,7 +25,8 @@
       "backgroundMusic": "Background Music",
       "videoTime": "Video Time",
       "gender": "Gender",
-      "videolanguage": "Videolanguage"
+      "videolanguage": "Videolanguage",
+      "subtitles": "Subtitles"
     }
   }
 }
