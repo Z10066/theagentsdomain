@@ -45,7 +45,7 @@
             </div>
 
             <div class="mb-3">
-              <label class="form-label" jhiTranslate="highwayacApp.youTubeVideo.videoTime" for="field_videoTime" >Create a</label>
+              <label class="form-label" jhiTranslate="highwayacApp.youTubeVideo.video_Time1" for="field_videoTime">Create a</label>
               <select  name="videoTime" id="field_videoTime" data-cy="videoTime" formControlName="videoTime">
                 <option *ngFor="let name of namesList" [value]="name">{{ name }}</option>
               </select>
@@ -56,7 +56,7 @@
                   }
                 </div>
               }
-              <label class="form-label" jhiTranslate="highwayacApp.youTubeVideo.video_Time" for="field_videoTime" >YouTube video about</label>
+              <label class="form-label" jhiTranslate="highwayacApp.youTubeVideo.video_Time2" for="field_videoTime" >YouTube video about</label>
             </div>
             
             <div class="mb-3">
@@ -109,15 +109,32 @@
             
             <div class="settings">
                 <label>Settings:</label>
-                <div class="dropdowns">
-                    <select id="voice-selection">
-                        <option value="any">Use any</option>
-                        <!-- Additional options -->
-                    </select>
-                    <select id="voice-type">
-                        <option value="any-voice">any voice</option>
-                        <!-- Additional options -->
-                    </select>
+                <div class="mb-3">
+                  <select name="gender" id="field_gender" data-cy="gender" formControlName="gender">
+                    <option *ngFor="let name of gendername" [value]="name">{{ name }}</option>
+                  </select>
+                  @if (editForm.get('gender')!.invalid && (editForm.get('gender')!.dirty || editForm.get('gender')!.touched)) {
+                    <div>
+                      @if (editForm.get('gender')?.errors?.required) {
+                        <small class="form-text text-danger" jhiTranslate="entity.validation.required">This field is required.</small>
+                      }
+                    </div>
+                  }
+                </div>
+                <div class="mb-3">
+                  <select name="videolanguage" id="field_videolanguage" data-cy="videolanguage" formControlName="videolanguage">
+                    <option *ngFor="let name of videoname" [value]="name">{{ name }}</option>
+                  </select>
+                  @if (editForm.get('videolanguage')!.invalid && (editForm.get('videolanguage')!.dirty || editForm.get('videolanguage')!.touched)) {
+                    <div>
+                      @if (editForm.get('videolanguage')?.errors?.required) {
+                        <small class="form-text text-danger" jhiTranslate="entity.validation.required">This field is required.</small>
+                      }
+                    </div>
+                  }
+
+
+                  
                 </div>
 
                 <div class="dropdowns">

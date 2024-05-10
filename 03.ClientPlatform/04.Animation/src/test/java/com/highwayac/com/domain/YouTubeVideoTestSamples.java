@@ -16,7 +16,10 @@ public class YouTubeVideoTestSamples {
             .creator("creator1")
             .theme("theme1")
             .backgroundMusic("backgroundMusic1")
-            .videoTime("videoTime1");
+            .videoTime("videoTime1")
+            .gender("gender1")
+            .videolanguage("videolanguage1")
+            .subtitles("subtitles1");
     }
 
     public static YouTubeVideo getYouTubeVideoSample2() {
@@ -26,7 +29,10 @@ public class YouTubeVideoTestSamples {
             .creator("creator2")
             .theme("theme2")
             .backgroundMusic("backgroundMusic2")
-            .videoTime("videoTime2");
+            .videoTime("videoTime2")
+            .gender("gender2")
+            .videolanguage("videolanguage2")
+            .subtitles("subtitles2");
     }
 
     public static YouTubeVideo getYouTubeVideoRandomSampleGenerator() {
@@ -36,6 +42,9 @@ public class YouTubeVideoTestSamples {
             .creator(UUID.randomUUID().toString())
             .theme(UUID.randomUUID().toString())
             .backgroundMusic(UUID.randomUUID().toString())
-            .videoTime(UUID.randomUUID().toString());
+            .videoTime(UUID.randomUUID().toString())
+            .gender(UUID.randomUUID().toString())
+            .videolanguage(UUID.randomUUID().toString())
+            .subtitles(UUID.randomUUID().toString());
     }
 }

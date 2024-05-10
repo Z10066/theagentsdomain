@@ -24,6 +24,9 @@ type YouTubeVideoFormGroupContent = {
   content: FormControl<IYouTubeVideo['content']>;
   backgroundMusic: FormControl<IYouTubeVideo['backgroundMusic']>;
   videoTime: FormControl<IYouTubeVideo['videoTime']>;
+  gender: FormControl<IYouTubeVideo['gender']>;
+  videolanguage: FormControl<IYouTubeVideo['videolanguage']>;
+  subtitles: FormControl<IYouTubeVideo['subtitles']>;
 };
 
 export type YouTubeVideoFormGroup = FormGroup<YouTubeVideoFormGroupContent>;
@@ -59,6 +62,15 @@ export class YouTubeVideoFormService {
         validators: [Validators.required],
       }),
       videoTime: new FormControl(youTubeVideoRawValue.videoTime, {
+        validators: [Validators.required],
+      }),
+      gender: new FormControl(youTubeVideoRawValue.gender, {
+        validators: [Validators.required],
+      }),
+      videolanguage: new FormControl(youTubeVideoRawValue.videolanguage, {
+        validators: [Validators.required],
+      }),
+      subtitles: new FormControl(youTubeVideoRawValue.subtitles, {
         validators: [Validators.required],
       }),
     });
