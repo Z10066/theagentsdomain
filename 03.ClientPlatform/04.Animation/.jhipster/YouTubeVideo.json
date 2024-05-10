@@ -36,6 +36,16 @@
       "fieldName": "videoTime",
       "fieldType": "String",
       "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "gender",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "videolanguage",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
     }
   ],
   "name": "YouTubeVideo",

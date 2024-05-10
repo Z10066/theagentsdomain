@@ -23,8 +23,9 @@
       "theme": "Theme",
       "content": "Content",
       "backgroundMusic": "Background Music",
-      "videoTime": "创建一个",
-      "video_Time": "YouTube的视频"
+      "videoTime": "Video Time",
+      "gender": "Gender",
+      "videolanguage": "Videolanguage"
     }
   }
 }

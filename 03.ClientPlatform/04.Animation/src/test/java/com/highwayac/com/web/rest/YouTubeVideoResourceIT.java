@@ -48,6 +48,12 @@ class YouTubeVideoResourceIT {
     private static final String DEFAULT_VIDEO_TIME = "AAAAAAAAAA";
     private static final String UPDATED_VIDEO_TIME = "BBBBBBBBBB";
 
+    private static final String DEFAULT_GENDER = "AAAAAAAAAA";
+    private static final String UPDATED_GENDER = "BBBBBBBBBB";
+
+    private static final String DEFAULT_VIDEOLANGUAGE = "AAAAAAAAAA";
+    private static final String UPDATED_VIDEOLANGUAGE = "BBBBBBBBBB";
+
     private static final String ENTITY_API_URL = "/api/you-tube-videos";
     private static final String ENTITY_API_URL_ID = ENTITY_API_URL + "/{id}";
 
@@ -78,7 +84,9 @@ class YouTubeVideoResourceIT {
             .theme(DEFAULT_THEME)
             .content(DEFAULT_CONTENT)
             .backgroundMusic(DEFAULT_BACKGROUND_MUSIC)
-            .videoTime(DEFAULT_VIDEO_TIME);
+            .videoTime(DEFAULT_VIDEO_TIME)
+            .gender(DEFAULT_GENDER)
+            .videolanguage(DEFAULT_VIDEOLANGUAGE);
         return youTubeVideo;
     }
 
@@ -95,7 +103,9 @@ class YouTubeVideoResourceIT {
             .theme(UPDATED_THEME)
             .content(UPDATED_CONTENT)
             .backgroundMusic(UPDATED_BACKGROUND_MUSIC)
-            .videoTime(UPDATED_VIDEO_TIME);
+            .videoTime(UPDATED_VIDEO_TIME)
+            .gender(UPDATED_GENDER)
+            .videolanguage(UPDATED_VIDEOLANGUAGE);
         return youTubeVideo;
     }
 
@@ -312,7 +322,11 @@ class YouTubeVideoResourceIT {
             .jsonPath("$.[*].backgroundMusic")
             .value(hasItem(DEFAULT_BACKGROUND_MUSIC))
             .jsonPath("$.[*].videoTime")
-            .value(hasItem(DEFAULT_VIDEO_TIME));
+            .value(hasItem(DEFAULT_VIDEO_TIME))
+            .jsonPath("$.[*].gender")
+            .value(hasItem(DEFAULT_GENDER))
+            .jsonPath("$.[*].videolanguage")
+            .value(hasItem(DEFAULT_VIDEOLANGUAGE));
     }
 
     @Test
@@ -344,7 +358,11 @@ class YouTubeVideoResourceIT {
             .jsonPath("$.backgroundMusic")
             .value(is(DEFAULT_BACKGROUND_MUSIC))
             .jsonPath("$.videoTime")
-            .value(is(DEFAULT_VIDEO_TIME));
+            .value(is(DEFAULT_VIDEO_TIME))
+            .jsonPath("$.gender")
+            .value(is(DEFAULT_GENDER))
+            .jsonPath("$.videolanguage")
+            .value(is(DEFAULT_VIDEOLANGUAGE));
     }
 
     @Test
@@ -374,7 +392,9 @@ class YouTubeVideoResourceIT {
             .theme(UPDATED_THEME)
             .content(UPDATED_CONTENT)
             .backgroundMusic(UPDATED_BACKGROUND_MUSIC)
-            .videoTime(UPDATED_VIDEO_TIME);
+            .videoTime(UPDATED_VIDEO_TIME)
+            .gender(UPDATED_GENDER)
+            .videolanguage(UPDATED_VIDEOLANGUAGE);
 
         webTestClient
             .put()
@@ -506,7 +526,9 @@ class YouTubeVideoResourceIT {
             .theme(UPDATED_THEME)
             .content(UPDATED_CONTENT)
             .backgroundMusic(UPDATED_BACKGROUND_MUSIC)
-            .videoTime(UPDATED_VIDEO_TIME);
+            .videoTime(UPDATED_VIDEO_TIME)
+            .gender(UPDATED_GENDER)
+            .videolanguage(UPDATED_VIDEOLANGUAGE);
 
         webTestClient
             .patch()

@@ -42,6 +42,14 @@ public class YouTubeVideo implements Serializable {
     @Column("video_time")
     private String videoTime;
 
+    @NotNull(message = "must not be null")
+    @Column("gender")
+    private String gender;
+
+    @NotNull(message = "must not be null")
+    @Column("videolanguage")
+    private String videolanguage;
+
     // jhipster-needle-entity-add-field - JHipster will add fields here
 
     public Long getId() {
@@ -135,6 +143,32 @@ public class YouTubeVideo implements Serializable {
         this.videoTime = videoTime;
     }
 
+    public String getGender() {
+        return this.gender;
+    }
+
+    public YouTubeVideo gender(String gender) {
+        this.setGender(gender);
+        return this;
+    }
+
+    public void setGender(String gender) {
+        this.gender = gender;
+    }
+
+    public String getVideolanguage() {
+        return this.videolanguage;
+    }
+
+    public YouTubeVideo videolanguage(String videolanguage) {
+        this.setVideolanguage(videolanguage);
+        return this;
+    }
+
+    public void setVideolanguage(String videolanguage) {
+        this.videolanguage = videolanguage;
+    }
+
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here
 
     @Override
@@ -165,6 +199,8 @@ public class YouTubeVideo implements Serializable {
             ", content='" + getContent() + "'" +
             ", backgroundMusic='" + getBackgroundMusic() + "'" +
             ", videoTime='" + getVideoTime() + "'" +
+            ", gender='" + getGender() + "'" +
+            ", videolanguage='" + getVideolanguage() + "'" +
             "}";
     }
 }

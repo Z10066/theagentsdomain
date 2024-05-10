@@ -40,6 +40,8 @@ export class CreatexplainerPromptComponent implements OnInit {
   isLoading = false;
   useid:string = "";
   namesList: string[] = ['15 seconds', '30 seconds', '1 minute','2 minutes','3 minutes'];
+  gendername: string[] = ['Use any', 'a male', 'a female'];
+  
 
 
   constructor(

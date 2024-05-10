@@ -1,42 +1,50 @@
 import { IYouTubeVideo, NewYouTubeVideo } from './you-tube-video.model';
 
 export const sampleWithRequiredData: IYouTubeVideo = {
-  id: 32642,
-  workspace: 'elegantly antique duh',
-  creator: 'quarter',
-  theme: 'swimming notwithstanding disconcert',
+  id: 16066,
+  workspace: 'psst overlap overlie',
+  creator: 'quaintly boastfully',
+  theme: 'equal',
   content: '../fake-data/blob/hipster.txt',
-  backgroundMusic: 'puzzled',
-  videoTime: 'velvety',
+  backgroundMusic: 'before',
+  videoTime: 'stale mmm oddly',
+  gender: 'left weird',
+  videolanguage: 'woot aw',
 };
 
 export const sampleWithPartialData: IYouTubeVideo = {
-  id: 22060,
-  workspace: 'phew per',
-  creator: 'incidentally pish wonderfully',
-  theme: 'wretched ensconce than',
+  id: 27371,
+  workspace: 'pirouette',
+  creator: 'offbeat',
+  theme: 'appliance half',
   content: '../fake-data/blob/hipster.txt',
-  backgroundMusic: 'tremor',
-  videoTime: 'finally reshuffle',
+  backgroundMusic: 'ack businessman whether',
+  videoTime: 'analog cruelly upon',
+  gender: 'where',
+  videolanguage: 'furthermore',
 };
 
 export const sampleWithFullData: IYouTubeVideo = {
-  id: 26061,
-  workspace: 'amusing merrily sharply',
-  creator: 'and format liner',
-  theme: 'extroverted TV likely',
+  id: 6381,
+  workspace: 'why incorporate lawful',
+  creator: 'hearty',
+  theme: 'inasmuch',
   content: '../fake-data/blob/hipster.txt',
-  backgroundMusic: 'that intensely because',
-  videoTime: 'around fear for',
+  backgroundMusic: 'chatter clone boldly',
+  videoTime: 'symptom ah',
+  gender: 'over boohoo righteously',
+  videolanguage: 'goof woot between',
 };
 
 export const sampleWithNewData: NewYouTubeVideo = {
-  workspace: 'mismatch instantly furthermore',
-  creator: 'within eventually kite',
-  theme: 'lashes',
+  workspace: 'retouch',
+  creator: 'competent',
+  theme: 'lest favour',
   content: '../fake-data/blob/hipster.txt',
-  backgroundMusic: 'ultimately who',
-  videoTime: 'plus vice since',
+  backgroundMusic: 'mortify',
+  videoTime: 'insignificant hot ward',
+  gender: 'mechanically inside belabour',
+  videolanguage: 'save instead mess',
   id: null,
 };
 

@@ -26,6 +26,8 @@ describe('YouTubeVideo Form Service', () => {
             content: expect.any(Object),
             backgroundMusic: expect.any(Object),
             videoTime: expect.any(Object),
+            gender: expect.any(Object),
+            videolanguage: expect.any(Object),
           }),
         );
       });
@@ -42,6 +44,8 @@ describe('YouTubeVideo Form Service', () => {
             content: expect.any(Object),
             backgroundMusic: expect.any(Object),
             videoTime: expect.any(Object),
+            gender: expect.any(Object),
+            videolanguage: expect.any(Object),
           }),
         );
       });

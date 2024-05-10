@@ -31,6 +31,8 @@ public class YouTubeVideoRowMapper implements BiFunction<Row, String, YouTubeVid
         entity.setContent(converter.fromRow(row, prefix + "_content", String.class));
         entity.setBackgroundMusic(converter.fromRow(row, prefix + "_background_music", String.class));
         entity.setVideoTime(converter.fromRow(row, prefix + "_video_time", String.class));
+        entity.setGender(converter.fromRow(row, prefix + "_gender", String.class));
+        entity.setVideolanguage(converter.fromRow(row, prefix + "_videolanguage", String.class));
         return entity;
     }
 }

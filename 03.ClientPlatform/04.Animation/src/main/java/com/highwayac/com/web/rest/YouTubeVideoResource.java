@@ -165,6 +165,12 @@ public class YouTubeVideoResource {
                         if (youTubeVideo.getVideoTime() != null) {
                             existingYouTubeVideo.setVideoTime(youTubeVideo.getVideoTime());
                         }
+                        if (youTubeVideo.getGender() != null) {
+                            existingYouTubeVideo.setGender(youTubeVideo.getGender());
+                        }
+                        if (youTubeVideo.getVideolanguage() != null) {
+                            existingYouTubeVideo.setVideolanguage(youTubeVideo.getVideolanguage());
+                        }
 
                         return existingYouTubeVideo;
                     })
