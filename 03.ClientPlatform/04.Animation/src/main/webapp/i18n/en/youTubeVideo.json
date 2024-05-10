@@ -23,8 +23,10 @@
       "theme": "Theme",
       "content": "Content",
       "backgroundMusic": "Background Music",
-      "videoTime": "Create a",
-      "video_Time": "YouTube video about"
+      "videoTime": "Video Time",
+      "gender": "Gender",
+      "videolanguage": "Videolanguage",
+      "subtitles": "Subtitles"
     }
   }
 }

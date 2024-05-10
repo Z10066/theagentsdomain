@@ -1,42 +1,54 @@
 import { IYouTubeVideo, NewYouTubeVideo } from './you-tube-video.model';
 
 export const sampleWithRequiredData: IYouTubeVideo = {
-  id: 32642,
-  workspace: 'elegantly antique duh',
-  creator: 'quarter',
-  theme: 'swimming notwithstanding disconcert',
+  id: 30789,
+  workspace: 'liken furthermore',
+  creator: 'surprisingly though regarding',
+  theme: 'where',
   content: '../fake-data/blob/hipster.txt',
-  backgroundMusic: 'puzzled',
-  videoTime: 'velvety',
+  backgroundMusic: 'pertinent',
+  videoTime: 'except indoctrinate finally',
+  gender: 'above match meh',
+  videolanguage: 'apropos even',
+  subtitles: 'mild phew knowingly',
 };
 
 export const sampleWithPartialData: IYouTubeVideo = {
-  id: 22060,
-  workspace: 'phew per',
-  creator: 'incidentally pish wonderfully',
-  theme: 'wretched ensconce than',
+  id: 19745,
+  workspace: 'principal',
+  creator: 'avoid overdo splurge',
+  theme: 'answer characterise nest',
   content: '../fake-data/blob/hipster.txt',
-  backgroundMusic: 'tremor',
-  videoTime: 'finally reshuffle',
+  backgroundMusic: 'jealously',
+  videoTime: 'simple',
+  gender: 'whoa cheerful hmph',
+  videolanguage: 'wearily',
+  subtitles: 'gadzooks deplane the',
 };
 
 export const sampleWithFullData: IYouTubeVideo = {
-  id: 26061,
-  workspace: 'amusing merrily sharply',
-  creator: 'and format liner',
-  theme: 'extroverted TV likely',
+  id: 2791,
+  workspace: 'optimistically often',
+  creator: 'bah uh-huh',
+  theme: 'negative',
   content: '../fake-data/blob/hipster.txt',
-  backgroundMusic: 'that intensely because',
-  videoTime: 'around fear for',
+  backgroundMusic: 'repeatedly tennis',
+  videoTime: 'vex yesterday',
+  gender: 'palatable blog venture',
+  videolanguage: 'properly sabotage',
+  subtitles: 'light',
 };
 
 export const sampleWithNewData: NewYouTubeVideo = {
-  workspace: 'mismatch instantly furthermore',
-  creator: 'within eventually kite',
-  theme: 'lashes',
+  workspace: 'shoestring',
+  creator: 'finally',
+  theme: 'terrific gosh plus',
   content: '../fake-data/blob/hipster.txt',
-  backgroundMusic: 'ultimately who',
-  videoTime: 'plus vice since',
+  backgroundMusic: 'inasmuch slight',
+  videoTime: 'catalogue coleslaw',
+  gender: 'unimpressively busily enormously',
+  videolanguage: 'jaggedly incidentally',
+  subtitles: 'everybody',
   id: null,
 };
 

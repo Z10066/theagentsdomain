@@ -838,6 +838,9 @@
                         <defaultSchemaName/>
                         <username>${liquibase-plugin.username}</username>
                         <password>${liquibase-plugin.password}</password>
+                        <referenceUrl>jdbc:postgresql://localhost:5432/highwayac</referenceUrl>
+                        <referenceUsername>highwayac</referenceUsername>
+                        <referencePassword>highwayac</referencePassword>
                         <verbose>true</verbose>
                         <logging>debug</logging>
                         <contexts>!test</contexts>
@@ -923,7 +926,7 @@
                 <profile.test>testdev</profile.test>
                 <liquibase-plugin.url>jdbc:postgresql://localhost:5432/highwayac</liquibase-plugin.url>
                 <liquibase-plugin.username>highwayac</liquibase-plugin.username>
-                <liquibase-plugin.password/>
+                <liquibase-plugin.password>highwayac</liquibase-plugin.password>
             </properties>
             <dependencies>
                 <dependency>
@@ -1040,7 +1043,7 @@
                 <profile.test>testprod</profile.test>
                 <liquibase-plugin.url>jdbc:postgresql://localhost:5432/highwayac</liquibase-plugin.url>
                 <liquibase-plugin.username>highwayac</liquibase-plugin.username>
-                <liquibase-plugin.password/>
+                <liquibase-plugin.password>highwayac</liquibase-plugin.password>
             </properties>
             <build>
                 <plugins>

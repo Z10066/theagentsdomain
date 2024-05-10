@@ -5,6 +5,9 @@ entity YouTubeVideo {
     content TextBlob required
     backgroundMusic String required
     videoTime String required
+    gender String required 
+    videolanguage String required
+    subtitles String required
 }
 enum CreationType {
     THEME
