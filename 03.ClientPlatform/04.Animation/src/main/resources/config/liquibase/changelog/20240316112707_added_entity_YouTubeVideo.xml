@@ -29,6 +29,9 @@
             <column name="background_music" type="varchar(255)">
                 <constraints nullable="false" />
             </column>
+            <column name="video_time" type="varchar(255)">
+                <constraints nullable="false" />
+            </column>
             <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here -->
         </createTable>
     </changeSet>
@@ -55,6 +58,7 @@
             <column name="theme" type="string"/>
             <column name="content" type="clob"/>
             <column name="background_music" type="string"/>
+            <column name="video_time" type="string"/>
             <!-- jhipster-needle-liquibase-add-loadcolumn - JHipster (and/or extensions) can add load columns here -->
         </loadData>
     </changeSet>

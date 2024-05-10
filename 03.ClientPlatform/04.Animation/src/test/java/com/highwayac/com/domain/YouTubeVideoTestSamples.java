@@ -10,11 +10,23 @@ public class YouTubeVideoTestSamples {
     private static final AtomicLong longCount = new AtomicLong(random.nextInt() + (2 * Integer.MAX_VALUE));
 
     public static YouTubeVideo getYouTubeVideoSample1() {
-        return new YouTubeVideo().id(1L).workspace("workspace1").creator("creator1").theme("theme1").backgroundMusic("backgroundMusic1");
+        return new YouTubeVideo()
+            .id(1L)
+            .workspace("workspace1")
+            .creator("creator1")
+            .theme("theme1")
+            .backgroundMusic("backgroundMusic1")
+            .videoTime("videoTime1");
     }
 
     public static YouTubeVideo getYouTubeVideoSample2() {
-        return new YouTubeVideo().id(2L).workspace("workspace2").creator("creator2").theme("theme2").backgroundMusic("backgroundMusic2");
+        return new YouTubeVideo()
+            .id(2L)
+            .workspace("workspace2")
+            .creator("creator2")
+            .theme("theme2")
+            .backgroundMusic("backgroundMusic2")
+            .videoTime("videoTime2");
     }
 
     public static YouTubeVideo getYouTubeVideoRandomSampleGenerator() {
@@ -23,6 +35,7 @@ public class YouTubeVideoTestSamples {
             .workspace(UUID.randomUUID().toString())
             .creator(UUID.randomUUID().toString())
             .theme(UUID.randomUUID().toString())
-            .backgroundMusic(UUID.randomUUID().toString());
+            .backgroundMusic(UUID.randomUUID().toString())
+            .videoTime(UUID.randomUUID().toString());
     }
 }

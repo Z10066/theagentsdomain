@@ -23,6 +23,7 @@ type YouTubeVideoFormGroupContent = {
   theme: FormControl<IYouTubeVideo['theme']>;
   content: FormControl<IYouTubeVideo['content']>;
   backgroundMusic: FormControl<IYouTubeVideo['backgroundMusic']>;
+  videoTime: FormControl<IYouTubeVideo['videoTime']>;
 };
 
 export type YouTubeVideoFormGroup = FormGroup<YouTubeVideoFormGroupContent>;
@@ -55,6 +56,9 @@ export class YouTubeVideoFormService {
         validators: [Validators.required],
       }),
       backgroundMusic: new FormControl(youTubeVideoRawValue.backgroundMusic, {
+        validators: [Validators.required],
+      }),
+      videoTime: new FormControl(youTubeVideoRawValue.videoTime, {
         validators: [Validators.required],
       }),
     });

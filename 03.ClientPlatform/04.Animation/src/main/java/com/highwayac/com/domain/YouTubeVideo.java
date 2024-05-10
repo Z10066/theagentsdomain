@@ -38,6 +38,10 @@ public class YouTubeVideo implements Serializable {
     @Column("background_music")
     private String backgroundMusic;
 
+    @NotNull(message = "must not be null")
+    @Column("video_time")
+    private String videoTime;
+
     // jhipster-needle-entity-add-field - JHipster will add fields here
 
     public Long getId() {
@@ -118,6 +122,19 @@ public class YouTubeVideo implements Serializable {
         this.backgroundMusic = backgroundMusic;
     }
 
+    public String getVideoTime() {
+        return this.videoTime;
+    }
+
+    public YouTubeVideo videoTime(String videoTime) {
+        this.setVideoTime(videoTime);
+        return this;
+    }
+
+    public void setVideoTime(String videoTime) {
+        this.videoTime = videoTime;
+    }
+
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here
 
     @Override
@@ -147,6 +164,7 @@ public class YouTubeVideo implements Serializable {
             ", theme='" + getTheme() + "'" +
             ", content='" + getContent() + "'" +
             ", backgroundMusic='" + getBackgroundMusic() + "'" +
+            ", videoTime='" + getVideoTime() + "'" +
             "}";
     }
 }
