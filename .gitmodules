@@ -5,8 +5,11 @@
 	path = 01.AgentCorePlatform/autogen
 	url = https://github.com/microsoft/autogen.git
 [submodule "geekan/MetaGPT"]
-	path = 01.AgentCorePlatform/MetaGPT
+	path = 01.AgentCorePlatform/crewAI
 	url = https://github.com/geekan/MetaGPT.git
+[submodule "joaomdmoura/crewAI"]
+	path = 01.AgentCorePlatform/MetaGPT
+	url = https://github.com/joaomdmoura/crewAI.git
 [submodule "daveshap/ACE_Framework"]
 	path = 01.AgentCorePlatform/ACE_Framework
 	url = https://github.com/daveshap/ACE_Framework.git

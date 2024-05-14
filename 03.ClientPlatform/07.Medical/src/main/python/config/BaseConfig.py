@@ -16,7 +16,7 @@ class BaseConfig:
     JWT_ALGORITHM = 'HS512'
 
     # Database
-    SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://<user>:<password>@<host>[:<port>]/<dbname>[?key=value&key=value...]'
+    SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://highwaymb:highwaymb@localhost:5432/highwaymb'
     SQLALCHEMY_TRACK_MODIFICATIONS = False
     PROPAGATE_EXCEPTIONS = False
     SQLALCHEMY_EXPIRE_ON_COMMIT = False
