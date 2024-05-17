@@ -28,9 +28,6 @@
 [submodule "Picsart-AI-Research/StreamingT2V"]
 	path = 02.SoftwareGenerator/StreamingT2V
 	url = https://github.com/Picsart-AI-Research/StreamingT2V.git
-[submodule "highwayns/BookWriter"]
-	path = 02.SoftwareGenerator/BookWriter
-	url = https://github.com/highwayns/BookWriter.git
 [submodule "swagger-api/swagger-codegen"]
 	path = 02.SoftwareGenerator/swagger-codegen
 	url = https://github.com/swagger-api/swagger-codegen.git
@@ -83,6 +80,9 @@
 [submodule "highwayns/Medical_Intake"]
 	path = 10.AnalysisAndAlgorithm/Medical_Intake
 	url = https://github.com/highwayns/Medical_Intake.git
+[submodule "highwayns/BookWriter"]
+	path = 10.AnalysisAndAlgorithm/BookWriter
+	url = https://github.com/highwayns/BookWriter.git
 
 
  
