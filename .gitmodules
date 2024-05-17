@@ -83,6 +83,30 @@
 [submodule "highwayns/BookWriter"]
 	path = 10.AnalysisAndAlgorithm/BookWriter
 	url = https://github.com/highwayns/BookWriter.git
+[submodule "highwayns/ADSwarm"]
+	path = 10.AnalysisAndAlgorithm/ADSwarm
+	url = https://github.com/highwayns/ADSwarm.git
+[submodule "highwayns/FintectSwarm"]
+	path = 10.AnalysisAndAlgorithm/FintectSwarm
+	url = https://github.com/highwayns/FintectSwarm.git
+[submodule "highwayns/GameSwarm"]
+	path = 10.AnalysisAndAlgorithm/GameSwarm
+	url = https://github.com/highwayns/GameSwarm.git
+[submodule "highwayns/HRSwarm"]
+	path = 10.AnalysisAndAlgorithm/HRSwarm
+	url = https://github.com/highwayns/HRSwarm.git
+[submodule "highwayns/SalesSwarm"]
+	path = 10.AnalysisAndAlgorithm/SalesSwarm
+	url = https://github.com/highwayns/SalesSwarm.git
+[submodule "highwayns/SDSwarm"]
+	path = 10.AnalysisAndAlgorithm/SDSwarm
+	url = https://github.com/highwayns/SDSwarm.git
+[submodule "highwayns/SongWriter"]
+	path = 10.AnalysisAndAlgorithm/SongWriter
+	url = https://github.com/highwayns/SongWriter.git
+[submodule "highwayns/VideoCreator"]
+	path = 10.AnalysisAndAlgorithm/VideoCreator
+	url = https://github.com/highwayns/VideoCreator.git
 
 
  
