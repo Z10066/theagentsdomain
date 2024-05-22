@@ -39,7 +39,8 @@
       "Createprompt": "Createprompt",
       "CreaterecentEventsPrompt": "Create recent Events Prompt",
       "CreatetiktokVideoPrompt": "Create tiktok Video Prompt",
-      "CreatexplainerPrompt": "CreatexplainerPrompt"
+      "CreatexplainerPrompt": "CreatexplainerPrompt",
+      "Inviteusers": "InviteusersComponent"
     }
   }
 }

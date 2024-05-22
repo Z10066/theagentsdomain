@@ -1,0 +1,6 @@
+entity Inviteusers  {
+    name String required
+    workspaces String required
+    id String required
+    email String required
+}-
