@@ -5,8 +5,11 @@
 	path = 01.AgentCorePlatform/autogen
 	url = https://github.com/microsoft/autogen.git
 [submodule "geekan/MetaGPT"]
-	path = 01.AgentCorePlatform/MetaGPT
+	path = 01.AgentCorePlatform/crewAI
 	url = https://github.com/geekan/MetaGPT.git
+[submodule "joaomdmoura/crewAI"]
+	path = 01.AgentCorePlatform/MetaGPT
+	url = https://github.com/joaomdmoura/crewAI.git
 [submodule "daveshap/ACE_Framework"]
 	path = 01.AgentCorePlatform/ACE_Framework
 	url = https://github.com/daveshap/ACE_Framework.git
@@ -25,9 +28,6 @@
 [submodule "Picsart-AI-Research/StreamingT2V"]
 	path = 02.SoftwareGenerator/StreamingT2V
 	url = https://github.com/Picsart-AI-Research/StreamingT2V.git
-[submodule "highwayns/BookWriter"]
-	path = 02.SoftwareGenerator/BookWriter
-	url = https://github.com/highwayns/BookWriter.git
 [submodule "swagger-api/swagger-codegen"]
 	path = 02.SoftwareGenerator/swagger-codegen
 	url = https://github.com/swagger-api/swagger-codegen.git
@@ -80,6 +80,33 @@
 [submodule "highwayns/Medical_Intake"]
 	path = 10.AnalysisAndAlgorithm/Medical_Intake
 	url = https://github.com/highwayns/Medical_Intake.git
+[submodule "highwayns/BookWriter"]
+	path = 10.AnalysisAndAlgorithm/BookWriter
+	url = https://github.com/highwayns/BookWriter.git
+[submodule "highwayns/ADSwarm"]
+	path = 10.AnalysisAndAlgorithm/ADSwarm
+	url = https://github.com/highwayns/ADSwarm.git
+[submodule "highwayns/FintectSwarm"]
+	path = 10.AnalysisAndAlgorithm/FintectSwarm
+	url = https://github.com/highwayns/FintectSwarm.git
+[submodule "highwayns/GameSwarm"]
+	path = 10.AnalysisAndAlgorithm/GameSwarm
+	url = https://github.com/highwayns/GameSwarm.git
+[submodule "highwayns/HRSwarm"]
+	path = 10.AnalysisAndAlgorithm/HRSwarm
+	url = https://github.com/highwayns/HRSwarm.git
+[submodule "highwayns/SalesSwarm"]
+	path = 10.AnalysisAndAlgorithm/SalesSwarm
+	url = https://github.com/highwayns/SalesSwarm.git
+[submodule "highwayns/SDSwarm"]
+	path = 10.AnalysisAndAlgorithm/SDSwarm
+	url = https://github.com/highwayns/SDSwarm.git
+[submodule "highwayns/SongWriter"]
+	path = 10.AnalysisAndAlgorithm/SongWriter
+	url = https://github.com/highwayns/SongWriter.git
+[submodule "highwayns/VideoCreator"]
+	path = 10.AnalysisAndAlgorithm/VideoCreator
+	url = https://github.com/highwayns/VideoCreator.git
 
 
  
