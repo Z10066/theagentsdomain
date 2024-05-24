@@ -1,6 +1,8 @@
 entity Inviteusers  {
-    name String required
+    invitername String required
     workspaces String required
-    id String required
+    invitertime String required
     email String required
-}-
+    inviterid String required
+    status String required
+}
