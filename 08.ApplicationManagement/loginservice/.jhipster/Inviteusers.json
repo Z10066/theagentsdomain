@@ -1,0 +1,44 @@
+{
+  "annotations": {
+    "changelogDate": "20240523043315"
+  },
+  "applications": "*",
+  "clientRootFolder": "loginservice",
+  "databaseType": "sql",
+  "fields": [
+    {
+      "fieldName": "invitername",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "workspaces",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "invitertime",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "email",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "inviterid",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "status",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    }
+  ],
+  "microserviceName": "loginservice",
+  "name": "Inviteusers",
+  "relationships": [],
+  "searchEngine": "no"
+}

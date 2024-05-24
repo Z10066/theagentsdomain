@@ -37,6 +37,8 @@ import YouTubeVideoResolve from './entities/you-tube-video/route/you-tube-video-
 
 
 import VideoHintResolve from './entities/video-hint/route/video-hint-routing-resolve.service';
+import { InviteusersComponent } from './home/inviteusers/inviteusers.component';
+import { InvitationLinkComponent } from './home/invitation-link/invitation-link.component';
 
 const routes: Routes = [
   /*{
@@ -159,6 +161,22 @@ const routes: Routes = [
   {
     path: 'VideoCircle',
     component: VideoCircleComponent,
+    data: {
+      defaultSort: 'id,' + ASC,
+    },
+    canActivate: [UserRouteAccessService],
+  },
+  {
+    path: 'Inviteusers',
+    component: InviteusersComponent,
+    data: {
+      defaultSort: 'id,' + ASC,
+    },
+    canActivate: [UserRouteAccessService],
+  },
+  {
+    path: 'InvitationLink',
+    component: InvitationLinkComponent,
     data: {
       defaultSort: 'id,' + ASC,
     },
