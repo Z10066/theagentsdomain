@@ -107,6 +107,9 @@
 [submodule "highwayns/VideoCreator"]
 	path = 10.AnalysisAndAlgorithm/VideoCreator
 	url = https://github.com/highwayns/VideoCreator.git
+[submodule "highwayns/gpt_academic"]
+	path = 10.AnalysisAndAlgorithm/gpt_academic
+	url = https://github.com/highwayns/gpt_academic.git
 
 
  
