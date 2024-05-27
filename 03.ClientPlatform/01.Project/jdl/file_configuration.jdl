@@ -1,0 +1,9 @@
+entity FileConfiguration {
+    name String required,
+    description String,
+    path String required,
+    types String required
+}
+
+// Adding pagination option
+paginate FileConfiguration with pagination
