@@ -19,6 +19,18 @@
 [submodule "highwayns/gpt_academic"]
 	path = 01.AgentCorePlatform/gpt_academic
 	url = https://github.com/highwayns/gpt_academic.git
+[submodule "labring/FastGPT"]
+	path = 01.AgentCorePlatform/FastGPT
+	url = https://github.com/labring/FastGPT.git
+[submodule "Maplemx/Agently"]
+	path = 01.AgentCorePlatform/Agently
+	url = https://github.com/Maplemx/Agently.git
+[submodule "dataelement/bisheng"]
+	path = 01.AgentCorePlatform/bisheng
+	url = https://github.com/dataelement/bisheng.git
+[submodule "CosmosShadow/GeneralAgent"]
+	path = 01.AgentCorePlatform/GeneralAgent
+	url = https://github.com/CosmosShadow/GeneralAgent.git
 [submodule "jhipster/generator-jhipster"]
 	path = 02.SoftwareGenerator/generator-jhipster
 	url = https://github.com/jhipster/generator-jhipster.git
