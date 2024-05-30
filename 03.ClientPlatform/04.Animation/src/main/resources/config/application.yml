@@ -254,3 +254,8 @@ jhipster:
 # ===================================================================
 
 # application:
+stripe:
+  api:
+    key: 'sk_test_51Oki2xDYZSbLE5Ngk80IjlhsSoDUGI92pYuqYIR3T2bZ4cM0bRPfb5wrwO3HFVW9pUUfu4CGm673S2KCiBTVbCxX00kNtFrCTM'
+  webhook:
+    secret: 'whsec_34961101e3c39de5e5adde6dea56e803b01af76f0b40df51c76cfbc878f3319a'
