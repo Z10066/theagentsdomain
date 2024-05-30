@@ -1,0 +1,35 @@
+{
+  "annotations": {
+    "changelogDate": "20240225074226"
+  },
+  "applications": "*",
+  "clientRootFolder": "highwaypj",
+  "databaseType": "sql",
+  "entityTableName": "file_configuration",
+  "fields": [
+    {
+      "fieldName": "name",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "description",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "path",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "types",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    }
+  ],
+  "microserviceName": "highwaypj",
+  "name": "FileConfiguration",
+  "pagination": "pagination",
+  "relationships": [],
+  "searchEngine": "no"
+}

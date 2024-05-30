@@ -1,0 +1,27 @@
+{
+  "highwayacApp": {
+    "fileConfiguration": {
+      "home": {
+        "title": "FileConfigurations",
+        "refreshListLabel": "リストの更新",
+        "createLabel": "File Configuration の作成",
+        "createOrEditLabel": "File Configurationの作成または編集",
+        "notFound": "File Configurations が見つかりません。"
+      },
+      "created": "新しい File Configuration がID {{ param }} で作成されました。",
+      "updated": "ID {{ param }} の File Configuration が更新されました。",
+      "deleted": "ID {{ param }} の File Configuration が削除されました。",
+      "delete": {
+        "question": "File Configuration {{ id }}を削除してもよろしいですか？"
+      },
+      "detail": {
+        "title": "File Configuration"
+      },
+      "id": "ID",
+      "name": "Name",
+      "description": "Description",
+      "path": "Path",
+      "types": "Types"
+    }
+  }
+}

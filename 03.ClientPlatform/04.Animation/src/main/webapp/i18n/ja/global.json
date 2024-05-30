@@ -3,24 +3,12 @@
     "title": "Highwayac",
     "browsehappy": "<strong>古い</strong>ブラウザーが使われています。より良い体験を得るために<a href=\"http://browsehappy.com/?locale=en\">ブラウザをアップデート</a>してください。",
     "menu": {
-      "home": "ワークスペース",
+      "home": "ホーム",
       "jhipster-needle-menu-add-element": "JHipster will add additional menu entries here (do not translate!)",
       "entities": {
         "main": "エンティティ",
         "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)",
-        "youTubeVideo": "Youtubeビデオ",
-        "videoHint": "ビデオヒント",
-        "systemSetting": "システム設定",
-        "video": "ビデオ",
-        "workspace": "ワークスペース",
-        "member": "メンバー",
-        "linkedAccount": "アカウントリンク",
-        "subscriptionService": "サービスサブスクリプション",
-        "usage": "使用状況",
-        "videoProduction": "ビデオ生成",
-        "extraInfo": "その他情報",
-        "material": "ビデオ素材",
-        "history": "ビデオ履歴"
+        "fileConfiguration": "File Configuration"
       },
       "account": {
         "main": "アカウント",

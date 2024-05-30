@@ -14,33 +14,6 @@
       "follow": "在 Twitter 上联络 @jhipster"
     },
     "like": "如果您喜欢 JHipster, 请记得给我们加星在",
-    "github": "GitHub",
-    "translate": {
-      "Workspaces": "工作间",
-      "Welcome": "欢迎",
-      "VideoProduct": "生成视频",
-      "Material": "视频素材",
-      "WaitingScreen": "等待屏幕",
-      "Usage": "使用情况",
-      "ThinkingScreen": "思考屏幕",
-      "RenderingVideo": "渲染视频",
-      "PublishVideo": "发布视频",
-      "Profile": "个人资料",
-      "Plan": "计划",
-      "Members": "成员",
-      "History": "历史",
-      "Download": "下载",
-      "Createvideoprompt": "创建提示",
-      "VideoCircle": "视频圈",
-      "CreatVideo": "制作视频",
-      "CreatexplainerPrompt": "创建Youtube视频提示组件",
-      "CreateinstagramReelPrompt": "创建Instagram视频提示组件",
-      "CreatetiktokVideoPrompt": "创建TikTok视频提示组件",
-      "Createprompt": "Youtube短视频",
-      "CreaterecentEventsPrompt": "最近事件提示",
-      "Entity": "Entity",
-      "Continue": "继续",
-      "Inviteusers": "InviteusersComponent"
-    }
+    "github": "GitHub"
   }
 }

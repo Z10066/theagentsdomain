@@ -91,6 +91,11 @@ const routes: Routes = [
     data: { pageTitle: 'highwayacApp.youTubeVideo.home.title' },
     loadChildren: () => import('./you-tube-video/you-tube-video.routes'),
   },
+  {
+    path: 'file-configuration',
+    data: { pageTitle: 'highwayacApp.fileConfiguration.home.title' },
+    loadChildren: () => import('./file-configuration/file-configuration.routes'),
+  },
   /* jhipster-needle-add-entity-route - JHipster will add entity modules routes here */
 ];
 

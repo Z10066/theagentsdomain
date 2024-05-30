@@ -17,6 +17,9 @@ public class SpaWebFilter implements WebFilter {
             !path.startsWith("/api") &&
             !path.startsWith("/management") &&
             !path.startsWith("/v3/api-docs") &&
+            !path.startsWith("/login") &&
+            !path.startsWith("/oauth2") &&
+            !path.startsWith("/services") &&
             !path.contains(".") &&
             path.matches("/(.*)")
         ) {
