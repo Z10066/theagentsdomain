@@ -8,7 +8,25 @@
       "entities": {
         "main": "数据",
         "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)",
-        "fileConfiguration": "File Configuration"
+        "fileConfiguration": "文件设置",
+        "youTubeVideo": "YouTube视频",
+        "videoHint": "视频提示",
+        "systemSetting": "系统设定",
+        "video": "视频",
+        "workspace": "工作区",
+        "member": "成员",
+        "linkedAccount": "链接账号",
+        "subscriptionService": "服务订阅",
+        "usage": "服务使用",
+        "videoProduction": "视频生成",
+        "extraInfo": "额外信息",
+        "material": "视频素材",
+        "history": "视频历史",
+        "creator": "创作者",
+        "category": "目录",
+        "copyright": "版权",
+        "metadata": "元数据",
+        "keyword": "关键词"
       },
       "account": {
         "main": "账号",

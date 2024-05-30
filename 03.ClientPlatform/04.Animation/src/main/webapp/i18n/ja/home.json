@@ -14,6 +14,33 @@
       "follow": "Twitterの @jhipster"
     },
     "like": "JHipsterを気に入ったら、是非スターをつけてください。",
-    "github": "GitHub"
+    "github": "GitHub",
+    "translate": {
+      "Workspaces": "ワークスペース",
+      "Welcome": "ようこそ",
+      "VideoProduct": "ビデオ生成",
+      "Material": "素材ビデオ",
+      "WaitingScreen": "待機画面",
+      "Usage": "使用法",
+      "ThinkingScreen": "考え中画面",
+      "RenderingVideo": "ビデオのレンダリング",
+      "PublishVideo": "ビデオを公開する",
+      "Profile": "プロフィール",
+      "Plan": "計画",
+      "Members": "メンバー",
+      "History": "履歴",
+      "Download": "ダウンロード",
+      "Createvideoprompt": "プロンプトを作成する",
+      "VideoCircle": "ビデオサークル",
+      "CreatVideo": "ビデオを作成する",
+      "CreatexplainerPrompt": "解説プロンプト",
+      "CreateinstagramReelPrompt": "Instagramのプロンプトを作成する",
+      "Entity": "Entity",
+      "Createprompt": "プロンプトを作成",
+      "CreaterecentEventsPrompt": "最近のイベントプロンプトを作成する",
+      "CreatetiktokVideoPrompt": "TikTokビデオプロンプトコンポーネントを作成する",
+      "Continue": "続ける"
+    }
+
   }
 }

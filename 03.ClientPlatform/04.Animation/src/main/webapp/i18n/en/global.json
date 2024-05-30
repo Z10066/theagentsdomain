@@ -8,7 +8,25 @@
       "entities": {
         "main": "Entities",
         "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)",
-        "fileConfiguration": "File Configuration"
+        "fileConfiguration": "File Configuration",
+        "youTubeVideo": "You Tube Video",
+        "videoHint": "Video Hint",
+        "systemSetting": "System Setting",
+        "video": "Video",
+        "workspace": "Workspace",
+        "member": "Member",
+        "linkedAccount": "Linked Account",
+        "subscriptionService": "Subscription Service",
+        "usage": "Usage",
+        "videoProduction": "Video Production",
+        "extraInfo": "Extra Info",
+        "material": "Material",
+        "history": "History",
+        "creator": "Creator",
+        "category": "Category",
+        "copyright": "Copyright",
+        "metadata": "Metadata",
+        "keyword": "Keyword"
       },
       "account": {
         "main": "Account",
