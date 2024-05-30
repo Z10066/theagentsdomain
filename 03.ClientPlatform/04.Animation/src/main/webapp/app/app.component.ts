@@ -38,6 +38,7 @@ import { MaterialsComponent } from './home/material_page/material.component';
 import { FootMenuComponent } from './layouts/foot-menu/foot-menu.component';
 import { InviteusersComponent } from './home/inviteusers/inviteusers.component';
 import { InvitationLinkComponent } from './home/invitation-link/invitation-link.component';
+import { NovelComponent } from './home/novel/novel.component';
 
 
 
@@ -50,7 +51,7 @@ import { InvitationLinkComponent } from './home/invitation-link/invitation-link.
     ProfileComponent,PlanComponent,MembersComponent,HistoryComponent,DownloadComponent,WprkspacesComponent,CreatVideoComponent,ContinueComponent,
     CreatevideopromptComponent,VideoCircleComponent,CreatexplainerPromptComponent,CreateinstagramReelPromptComponent,CreatepromptComponent,
     CreaterecentEventsPromptComponent,CreatetiktokVideoPromptComponent,SignupComponent,LoginComponent,LeftMenuComponent,VideoProductionsComponent,
-    MaterialsComponent,FootMenuComponent,InviteusersComponent,InvitationLinkComponent
+    MaterialsComponent,FootMenuComponent,InviteusersComponent,InvitationLinkComponent,NovelComponent
     // jhipster-needle-angular-add-module JHipster will add new module here
   ],
 })
