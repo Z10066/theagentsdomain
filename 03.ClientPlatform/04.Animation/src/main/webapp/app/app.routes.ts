@@ -37,6 +37,9 @@ import YouTubeVideoResolve from './entities/you-tube-video/route/you-tube-video-
 
 import { PaymentsComponent } from './home/payments/payments.component';
 import VideoHintResolve from './entities/video-hint/route/video-hint-routing-resolve.service';
+import { InviteusersComponent } from './home/inviteusers/inviteusers.component';
+import { InvitationLinkComponent } from './home/invitation-link/invitation-link.component';
+import { NovelComponent } from './home/novel/novel.component';
 
 const routes: Routes = [
   /*{
@@ -169,6 +172,22 @@ const routes: Routes = [
     canActivate: [UserRouteAccessService],
   },
   {
+    path: 'Inviteusers',
+    component: InviteusersComponent,
+    data: {
+      defaultSort: 'id,' + ASC,
+    },
+    canActivate: [UserRouteAccessService],
+  },
+  {
+    path: 'InvitationLink',
+    component: InvitationLinkComponent,
+    data: {
+      defaultSort: 'id,' + ASC,
+    },
+    canActivate: [UserRouteAccessService],
+  },
+  {
     path: 'CreatVideo',
     component: CreatVideoComponent,
     data: {
@@ -224,6 +243,17 @@ const routes: Routes = [
   {
     path: 'CreatexplainerPrompt',
     component: CreatexplainerPromptComponent,
+    data: {
+      defaultSort: 'id,' + ASC,
+    },
+    resolve: {
+      youTubeVideo: YouTubeVideoResolve,
+    },
+    canActivate: [UserRouteAccessService],
+  },
+  {
+    path: 'Novel',
+    component: NovelComponent,
     data: {
       defaultSort: 'id,' + ASC,
     },

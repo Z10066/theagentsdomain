@@ -29,7 +29,6 @@
     "status": {
       "UNKNOWN": "UNKNOWN",
       "UP": "正常",
-      "OUT_OF_SERVICE": "OUT_OF_SERVICE",
       "DOWN": "异常"
     }
   }

@@ -16,6 +16,21 @@
 [submodule "OpenDevin/OpenDevin"]
 	path = 01.AgentCorePlatform/OpenDevin
 	url = https://github.com/OpenDevin/OpenDevin.git
+[submodule "highwayns/gpt_academic"]
+	path = 01.AgentCorePlatform/gpt_academic
+	url = https://github.com/highwayns/gpt_academic.git
+[submodule "labring/FastGPT"]
+	path = 01.AgentCorePlatform/FastGPT
+	url = https://github.com/labring/FastGPT.git
+[submodule "Maplemx/Agently"]
+	path = 01.AgentCorePlatform/Agently
+	url = https://github.com/Maplemx/Agently.git
+[submodule "dataelement/bisheng"]
+	path = 01.AgentCorePlatform/bisheng
+	url = https://github.com/dataelement/bisheng.git
+[submodule "CosmosShadow/GeneralAgent"]
+	path = 01.AgentCorePlatform/GeneralAgent
+	url = https://github.com/CosmosShadow/GeneralAgent.git
 [submodule "jhipster/generator-jhipster"]
 	path = 02.SoftwareGenerator/generator-jhipster
 	url = https://github.com/jhipster/generator-jhipster.git
@@ -80,6 +95,9 @@
 [submodule "highwayns/Medical_Intake"]
 	path = 10.AnalysisAndAlgorithm/Medical_Intake
 	url = https://github.com/highwayns/Medical_Intake.git
+[submodule "highwayns/Medical_Process"]
+	path = 10.AnalysisAndAlgorithm/Medical_Process
+	url = https://github.com/highwayns/Medical_Process.git
 [submodule "highwayns/BookWriter"]
 	path = 10.AnalysisAndAlgorithm/BookWriter
 	url = https://github.com/highwayns/BookWriter.git
@@ -107,6 +125,9 @@
 [submodule "highwayns/VideoCreator"]
 	path = 10.AnalysisAndAlgorithm/VideoCreator
 	url = https://github.com/highwayns/VideoCreator.git
-
-
- 
+[submodule "highwayns/EduSwarm"]
+	path = 10.AnalysisAndAlgorithm/EduSwarm
+	url = https://github.com/highwayns/EduSwarm.git
+[submodule "highwayns/ToolSwarm"]
+	path = 10.AnalysisAndAlgorithm/ToolSwarm
+	url = https://github.com/highwayns/ToolSwarm.git

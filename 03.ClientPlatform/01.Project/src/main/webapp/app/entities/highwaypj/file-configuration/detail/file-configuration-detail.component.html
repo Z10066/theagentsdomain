@@ -1,0 +1,48 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    @if (fileConfiguration) {
+      <div>
+        <h2 data-cy="fileConfigurationDetailsHeading">
+          <span jhiTranslate="highwaypjApp.highwaypjFileConfiguration.detail.title">File Configuration</span>
+        </h2>
+
+        <hr />
+
+        <jhi-alert-error></jhi-alert-error>
+
+        <jhi-alert></jhi-alert>
+
+        <dl class="row-md jh-entity-details">
+          <dt><span jhiTranslate="global.field.id">ID</span></dt>
+          <dd>
+            <span>{{ fileConfiguration.id }}</span>
+          </dd>
+          <dt><span jhiTranslate="highwaypjApp.highwaypjFileConfiguration.name">Name</span></dt>
+          <dd>
+            <span>{{ fileConfiguration.name }}</span>
+          </dd>
+          <dt><span jhiTranslate="highwaypjApp.highwaypjFileConfiguration.description">Description</span></dt>
+          <dd>
+            <span>{{ fileConfiguration.description }}</span>
+          </dd>
+          <dt><span jhiTranslate="highwaypjApp.highwaypjFileConfiguration.path">Path</span></dt>
+          <dd>
+            <span>{{ fileConfiguration.path }}</span>
+          </dd>
+          <dt><span jhiTranslate="highwaypjApp.highwaypjFileConfiguration.types">Types</span></dt>
+          <dd>
+            <span>{{ fileConfiguration.types }}</span>
+          </dd>
+        </dl>
+
+        <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+          <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+        </button>
+
+        <button type="button" [routerLink]="['/highwaypj/file-configuration', fileConfiguration.id, 'edit']" class="btn btn-primary">
+          <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+        </button>
+      </div>
+    }
+  </div>
+</div>

@@ -1,0 +1,27 @@
+{
+  "highwaypjApp": {
+    "highwaypjFileConfiguration": {
+      "home": {
+        "title": "File Configurations",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new File Configuration",
+        "createOrEditLabel": "Create or edit a File Configuration",
+        "notFound": "No File Configurations found"
+      },
+      "created": "A new File Configuration is created with identifier {{ param }}",
+      "updated": "A File Configuration is updated with identifier {{ param }}",
+      "deleted": "A File Configuration is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete File Configuration {{ id }}?"
+      },
+      "detail": {
+        "title": "File Configuration"
+      },
+      "id": "ID",
+      "name": "Name",
+      "description": "Description",
+      "path": "Path",
+      "types": "Types"
+    }
+  }
+}

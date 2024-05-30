@@ -4,11 +4,12 @@
     "browsehappy": "您目前使用<strong>过于老旧</strong>的浏览器, 建议您<a href=\"http://browsehappy.com/?locale=en\">升级浏览器</a>让您有更佳的上网体验.",
     "menu": {
       "payments": "支付",
-      "home": "工作区",
+      "home": "首页",
       "jhipster-needle-menu-add-element": "JHipster will add additional menu entries here (do not translate!)",
       "entities": {
         "main": "数据",
         "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)",
+        "fileConfiguration": "文件设置",
         "youTubeVideo": "YouTube视频",
         "videoHint": "视频提示",
         "systemSetting": "系统设定",
@@ -21,7 +22,12 @@
         "videoProduction": "视频生成",
         "extraInfo": "额外信息",
         "material": "视频素材",
-        "history": "视频历史"      
+        "history": "视频历史",
+        "creator": "创作者",
+        "category": "目录",
+        "copyright": "版权",
+        "metadata": "元数据",
+        "keyword": "关键词"
       },
       "account": {
         "main": "账号",
@@ -98,7 +104,7 @@
       "id": "ID"
     },
     "ribbon": {
-      "dev": "开发环境"
+      "dev": "Development"
     },
     "item-count": "显示第 {{first}} - {{second}} 条，共 {{total}} 条"
   },
@@ -110,10 +116,10 @@
       "cancel": "取消",
       "delete": "删除",
       "edit": "编辑",
-      "open": "打开",
+      "open": "Open",
       "save": "保存",
       "view": "查看",
-      "show": "显示 {{otherEntity}}"
+      "show": "Show {{otherEntity}}"
     },
     "detail": {
       "field": "字段",
@@ -135,26 +141,26 @@
       "datetimelocal": "本字段必须为日期和时间."
     },
     "filters": {
-      "set": "已设定以下筛选条件",
-      "clear": "清除筛选条件",
-      "clearAll": "清除所有筛选条件"
+      "set": "Following filters are set",
+      "clear": "Clear filter",
+      "clearAll": "Clear all filters"
     }
   },
   "error": {
-    "internalServerError": "服务器内部错误",
+    "internalServerError": "Internal server error",
     "server.not.reachable": "服务器无法访问",
-    "url.not.found": "未找到",
+    "url.not.found": "Not found",
     "NotNull": "域 {{fieldName}} 不能为空!",
     "Size": "域 {{fieldName}} 不满足最大/最小值限制!",
     "userexists": "该用户名已存在!",
     "emailexists": "该邮箱已被使用!",
     "idexists": "新建的 {{entityName}} 不能包含ID",
-    "idnull": "无效的 ID",
-    "idinvalid": "无效的 ID",
-    "idnotfound": "找不到对应的 ID",
+    "idnull": "Invalid ID",
+    "idinvalid": "Invalid Id",
+    "idnotfound": "ID cannot be found",
     "file": {
-      "could.not.extract": "无法解压缩文件",
-      "not.image": "文件应该是图片格式，但实际却是 \"{{ fileType }}\""
+      "could.not.extract": "Could not extract file",
+      "not.image": "File was expected to be an image but was found to be \"{{ fileType }}\""
     }
   },
   "footer": "这里是页脚"

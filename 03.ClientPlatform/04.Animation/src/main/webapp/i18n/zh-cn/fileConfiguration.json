@@ -1,0 +1,27 @@
+{
+  "highwayacApp": {
+    "fileConfiguration": {
+      "home": {
+        "title": "File Configurations",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "创建新 File Configuration",
+        "createOrEditLabel": "创建或编辑 File Configuration",
+        "notFound": "No File Configurations found"
+      },
+      "created": "File Configuration {{ param }} 创建成功",
+      "updated": "File Configuration {{ param }} 更新成功",
+      "deleted": "File Configuration {{ param }} 删除成功",
+      "delete": {
+        "question": "你确定要删除 File Configuration {{ id }} 吗？"
+      },
+      "detail": {
+        "title": "File Configuration"
+      },
+      "id": "ID",
+      "name": "Name",
+      "description": "Description",
+      "path": "Path",
+      "types": "Types"
+    }
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "annotations": {
+    "changelogDate": "20240316112707"
+  },
+  "applications": "*",
+  "databaseType": "sql",
+  "entityTableName": "file_configuration",
+  "fields": [
+    {
+      "fieldName": "name",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "description",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "path",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "types",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    }
+  ],
+  "name": "FileConfiguration",
+  "pagination": "pagination",
+  "relationships": [],
+  "searchEngine": "no"
+}
