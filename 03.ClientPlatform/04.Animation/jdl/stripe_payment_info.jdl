@@ -1,0 +1,10 @@
+entity StripeCheckoutSession {
+    created Long required,
+    amountSubtotal Long required,
+    amountTotal Long required,
+    email String required,
+    name String required,
+    clientReferenceId String required,
+    paymentIntent String required,
+    paymentStatus String required
+}

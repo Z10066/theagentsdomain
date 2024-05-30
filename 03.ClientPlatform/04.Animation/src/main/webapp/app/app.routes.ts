@@ -35,7 +35,7 @@ import { VideoProductionsComponent } from './home/video_production_page/video_pr
 import { MaterialsComponent } from './home/material_page/material.component';
 import YouTubeVideoResolve from './entities/you-tube-video/route/you-tube-video-routing-resolve.service';
 
-
+import { PaymentsComponent } from './home/payments/payments.component';
 import VideoHintResolve from './entities/video-hint/route/video-hint-routing-resolve.service';
 import { InviteusersComponent } from './home/inviteusers/inviteusers.component';
 import { InvitationLinkComponent } from './home/invitation-link/invitation-link.component';
@@ -53,6 +53,10 @@ const routes: Routes = [
     data: {
       defaultSort: 'id,' + ASC,
     },
+    canActivate: [UserRouteAccessService],
+  },{
+    path: 'Payments',
+    component: PaymentsComponent,
     canActivate: [UserRouteAccessService],
   },
   {

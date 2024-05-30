@@ -25,6 +25,7 @@ import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.core.convert.converter.Converter;
 import org.springframework.security.authentication.AbstractAuthenticationToken;
 import org.springframework.security.config.annotation.method.configuration.EnableReactiveMethodSecurity;
+import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.web.server.SecurityWebFiltersOrder;
 import org.springframework.security.config.web.server.ServerHttpSecurity;
 import org.springframework.security.core.GrantedAuthority;
@@ -45,12 +46,16 @@ import org.springframework.security.oauth2.jwt.*;
 import org.springframework.security.oauth2.server.resource.authentication.JwtAuthenticationConverter;
 import org.springframework.security.oauth2.server.resource.authentication.ReactiveJwtAuthenticationConverterAdapter;
 import org.springframework.security.web.server.SecurityWebFilterChain;
+import org.springframework.security.web.server.csrf.CsrfWebFilter;
 import org.springframework.security.web.server.csrf.CookieServerCsrfTokenRepository;
 import org.springframework.security.web.server.csrf.ServerCsrfTokenRequestAttributeHandler;
 import org.springframework.security.web.server.header.ReferrerPolicyServerHttpHeadersWriter;
 import org.springframework.security.web.server.header.XFrameOptionsServerHttpHeadersWriter.Mode;
+import org.springframework.security.web.server.util.matcher.AndServerWebExchangeMatcher;
+import org.springframework.security.web.server.util.matcher.ServerWebExchangeMatcher;
 import org.springframework.security.web.server.util.matcher.NegatedServerWebExchangeMatcher;
 import org.springframework.security.web.server.util.matcher.OrServerWebExchangeMatcher;
+import org.springframework.web.server.ServerWebExchange;
 import org.springframework.web.reactive.function.client.WebClient;
 import reactor.core.publisher.Mono;
 import tech.jhipster.config.JHipsterProperties;
@@ -91,7 +96,7 @@ public class SecurityConfiguration {
             )
             .cors(withDefaults())
             .csrf(csrf ->
-                csrf
+                csrf.requireCsrfProtectionMatcher(disabledUrlForCSRF())// 忽略 Webhook 端点的 CSRF
                     .csrfTokenRepository(CookieServerCsrfTokenRepository.withHttpOnlyFalse())
                     // See https://stackoverflow.com/q/74447118/65681
                     .csrfTokenRequestHandler(new ServerCsrfTokenRequestAttributeHandler())
@@ -120,6 +125,7 @@ public class SecurityConfiguration {
                     .pathMatchers("/api/authenticate").permitAll()
                     .pathMatchers("/api/auth-info").permitAll()
                     .pathMatchers("/api/admin/**").hasAuthority(AuthoritiesConstants.ADMIN)
+                    .pathMatchers("/api/stripe/webhook").permitAll() // 允许匿名访问 Webhook 端点
                     .pathMatchers("/api/**").authenticated()
                     // microfrontend resources are loaded by webpack without authentication, they need to be public
                     .pathMatchers("/services/*/*.js").permitAll()
@@ -140,6 +146,15 @@ public class SecurityConfiguration {
             .oauth2Client(withDefaults())
             .oauth2ResourceServer(oauth2 -> oauth2.jwt(jwt -> jwt.jwtAuthenticationConverter(jwtAuthenticationConverter())));
         return http.build();
+    }
+
+    private AndServerWebExchangeMatcher disabledUrlForCSRF() {
+        return new AndServerWebExchangeMatcher(
+            CsrfWebFilter.DEFAULT_CSRF_MATCHER,
+            new NegatedServerWebExchangeMatcher(
+                pathMatchers("/api/stripe/webhook")
+            )
+        );
     }
 
     private ServerOAuth2AuthorizationRequestResolver authorizationRequestResolver(

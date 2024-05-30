@@ -15,6 +15,7 @@ export class LeftMenuComponent implements OnInit {
     { label: 'Workspaces', link: '/Workspaces', target: '_self', active: false },
     { label: 'Createvideoprompt', link: '/Createvideoprompt', target: '_blank', active: false },
     { label: 'Members', link: '/Members', target: '_self', active: false },
+    { label: 'Payments', link: '/Payments', target: '_self', active: false },
     { label: 'Plan', link: '/Plan', target: '_self', active: false },
     { label: 'Usage', link: '/Usage', target: '_self', active: false },
     { label: 'VideoProduct', link: '/VideoProduct', target: '_self', active: false },

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HighwayVC - Payments</title>
+</head>
+<body>
+    <div class="payments-container">
+        <jhi-left-menu [currentpage]="'Payments'"></jhi-left-menu>
+        <main class="payments-content">
+            @if (pricingTableId && publishableKey){
+            <stripe-pricing-table
+                [attr.pricing-table-id]="pricingTableId"
+                [attr.publishable-key]="publishableKey"
+                [attr.client-reference-id]="clientReferenceId">
+            </stripe-pricing-table>
+            }
+        </main>
+    </div>
+</body>
+</html>

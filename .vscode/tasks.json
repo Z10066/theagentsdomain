@@ -1,0 +1,75 @@
+{
+    // See https://go.microsoft.com/fwlink/?LinkId=733558
+    // for the documentation about the tasks.json format
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "keycloak",
+            "type": "shell",
+            "command": "./kc.sh start-dev",
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "options": {
+                "cwd": "/home/gomulin/highwayns/keycloak-24.0.3/bin"
+            }
+        },
+        {
+            "label": "configserver",
+            "type": "shell",
+            "command": "sudo",
+            "args": [
+                "mvn",
+                "spring-boot:run"
+            ],
+            "options": {
+                "cwd": "/home/gomulin/highwayns/theagentsdomain/08.ApplicationManagement/configserver"
+            },
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
+        },{
+            "label": "discoverserver",
+            "type": "shell",
+            "command": "sudo",
+            "args": [
+                "mvn",
+                "spring-boot:run"
+            ],
+            "options": {
+                "cwd": "/home/gomulin/highwayns/theagentsdomain/08.ApplicationManagement/discoverserver"
+            },
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
+        },
+        {
+            "label": "jhipster",
+            "type": "shell",
+            "command": "./mvnw",
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "options": {
+                "cwd": "/home/gomulin/highwayns/theagentsdomain/03.ClientPlatform/04.Animation"
+            }
+        },
+        {
+            "label": "angular",
+            "type": "shell",
+            "command": "npm",
+            "args": ["start"],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "options": {
+                "cwd": "/home/gomulin/highwayns/theagentsdomain/03.ClientPlatform/04.Animation"
+            }
+        }
+    ]
+}

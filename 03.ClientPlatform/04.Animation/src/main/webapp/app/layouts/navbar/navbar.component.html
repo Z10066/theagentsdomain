@@ -20,6 +20,14 @@
     <div class="navbar-collapse collapse" id="navbarResponsive" [ngbCollapse]="isNavbarCollapsed">
       <ul class="navbar-nav ms-auto">
         <li class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+          <a class="nav-link" routerLink="/Payments" (click)="collapseNavbar()">
+            <span>
+              <fa-icon icon="credit-card"></fa-icon>
+              <span jhiTranslate="global.menu.payments">Payments</span>
+            </span>
+          </a>
+        </li>
+        <li class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
           <a class="nav-link" routerLink="/Workspaces" (click)="collapseNavbar()">
             <span>
               <fa-icon icon="home"></fa-icon>
@@ -300,12 +308,17 @@
               <li>
                 <a
                   class="dropdown-item"
+<<<<<<< HEAD
+                  routerLink="/stripe-checkout-session"
+=======
                   routerLink="/file-configuration"
+>>>>>>> origin/main
                   routerLinkActive="active"
                   [routerLinkActiveOptions]="{ exact: true }"
                   (click)="collapseNavbar()"
                 >
                   <fa-icon icon="asterisk" [fixedWidth]="true"></fa-icon>
+                  <span jhiTranslate="global.menu.entities.stripeCheckoutSession">Stripe Checkout Session</span>
                   <span jhiTranslate="global.menu.entities.fileConfiguration">File Configuration</span>
                 </a>
               </li>
