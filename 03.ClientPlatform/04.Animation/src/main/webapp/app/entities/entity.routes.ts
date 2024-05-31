@@ -96,6 +96,11 @@ const routes: Routes = [
     data: { pageTitle: 'highwayacApp.fileConfiguration.home.title' },
     loadChildren: () => import('./file-configuration/file-configuration.routes'),
   },
+  {
+    path: 'novel',
+    data: { pageTitle: 'highwayacApp.novel.home.title' },
+    loadChildren: () => import('./novel/novel.routes'),
+  },
   /* jhipster-needle-add-entity-route - JHipster will add entity modules routes here */
 ];
 

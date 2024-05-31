@@ -1,0 +1,78 @@
+import { Component, OnInit } from '@angular/core';
+import { HttpResponse } from '@angular/common/http';
+import { ActivatedRoute } from '@angular/router';
+import { Observable } from 'rxjs';
+import { finalize } from 'rxjs/operators';
+
+import SharedModule from 'app/shared/shared.module';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
+import { INovel } from '../novel.model';
+import { NovelService } from '../service/novel.service';
+import { NovelFormService, NovelFormGroup } from './novel-form.service';
+
+@Component({
+  standalone: true,
+  selector: 'jhi-novel-update',
+  templateUrl: './novel-update.component.html',
+  imports: [SharedModule, FormsModule, ReactiveFormsModule],
+})
+export class NovelUpdateComponent implements OnInit {
+  isSaving = false;
+  novel: INovel | null = null;
+
+  editForm: NovelFormGroup = this.novelFormService.createNovelFormGroup();
+
+  constructor(
+    protected novelService: NovelService,
+    protected novelFormService: NovelFormService,
+    protected activatedRoute: ActivatedRoute,
+  ) {}
+
+  ngOnInit(): void {
+    this.activatedRoute.data.subscribe(({ novel }) => {
+      this.novel = novel;
+      if (novel) {
+        this.updateForm(novel);
+      }
+    });
+  }
+
+  previousState(): void {
+    window.history.back();
+  }
+
+  save(): void {
+    this.isSaving = true;
+    const novel = this.novelFormService.getNovel(this.editForm);
+    if (novel.id !== null) {
+      this.subscribeToSaveResponse(this.novelService.update(novel));
+    } else {
+      this.subscribeToSaveResponse(this.novelService.create(novel));
+    }
+  }
+
+  protected subscribeToSaveResponse(result: Observable<HttpResponse<INovel>>): void {
+    result.pipe(finalize(() => this.onSaveFinalize())).subscribe({
+      next: () => this.onSaveSuccess(),
+      error: () => this.onSaveError(),
+    });
+  }
+
+  protected onSaveSuccess(): void {
+    this.previousState();
+  }
+
+  protected onSaveError(): void {
+    // Api for inheritance.
+  }
+
+  protected onSaveFinalize(): void {
+    this.isSaving = false;
+  }
+
+  protected updateForm(novel: INovel): void {
+    this.novel = novel;
+    this.novelFormService.resetForm(this.editForm, novel);
+  }
+}
