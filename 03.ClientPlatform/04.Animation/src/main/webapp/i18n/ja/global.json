@@ -10,6 +10,7 @@
         "main": "エンティティ",
         "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)",
         "fileConfiguration": "ファイル設定",
+        "stripeCheckoutSession": "Stripe Checkout Session",
         "youTubeVideo": "Youtubeビデオ",
         "videoHint": "ビデオヒント",
         "systemSetting": "システム設定",
