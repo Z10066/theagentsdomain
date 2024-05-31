@@ -80,9 +80,9 @@
 [submodule "kanboard/kanboard"]
 	path = 09.StandardPlatform/01.Project/kanboard
 	url = https://github.com/kanboard/kanboard.git
-[submodule "frappe/erpnext"]
-	path = 09.StandardPlatform/erpnext
-	url = https://github.com/frappe/erpnext.git
+[submodule "odoo/odoo"]
+	path = 09.StandardPlatform/odoo
+	url = https://github.com/odoo/odoo.git
 [submodule "prolinkinfo/RealEstateCRM"]
 	path = 09.StandardPlatform/RealEstateCRM
 	url = https://github.com/prolinkinfo/RealEstateCRM.git
@@ -92,6 +92,9 @@
 [submodule "frappe/erpnext"]
 	path = 09.StandardPlatform/erpnext
 	url = https://github.com/frappe/erpnext.git
+[submodule "instructure/canvas-lms"]
+	path = 09.StandardPlatform/canvas-lms
+	url = https://github.com/instructure/canvas-lms.git
 [submodule "highwayns/Medical_Intake"]
 	path = 10.AnalysisAndAlgorithm/Medical_Intake
 	url = https://github.com/highwayns/Medical_Intake.git
