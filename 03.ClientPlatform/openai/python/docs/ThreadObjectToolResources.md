@@ -1,0 +1,10 @@
+# ThreadObjectToolResources
+
+## Properties
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**code_interpreter** | [**CreateAssistantRequestToolResourcesCodeInterpreter**](CreateAssistantRequestToolResourcesCodeInterpreter.md) |  | [optional] 
+**file_search** | [**ThreadObjectToolResourcesFileSearch**](ThreadObjectToolResourcesFileSearch.md) |  | [optional] 
+
+[[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
