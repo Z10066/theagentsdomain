@@ -190,7 +190,7 @@ spring:
         registration:
           oidc:
             client-id: highwayac
-            client-secret: Y3HDo45znJdOcr1rkTvg4gqJbSockGXQ
+            client-secret: HzgrFjBGiVkl6pfsniuNYrxSicRNcHz4
             scope: openid, profile, email, offline_access # last one for refresh tokens
 
 server:

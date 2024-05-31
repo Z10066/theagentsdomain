@@ -63,6 +63,11 @@ entity History {
     watchLink String
 }
 
+entity Novel {
+    noveltext String required,
+    novelname String required
+}
+
 // Enumeration for predefined data
 enum AccountType {
     YOUTUBE, GOOGLE, TWITTER, FACEBOOK, OTHER

@@ -1,0 +1,23 @@
+{
+  "annotations": {
+    "changelogDate": "20240316112707"
+  },
+  "applications": "*",
+  "databaseType": "sql",
+  "entityTableName": "novel",
+  "fields": [
+    {
+      "fieldName": "noveltext",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "novelname",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    }
+  ],
+  "name": "Novel",
+  "relationships": [],
+  "searchEngine": "no"
+}

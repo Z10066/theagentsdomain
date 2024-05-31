@@ -18,7 +18,8 @@ export class FootMenuComponent implements OnInit {
     { label: 'CreatetiktokVideoPrompt', link: '/CreatetiktokVideoPrompt', target: '_self', active: false },
     { label: 'CreateinstagramReelPrompt', link: '/CreateinstagramReelPrompt', target: '_self' , active: false},
     { label: 'CreatVideo', link: '/CreatVideo', target: '_self', active: false },
-    { label: 'Createprompt', link: '/Createprompt', target: '_self', active: false },    
+    { label: 'Createprompt', link: '/Createprompt', target: '_self', active: false },
+    { label: 'Novel', link: '/Novel', target: '_self', active: false },     
   ];
 
   ngOnInit() {
