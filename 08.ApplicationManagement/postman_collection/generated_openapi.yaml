@@ -1,0 +1,214 @@
+openapi: 3.0.0
+info:
+  title: Generated API
+  version: 1.0.0
+paths:
+  http://localhost:8600/api/v1/users/signup:
+    post:
+      tags:
+      - API Gateway | User Service | Sign Up Admin
+      responses: {}
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                username: springbootmicroserviceadmin
+                password: admin123456
+                name: Micro Admin
+                surname: Admin Surname
+                phoneNumber: '123456789'
+                email: springbootmicroserviceadmin@admin.com
+                role: ROLE_ADMIN
+  http://localhost:8600/api/v1/users/login:
+    post:
+      tags:
+      - API Gateway | User Service | Login Admin
+      responses: {}
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                username: springbootmicroserviceadmin
+                password: admin123456
+  http://localhost:8081/api/account:
+    get:
+      tags:
+      - API Gateway | Login Service | Login User
+      responses: {}
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                username: admin
+                password: admin
+  http://localhost:8082/api/users:
+    get:
+      tags:
+      - API Gateway | Login Service | get users
+      responses: {}
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                username: admin
+                password: admin
+  http://localhost:9002/api/authorities:
+    get:
+      tags:
+      - API Gateway | Login Service | get authorities
+      responses: {}
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                username: admin
+                password: admin
+  http://localhost:9002/api/authenticate:
+    get:
+      tags:
+      - API Gateway | Login Service | authenticate
+      responses: {}
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                username: admin
+                password: admin
+  http://localhost:9002/api/auth-info:
+    get:
+      tags:
+      - API Gateway | Login Service | auth-info
+      responses: {}
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                username: admin
+                password: admin
+  http://localhost:8082/api/gateway/routes:
+    get:
+      tags:
+      - API Gateway | Login Service | gateway
+      responses: {}
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                username: admin
+                password: admin
+  http://localhost:9002/api/inviteusers:
+    post:
+      tags:
+      - API Gateway | Login Service | create inviteusers
+      responses: {}
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                invitername: admin
+                workspaces: admins
+                invitertime: 2024/05/30 12:21:00
+                email: admin@hotmail.com
+                inviterid: '1'
+                status: ok
+  http://localhost:8082/api/inviteusers:
+    get:
+      tags:
+      - API Gateway | Login Service | get inviteusers
+      responses: {}
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                invitername: admin
+                workspaces: admins
+                invitertime: 2024/05/30 12:21:00
+                email: admin@hotmail.com
+                inviterid: '1'
+                status: ok
+  http://localhost:8600/api/v1/users/info:
+    get:
+      tags:
+      - API Gateway | User Service | User Info
+      responses: {}
+  http://localhost:8600/api/v1/admin_role/create/1:
+    post:
+      tags:
+      - API Gateway | Management Service | Admin | Create Advs for User
+      responses: {}
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                title: Advertisement 1 for User 1
+                price: 200
+  http://localhost:8600/api/v1/admin_role/alladvertisements:
+    get:
+      tags:
+      - API Gateway | Management Service | Admin | Get All Advs
+      responses: {}
+  http://localhost:8600/api/v1/admin_role/alladvertisements/1:
+    get:
+      tags:
+      - API Gateway | Management Service | Admin | Get Advs By Id
+      responses: {}
+  http://localhost:8600/api/v1/admin_role/update/1:
+    put:
+      tags:
+      - API Gateway | Management Service | Admin | Update Advs By Id
+      responses: {}
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                title: Advertisement 1 for User 1 Updated
+                price: 300
+  http://localhost:8600/api/v1/admin_role/delete/1:
+    delete:
+      tags:
+      - API Gateway | Management Service | Admin | Delete Advs By Id
+      responses: {}
+  http://localhost:8600/api/v1/admin_role/advertisement/1/approve:
+    get:
+      tags:
+      - API Gateway | Management Service | Admin | Approve Advs
+      responses: {}
+  http://localhost:8600/api/v1/admin_role/advertisement/1/reject:
+    get:
+      tags:
+      - API Gateway | Management Service | Admin | Reject Advs
+      responses: {}
+  http://localhost:8600/api/v1/user_role/alladvertisements:
+    get:
+      tags:
+      - API Gateway | Management Service | User| Get All Advs
+      responses: {}
+  http://localhost:8600/api/v1/user_role/advertisement/1:
+    get:
+      tags:
+      - API Gateway | Management Service | User| Get Adv
+      responses: {}
