@@ -10,22 +10,17 @@ import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
 import jakarta.persistence.Table;
 import java.io.Serializable;
-import java.math.BigDecimal;
 
 @Entity
-@Table(name = "Advertisement")
+@Table(name = "StoryPrompt")
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class Advertisement extends IdBasedEntity implements Serializable {
-
-    private Long userId;
-    private String title;
-    private BigDecimal price;
-    private Long viewCount;
-
+public class StoryPromptEntity extends IdBasedEntity implements Serializable {
+    private String userId;
+    private String prompt;
     @Enumerated(EnumType.STRING)
-    private AdvertisementState state;
+    private StoryType storyType;
 
 }
