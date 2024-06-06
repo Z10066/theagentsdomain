@@ -6,6 +6,7 @@ from .AccountResource import account_register_ns, account_authenticate_ns, accou
 from .UserResource import user_list_ns
 from .LogoutResource import logout_ns
 from .AppManagment import app_management_ns
+from .FileConfigurationResource import file_configurations_list_ns
 # pyhipster-needle-rest-api-list-add-entry-import
 
 def add_api_namespace(api):
@@ -23,6 +24,7 @@ def add_api_namespace(api):
     api.add_namespace(change_passwd_ns)
     api.add_namespace(user_list_ns)
     api.add_namespace(app_management_ns)
+    api.add_namespace(file_configurations_list_ns)
     # pyhipster-needle-rest-api-list-add-namespaces
 
     # Adding resources to added namespaces
@@ -45,6 +47,9 @@ def add_api_namespace(api):
     app_management_ns.add_resource(AppManagment.AppManagementOpenAPIResource, "/jhiopenapigroups")
     # pyhipster-needle-rest-api-list-add-resource
     # pyhipster-needle-rest-api-list-add-resource-list
+    file_configurations_list_ns.add_resource(FileConfigurationResource.FileConfigurationResourceList, "")
+    file_configurations_list_ns.add_resource(FileConfigurationResource.FileConfigurationResourceListCount, "/count")
+    file_configurations_list_ns.add_resource(FileConfigurationResource.FileConfigurationResource, "/<int:id>")
     # pyhipster-needle-rest-api-list-add-resource-list-count
 
     return api
