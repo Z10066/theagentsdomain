@@ -1,0 +1,27 @@
+{
+  "highwayacApp": {
+    "uploadFile": {
+      "home": {
+        "title": "Upload Files",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Upload File",
+        "createOrEditLabel": "Create or edit a Upload File",
+        "notFound": "No Upload Files found"
+      },
+      "created": "A new Upload File is created with identifier {{ param }}",
+      "updated": "A Upload File is updated with identifier {{ param }}",
+      "deleted": "A Upload File is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Upload File {{ id }}?"
+      },
+      "detail": {
+        "title": "Upload File"
+      },
+      "id": "ID",
+      "name": "Name",
+      "description": "Description",
+      "path": "Path",
+      "types": "Types"
+    }
+  }
+}

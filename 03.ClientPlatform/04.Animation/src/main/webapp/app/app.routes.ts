@@ -40,6 +40,8 @@ import VideoHintResolve from './entities/video-hint/route/video-hint-routing-res
 import { InviteusersComponent } from './home/inviteusers/inviteusers.component';
 import { InvitationLinkComponent } from './home/invitation-link/invitation-link.component';
 import { NovelComponent } from './home/novel/novel.component';
+import { UploadfileComponent } from './home/uploadfile/uploadfile.component';
+import { NewuploadfileComponent } from './home/newuploadfile/newuploadfile.component';
 
 const routes: Routes = [
   /*{
@@ -62,6 +64,22 @@ const routes: Routes = [
   {
     path: 'Workspaces',
     component: WprkspacesComponent,
+    data: {
+      defaultSort: 'id,' + ASC,
+    },
+    canActivate: [UserRouteAccessService],
+  },
+  {
+    path: 'Uploadfile',
+    component: UploadfileComponent,
+    data: {
+      defaultSort: 'id,' + ASC,
+    },
+    canActivate: [UserRouteAccessService],
+  },
+  {
+    path: 'Newuploadfile',
+    component: NewuploadfileComponent,
     data: {
       defaultSort: 'id,' + ASC,
     },
