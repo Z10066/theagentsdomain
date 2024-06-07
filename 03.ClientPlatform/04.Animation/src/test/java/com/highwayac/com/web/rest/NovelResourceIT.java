@@ -36,6 +36,9 @@ class NovelResourceIT {
     private static final String DEFAULT_NOVELNAME = "AAAAAAAAAA";
     private static final String UPDATED_NOVELNAME = "BBBBBBBBBB";
 
+    private static final String DEFAULT_NOVELTYPE = "AAAAAAAAAA";
+    private static final String UPDATED_NOVELTYPE = "BBBBBBBBBB";
+
     private static final String ENTITY_API_URL = "/api/novels";
     private static final String ENTITY_API_URL_ID = ENTITY_API_URL + "/{id}";
 
@@ -60,7 +63,7 @@ class NovelResourceIT {
      * if they test an entity which requires the current entity.
      */
     public static Novel createEntity(EntityManager em) {
-        Novel novel = new Novel().noveltext(DEFAULT_NOVELTEXT).novelname(DEFAULT_NOVELNAME);
+        Novel novel = new Novel().noveltext(DEFAULT_NOVELTEXT).novelname(DEFAULT_NOVELNAME).noveltype(DEFAULT_NOVELTYPE);
         return novel;
     }
 
@@ -71,7 +74,7 @@ class NovelResourceIT {
      * if they test an entity which requires the current entity.
      */
     public static Novel createUpdatedEntity(EntityManager em) {
-        Novel novel = new Novel().noveltext(UPDATED_NOVELTEXT).novelname(UPDATED_NOVELNAME);
+        Novel novel = new Novel().noveltext(UPDATED_NOVELTEXT).novelname(UPDATED_NOVELNAME).noveltype(UPDATED_NOVELTYPE);
         return novel;
     }
 
@@ -118,6 +121,7 @@ class NovelResourceIT {
         Novel testNovel = novelList.get(novelList.size() - 1);
         assertThat(testNovel.getNoveltext()).isEqualTo(DEFAULT_NOVELTEXT);
         assertThat(testNovel.getNovelname()).isEqualTo(DEFAULT_NOVELNAME);
+        assertThat(testNovel.getNoveltype()).isEqualTo(DEFAULT_NOVELTYPE);
     }
 
     @Test
@@ -209,6 +213,7 @@ class NovelResourceIT {
         Novel testNovel = novelList.get(0);
         assertThat(testNovel.getNoveltext()).isEqualTo(DEFAULT_NOVELTEXT);
         assertThat(testNovel.getNovelname()).isEqualTo(DEFAULT_NOVELNAME);
+        assertThat(testNovel.getNoveltype()).isEqualTo(DEFAULT_NOVELTYPE);
     }
 
     @Test
@@ -232,7 +237,9 @@ class NovelResourceIT {
             .jsonPath("$.[*].noveltext")
             .value(hasItem(DEFAULT_NOVELTEXT))
             .jsonPath("$.[*].novelname")
-            .value(hasItem(DEFAULT_NOVELNAME));
+            .value(hasItem(DEFAULT_NOVELNAME))
+            .jsonPath("$.[*].noveltype")
+            .value(hasItem(DEFAULT_NOVELTYPE));
     }
 
     @Test
@@ -256,7 +263,9 @@ class NovelResourceIT {
             .jsonPath("$.noveltext")
             .value(is(DEFAULT_NOVELTEXT))
             .jsonPath("$.novelname")
-            .value(is(DEFAULT_NOVELNAME));
+            .value(is(DEFAULT_NOVELNAME))
+            .jsonPath("$.noveltype")
+            .value(is(DEFAULT_NOVELTYPE));
     }
 
     @Test
@@ -280,7 +289,7 @@ class NovelResourceIT {
 
         // Update the novel
         Novel updatedNovel = novelRepository.findById(novel.getId()).block();
-        updatedNovel.noveltext(UPDATED_NOVELTEXT).novelname(UPDATED_NOVELNAME);
+        updatedNovel.noveltext(UPDATED_NOVELTEXT).novelname(UPDATED_NOVELNAME).noveltype(UPDATED_NOVELTYPE);
 
         webTestClient
             .put()
@@ -297,6 +306,7 @@ class NovelResourceIT {
         Novel testNovel = novelList.get(novelList.size() - 1);
         assertThat(testNovel.getNoveltext()).isEqualTo(UPDATED_NOVELTEXT);
         assertThat(testNovel.getNovelname()).isEqualTo(UPDATED_NOVELNAME);
+        assertThat(testNovel.getNoveltype()).isEqualTo(UPDATED_NOVELTYPE);
     }
 
     @Test
@@ -370,7 +380,7 @@ class NovelResourceIT {
         Novel partialUpdatedNovel = new Novel();
         partialUpdatedNovel.setId(novel.getId());
 
-        partialUpdatedNovel.novelname(UPDATED_NOVELNAME);
+        partialUpdatedNovel.novelname(UPDATED_NOVELNAME).noveltype(UPDATED_NOVELTYPE);
 
         webTestClient
             .patch()
@@ -387,6 +397,7 @@ class NovelResourceIT {
         Novel testNovel = novelList.get(novelList.size() - 1);
         assertThat(testNovel.getNoveltext()).isEqualTo(DEFAULT_NOVELTEXT);
         assertThat(testNovel.getNovelname()).isEqualTo(UPDATED_NOVELNAME);
+        assertThat(testNovel.getNoveltype()).isEqualTo(UPDATED_NOVELTYPE);
     }
 
     @Test
@@ -400,7 +411,7 @@ class NovelResourceIT {
         Novel partialUpdatedNovel = new Novel();
         partialUpdatedNovel.setId(novel.getId());
 
-        partialUpdatedNovel.noveltext(UPDATED_NOVELTEXT).novelname(UPDATED_NOVELNAME);
+        partialUpdatedNovel.noveltext(UPDATED_NOVELTEXT).novelname(UPDATED_NOVELNAME).noveltype(UPDATED_NOVELTYPE);
 
         webTestClient
             .patch()
@@ -417,6 +428,7 @@ class NovelResourceIT {
         Novel testNovel = novelList.get(novelList.size() - 1);
         assertThat(testNovel.getNoveltext()).isEqualTo(UPDATED_NOVELTEXT);
         assertThat(testNovel.getNovelname()).isEqualTo(UPDATED_NOVELNAME);
+        assertThat(testNovel.getNoveltype()).isEqualTo(UPDATED_NOVELTYPE);
     }
 
     @Test

@@ -27,6 +27,9 @@ public class Novel implements Serializable {
     @Column("novelname")
     private String novelname;
 
+    @Column("noveltype")
+    private String noveltype;
+
     // jhipster-needle-entity-add-field - JHipster will add fields here
 
     public Long getId() {
@@ -68,6 +71,19 @@ public class Novel implements Serializable {
         this.novelname = novelname;
     }
 
+    public String getNoveltype() {
+        return this.noveltype;
+    }
+
+    public Novel noveltype(String noveltype) {
+        this.setNoveltype(noveltype);
+        return this;
+    }
+
+    public void setNoveltype(String noveltype) {
+        this.noveltype = noveltype;
+    }
+
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here
 
     @Override
@@ -94,6 +110,7 @@ public class Novel implements Serializable {
             "id=" + getId() +
             ", noveltext='" + getNoveltext() + "'" +
             ", novelname='" + getNovelname() + "'" +
+            ", noveltype='" + getNoveltype() + "'" +
             "}";
     }
 }

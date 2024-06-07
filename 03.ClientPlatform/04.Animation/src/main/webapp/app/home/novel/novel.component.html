@@ -7,12 +7,27 @@
 </head>
 <body>
     <div class="container">
-        <label for="textInput" class="label">Enter your text below:</label>
-        <input type="text" id="textInput" class="input-box" placeholder="Type something...">
-        <div class="button-container">
-            <a href="your-target-page.html" class="button red-button">確認</a>
-            <a href="your-target-page.html" class="button gray-button">戻り</a>
-        </div>
+        <form [formGroup]="editForm" (ngSubmit)="save()">
+            <div class="form-group">
+                <label for="field_novelname" class="label">Novelname</label>
+                <input type="text" class="form-control1" name="novelname" id="field_novelname" formControlName="novelname" />
+                <div *ngIf="editForm.get('novelname')?.invalid && (editForm.get('novelname')?.dirty || editForm.get('novelname')?.touched)">
+                    <small class="form-text text-danger" *ngIf="editForm.get('novelname')?.errors?.required">This field is required.</small>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="field_noveltext" class="label">Noveltext</label>
+                <input type="text" class="form-control" name="noveltext" id="field_noveltext" formControlName="noveltext" />
+                <div *ngIf="editForm.get('noveltext')?.invalid && (editForm.get('noveltext')?.dirty || editForm.get('noveltext')?.touched)">
+                    <small class="form-text text-danger" *ngIf="editForm.get('noveltext')?.errors?.required">This field is required.</small>
+                </div>
+            </div>
+            <div class="button-container">
+                <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving" class="button">
+                    <fa-icon icon="save"></fa-icon>&nbsp;<span>Save</span>
+                </button>
+            </div>
+        </form>
     </div>
     <jhi-foot-menu [currentpage]="'Novel'"></jhi-foot-menu>
 </body>

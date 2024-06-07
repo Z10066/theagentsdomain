@@ -1,26 +1,27 @@
 import { INovel, NewNovel } from './novel.model';
 
 export const sampleWithRequiredData: INovel = {
-  id: 10076,
-  noveltext: 'pish brr',
-  novelname: 'vanish usually used',
+  id: 13877,
+  noveltext: 'boohoo',
+  novelname: 'mmm',
 };
 
 export const sampleWithPartialData: INovel = {
-  id: 10215,
-  noveltext: 'ha floss which',
-  novelname: 'gerbil endpoint',
+  id: 7035,
+  noveltext: 'withhold soulful yahoo',
+  novelname: 'yowza incidentally angry',
 };
 
 export const sampleWithFullData: INovel = {
-  id: 31947,
-  noveltext: 'unlike request',
-  novelname: 'absent though yearly',
+  id: 13257,
+  noveltext: 'adventurous open thankfully',
+  novelname: 'polished',
+  noveltype: 'counseling total over',
 };
 
 export const sampleWithNewData: NewNovel = {
-  noveltext: 'windy at',
-  novelname: 'as compass',
+  noveltext: 'wildly colony or',
+  novelname: 'autosave whimsical',
   id: null,
 };
 

@@ -20,6 +20,7 @@ type NovelFormGroupContent = {
   id: FormControl<INovel['id'] | NewNovel['id']>;
   noveltext: FormControl<INovel['noveltext']>;
   novelname: FormControl<INovel['novelname']>;
+  noveltype: FormControl<INovel['noveltype']>;
 };
 
 export type NovelFormGroup = FormGroup<NovelFormGroupContent>;
@@ -45,6 +46,7 @@ export class NovelFormService {
       novelname: new FormControl(novelRawValue.novelname, {
         validators: [Validators.required],
       }),
+      noveltype: new FormControl(novelRawValue.noveltype),
     });
   }
 

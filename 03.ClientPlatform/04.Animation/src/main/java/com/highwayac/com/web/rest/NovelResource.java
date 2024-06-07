@@ -153,6 +153,9 @@ public class NovelResource {
                         if (novel.getNovelname() != null) {
                             existingNovel.setNovelname(novel.getNovelname());
                         }
+                        if (novel.getNoveltype() != null) {
+                            existingNovel.setNoveltype(novel.getNoveltype());
+                        }
 
                         return existingNovel;
                     })

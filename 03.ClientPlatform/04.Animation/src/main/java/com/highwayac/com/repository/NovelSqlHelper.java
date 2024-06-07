@@ -13,6 +13,7 @@ public class NovelSqlHelper {
         columns.add(Column.aliased("id", table, columnPrefix + "_id"));
         columns.add(Column.aliased("noveltext", table, columnPrefix + "_noveltext"));
         columns.add(Column.aliased("novelname", table, columnPrefix + "_novelname"));
+        columns.add(Column.aliased("noveltype", table, columnPrefix + "_noveltype"));
 
         return columns;
     }
