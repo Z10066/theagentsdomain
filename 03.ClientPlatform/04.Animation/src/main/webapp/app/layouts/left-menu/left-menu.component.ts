@@ -22,6 +22,7 @@ export class LeftMenuComponent implements OnInit {
     { label: 'Material', link: '/Material', target: '_self', active: false },
     { label: 'History', link: '/History', target: '_self', active: false },
     { label: 'Profile', link: '/Profile', target: '_self', active: false },
+    { label: 'Uploadfile', link: '/Uploadfile', target: '_self', active: false },
   ];
   ngOnInit() {
     this.init();
