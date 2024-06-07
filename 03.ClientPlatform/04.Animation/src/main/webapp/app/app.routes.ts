@@ -41,6 +41,7 @@ import { InviteusersComponent } from './home/inviteusers/inviteusers.component';
 import { InvitationLinkComponent } from './home/invitation-link/invitation-link.component';
 import { NovelComponent } from './home/novel/novel.component';
 import { UploadfileComponent } from './home/uploadfile/uploadfile.component';
+import { NewuploadfileComponent } from './home/newuploadfile/newuploadfile.component';
 
 const routes: Routes = [
   /*{
@@ -71,6 +72,14 @@ const routes: Routes = [
   {
     path: 'Uploadfile',
     component: UploadfileComponent,
+    data: {
+      defaultSort: 'id,' + ASC,
+    },
+    canActivate: [UserRouteAccessService],
+  },
+  {
+    path: 'Newuploadfile',
+    component: NewuploadfileComponent,
     data: {
       defaultSort: 'id,' + ASC,
     },
