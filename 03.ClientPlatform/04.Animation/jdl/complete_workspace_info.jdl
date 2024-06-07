@@ -65,7 +65,8 @@ entity History {
 
 entity Novel {
     noveltext String required,
-    novelname String required
+    novelname String required,
+    Noveltype String
 }
 
 // Enumeration for predefined data

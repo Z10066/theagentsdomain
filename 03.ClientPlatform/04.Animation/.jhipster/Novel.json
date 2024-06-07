@@ -15,6 +15,10 @@
       "fieldName": "novelname",
       "fieldType": "String",
       "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "noveltype",
+      "fieldType": "String"
     }
   ],
   "name": "Novel",

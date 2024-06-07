@@ -145,7 +145,7 @@ spring:
         registration:
           oidc:
             client-id: highwaypj
-            client-secret: chLvXILuFxYLVZGEr8n1cxu69AacIVa1
+            client-secret: Y3HDo45znJdOcr1rkTvg4gqJbSockGXQ
             scope: openid, profile, email, offline_access # last one for refresh tokens
 
 server:

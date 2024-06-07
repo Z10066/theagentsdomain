@@ -19,7 +19,8 @@
       },
       "id": "ID",
       "noveltext": "Noveltext",
-      "novelname": "Novelname"
+      "novelname": "Novelname",
+      "noveltype": "Noveltype"
     }
   }
 }

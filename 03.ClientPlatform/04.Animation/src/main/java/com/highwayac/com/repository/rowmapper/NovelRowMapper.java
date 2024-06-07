@@ -27,6 +27,7 @@ public class NovelRowMapper implements BiFunction<Row, String, Novel> {
         entity.setId(converter.fromRow(row, prefix + "_id", Long.class));
         entity.setNoveltext(converter.fromRow(row, prefix + "_noveltext", String.class));
         entity.setNovelname(converter.fromRow(row, prefix + "_novelname", String.class));
+        entity.setNoveltype(converter.fromRow(row, prefix + "_noveltype", String.class));
         return entity;
     }
 }

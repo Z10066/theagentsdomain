@@ -39,8 +39,10 @@ import { FootMenuComponent } from './layouts/foot-menu/foot-menu.component';
 import { InviteusersComponent } from './home/inviteusers/inviteusers.component';
 import { InvitationLinkComponent } from './home/invitation-link/invitation-link.component';
 import { NovelComponent } from './home/novel/novel.component';
+import { WaitnovelComponent } from './home/waitnovel/waitnovel.component';
 import { UploadfileComponent } from './home/uploadfile/uploadfile.component';
 import { NewuploadfileComponent } from './home/newuploadfile/newuploadfile.component';
+
 
 
 
@@ -53,7 +55,7 @@ import { NewuploadfileComponent } from './home/newuploadfile/newuploadfile.compo
     ProfileComponent,PlanComponent,MembersComponent,HistoryComponent,DownloadComponent,WprkspacesComponent,CreatVideoComponent,ContinueComponent,
     CreatevideopromptComponent,VideoCircleComponent,CreatexplainerPromptComponent,CreateinstagramReelPromptComponent,CreatepromptComponent,
     CreaterecentEventsPromptComponent,CreatetiktokVideoPromptComponent,SignupComponent,LoginComponent,LeftMenuComponent,VideoProductionsComponent,
-    MaterialsComponent,FootMenuComponent,InviteusersComponent,InvitationLinkComponent,NovelComponent,UploadfileComponent,NewuploadfileComponent
+    MaterialsComponent,FootMenuComponent,InviteusersComponent,InvitationLinkComponent,NovelComponent,WaitnovelComponent,UploadfileComponent,NewuploadfileComponent
     // jhipster-needle-angular-add-module JHipster will add new module here
   ],
 })

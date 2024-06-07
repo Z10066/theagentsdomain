@@ -22,6 +22,7 @@ describe('Novel Form Service', () => {
             id: expect.any(Object),
             noveltext: expect.any(Object),
             novelname: expect.any(Object),
+            noveltype: expect.any(Object),
           }),
         );
       });
@@ -34,6 +35,7 @@ describe('Novel Form Service', () => {
             id: expect.any(Object),
             noveltext: expect.any(Object),
             novelname: expect.any(Object),
+            noveltype: expect.any(Object),
           }),
         );
       });
