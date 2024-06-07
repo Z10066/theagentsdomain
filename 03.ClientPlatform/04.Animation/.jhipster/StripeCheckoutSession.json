@@ -4,6 +4,7 @@
   },
   "applications": "*",
   "databaseType": "sql",
+  "entityTableName": "stripe_checkout_session",
   "fields": [
     {
       "fieldName": "created",

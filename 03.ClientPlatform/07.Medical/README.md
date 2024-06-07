@@ -22,6 +22,12 @@ We use npm scripts and [Webpack](https://webpack.js.org/) as our build system fo
 Run the following command to create a blissful development experience where your browser auto-refreshes when files change in your project.
 
 ```bash
+
+poetry install
+source .venv/bin/activate
+python src/main/python/HighwaymbApp.py
+
+
 $> npm run pyhipster
 ```
 

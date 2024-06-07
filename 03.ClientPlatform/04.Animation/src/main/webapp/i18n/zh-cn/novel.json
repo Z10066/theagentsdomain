@@ -1,0 +1,25 @@
+{
+  "highwayacApp": {
+    "novel": {
+      "home": {
+        "title": "Novels",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "创建新 Novel",
+        "createOrEditLabel": "创建或编辑 Novel",
+        "notFound": "No Novels found"
+      },
+      "created": "Novel {{ param }} 创建成功",
+      "updated": "Novel {{ param }} 更新成功",
+      "deleted": "Novel {{ param }} 删除成功",
+      "delete": {
+        "question": "你确定要删除 Novel {{ id }} 吗？"
+      },
+      "detail": {
+        "title": "Novel"
+      },
+      "id": "ID",
+      "noveltext": "Noveltext",
+      "novelname": "Novelname"
+    }
+  }
+}

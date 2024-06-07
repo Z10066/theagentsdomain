@@ -1,9 +1,8 @@
 package com.highwayns.highwaymq.service;
 
-import com.highwayns.highwaymq.dto.AdvertisementDto;
-import com.highwayns.highwaymq.entity.Advertisement;
+import com.highwayns.highwaymq.dto.StoryPromptDto;
 
 public interface MessageService {
-    public void sendMessage(Advertisement advertisement);
-    public void receiveMessage(AdvertisementDto advertisementDto);
+    public void sendMessage(StoryPromptDto storyPromptDto);
+    public void receiveMessage(StoryPromptDto advertisementDto);
 }

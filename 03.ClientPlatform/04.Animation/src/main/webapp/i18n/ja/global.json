@@ -28,7 +28,8 @@
         "category": "カテゴリ",
         "copyright": "コピーレター",
         "metadata": "メタデータ",
-        "keyword": "キーワード"
+        "keyword": "キーワード",
+        "novel": "Novel"
       },
       "account": {
         "main": "アカウント",

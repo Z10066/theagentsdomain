@@ -1,0 +1,25 @@
+{
+  "highwayacApp": {
+    "novel": {
+      "home": {
+        "title": "Novels",
+        "refreshListLabel": "リストの更新",
+        "createLabel": "Novel の作成",
+        "createOrEditLabel": "Novelの作成または編集",
+        "notFound": "Novels が見つかりません。"
+      },
+      "created": "新しい Novel がID {{ param }} で作成されました。",
+      "updated": "ID {{ param }} の Novel が更新されました。",
+      "deleted": "ID {{ param }} の Novel が削除されました。",
+      "delete": {
+        "question": "Novel {{ id }}を削除してもよろしいですか？"
+      },
+      "detail": {
+        "title": "Novel"
+      },
+      "id": "ID",
+      "noveltext": "Noveltext",
+      "novelname": "Novelname"
+    }
+  }
+}

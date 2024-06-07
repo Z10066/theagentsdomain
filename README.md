@@ -10,8 +10,11 @@ https://github.com/highwayns/awesome#highwayns
 
 # development guid book
 - <a href="developmentguid/English.md">English Development Guid</a>
+- <a href="developmentguid/ChatPPT_TheAgentsDomain.pptx">English Development Guid PPT</a>
 - <a href="developmentguid/日本語.md">日本語開発ガイド</a>
+- <a href="developmentguid/ChatPPT_TheAgentsDomain_JP.pptx">日本語開発ガイド PPT</a>
 - <a href="developmentguid/中文.md">中文开发指南</a>
+- <a href="developmentguid/ChatPPT_TheAgentsDomain_CN.pptx">中文开发指南 PPT</a>
 
 # story && video
 ## English
