@@ -1,0 +1,99 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Description: RabbitMQ Deployment Template
+
+Parameters:
+  KeyName:
+    Type: AWS::EC2::KeyPair::KeyName
+    Description: Name of an existing EC2 KeyPair to enable SSH access to the instance
+    ConstraintDescription: Must be the name of an existing EC2 KeyPair.
+  S3Bucket:
+    Type: String
+    Description: S3 bucket name to store the configuration file
+
+Resources:
+  RabbitMQSecurityGroup:
+    Type: AWS::EC2::SecurityGroup
+    Properties:
+      GroupDescription: Enable SSH and RabbitMQ access
+      VpcId: !ImportValue PostgresVPCId
+      SecurityGroupIngress:
+        - IpProtocol: tcp
+          FromPort: 22
+          ToPort: 22
+          CidrIp: 0.0.0.0/0
+        - IpProtocol: tcp
+          FromPort: 5672
+          ToPort: 5672
+          CidrIp: 0.0.0.0/0
+        - IpProtocol: tcp
+          FromPort: 15672
+          ToPort: 15672
+          CidrIp: 0.0.0.0/0
+      Tags:
+        - Key: Name
+          Value: 'RabbitMQSecurityGroup'
+
+  RabbitMQInstance:
+    Type: AWS::EC2::Instance
+    Properties:
+      ImageId: ami-xxxxxxxxxxxxxxxxx  # Replace with your AMI ID
+      InstanceType: t2.micro
+      SecurityGroupIds:
+        - !Ref RabbitMQSecurityGroup
+      SubnetId: !ImportValue PostgresSubnetId
+      KeyName: !Ref KeyName
+      UserData:
+        Fn::Base64: !Sub |
+          #!/bin/bash
+          sudo apt-get update -y
+          sudo apt-get install -y awscli jq
+          sudo apt-get install -y curl gnupg debian-keyring debian-archive-keyring apt-transport-https
+          curl -fsSL https://packages.erlang-solutions.com/ubuntu/erlang_solutions.asc | sudo apt-key add -
+          echo "deb https://packages.erlang-solutions.com/ubuntu $(lsb_release -sc) contrib" | sudo tee /etc/apt/sources.list.d/erlang.list
+          
+          curl -fsSL https://github.com/rabbitmq/signing-keys/releases/download/2.0/rabbitmq-release-signing-key.asc | sudo apt-key add -
+          echo "deb https://dl.bintray.com/rabbitmq-erlang/debian $(lsb_release -sc) erlang" | sudo tee /etc/apt/sources.list.d/bintray.rabbitmq.list
+          echo "deb https://dl.bintray.com/rabbitmq/debian $(lsb_release -sc) main" | sudo tee /etc/apt/sources.list.d/bintray.rabbitmq-debian.list
+          
+          sudo apt-get update
+          sudo apt-get install -y erlang
+          
+          sudo apt-get update
+          sudo apt-get install -y rabbitmq-server
+          
+          sudo systemctl start rabbitmq-server
+          sudo systemctl enable rabbitmq-server
+          
+          sudo rabbitmqctl status
+          
+          sudo rabbitmq-plugins enable rabbitmq_management
+
+          # Generate RabbitMQ configuration file
+          RABBITMQ_HOST=$(curl -s http://169.254.169.254/latest/meta-data/public-ipv4)
+          CONFIG_FILE=/tmp/rabbitmq_config.json
+          echo "{ \"rabbitmq\": { \"host\": \"$RABBITMQ_HOST\", \"port\": 5672, \"management_port\": 15672, \"username\": \"guest\", \"password\": \"guest\" } }" > $CONFIG_FILE
+
+          # Upload the configuration file to S3
+          aws s3 cp $CONFIG_FILE s3://${S3Bucket}/rabbitmq_config.json
+
+Outputs:
+  RabbitMQInstancePublicIP:
+    Description: RabbitMQ EC2インスタンスのパブリックIPアドレス
+    Value: !GetAtt RabbitMQInstance.PublicIp
+    Export:
+      Name: RabbitMQInstancePublicIP    
+  RabbitMQManagementURL:
+    Description: URL to access RabbitMQ Management Interface
+    Value: !Sub "http://${RabbitMQInstance.PublicIp}:15672"
+    Export:
+      Name: RabbitMQManagementURL    
+  RabbitMQConfigS3Bucket:
+    Description: S3 Bucket where RabbitMQ configuration is stored
+    Value: !Ref S3Bucket
+    Export:
+      Name: RabbitMQConfigS3Bucket    
+  RabbitMQConfigS3Key:
+    Description: S3 Key (path) of the RabbitMQ configuration file
+    Value: !Sub "${S3Bucket}/rabbitmq_config.json"
+    Export:
+      Name: RabbitMQConfigS3Key    

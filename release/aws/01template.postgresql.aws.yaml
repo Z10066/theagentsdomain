@@ -1,0 +1,234 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Description: PostgreSQLをデプロイするためのCloudFormationテンプレート
+
+Parameters:
+  Username:
+    Description: "The username of the superuser"
+    Type: String
+    Default: "admin"
+  Password:
+    Description: "The password of the superuser"
+    Type: String
+    Default: "password"
+    NoEcho: true
+  KeyName:
+    Description: Name of an existing EC2 KeyPair to enable SSH access to the instance
+    Type: AWS::EC2::KeyPair::KeyName
+    ConstraintDescription: must be the name of an existing EC2 KeyPair.
+  InstanceType:
+    Description: WebServer EC2 instance type
+    Type: String
+    Default: t2.medium
+    AllowedValues:
+      - t2.micro
+      - t2.small
+      - t2.medium
+      - t2.large
+    ConstraintDescription: must be a valid EC2 instance type.
+  LatestAmiId:
+    Type: 'AWS::SSM::Parameter::Value<AWS::EC2::Image::Id>'
+    Default: '/aws/service/ami-ubuntu-latest/ubuntu/images/hvm-ssd/ubuntu-focal-20.04-amd64-server'
+
+Metadata:
+  AWS::CloudFormation::Interface:
+    ParameterGroups:
+      - Label:
+          default: "PostgreSQL Configuration"
+        Parameters:
+          - Username
+          - Password
+      - Label:
+          default: "EC2 Configuration"
+        Parameters:
+          - KeyName
+          - InstanceType
+
+Resources:
+  S3Bucket:
+    Type: "AWS::S3::Bucket"
+    Properties:
+      BucketName: !Sub "${AWS::StackName}-postgresql-credentials"
+  VPC:
+    Type: "AWS::EC2::VPC"
+    Properties:
+      CidrBlock: "10.0.0.0/16"
+      EnableDnsHostnames: true
+      EnableDnsSupport: true
+      Tags:
+        - Key: Name
+          Value: "TheAgentsDomain-VPC"
+
+  InternetGateway:
+    Type: "AWS::EC2::InternetGateway"
+    Properties:
+      Tags:
+        - Key: Name
+          Value: "PostgreSQL-IGW"
+
+  AttachGateway:
+    Type: "AWS::EC2::VPCGatewayAttachment"
+    Properties:
+      VpcId: !Ref VPC
+      InternetGatewayId: !Ref InternetGateway
+
+  PublicSubnet:
+    Type: "AWS::EC2::Subnet"
+    Properties:
+      VpcId: !Ref VPC
+      CidrBlock: "10.0.1.0/24"
+      MapPublicIpOnLaunch: true
+      Tags:
+        - Key: Name
+          Value: "PublicSubnet"
+
+  RouteTable:
+    Type: "AWS::EC2::RouteTable"
+    Properties:
+      VpcId: !Ref VPC
+      Tags:
+        - Key: Name
+          Value: "PublicRouteTable"
+
+  PublicRoute:
+    Type: "AWS::EC2::Route"
+    Properties:
+      RouteTableId: !Ref RouteTable
+      DestinationCidrBlock: "0.0.0.0/0"
+      GatewayId: !Ref InternetGateway
+
+  SubnetRouteTableAssociation:
+    Type: "AWS::EC2::SubnetRouteTableAssociation"
+    Properties:
+      SubnetId: !Ref PublicSubnet
+      RouteTableId: !Ref RouteTable
+
+  DBSecurityGroup:
+    Type: "AWS::EC2::SecurityGroup"
+    Properties:
+      GroupDescription: "Enable SSH and PostgreSQL access"
+      VpcId: !Ref VPC
+      SecurityGroupIngress:
+        - IpProtocol: tcp
+          FromPort: 22
+          ToPort: 22
+          CidrIp: 0.0.0.0/0
+        - IpProtocol: tcp
+          FromPort: 5432
+          ToPort: 5432
+          CidrIp: 0.0.0.0/0
+      Tags:
+        - Key: Name
+          Value: "DBSecurityGroup"
+
+  DBInstance:
+    Type: "AWS::EC2::Instance"
+    Properties:
+      InstanceType: !Ref InstanceType
+      KeyName: !Ref KeyName
+      ImageId: !Ref LatestAmiId
+      NetworkInterfaces:
+        - AssociatePublicIpAddress: true
+          DeviceIndex: 0
+          SubnetId: !Ref PublicSubnet
+          GroupSet:
+            - !Ref DBSecurityGroup
+      UserData:
+        Fn::Base64: !Sub |
+          #!/bin/bash
+          sudo apt-get update -y               # パッケージリストを更新
+          sudo apt-get upgrade -y              # インストールされたパッケージをアップグレード
+          sudo apt-get install -y postgresql postgresql-contrib  # PostgreSQLと関連パッケージをインストール
+          systemctl enable postgresql    # PostgreSQLを自動起動設定
+          systemctl start postgresql     # PostgreSQLを起動
+
+          # インストール済みのPostgreSQLバージョンを取得
+          PG_VERSION=$(pg_lsclusters | awk 'NR>1 {print $1}')
+
+          # ユーザーごとにランダムパスワードを生成
+          KEYCLOAK_PASSWORD=$(openssl rand -base64 12)
+          HIGHWAYPJ_PASSWORD=$(openssl rand -base64 12)
+          HIGHWAYAC_PASSWORD=$(openssl rand -base64 12)
+          ODOO_PASSWORD=$(openssl rand -base64 12)
+
+          # S3バケットにパスワードを保存するためのJSONファイルを作成
+          cat <<EOL > /tmp/postgres_credentials.json
+          {
+              "keycloak": {"username": "keycloak", "password": "${KEYCLOAK_PASSWORD}"},
+              "highwaypj": {"username": "highwaypj", "password": "${HIGHWAYPJ_PASSWORD}"},
+              "highwayac": {"username": "highwayac", "password": "${HIGHWAYAC_PASSWORD}"},
+              "odoo": {"username": "odoo", "password": "${ODOO_PASSWORD}"}
+          }
+          EOL
+
+          # S3バケットにJSONファイルをアップロード
+          aws s3 cp /tmp/postgres_credentials.json s3://${S3Bucket}/postgres_credentials.json
+
+          # ユーザーとデータベースを作成し、すべての権限を付与
+          sudo -u postgres psql << EOF
+              -- keycloakユーザーを作成し、パスワードをkeycloakに設定し、スーパーユーザー権限を付与します
+              CREATE USER keycloak WITH PASSWORD '${KEYCLOAK_PASSWORD}' SUPERUSER;
+
+              -- highwaypjユーザーを作成し、パスワードをhighwaypjに設定し、スーパーユーザー権限を付与します
+              CREATE USER highwaypj WITH PASSWORD '${HIGHWAYPJ_PASSWORD}' SUPERUSER;
+
+              -- highwayacユーザーを作成し、パスワードをhighwayacに設定し、スーパーユーザー権限を付与します
+              CREATE USER highwayac WITH PASSWORD '${HIGHWAYAC_PASSWORD}' SUPERUSER;
+
+              -- odooユーザーを作成し、パスワードをodooに設定し、スーパーユーザー権限を付与します
+              CREATE USER odoo WITH PASSWORD '${ODOO_PASSWORD}' SUPERUSER;
+
+              -- postgresデータベースを作成し、所有者をpostgresユーザーに指定します
+              CREATE DATABASE postgres OWNER postgres;
+
+              -- highwayacデータベースを作成し、所有者をhighwayacユーザーに指定します
+              CREATE DATABASE highwayac OWNER highwayac;
+
+              -- keycloakデータベースを作成し、所有者をkeycloakユーザーに指定します
+              CREATE DATABASE keycloak OWNER keycloak;
+
+              -- highwaypjデータベースを作成し、所有者をhighwaypjユーザーに指定します
+              CREATE DATABASE highwaypj OWNER highwaypj;
+
+              -- odoo_dbデータベースを作成し、所有者をodooユーザーに指定します
+              CREATE DATABASE odoo_db OWNER odoo;
+          EOF
+
+          # PostgreSQLの設定ファイルを更新
+          echo "listen_addresses = '*'" >> /etc/postgresql/${PG_VERSION}/main/postgresql.conf
+          echo "host all all 0.0.0.0/0 md5" >> /etc/postgresql/${PG_VERSION}/main/pg_hba.conf
+
+          # PostgreSQLサービスを再起動
+          systemctl restart postgresql
+
+Outputs:
+  PostgresS3BucketName:
+    Description: S3 Bucket storing PostgreSQL credentials
+    Value: !Ref S3Bucket
+    Export:
+      Name: PostgresS3BucketName
+  DBInstancePublicIP:
+    Description: PostgreSQLデータベースインスタンスのパブリックIPアドレス
+    Value: !GetAtt DBInstance.PublicIp
+    Export:
+      Name: PostgresDBInstancePublicIP
+  DBInstancePrivateIP:
+    Description: PostgreSQLデータベースインスタンスのプライベートIPアドレス
+    Value: !GetAtt DBInstance.PrivateIp
+    Export:
+      Name: PostgresDBInstancePrivateIP
+  VPCId:
+    Description: VPCのID
+    Value: !Ref VPC
+    Export:
+      Name: PostgresVPCId
+  SubnetId:
+    Description: サブネットのID
+    Value: !Ref PublicSubnet
+    Export:
+      Name: PostgresSubnetId
+  DBSecurityGroup:
+    Description: DB Security Group ID
+    Value: !Ref DBSecurityGroup
+    Export:
+      Name: PostgresDBSecurityGroupId
+

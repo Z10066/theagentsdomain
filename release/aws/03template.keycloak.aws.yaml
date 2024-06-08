@@ -1,0 +1,119 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Description: KeycloakプロジェクトをデプロイするためのCloudFormationテンプレート
+
+Parameters:
+  KeyName:
+    Description: EC2インスタンスへのSSHアクセス用キーペア名
+    Type: AWS::EC2::KeyPair::KeyName
+    ConstraintDescription: Must be the name of an existing EC2 KeyPair.    
+  KeycloakInstanceType:
+    Description: Keycloak のインスタンスタイプ
+    Type: String
+    Default: t2.micro    
+
+Resources:
+  KeycloakSecurityGroup:
+    Type: AWS::EC2::SecurityGroup
+    Properties:
+      GroupDescription: Enable SSH and Keycloak access
+      VpcId: !ImportValue PostgresVPCId
+      SecurityGroupIngress:
+        - IpProtocol: tcp
+          FromPort: 22
+          ToPort: 22
+          CidrIp: 0.0.0.0/0
+        - IpProtocol: tcp
+          FromPort: 8080
+          ToPort: 8080
+          CidrIp: 0.0.0.0/0
+      Tags:
+        - Key: Name
+          Value: 'KeycloakSecurityGroup'
+
+  KeycloakInstance:
+    Type: AWS::EC2::Instance
+    Properties:
+      InstanceType: !Ref KeycloakInstanceType
+      KeyName: !Ref KeyName
+      ImageId: ami-xxxxxxxxxxxxxxxx  # 適切なAMI IDに置き換える
+      SecurityGroupIds:
+        - !Ref KeycloakSecurityGroup
+      SubnetId: !ImportValue PostgresSubnetId      
+      UserData:
+        Fn::Base64: |
+          #!/bin/bash
+          sudo apt-get update -y
+          sudo apt-get upgrade -y
+          sudo apt-get install -y jq curl        
+          # NodeSourceの追加
+          curl -fsSL https://rpm.nodesource.com/setup_20.x | bash -         
+          # Java 17のインストール
+          yum install -y java-17-openjdk-devel          
+          # 現在のユーザーのホームディレクトリに戻る
+          cd ~
+          # 環境変数の設定
+          KC_VERSION=24.0.3                
+          # Keycloakをダウンロードして展開する
+          wget https://github.com/keycloak/keycloak/releases/download/${KC_VERSION}/keycloak-${KC_VERSION}.zip
+          unzip keycloak-${KC_VERSION}.zip
+          # データベース接続情報を取得
+          DB_HOST=$(aws ssm get-parameter --name "/postgresql/db-host" --query "Parameter.Value" --output text)
+          # Keycloak HTTPS 設定
+          # create private key
+          openssl genpkey -algorithm RSA -out server.key.pem -pkeyopt rsa_keygen_bits:2048
+          # sign
+          openssl req -new -x509 -key server.key.pem -out server.crt.pem -days 365
+          # create pkcs12 key store
+          openssl pkcs12 -export -in server.crt.pem -inkey server.key.pem -out server.p12 -name server -CAfile ca.crt.pem -caname root
+          # pkcs12->jks
+          keytool -importkeystore -deststorepass zjhuen1915 -destkeypass zjhuen1915 -destkeystore server.keystore.jks -srckeystore server.p12 -srcstoretype PKCS12 -srcstorepass zjhuen1915 -alias server
+          # Keycloak設定ファイルを修正する
+          sed -i 's/^#db=postgres/db=postgres/' keycloak-${KC_VERSION}/conf/keycloak.conf
+          sed -i 's/^#db-username=keycloak/db-username=keycloak/' keycloak-${KC_VERSION}/conf/keycloak.conf
+          sed -i 's/^#db-password=password/db-password=keycloak/' keycloak-${KC_VERSION}/conf/keycloak.conf
+          sed -i "s|^#db-url=jdbc:postgresql://localhost/keycloak|db-url=jdbc:postgresql://$DB_HOST/keycloak24|" keycloak-${KC_VERSION}/conf/keycloak.conf
+          sed -i 's/^#http-port=8180/http-port=8180/' keycloak-${KC_VERSION}/conf/keycloak.conf
+          sed -i "s|^#https-certificate-file=.*|https-certificate-file=$(pwd)/server.crt.pem|" keycloak-${KC_VERSION}/conf/keycloak.conf
+          sed -i "s|^#https-certificate-key-file=.*|https-certificate-key-file=$(pwd)/server.key.pem|" keycloak-${KC_VERSION}/conf/keycloak.conf
+          sed -i "s|^#https-key-store-file=.*|https-key-store-file=$(pwd)/server.keystore.jks|" keycloak-${KC_VERSION}/conf/keycloak.conf
+          sed -i "s|^#https-key-store-password=.*|https-key-store-password=zjhuen1915|" keycloak-${KC_VERSION}/conf/keycloak.conf
+          sed -i 's|^#https-protocols=.*|https-protocols=TLSv1.3,TLSv1.2|' keycloak-${KC_VERSION}/conf/keycloak.conf
+          sed -i "s|^#https-trust-store-file=.*|https-trust-store-file=$(pwd)/myTrustStore.jks|" keycloak-${KC_VERSION}/conf/keycloak.conf
+          sed -i "s|^#https-trust-store-password=.*|https-trust-store-password=password|" keycloak-${KC_VERSION}/conf/keycloak.conf
+          sed -i 's|^#https-trust-store-file-hostname-verification-policy=.*|https-trust-store-file-hostname-verification-policy=ANY|' keycloak-${KC_VERSION}/conf/keycloak.conf
+          sed -i "s|^#vault=.*|vault=file|" keycloak-${KC_VERSION}/conf/keycloak.conf
+          sed -i "s|^#vault=.*|vault=keystore|" keycloak-${KC_VERSION}/conf/keycloak.conf
+          sed -i "s|^#vault-dir=.*|vault-dir=/my/path|" keycloak-${KC_VERSION}/conf/keycloak.conf
+          # Keycloakの起動
+          cd keycloak-${KC_VERSION}/bin
+          ./kc.sh start-dev
+          # 証明書を使用してKeycloakを起動
+          ./kc.sh start --https-certificate-file=$(pwd)/server.crt.pem --https-certificate-key-file=$(pwd)/server.key.pem
+          # Java Keystoreを使用してKeycloakを起動
+          ./kc.sh start --https-key-store-file=$(pwd)/server.keystore.jks --https-key-store-password=zjhuen1915 --https-protocols=TLSv1.3,TLSv1.2
+          # 信頼ストアを使用してKeycloakを起動
+          ./kc.sh start --https-trust-store-file=$(pwd)/myTrustStore.jks --https-trust-store-password=password --https-trust-store-file-hostname-verification-policy=ANY
+          ./kc.sh start --https-trust-store-file=$(pwd)/path/to/truststore.jks --https-trust-store-password=change_me --https-trust-store-file-hostname-verification-policy=WILDCARD
+          # Vaultを使用してKeycloakを起動
+          ./kc.sh build --vault=file
+          ./kc.sh build --vault=keystore
+          ./kc.sh start --vault-dir=/my/path
+          # Realmの作成
+          realm_export='{"realm":"myrealm","enabled":true}'
+          realm_id=$(curl -sSf -X POST -H "Content-Type: application/json" -d "$realm_export" http://localhost:8180/auth/admin/realms | jq -r '.id')
+          # Realm設定ファイルのインポート
+          curl -sSf -X POST -H "Content-Type: application/json" -d "$(aws s3 cp s3://your-bucket-name/path/to/realm-export.json -)" http://localhost:8180/auth/admin/realms/$realm_id/import
+          # ユーザー作成
+          user_export='{"username":"theagentsdomain","enabled":true,"credentials":[{"type":"password","value":"password","temporary":false}]}'
+          curl -sSf -X POST -H "Content-Type: application/json" -d "$user_export" http://localhost:8180/auth/admin/realms/myrealm/users
+          # Client Secretの生成
+          client_secret=$(curl -sSf -X POST -H "Content-Type: application/x-www-form-urlencoded" -d "client_id=highwayac&client_secret=password&grant_type=client_credentials" http://localhost:8180/auth/realms/myrealm/protocol/openid-connect/token | jq -r '.access_token')
+          # クライアントシークレットをJSON形式のファイルにエクスポートする
+          echo "{\"client_secret\": \"$client_secret\"}" > /home/ec2-user/client_secret.json
+
+Outputs:
+  KeycloakInstancePublicIP:
+    Description: Keycloak EC2インスタンスのパブリックIPアドレス
+    Value: !GetAtt KeycloakInstance.PublicIp
+    Export:
+      Name: KeycloakInstancePublicIP

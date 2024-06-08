@@ -1,0 +1,126 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Description: ClientPlatform プロジェクトをデプロイするためのCloudFormationテンプレート
+
+Parameters:
+  KeyName:
+    Description: EC2インスタンスへのSSHアクセス用キーペア名
+    Type: AWS::EC2::KeyPair::KeyName
+    ConstraintDescription: Must be the name of an existing EC2 KeyPair.    
+  ClientPlatformInstanceType:
+    Description: ClientPlatform のインスタンスタイプ
+    Type: String
+    Default: t2.micro
+  PostgresS3BucketName:
+    Description: PostgreSQLクレデンシャルが保存されているS3バケットの名前
+    Type: String
+    Default: !ImportValue PostgresS3BucketName
+  RabbitMQConfigS3Bucket:
+    Description: S3 bucket storing RabbitMQ configuration
+    Type: String
+    Default: !ImportValue RabbitMQConfigS3Bucket
+  RabbitMQConfigS3Key:
+    Description: S3 key for RabbitMQ configuration file
+    Type: String
+    Default: !ImportValue RabbitMQConfigS3Key
+  DBInstancePublicIP:
+    Description: PostgreSQLデータベースインスタンスのパブリックIP
+    Type: String
+    Default: !ImportValue PostgresDBInstancePublicIP  
+
+Resources:
+  ClientPlatformSecurityGroup:
+    Type: AWS::EC2::SecurityGroup
+    Properties:
+      GroupDescription: Enable SSH and ClientPlatform access
+      VpcId: !ImportValue PostgresVPCId
+      SecurityGroupIngress:
+        - IpProtocol: tcp
+          FromPort: 22
+          ToPort: 22
+          CidrIp: 0.0.0.0/0
+        - IpProtocol: tcp
+          FromPort: 8080
+          ToPort: 8080
+          CidrIp: 0.0.0.0/0
+      Tags:
+        - Key: Name
+          Value: 'ClientPlatformSecurityGroup'
+
+  ClientPlatformInstance:
+    Type: AWS::EC2::Instance
+    Properties:
+      InstanceType: !Ref ClientPlatformInstanceType
+      KeyName: !Ref KeyName
+      ImageId: ami-xxxxxxxxxxxxxxxx  # 適切なAMI IDに置き換える
+      SecurityGroupIds:
+        - !Ref ClientPlatformSecurityGroup
+      SubnetId: !ImportValue PostgresSubnetId      
+      UserData:
+        Fn::Base64: !Sub |
+          #!/bin/bash
+          set -e
+
+          # ログファイルの定義
+          LOGFILE=/var/log/user-data.log
+          exec > >(tee -a ${LOGFILE} | logger -t user-data) 2>&1
+          echo "Start of user-data script" 
+
+          # Update and install dependencies
+          echo "Updating and installing dependencies..."
+          sudo apt-get update -y || { echo "apt-get update failed"; exit 1; }
+          sudo apt-get upgrade -y || { echo "apt-get upgrade failed"; exit 1; }
+          sudo apt-get install -y awscli jq gettext || { echo "Dependencies installation failed"; exit 1; }
+
+          # Download the RabbitMQ configuration file from S3
+          echo "Downloading RabbitMQ configuration file from S3..."
+          aws s3 cp s3://${RabbitMQConfigS3Bucket}/${RabbitMQConfigS3Key} /tmp/rabbitmq_config.json
+
+          # Parse the RabbitMQ configuration file
+           echo "Parsing RabbitMQ configuration file..."
+          RABBITMQ_HOST=$(jq -r '.rabbitmq.host' /tmp/rabbitmq_config.json)
+          RABBITMQ_PORT=$(jq -r '.rabbitmq.port' /tmp/rabbitmq_config.json)
+          RABBITMQ_MANAGEMENT_PORT=$(jq -r '.rabbitmq.management_port' /tmp/rabbitmq_config.json)
+          RABBITMQ_USER=$(jq -r '.rabbitmq.username' /tmp/rabbitmq_config.json)
+          RABBITMQ_PASSWORD=$(jq -r '.rabbitmq.password' /tmp/rabbitmq_config.json)
+
+          # S3からデータベース接続情報を取得
+          echo "S3からデータベース接続情報を取得..."
+          aws s3 cp s3://${PostgresS3BucketName}/postgres_credentials.json /tmp/postgres_credentials.json
+          DB_USERNAME=$(jq -r .username /tmp/postgres_credentials.json)
+          DB_PASSWORD=$(jq -r .password /tmp/postgres_credentials.json)
+          DB_NAME=$(jq -r .dbname /tmp/postgres_credentials.json)
+          DB_HOST=${DBInstancePublicIP}
+
+          # データベース接続情報を設定ファイルに注入
+          echo "データベース接続情報を設定ファイルに注入..."
+          sed -i "s/DB_USERNAME_PLACEHOLDER/$DB_USERNAME/" /path/to/theagentsdomain/config/application.yml
+          sed -i "s/DB_PASSWORD_PLACEHOLDER/$DB_PASSWORD/" /path/to/theagentsdomain/config/application.yml
+          sed -i "s/DB_NAME_PLACEHOLDER/$DB_NAME/" /path/to/theagentsdomain/config/application.yml
+          sed -i "s/DB_HOST_PLACEHOLDER/$DB_HOST/" /path/to/theagentsdomain/config/application.yml
+
+          # Gitのインストール
+          echo "Installing Git..."
+          yum install -y git
+          # NodeSourceの追加
+          curl -fsSL https://rpm.nodesource.com/setup_20.x | bash -
+          # Java 17のインストール
+          yum install -y java-17-openjdk-devel
+          # Node.jsのインストール
+          yum install -y nodejs
+          # 現在のユーザーのホームディレクトリに戻る
+          cd ~                     
+          # theagentsdomainプロジェクトのクローニング
+          git clone https://github.com/highwayns/theagentsdomain.git
+
+          # クライアントシークレットファイルのダウンロード
+          echo "クライアントシークレットファイルのダウンロード..."
+          curl -o /home/ec2-user/client_secret.json http://${KeycloakInstanceIP}/client_secret.json
+
+          # クライアント・シークレットファイルの読み込みと設定ファイルの更新
+          echo "クライアント・シークレットファイルの読み込みと設定ファイルの更新..."
+          source /home/ec2-user/client_secret.json
+          sed -i "s/client-secret: .*/client-secret: $CLIENT_SECRET/" ~/theagentsdomain/03.ClientPlatform/04.Animation/src/main/resources/config/application.yml
+
+          # ClientPlatformの起動
+          cd ~/theagentsdomain/03.ClientPlatform/04.Animation
+          ./mvnw          
