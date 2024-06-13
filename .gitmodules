@@ -134,3 +134,7 @@
 [submodule "highwayns/ToolSwarm"]
 	path = 10.AnalysisAndAlgorithm/ToolSwarm
 	url = https://github.com/highwayns/ToolSwarm.git
+[submodule "highwayns/exa-crewai"]
+	path = 10.AnalysisAndAlgorithm/exa-crewai
+	url = https://github.com/highwayns/exa-crewai.git
+	
