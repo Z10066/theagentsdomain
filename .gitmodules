@@ -137,4 +137,7 @@
 [submodule "highwayns/exa-crewai"]
 	path = 10.AnalysisAndAlgorithm/exa-crewai
 	url = https://github.com/highwayns/exa-crewai.git
-	
+[submodule "ragapp/ragapp"]
+	path = 10.AnalysisAndAlgorithm/ragapp
+	url = https://github.com/ragapp/ragapp.git
+	 
